@@ -1,5 +1,5 @@
 package com.dependapot.minigame;
 
-public interface Minigame {
+public interface iMinigame {
     boolean play();
 }

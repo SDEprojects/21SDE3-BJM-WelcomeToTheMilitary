@@ -1,6 +1,6 @@
 package com.dependapot.minigame;
 
-public class DDRKeyboard implements Minigame {
+public class DDRKeyboard implements iMinigame {
     private boolean isWin = false;
 
     public DDRKeyboard() {

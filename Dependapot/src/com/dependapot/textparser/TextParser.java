@@ -105,12 +105,13 @@ public class TextParser {
         System.out.println("Move action");
         if (postType.equals("Fort Sill")) {
             // switch case for fort sill
+            System.out.println(nounInput);
             switch (nounInput) {
                 case "dfac":
                 case "barracks":
                 case "church":
                 case "px":
-                case "commissary":
+                case "market":
                 case "gym":
                     return true;
                 default:
@@ -143,18 +144,18 @@ public class TextParser {
         if (postType.equals("Fort Sill")) {
             // switch case for fort sill
             switch (nounInput) {
-                case "Brad":
-                case "Jeremy":
-                case "Rogers":
-                case "Shad":
-                case "Arturo":
-                case "Mason":
-                case "John":
-                case "Brandon":
-                case "Laginus":
-                case "Soko":
-                case "David":
-                case "Stephen":
+                case "brad":
+                case "jeremy":
+                case "rogers":
+                case "shad":
+                case "arturo":
+                case "mason":
+                case "john":
+                case "brandon":
+                case "laginus":
+                case "soko":
+                case "david":
+                case "stephen":
                     return true;
                 default:
                     this.noun = "";

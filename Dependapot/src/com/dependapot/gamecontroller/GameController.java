@@ -2,6 +2,9 @@ package com.dependapot.gamecontroller;
 
 import com.dependapot.bases.Fort_Sill_Map;
 import com.dependapot.character.Dependa;
+import com.dependapot.character.LowerEnlist;
+import com.dependapot.minigame.RPC;
+import com.dependapot.minigame.iMinigame;
 import com.dependapot.textparser.ParseResponse;
 import com.dependapot.textparser.TextParser;
 import com.dependapot.tutorial.Welcome;
@@ -14,6 +17,9 @@ public class GameController {
     private static Fort_Sill_Map fortSill = new Fort_Sill_Map("Fort Sill", "Some post");
     private static Scanner input = new Scanner(System.in);
 
+    // minigame
+    private static iMinigame rockPaperScissors = new RPC();
+
     // dependa
     // Jon has to give us the object
     // but for now, we are just creating the object for testing purpose;
@@ -22,11 +28,34 @@ public class GameController {
     private static void interactWithNPC(String noun) {
         String playerCurrentLocation = player.getLocation();
         // check the soldier's existence
-
+        ArrayList<LowerEnlist> existingSolider = fortSill.getSolider(playerCurrentLocation);
+        if (existingSolider.size() == 0) {
+            System.out.println("There is no one in the area... T_T");
+            return;
+        }
+        String targetSoldierName = noun.substring(0, 1).toUpperCase() + noun.substring(1);
+        LowerEnlist solider = null;
+        for (LowerEnlist eachSolider : existingSolider) {
+            if (eachSolider.getName().equals(targetSoldierName)) {
+                solider = eachSolider;
+                break;
+            }
+        }
+        // founded case
+        if (solider != null) {
+            System.out.println("Targeting:" + noun);
+            System.out.println("You finally saw " + solider.getName() + "'s rank!\nIt is " + solider.getRank());
+            // game start
+            boolean isWin = rockPaperScissors.play();
+            return;
+        }
+        System.out.println("Cannot find the soldier you are looking for");
+        return;
     }
 
     private static void displayBuildings(String noun){
         switch (noun) {
+//            add buildings
             default:
                 System.out.println("These are the possible location you can go!!");
                 System.out.println(fortSill.getBuildings());
@@ -41,7 +70,7 @@ public class GameController {
             case "church":
             case "gym":
             case "barracks":
-            case "commisary":
+            case "market":
                 System.out.println("EnteringBuildingController: " + noun);
                 fortSill.enterToBuilding(noun);
                 setDependaLocation(noun);
@@ -81,11 +110,12 @@ public class GameController {
                         break;
                     case "display":
                     case "show":
-                        GameController.displayBuildings(response.getVerb());
+                        GameController.displayBuildings(response.getNoun());
                         break;
                     case "talk":
                     case "approach":
                     case "interact":
+                        GameController.interactWithNPC(response.getNoun());
                         break;
                     default:
                         System.out.println("Verb " + response.getVerb());

@@ -1,15 +1,14 @@
 package com.dependapot.bases;
 
 import com.dependapot.character.LowerEnlist;
+import com.dependapot.character.WarrantOfficer;
 import com.dependapot.textparser.ParseResponse;
 import com.dependapot.textparser.TextParser;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Fort_Sill_Map {
+    private Random random_WO_Generator = new Random();
     public String name = "Fort Sill";
     private final String description;
 
@@ -50,7 +49,7 @@ public class Fort_Sill_Map {
     //
 
     // going to get all the solider based on the building that is passed by parameter
-    private ArrayList<LowerEnlist> getSolider(String building) {
+    public ArrayList<LowerEnlist> getSolider(String building) {
         HashMap<String, ArrayList<LowerEnlist>> data = this.buildings;
         ArrayList<LowerEnlist> enlists = data.get(building);
         return enlists;
@@ -85,10 +84,32 @@ public class Fort_Sill_Map {
         this.buildings = new HashMap<>();
         this.buildings.put("dfac", prepareSoldierInDfac());
         this.buildings.put("px", prepareSoldierInPX());
-        this.buildings.put("commissary", prepareSoldierInCommissary());
+        this.buildings.put("market", prepareSoldierInCommissary());
         this.buildings.put("church", prepareSoldierInChurch());
         this.buildings.put("gym", prepareSoldierInGym());
         this.buildings.put("barracks", prepareSoldierInBarracks());
+    }
+
+//    helper method to set random WO in facilities
+private ArrayList<WarrantOfficer> warrantsInBliss(){
+    ArrayList<WarrantOfficer> fortSill = new ArrayList<>();
+    WarrantOfficer WO1 = new WarrantOfficer("WO1", "Chet", "I just traded my 28% APR Camaro for a GeoMetro. Will you marry me!!!");
+    WarrantOfficer WO2 = new WarrantOfficer("WO2", "David", "I don't wash my coffee cup. I also work with computers. Do you DND? Will you marry me!!!");
+    WarrantOfficer WO3 = new WarrantOfficer("WO3", "Michael", "I just left my wife because I want to focus on my career. I'm a Warrant Officer, you know. I can do this forever. Will you marry me!!!");
+    WarrantOfficer WO4 = new WarrantOfficer("WO4", "Phillip", "What year is it? Come with me if you want travel the world. Will you marry me!!!");
+    WarrantOfficer WO5 = new WarrantOfficer("WO5", "Garcia", "Who am I, you ask? I don't exist. I play golf during work hours. Will you marry me!!!");
+    fortSill.add(WO1);
+    fortSill.add(WO2);
+    fortSill.add(WO3);
+    fortSill.add(WO4);
+    fortSill.add(WO5);
+    return fortSill;
+}
+// pick a random WO
+    public WarrantOfficer anyWO(){
+        int index = random_WO_Generator.nextInt(warrantsInBliss().size());
+        System.out.println();
+        return warrantsInBliss().get(index);
     }
 
     // helper method to set up the place with correct soldiers for the dfac
@@ -116,7 +137,7 @@ public class Fort_Sill_Map {
         ArrayList<LowerEnlist> commSoldier = new ArrayList<>();
         LowerEnlist E6 = new LowerEnlist("Arturo", "Always having a cookout. Dances with products as he puts them into his cart.", "e-6");
         commSoldier.add(E6);
-        // add Warrant Officer
+        warrantsInBliss();
         return commSoldier;
     }
 
@@ -188,14 +209,14 @@ public class Fort_Sill_Map {
             is_Dependa_in_Commisary = false;
             enterToBuilding("px");
             // building_description = "You do not pay taxes here. Come purchase all your unneccessary needs!!!";
-        }else if (noun.equals("commissary")){
+        }else if (noun.equals("market")){
             is_Dependa_in_DFAC = false;
             is_Dependa_in_Barracks = false;
             is_Dependa_in_Church = false;
             is_Dependa_in_Gym = false;
             is_Dependa_in_PX = false;
             is_Dependa_in_Commisary = true;
-            enterToBuilding("commissary");
+            enterToBuilding("market");
             // building_description = "Tax free grocery with all the hot chips you can buy";
         }else if(noun.equals("barracks")){
             is_Dependa_in_DFAC = false;

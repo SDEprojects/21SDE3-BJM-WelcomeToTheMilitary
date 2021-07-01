@@ -11,6 +11,7 @@ public class Welcome {
 
     }
 
+
     public static void questions() {
         System.out.println("Welcome to Dependa: From Rank to Riches\nThis tutorial will teach you the basics of the game." +
                 "\nFirst a test to gauge your knowledge:");

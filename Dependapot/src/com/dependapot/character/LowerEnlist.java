@@ -2,8 +2,13 @@ package com.dependapot.character;
 
 public class LowerEnlist {
     private String rank;
-
-    public LowerEnlist(String _rank) {
+    private String name;
+    private String attribute;
+// Constructor
+    public LowerEnlist(String _name, String _attribute, String _rank)
+    {
+        this.name = _name;
+        this.attribute = _attribute;
         this.rank = _rank;
     }
 
@@ -11,9 +16,16 @@ public class LowerEnlist {
         return this.rank;
     }
 
+    public String getAttribute(){
+        return this.attribute;}
+
+    public String getName(){
+        return this.name;
+    }
+
     @Override
     public String toString() {
         return "LowerEnlist{" +
-                "rank='" + rank +'\'' + '}';
+                "name ='" + name +'\'' + "attribute = '" + attribute + '\'' ;
     }
 }

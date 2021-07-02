@@ -59,7 +59,8 @@ public class TextParser {
             // some message
             this.verb = "";
             this.noun = "";
-            System.out.println("Invalid input:\nDesired input format: verb + noun");
+
+            System.out.println("Invalid input:\nDesired input format: verb + noun\n for help type (help me)");
             return false;
         }
         return true;
@@ -92,6 +93,9 @@ public class TextParser {
             case "display":
                 isOperable = displayMapAction(nounInput, postType);
                 return isOperable;
+            case "help":
+                isOperable = helpAction(nounInput, postType);
+                return isOperable;
             default:
                 this.verb = "";
                 this.noun = "";
@@ -100,6 +104,22 @@ public class TextParser {
         }
     }
 
+    // method for "help me"
+    private boolean helpAction(String nounInput, String postType) {
+        System.out.println("Help Action");
+        if (postType.equals("Fort Sill")) {
+            switch (nounInput) {
+                case "me":
+                    return true;
+                default:
+                    System.out.println("Were you trying to type the word 'help me'");
+                    this.noun = "";
+                    return false;
+            }
+        }
+        return false;
+    }
+    
     // method for "go || move || drive || walk || run"
     private boolean moveAction(String nounInput, String postType) {
         System.out.println("Move action");

@@ -128,7 +128,7 @@ public class Welcome {
             System.out.println("Press anything to continue");
             questionOne.nextLine();
         }
-        intro(spellList);
+//        intro(spellList);
     }
 
     public static void spells(){
@@ -162,7 +162,6 @@ public class Welcome {
 
             }
         }
-
         return "";
     }
     private static void clearConsole() {

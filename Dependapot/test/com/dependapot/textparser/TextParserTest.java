@@ -131,7 +131,7 @@ public class TextParserTest {
         response = textParser.receiveAction(invalidActionNoun, FORTSILL);
         String actualVerb = response.getVerb();
         String actualNoun = response.getNoun();
-        assertEquals("", actualVerb);
+        assertEquals("move", actualVerb);
         assertEquals("", actualNoun);
     }
 
@@ -143,7 +143,7 @@ public class TextParserTest {
         response = textParser.receiveAction(invalidActionNoun, FORTBLISS);
         String actualVerb = response.getVerb();
         String actualNoun = response.getNoun();
-        assertEquals("", actualVerb);
+        assertEquals("drive", actualVerb);
         assertEquals("", actualNoun);
     }
 

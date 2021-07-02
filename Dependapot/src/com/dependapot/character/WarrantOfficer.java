@@ -1,17 +1,17 @@
 package com.dependapot.character;
 
-public class LowerEnlist {
+import java.util.ArrayList;
+
+public class WarrantOfficer {
     private String rank;
     private String name;
     private String attribute;
-// Constructor
-    public LowerEnlist(String _name, String _attribute, String _rank)
-    {
+
+    public WarrantOfficer(String _rank, String _name, String _attribute) {
+        this.rank = _rank;
         this.name = _name;
         this.attribute = _attribute;
-        this.rank = _rank;
     }
-
     public String getRank() {
         return this.rank;
     }
@@ -23,9 +23,5 @@ public class LowerEnlist {
         return this.name;
     }
 
-    @Override
-    public String toString() {
-        return "LowerEnlist{" +
-                "name ='" + name +'\'' + "attribute = '" + attribute + '\'' ;
-    }
+
 }

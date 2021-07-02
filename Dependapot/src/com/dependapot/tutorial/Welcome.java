@@ -10,12 +10,12 @@ public class Welcome {
 
     static ArrayList<String> spellList = new ArrayList<>();
 
-    public static void main(String[] args) {
-        spellList.add("Multi-Cam Purse");
-        spellList.add("Bumper Sticker");
-        spellList.add("LuLuRoe Business Card");
-        intro();
-    }
+//    public static void main(String[] args) {
+//        spellList.add("Multi-Cam Purse");
+//        spellList.add("Bumper Sticker");
+//        spellList.add("LuLuRoe Business Card");
+//        intro();
+//    }
 
     public static Dependa intro(){
         clearConsole();
@@ -133,10 +133,13 @@ public class Welcome {
     }
 
     public static String picSpells(){
+        spellList.add("Multi-Cam Purse");
+        spellList.add("Bumper Sticker");
+        spellList.add("LuLuRoe Business Card");
         int whileInt = 0;
         while(whileInt == 0){
 
-            System.out.println("Please select the spell you would like to start with: ");
+            System.out.println("Please type in the number associated with the spell you would like to start with: ");
             int x = 1;
             while( x< spellList.size() +1){
                 System.out.println(x + ". " + spellList.get(x - 1));

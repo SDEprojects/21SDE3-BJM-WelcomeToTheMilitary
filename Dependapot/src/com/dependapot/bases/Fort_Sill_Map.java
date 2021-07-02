@@ -17,6 +17,7 @@ public class Fort_Sill_Map {
     private String currentDependaLocation = null;
     // END OF CODE WITH ME
 
+//    Constructor
     public Fort_Sill_Map(String _name, String description){
         this.name = _name;
         this.description = description;

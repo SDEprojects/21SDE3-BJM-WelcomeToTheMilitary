@@ -12,13 +12,72 @@ import com.dependapot.tutorial.Welcome;
 import java.util.*;
 
 public class GameController {
+
     private static ParseResponse response = null;
     private static TextParser parser = null;
     private static Fort_Sill_Map fortSill = new Fort_Sill_Map("Fort Sill", "Some post");
     private static Scanner input = new Scanner(System.in);
+    private static ArrayList<String> spellList = new ArrayList<>();
 
     // minigame
     private static iMinigame rockPaperScissors = new RPC();
+
+    public static void main(String[] args) {
+        spellList.add("Multi-Cam Purse");
+        spellList.add("Bumper Sticker");
+        spellList.add("LuLuRoe Business Card");
+
+        Dependa usrDep = Welcome.intro(spellList);
+        parser = new TextParser();
+
+        // below this line while loop
+        String userAction = "";
+        int counter = 0;
+        while (!userAction.equals("exit") && !userAction.equals("quit")) {
+            if(counter ==0){
+                System.out.println("Welcome to Fort Sill, you entered through the trunk of a homegirl's car.");
+            }
+            System.out.println("Enter your action [format= verb + noun] for help type (help me)");
+            userAction = input.nextLine();
+            response = parser.receiveAction(userAction, fortSill.getName());
+            if (!(response.getVerb().equals("")) || !(response.getNoun().equals(""))) {
+                System.out.println("Verb: " + response.getVerb());
+                try {
+                    switch (response.getVerb().trim()) {
+                        case "go":
+                        case "move":
+                        case "drive":
+                        case "walk":
+                        case "run":
+                            GameController.enteringBuildingController(response.getNoun(), usrDep);
+                            break;
+                        case "display":
+                        case "show":
+                            GameController.displayBuildings(response.getNoun(), usrDep);
+                            break;
+                        case "talk":
+                        case "approach":
+                        case "interact":
+                            GameController.interactWithNPC(response.getNoun(), usrDep);
+                            break;
+                        case "help":
+//                        case "quit":
+//                        case "exit":
+                            interactHelpRequest(response.getNoun(), usrDep);
+                            break;
+                        default:
+                            System.out.println("Verb " + response.getVerb());
+                            System.out.println("Noun: " + response.getNoun());
+                            break;
+                    }
+                } catch (Exception e) {
+                    System.out.println("Invalid action: type 'help me' to get info");
+                } // end of try-catch
+            }// end of try-catch
+            counter++;
+        } // end of if statement
+    } // end of while loop
+
 
     private static void interactWithNPC(String noun, Dependa usrDep) {
         if (noun == null || noun.length() == 0) {
@@ -46,9 +105,9 @@ public class GameController {
             System.out.println("You finally saw " + solider.getName() + "'s rank!\nIt is " + solider.getRank());
             // game start
             boolean isWin = rockPaperScissors.play();
-            if(isWin){
+            if (isWin) {
                 System.out.println("Congrats you won the interaction.");
-            }else {
+            } else {
                 System.out.println("You have lost. Search for a new scrub!!!");
             }
             return;
@@ -59,6 +118,10 @@ public class GameController {
 
     private static void interactHelpRequest(String noun, Dependa usrDep) {
         switch (noun) {
+//            case"exit":
+//            case "quit":
+//                System.out.println("Thanks for playing");
+//                System.exit(0);
             default:
                 System.out.println("=".repeat(5) + " Movement " + "=".repeat(5));
                 System.out.println("Supported movement verb: go | move | drive | walk | run");
@@ -66,17 +129,18 @@ public class GameController {
                 System.out.println("Example: go dfac | move dfac");
                 System.out.println("=".repeat(5) + " Interact to Soldier " + "=".repeat(5));
                 System.out.println("Supported interact verb: talk | approach | interact");
-                System.out.println("Supported interact noun: brad | jeremy | rogers | shad | arturo | john | brandon |" +
+                System.out.println(
+                        "Supported interact noun: brad | jeremy | rogers | shad | arturo | john | brandon |" +
                         "laginus | soko | david | stephen");
                 System.out.println("Example: talk brad | approach jeremy");
                 System.out.println("=".repeat(5) + " Display possible building in current post " + "=".repeat(5));
-                System.out.println("Supported display verb: show | display" );
+                System.out.println("Supported display verb: show | display");
                 System.out.println("Supported display noun: map | location | buildings | building");
                 System.out.println("Example: | display map | show map");
         }
     }
 
-    private static void displayBuildings(String noun, Dependa usrDep){
+    private static void displayBuildings(String noun, Dependa usrDep) {
         switch (noun) {
 //            add buildings
             default:
@@ -96,7 +160,8 @@ public class GameController {
             case "market":
                 System.out.println("EnteringBuildingController: " + noun);
                 fortSill.enterToBuilding(noun);
-                setDependaLocation(noun, usrDep);
+//                setDependaLocation(noun, usrDep);
+                usrDep.setLocation(noun);
                 System.out.println("Curent " + usrDep.getName() + "'s location: " + usrDep.getLocation());
                 break;
             default:
@@ -105,54 +170,4 @@ public class GameController {
                 break;
         }
     }
-
-    private static void setDependaLocation(String location, Dependa usrDep) {
-        usrDep.setLocation(location);
-    }
-
-    public static void main(String[] args) {
-        Dependa usrDep = Welcome.intro();
-        parser = new TextParser();
-
-        // below this line while loop
-        String userAction = "";
-        while(!userAction.equals("exit") && !userAction.equals("quit") ) {
-            System.out.println("Enter your action [format= verb + noun] for help type (help me)");
-            userAction = input.nextLine();
-            response = parser.receiveAction(userAction, fortSill.getName());
-            if ( !(response.getVerb().equals("")) || !(response.getNoun().equals("")))  {
-                System.out.println("Verb: " + response.getVerb());
-                    try {
-                        switch (response.getVerb().trim()) {
-                            case "go":
-                            case "move":
-                            case "drive":
-                            case "walk":
-                            case "run":
-                                GameController.enteringBuildingController(response.getNoun(), usrDep);
-                                break;
-                            case "display":
-                            case "show":
-                                GameController.displayBuildings(response.getNoun(), usrDep);
-                                break;
-                            case "talk":
-                            case "approach":
-                            case "interact":
-                                GameController.interactWithNPC(response.getNoun(), usrDep);
-                                break;
-                            case "help":
-                                interactHelpRequest(response.getNoun(), usrDep);
-                                break;
-                            default:
-                                System.out.println("Verb " + response.getVerb());
-                                System.out.println("Noun: " + response.getNoun());
-                                break;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Invalid action: type 'help me' to get info");
-                    } // end of try-catch
-                } // end of try-catch
-            } // end of if statement
-        } // end of while loop
-    }
-
+}

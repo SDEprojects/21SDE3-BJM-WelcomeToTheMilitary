@@ -55,11 +55,14 @@ public class TextParser {
         } else if (splitTrimmedInput.length == 2) {
             this.verb = splitTrimmedInput[0];
             this.noun = splitTrimmedInput[1];
+        } else if (splitTrimmedInput[0].equals("exit") || splitTrimmedInput[0].equals("quit")) {
+            System.out.println("Exiting game");
+            this.verb = "";
+            this.noun = "";
         } else {
             // some message
             this.verb = "";
             this.noun = "";
-
             System.out.println("Invalid input:\nDesired input format: verb + noun\n for help type (help me)");
             return false;
         }
@@ -95,6 +98,9 @@ public class TextParser {
                 return isOperable;
             case "help":
                 isOperable = helpAction(nounInput, postType);
+                return isOperable;
+            case "exit":
+            case "quit":
                 return isOperable;
             default:
                 this.verb = "";

@@ -4,6 +4,8 @@ package com.dependapot.tutorial;
 import com.dependapot.character.Dependa;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Welcome {
@@ -17,7 +19,9 @@ public class Welcome {
 //        intro();
 //    }
 
-    public static Dependa intro(){
+    public static Dependa intro(ArrayList<String> _spellList){
+
+        spellList = _spellList;
         clearConsole();
         System.out.println("Welcome to Dependa: From Rank to Riches!");
         System.out.println("Would you like to use the tutorial?");
@@ -121,8 +125,10 @@ public class Welcome {
                     "achieve the highest rank available to become the strongest Dependa in the Army.\n" +
                     "Every dependa starts off at Fort Sill with 100 points of health and chose 1 of three spells. \n" +
                     "");
+            System.out.println("Press anything to continue");
+            questionOne.nextLine();
         }
-        intro();
+//        intro(spellList);
     }
 
     public static void spells(){
@@ -133,9 +139,7 @@ public class Welcome {
     }
 
     public static String picSpells(){
-        spellList.add("Multi-Cam Purse");
-        spellList.add("Bumper Sticker");
-        spellList.add("LuLuRoe Business Card");
+
         int whileInt = 0;
         while(whileInt == 0){
 
@@ -147,14 +151,17 @@ public class Welcome {
             }
 
             Scanner spells = new Scanner(System.in);
-            int spellSelection = spells.nextInt();
+            try{
+                int spellSelection = spells.nextInt();
 
-            if(spellSelection > 0 && spellSelection < spellList.size() +1) {
-                spellSelection--;
-                return spellList.get(spellSelection);
+                if(spellSelection > 0 && spellSelection < spellList.size() +1) {
+                    spellSelection--;
+                    return spellList.get(spellSelection);
+                }
+            }catch (InputMismatchException ignored){
+
             }
         }
-
         return "";
     }
     private static void clearConsole() {

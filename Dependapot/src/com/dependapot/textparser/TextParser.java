@@ -29,8 +29,9 @@ public class TextParser {
             // return verbAndNoun;
             return new ParseResponse(getNoun(), getVerb());
         }
+
         // placeholder
-        return new ParseResponse("", "");
+        return new ParseResponse(getNoun(), getVerb());
     }
 
     // helper method to validate user input
@@ -54,9 +55,15 @@ public class TextParser {
         } else if (splitTrimmedInput.length == 2) {
             this.verb = splitTrimmedInput[0];
             this.noun = splitTrimmedInput[1];
+        } else if (splitTrimmedInput[0].equals("exit") || splitTrimmedInput[0].equals("quit")) {
+            System.out.println("Exiting game");
+            this.verb = "";
+            this.noun = "";
         } else {
             // some message
-            System.out.println("Invalid input:\nDesired input format: verb + noun");
+            this.verb = "";
+            this.noun = "";
+            System.out.println("Invalid input:\nDesired input format: verb + noun\n for help type (help me)");
             return false;
         }
         return true;
@@ -85,40 +92,56 @@ public class TextParser {
             case "interact":
                 isOperable = interactNPCAction(nounInput, postType);
                 return isOperable;
-            // utilizing
-//            case "use":
-//            case "apply":
-//            case "utilize":
-//                isOperable = utilizeAction(nounInput);
-//                return isOperable;
-            // pick up
-//            case "get":
-//            case "obtain":
-//            case "gain":
-//            case "pick":
-//            case "pickup":
-//                isOperable = getAction(nounInput);
-//                return isOperable;
+            case "show":
+            case "display":
+                isOperable = displayMapAction(nounInput, postType);
+                return isOperable;
+            case "help":
+                isOperable = helpAction(nounInput, postType);
+                return isOperable;
+            case "exit":
+            case "quit":
+                return isOperable;
             default:
+                this.verb = "";
+                this.noun = "";
                 System.out.println("Sorry, the verb: " + verbInput + " is not supported");
                 return isOperable;
         }
     }
 
+    // method for "help me"
+    private boolean helpAction(String nounInput, String postType) {
+        System.out.println("Help Action");
+        if (postType.equals("Fort Sill")) {
+            switch (nounInput) {
+                case "me":
+                    return true;
+                default:
+                    System.out.println("Were you trying to type the word 'help me'");
+                    this.noun = "";
+                    return false;
+            }
+        }
+        return false;
+    }
+    
     // method for "go || move || drive || walk || run"
     private boolean moveAction(String nounInput, String postType) {
         System.out.println("Move action");
         if (postType.equals("Fort Sill")) {
             // switch case for fort sill
+            System.out.println(nounInput);
             switch (nounInput) {
                 case "dfac":
-                case "barrack":
+                case "barracks":
                 case "church":
                 case "px":
-                case "commissary":
+                case "market":
                 case "gym":
                     return true;
                 default:
+                    this.noun = "";
                     return false;
             }
         } else if (postType.equals("Fort Bliss")) {
@@ -131,6 +154,7 @@ public class TextParser {
                 case "theater":
                     return true;
                 default:
+                    this.noun = "";
                     return false;
             }
         } else {
@@ -146,16 +170,21 @@ public class TextParser {
         if (postType.equals("Fort Sill")) {
             // switch case for fort sill
             switch (nounInput) {
-                case "e-1":
-                case "choi":
-                case "e-2":
-                case "park":
-                case "e-3":
-                case "king":
-                case "e-4":
-                case "e-5":
+                case "brad":
+                case "jeremy":
+                case "rogers":
+                case "shad":
+                case "arturo":
+                case "mason":
+                case "john":
+                case "brandon":
+                case "laginus":
+                case "soko":
+                case "david":
+                case "stephen":
                     return true;
                 default:
+                    this.noun = "";
                     return false;
             }
         } else if (postType.equals("Fort Bliss")) {
@@ -168,6 +197,7 @@ public class TextParser {
                 case "e-9":
                     return true;
                 default:
+                    this.noun = "";
                     return false;
             }
         } else {
@@ -176,36 +206,21 @@ public class TextParser {
         }
     }
 
-    // method for "utilize item"
-//    private boolean utilizeAction(String nounInput) {
-//        System.out.println("Utilize Action");
-//        // placeholder
-//        return false;
-//    }
-
-    // method for "get || obtain || gain || pick || pickup"
-//    private boolean getAction(String nounInput) {
-//        System.out.println("get");
-//        // placeholder
-//        return false;
-//    }
-
-    // test method
-    // this will be removed
-//    public static void main(String[] args) {
-//        TextParser text = new TextParser();
-//        // expected verb = MOVE
-//        // expected noun = DFAC
-//        // post.getName() <- damian
-//        ParseResponse response = text.receiveAction("Move to DFAC", "Fort Sill");
-//        System.out.println(response);
-//        String noun = response.getNoun();
-//        String verb = response.getVerb();
-//        System.out.println(noun);
-//        System.out.println(verb);
-//
-//        response = text.receiveAction("go dfac", "Fort Sill");
-//        System.out.println(response);
-//    }
+    private boolean displayMapAction(String nounInput, String postType) {
+        if (postType.equals("Fort Sill")) {
+            switch (nounInput) {
+                case "map":
+                case "location":
+                case "buildings":
+                case "building":
+                    return true;
+                default:
+                    this.noun = "";
+                    System.out.println("possible noun=>\nmap | location | buildings| buildings");
+                    return false;
+            }
+        }
+        return false;
+    }
 
 }

@@ -1,16 +1,27 @@
 package com.dependapot.tutorial;
 
 
-import java.sql.SQLOutput;
-import java.util.Locale;
+import com.dependapot.character.Dependa;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Welcome {
-    public static void main(String[] args) {
-        intro();
-    }
 
-    public static void intro(){
+    static ArrayList<String> spellList = new ArrayList<>();
+
+//    public static void main(String[] args) {
+//        spellList.add("Multi-Cam Purse");
+//        spellList.add("Bumper Sticker");
+//        spellList.add("LuLuRoe Business Card");
+//        intro();
+//    }
+
+    public static Dependa intro(ArrayList<String> _spellList){
+
+        spellList = _spellList;
         clearConsole();
         System.out.println("Welcome to Dependa: From Rank to Riches!");
         System.out.println("Would you like to use the tutorial?");
@@ -35,8 +46,26 @@ public class Welcome {
             clearConsole();
             spells();
         }
+        System.out.println("Press anything to continue");
+                tutorial.nextLine();
         System.out.println("Now that you are familiar with the game lets go ahead and make your Dependa avatar.");
-        
+
+        String spellReturn = picSpells();
+
+        System.out.println("Press anything to continue");
+        tutorial.nextLine();
+        clearConsole();
+
+        System.out.println("Please type in your Dependa's name: ");
+        String dependaName = tutorial.nextLine();
+
+
+        Dependa myDependa = new Dependa(dependaName,spellReturn,"Fort Sill");
+
+        System.out.println("\n\nYour name is: " + myDependa.getName() + " and your specialty is " + myDependa.getSpecial());
+
+        return myDependa;
+
     }
 
     public static void questions() {
@@ -94,18 +123,47 @@ public class Welcome {
             clearConsole();
             System.out.println("You start off as a dependapotomus, or dependa for short, for an E-1/Private. Your goal is to climb the ranks any way possible to\n" +
                     "achieve the highest rank available to become the strongest Dependa in the Army.\n" +
-                    "Every dependa starts off at Fort Sill with 100 points of health, three spells, and chooses a beginner weapon\n" +
+                    "Every dependa starts off at Fort Sill with 100 points of health and chose 1 of three spells. \n" +
                     "");
+            System.out.println("Press anything to continue");
+            questionOne.nextLine();
         }
-        intro();
+        intro(spellList);
     }
 
     public static void spells(){
-        System.out.println("Spell List: \n" +
+        System.out.println("Here are the spell you can chose from: \n" +
                 "Multi-Cam Purse: The Dependa throws a Multi-cam purse that has their spouses rank sowed onto it. It it filled with fatty cakes and receipts from the PX.\n" +
                 "Bumper Sticker: The Dependa flashes a purple camo color sticker that states \"Army Wife! Toughest job in the Army!\n" +
                 "LuLuRoe Business Card: The Dependa tries to coerce the target into the LuLuRoe pyramid scheme by throwing their business card at the target.");
+    }
 
+    public static String picSpells(){
+
+        int whileInt = 0;
+        while(whileInt == 0){
+
+            System.out.println("Please type in the number associated with the spell you would like to start with: ");
+            int x = 1;
+            while( x< spellList.size() +1){
+                System.out.println(x + ". " + spellList.get(x - 1));
+                x++;
+            }
+
+            Scanner spells = new Scanner(System.in);
+            try{
+                int spellSelection = spells.nextInt();
+
+                if(spellSelection > 0 && spellSelection < spellList.size() +1) {
+                    spellSelection--;
+                    return spellList.get(spellSelection);
+                }
+            }catch (InputMismatchException ignored){
+
+            }
+        }
+
+        return "";
     }
     private static void clearConsole() {
         System.out.print("\033[H\033[2J");}

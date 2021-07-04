@@ -19,7 +19,7 @@ public class Welcome {
 
     public static Dependa intro(){
         clearConsole();
-        System.out.println("Welcome to Dependa: From Rank to Riches!");
+        System.out.println("Welcome to the Military!");
         System.out.println("Would you like to use the tutorial?");
         Scanner tutorial = new Scanner(System.in);
         String tutorialAnswer = tutorial.nextLine().toLowerCase();
@@ -44,7 +44,7 @@ public class Welcome {
         }
         System.out.println("Press anything to continue");
                 tutorial.nextLine();
-        System.out.println("Now that you are familiar with the game lets go ahead and make your Dependa avatar.");
+        System.out.println("Now that you are familiar with the game lets go ahead and make your Warrior avatar.");
 
         String spellReturn = picSpells();
 
@@ -52,7 +52,7 @@ public class Welcome {
         tutorial.nextLine();
         clearConsole();
 
-        System.out.println("Please type in your Dependa's name: ");
+        System.out.println("Please type in your Warrior's name: ");
         String dependaName = tutorial.nextLine();
 
 
@@ -67,7 +67,7 @@ public class Welcome {
     public static void questions() {
         System.out.println("This tutorial will teach you the basics of the game." +
                 "\nFirst a test to gauge your knowledge:");
-        System.out.println("Question 1: Do you know what a dependapotomus is? ");
+        System.out.println("Question 1: Do you know what a military service memeber is? ");
         Scanner questionOne = new Scanner(System.in);
         String questionAnswerOne = questionOne.nextLine().toLowerCase();
         while (!questionAnswerOne.equals("yes") && !questionAnswerOne.equals("no") && !questionAnswerOne.equals("y")
@@ -78,10 +78,10 @@ public class Welcome {
         // if the user enters no they are given a definition of dependapotomus. If answer is yes user is asked the next question
         if (questionAnswerOne.equals("no") || questionAnswerOne.equals("n")) {
             clearConsole();
-            System.out.println("A Dependapotomus is Traditionally a service-member’s dependent who is a “stay at home mom\n" +
-                    "that doesn't do a damn thing all day besides sitting on the couch looking remarkably similar to Jabba the Hut\n" +
-                    "while leaching off of military benefits and eating anything that gets too close.\n"+
-                    "They use their spouses rank to impose authority on others as if they were in the military. The higher the rank the more power the Dependa becomes.\n" +
+            System.out.println("A military service member or in your case a Warrior\n" +
+                    "who are recruited or conscripted to a military branch:\n" +
+                    "army, navy, marines, air force and sometimes the coas guard.\n"+
+                    "After testing you are provided a certain number of jobs. Choose wisely.\n" +
                     "");
         }
         System.out.println("Question 2: Do you know and understand the Army enlisted rank structure?");
@@ -117,9 +117,9 @@ public class Welcome {
         }
         if (questionAnswerThree.equals("no") || questionAnswerThree.equals("n")){
             clearConsole();
-            System.out.println("You start off as a dependapotomus, or dependa for short, for an E-1/Private. Your goal is to climb the ranks any way possible to\n" +
-                    "achieve the highest rank available to become the strongest Dependa in the Army.\n" +
-                    "Every dependa starts off at Fort Sill with 100 points of health and chose 1 of three spells. \n" +
+            System.out.println("You start off as a warrior. Your goal is to climb the ranks any way possible to\n" +
+                    "achieve the highest rank available to become the strongest Warrior in the Army.\n" +
+                    "Every warrior starts off at Fort Sill with 100 points of health and chose 1 of three spells. \n" +
                     "");
         }
         intro();
@@ -127,15 +127,15 @@ public class Welcome {
 
     public static void spells(){
         System.out.println("Here are the spell you can chose from: \n" +
-                "Multi-Cam Purse: The Dependa throws a Multi-cam purse that has their spouses rank sowed onto it. It it filled with fatty cakes and receipts from the PX.\n" +
-                "Bumper Sticker: The Dependa flashes a purple camo color sticker that states \"Army Wife! Toughest job in the Army!\n" +
-                "LuLuRoe Business Card: The Dependa tries to coerce the target into the LuLuRoe pyramid scheme by throwing their business card at the target.");
+                "Dog Tags: You always wear your dog tags outside fo your shirt. Your military prides deflects attacks.\n" +
+                "Military Skull Tattoo: After Basic Training you got a tattoo of your company \"Army Strong! Queen of Battle!\n" +
+                "High-n-Tight: Your hair is within regulations and it increases your attacks.");
     }
 
     public static String picSpells(){
-        spellList.add("Multi-Cam Purse");
-        spellList.add("Bumper Sticker");
-        spellList.add("LuLuRoe Business Card");
+        spellList.add("Dog Tags");
+        spellList.add("Military Skull Tattoo");
+        spellList.add("High-n-Tight");
         int whileInt = 0;
         while(whileInt == 0){
 

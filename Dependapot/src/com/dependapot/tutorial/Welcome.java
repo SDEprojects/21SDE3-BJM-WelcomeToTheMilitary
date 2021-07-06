@@ -12,6 +12,7 @@ public class Welcome {
 
     static ArrayList<String> spellList = new ArrayList<>();
 
+
 //    public static void main(String[] args) {
 //        spellList.add("Multi-Cam Purse");
 //        spellList.add("Bumper Sticker");
@@ -20,6 +21,7 @@ public class Welcome {
 //    }
 
     public static Dependa intro(ArrayList<String> _spellList){
+
 
         spellList = _spellList;
         clearConsole();

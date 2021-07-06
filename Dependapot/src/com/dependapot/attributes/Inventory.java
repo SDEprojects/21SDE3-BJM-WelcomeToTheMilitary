@@ -5,24 +5,26 @@ import java.util.List;
 import java.util.Map;
 
 public class Inventory {
-    private Map<String, Item> inventory;
+    private Map<String, Item> inventory = new HashMap<>();
 
-//    public HashMap<Item, Integer> inventory = new HashMap<Item, Integer>();
-
-//    public Inventory(Create owner){
-//        this.inventory = new HashMap<String, Item>();
-//    }
-
-    public boolean addItem(Item item){
+    public void addItem(Item item){
         if(!inventory.containsKey(item.getName())){
             inventory.put(item.getName(), item);
-            return true;
+//            System.out.println("From Inventory class: " + this.inventory);
         }
-//    else if(inventory.containsKey(item.getName()) && item.isStackable()){
-//            inventory.get(item.getName()).addToStack();
-//            return true;
-//        }
-        return false;
+    }
+
+    // method to print existing items in inventory
+    public void viewInventory() {
+        if (inventory == null || inventory.size() == 0) {
+            System.out.println("Your inventory is empty");
+            return;
+        }
+        for (String eachKey : inventory.keySet()) {
+            System.out.println("=".repeat(20));
+            System.out.println("My Inventory");
+            System.out.println(inventory.get(eachKey));
+        }
     }
 
     public String checkInventory(){

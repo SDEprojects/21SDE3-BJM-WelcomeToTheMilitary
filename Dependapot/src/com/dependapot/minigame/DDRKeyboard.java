@@ -88,6 +88,6 @@ public class DDRKeyboard implements iMinigame {
             randomIndex = getRandom(MIN, MAX);
             strBuilder.append(DDR_OPTION[randomIndex]);
         }
-        return ddrLife != 0;
+        return ddrLife > 0;
     }
 }

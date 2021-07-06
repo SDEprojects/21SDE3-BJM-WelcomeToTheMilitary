@@ -26,9 +26,8 @@ public class GameController {
     private static iMinigame rockPaperScissors = new RPC();
 
     public static void main(String[] args) {
-        spellList.add("Multi-Cam Purse");
-        spellList.add("Bumper Sticker");
-        spellList.add("LuLuRoe Business Card");
+//        spellList.add("Bumper Sticker");
+//        spellList.add("LuLuRoe Business Card");
 
         Dependa usrDep = Welcome.intro(spellList);
         parser = new TextParser();
@@ -38,7 +37,7 @@ public class GameController {
         int counter = 0;
         while (!userAction.equals("exit") && !userAction.equals("quit")) {
             if(counter ==0){
-                System.out.println("Welcome to Fort Sill, you entered through the trunk of a homegirl's car.");
+                System.out.println("Welcome to Fort Sill. Your Drill Instructor dropped you off at the gate.");
             }
             System.out.println("Enter your action [format= verb + noun] for help type (help me)");
             userAction = input.nextLine();
@@ -75,6 +74,7 @@ public class GameController {
                     }
                 } catch (Exception e) {
                     System.out.println("Invalid action: type 'help me' to get info");
+                    e.printStackTrace();
                 } // end of try-catch
             }// end of try-catch
             counter++;
@@ -120,10 +120,14 @@ public class GameController {
             // boolean isWin = rockPaperScissors.play();
             minigame = gameFactory.playGame(prepareRandomGame());
             boolean isWin = minigame.play();
+            System.out.println("Win or lose: " + isWin);
             if (isWin) {
+                usrDep.storeItemInVentory(fortSill.getItemFromFacility(usrDep.getLocation()));
+                usrDep.viewMyInventory();
+                // end of the placeholder
                 System.out.println("Congrats you won the interaction.");
             } else {
-                System.out.println("You have lost. Search for a new scrub!!!");
+                System.out.println("You have lost. You maintain your rank but lost your dignity!!!");
             }
             return;
         }
@@ -173,7 +177,7 @@ public class GameController {
             case "gym":
             case "barracks":
             case "market":
-                System.out.println("EnteringBuildingController: " + noun);
+                System.out.println("Entering: " + noun + "building");
                 fortSill.enterToBuilding(noun);
 //                setDependaLocation(noun, usrDep);
                 usrDep.setLocation(noun);

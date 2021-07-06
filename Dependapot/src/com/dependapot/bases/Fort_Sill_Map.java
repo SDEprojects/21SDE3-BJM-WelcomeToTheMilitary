@@ -1,5 +1,6 @@
 package com.dependapot.bases;
 
+import com.dependapot.attributes.Item;
 import com.dependapot.character.LowerEnlist;
 import com.dependapot.character.WarrantOfficer;
 import com.dependapot.textparser.ParseResponse;
@@ -15,6 +16,7 @@ public class Fort_Sill_Map {
     // private -> updated CODE WITH ME
     private HashMap<String, ArrayList<LowerEnlist>> buildings = null;
     private String currentDependaLocation = null;
+    private HashMap<String, String> itemBasedOnFacility = null;
     // END OF CODE WITH ME
 
 //    Constructor
@@ -22,6 +24,24 @@ public class Fort_Sill_Map {
         this.name = _name;
         this.description = description;
         setUpFacility();
+        setUpItems();
+    }
+
+    // getter for item associated with the facility
+    // param: building name
+    public String getItemFromFacility(String facilityName) {
+        return itemBasedOnFacility.get(facilityName);
+    }
+
+    // method to prepare items associated to the facility
+    // only being used in the fortsill map class
+    private void setUpItems() {
+        this.itemBasedOnFacility = new HashMap<>();
+        itemBasedOnFacility.put("dfac", new Item("blueberry muffins").getName());
+        itemBasedOnFacility.put("px", new Item("some px item").getName());
+        itemBasedOnFacility.put("church", new Item("chaplain's voice").getName());
+        itemBasedOnFacility.put("gym", new Item("used pt socks").getName());
+        itemBasedOnFacility.put("barracks", new Item("some barracks item").getName());
     }
 
     // method to grab name of the post

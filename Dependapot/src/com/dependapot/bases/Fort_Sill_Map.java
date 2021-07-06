@@ -38,7 +38,7 @@ public class Fort_Sill_Map {
         // need a method to get the solider from building
         ArrayList<LowerEnlist> foundedSolider = getSolider(building);
         System.out.println("You are entering the " + building);
-        System.out.println("You find " + foundedSolider.size() + " attractive soldiers");
+        System.out.println("You find " + foundedSolider.size() + " soldier's from another company");
         System.out.println("You saw...");
         for (LowerEnlist eachSoldier : foundedSolider) {
             System.out.println("Name: " + eachSoldier.getName());

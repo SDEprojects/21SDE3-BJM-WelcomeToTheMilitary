@@ -37,11 +37,11 @@ public class Fort_Sill_Map {
     // only being used in the fortsill map class
     private void setUpItems() {
         this.itemBasedOnFacility = new HashMap<>();
-        itemBasedOnFacility.put("dfac", new Item("blueberry muffins").getName());
-        itemBasedOnFacility.put("px", new Item("some px item").getName());
-        itemBasedOnFacility.put("church", new Item("chaplain's voice").getName());
-        itemBasedOnFacility.put("gym", new Item("used pt socks").getName());
-        itemBasedOnFacility.put("barracks", new Item("some barracks item").getName());
+        itemBasedOnFacility.put("DFAC", new Item("Dehydrate Eggs").getName());
+        itemBasedOnFacility.put("PX", new Item("Mechanix gloves").getName());
+        itemBasedOnFacility.put("Church", new Item("chaplain's voice").getName());
+        itemBasedOnFacility.put("Gym", new Item("PT Belt").getName());
+        itemBasedOnFacility.put("Barracks", new Item("Dentist Appointment Slip").getName());
     }
 
     // method to grab name of the post
@@ -52,7 +52,7 @@ public class Fort_Sill_Map {
     // method for enterToBuilding
     public void enterToBuilding(String building) {
         if (building == null || building.length() == 0) {
-            System.out.println("EnterToBuilding method: invalid");
+            System.out.println("Enter To Building method: invalid");
             return;
         }
         // need a method to get the solider from building
@@ -136,9 +136,9 @@ private ArrayList<WarrantOfficer> warrantsInBliss(){
     // helper method to set up the place with correct soldiers for the dfac
     private ArrayList<LowerEnlist> prepareSoldierInDfac() {
         ArrayList<LowerEnlist> dfacSoldier = new ArrayList<>();
-        LowerEnlist E1 = new LowerEnlist("Brad", "High and Thight. Forever skinny", "e-1");
-        LowerEnlist E2 = new LowerEnlist("Jeremy", "Can dip a whole can of Skoal Wintergreen. Wears combat boots with his jeans", "e-2");
-        LowerEnlist E3 = new LowerEnlist("Rogers", "Has an associates in Political Science. Wears Nine Line Apparel. Says Hooah a lot", "e-3");
+        LowerEnlist E1 = new LowerEnlist("Brad", "High and Thight. Forever skinny", "E-1");
+        LowerEnlist E2 = new LowerEnlist("Jeremy", "Can dip a whole can of Skoal Wintergreen. Wears combat boots with his jeans", "E-2");
+        LowerEnlist E3 = new LowerEnlist("Rogers", "Has an associates in Political Science. Wears Nine Line Apparel. Says Hooah a lot", "E-3");
         dfacSoldier.add(E1);
         dfacSoldier.add(E2);
         dfacSoldier.add(E3);
@@ -147,7 +147,7 @@ private ArrayList<WarrantOfficer> warrantsInBliss(){
     // helper method to set up the place with correct soldiers for the PX
     private ArrayList<LowerEnlist> prepareSoldierInPX(){
         ArrayList<LowerEnlist> pxSoldier = new ArrayList<>();
-        LowerEnlist E6 = new LowerEnlist("Shad", "Grumpy with gray hairs. Walks with a purpose.", "e-6");
+        LowerEnlist E6 = new LowerEnlist("Shad", "Grumpy with gray hairs. Walks with a purpose.", "E-6");
 //        WarrantOfficer WO1 = new WarrantOfficer()
         pxSoldier.add(E6);
 // add Warrant Officer
@@ -156,7 +156,7 @@ private ArrayList<WarrantOfficer> warrantsInBliss(){
     // helper method to set up the place with correct soldiers for the Commissary
     private ArrayList<LowerEnlist> prepareSoldierInCommissary(){
         ArrayList<LowerEnlist> commSoldier = new ArrayList<>();
-        LowerEnlist E6 = new LowerEnlist("Arturo", "Always having a cookout. Dances with products as he puts them into his cart.", "e-6");
+        LowerEnlist E6 = new LowerEnlist("Arturo", "Always having a cookout. Dances with products as he puts them into his cart.", "E-6");
         commSoldier.add(E6);
         warrantsInBliss();
         return commSoldier;
@@ -165,8 +165,8 @@ private ArrayList<WarrantOfficer> warrantsInBliss(){
     // helper method to set up the place with correct soldiers for the church
     private ArrayList<LowerEnlist> prepareSoldierInChurch(){
         ArrayList<LowerEnlist> churchSoldier = new ArrayList<>();
-        LowerEnlist E4 = new LowerEnlist("Mason", "Hide n Seek Champion from his unit. Barracks Lawyer.", "e-4");
-        LowerEnlist E6 = new LowerEnlist("John", "Will pray with you and take you to choir practice.", "e-6");
+        LowerEnlist E4 = new LowerEnlist("Mason", "Hide n Seek Champion from his unit. Barracks Lawyer.", "E-4");
+        LowerEnlist E6 = new LowerEnlist("John", "Will pray with you and take you to choir practice.", "E-6");
         churchSoldier.add(E4);
         churchSoldier.add(E6);
         return churchSoldier;
@@ -175,7 +175,7 @@ private ArrayList<WarrantOfficer> warrantsInBliss(){
     // helper method to set up the place with correct soldiers for the gym
     private ArrayList<LowerEnlist> prepareSoldierInGym(){
         ArrayList<LowerEnlist> gymSoldier = new ArrayList<>();
-        LowerEnlist E5 = new LowerEnlist("Brandon", "Do you even lift, Bro.", "e-5");
+        LowerEnlist E5 = new LowerEnlist("Brandon", "Do you even lift, Bro.", "E-5");
 // CID
         gymSoldier.add(E5);
         return gymSoldier;
@@ -183,10 +183,10 @@ private ArrayList<WarrantOfficer> warrantsInBliss(){
     // helper method to set up the place with correct soldiers for the Barracks
     private ArrayList<LowerEnlist> prepareSoldierInBarracks(){
         ArrayList<LowerEnlist> barracksSoldier = new ArrayList<>();
-        LowerEnlist E1 = new LowerEnlist("Laginus", "Got a DUI last week and avoids extra duty.", "e-1");
-        LowerEnlist E2 = new LowerEnlist("Soko", "Pot Belly. Always dirty because he's a mechanic. Never fixes anything tho.", "e-2");
-        LowerEnlist E3 = new LowerEnlist("David", "Just passed Ranger School. Lives off coffee and MRE's. Listens to Classic Rock.", "e-3");
-        LowerEnlist E4 = new LowerEnlist("Stephen", "Has a low-fade. Always preparing for SFAS. Won't tell you what it means.", "e-4");
+        LowerEnlist E1 = new LowerEnlist("Laginus", "Got a DUI last week and avoids extra duty.", "E-1");
+        LowerEnlist E2 = new LowerEnlist("Soko", "Pot Belly. Always dirty because he's a mechanic. Never fixes anything tho.", "E-2");
+        LowerEnlist E3 = new LowerEnlist("David", "Just passed Ranger School. Lives off coffee and MRE's. Listens to Classic Rock.", "E-3");
+        LowerEnlist E4 = new LowerEnlist("Stephen", "Has a low-fade. Always preparing for SFAS. Won't tell you what it means.", "E-4");
         barracksSoldier.add(E1);
         barracksSoldier.add(E2);
         barracksSoldier.add(E3);

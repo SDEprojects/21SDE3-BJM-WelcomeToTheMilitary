@@ -170,14 +170,15 @@ public class GameController {
     }
 
     private static void enteringBuildingController(String noun, Dependa usrDep) {
-        switch (noun) {
+        String lowerNoun =noun.toLowerCase();
+        switch (lowerNoun) {
             case "dfac":
             case "px":
             case "church":
             case "gym":
             case "barracks":
             case "market":
-                System.out.println("Entering: " + noun + "building");
+                System.out.println("Entering: " + noun + " building");
                 fortSill.enterToBuilding(noun);
 //                setDependaLocation(noun, usrDep);
                 usrDep.setLocation(noun);

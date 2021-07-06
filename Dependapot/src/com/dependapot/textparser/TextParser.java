@@ -55,11 +55,15 @@ public class TextParser {
         } else if (splitTrimmedInput.length == 2) {
             this.verb = splitTrimmedInput[0];
             this.noun = splitTrimmedInput[1];
+        } else if (splitTrimmedInput[0].equals("exit") || splitTrimmedInput[0].equals("quit")) {
+            System.out.println("Exiting game");
+            this.verb = "";
+            this.noun = "";
         } else {
             // some message
             this.verb = "";
             this.noun = "";
-            System.out.println("Invalid input:\nDesired input format: verb + noun");
+            System.out.println("Invalid input:\nDesired input format: verb + noun\n for help type (help me)");
             return false;
         }
         return true;
@@ -92,6 +96,12 @@ public class TextParser {
             case "display":
                 isOperable = displayMapAction(nounInput, postType);
                 return isOperable;
+            case "help":
+                isOperable = helpAction(nounInput, postType);
+                return isOperable;
+            case "exit":
+            case "quit":
+                return isOperable;
             default:
                 this.verb = "";
                 this.noun = "";
@@ -100,17 +110,34 @@ public class TextParser {
         }
     }
 
+    // method for "help me"
+    private boolean helpAction(String nounInput, String postType) {
+        System.out.println("Help Action");
+        if (postType.equals("Fort Sill")) {
+            switch (nounInput) {
+                case "me":
+                    return true;
+                default:
+                    System.out.println("Were you trying to type the word 'help me'");
+                    this.noun = "";
+                    return false;
+            }
+        }
+        return false;
+    }
+    
     // method for "go || move || drive || walk || run"
     private boolean moveAction(String nounInput, String postType) {
         System.out.println("Move action");
         if (postType.equals("Fort Sill")) {
             // switch case for fort sill
+            System.out.println(nounInput);
             switch (nounInput) {
                 case "dfac":
                 case "barracks":
                 case "church":
                 case "px":
-                case "commissary":
+                case "market":
                 case "gym":
                     return true;
                 default:
@@ -143,18 +170,18 @@ public class TextParser {
         if (postType.equals("Fort Sill")) {
             // switch case for fort sill
             switch (nounInput) {
-                case "Brad":
-                case "Jeremy":
-                case "Rogers":
-                case "Shad":
-                case "Arturo":
-                case "Mason":
-                case "John":
-                case "Brandon":
-                case "Laginus":
-                case "Soko":
-                case "David":
-                case "Stephen":
+                case "brad":
+                case "jeremy":
+                case "rogers":
+                case "shad":
+                case "arturo":
+                case "mason":
+                case "john":
+                case "brandon":
+                case "laginus":
+                case "soko":
+                case "david":
+                case "stephen":
                     return true;
                 default:
                     this.noun = "";

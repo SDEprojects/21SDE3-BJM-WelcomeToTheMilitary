@@ -1,6 +1,8 @@
 package com.dependapot.character;
 
 public class Dependa extends Character {
+    public int heal;
+    public int level;
      private String special = "Baking";
 //     Stretch goal is to add private Bldg location pulling from Post/Fort Sill Map
      private String location;
@@ -22,5 +24,12 @@ public class Dependa extends Character {
     }
     public void  setLocation(String _location){
         this.location = _location;
+    }
+
+    public int getHealth(String name, int heal) {
+       //super(name);
+        this.heal = heal;
+        //this.type = "Consumable";
+        return heal;
     }
 }

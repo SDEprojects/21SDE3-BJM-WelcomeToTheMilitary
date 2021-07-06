@@ -3,6 +3,7 @@ package com.dependapot.gamecontroller;
 import com.dependapot.bases.Fort_Sill_Map;
 import com.dependapot.character.Dependa;
 import com.dependapot.character.LowerEnlist;
+import com.dependapot.minigame.MinigameFactory;
 import com.dependapot.minigame.RPC;
 import com.dependapot.minigame.iMinigame;
 import com.dependapot.textparser.ParseResponse;
@@ -20,6 +21,8 @@ public class GameController {
     private static ArrayList<String> spellList = new ArrayList<>();
 
     // minigame
+    private static MinigameFactory gameFactory = new MinigameFactory();
+    private static iMinigame minigame = null;
     private static iMinigame rockPaperScissors = new RPC();
 
     public static void main(String[] args) {
@@ -78,6 +81,16 @@ public class GameController {
         } // end of if statement
     } // end of while loop
 
+    // generate random game
+    private static String prepareRandomGame() {
+        ArrayList<String> gameList = new ArrayList<>();
+        gameList.add("rock paper scissors");
+        gameList.add("memorization game");
+        final int min = 0;
+        final int max = gameList.size();
+        int randomIndex = (int) (Math.random() * (max - min));
+        return gameList.get(randomIndex);
+    }
 
     private static void interactWithNPC(String noun, Dependa usrDep) {
         if (noun == null || noun.length() == 0) {
@@ -104,7 +117,9 @@ public class GameController {
             System.out.println("Targeting:" + noun);
             System.out.println("You finally saw " + solider.getName() + "'s rank!\nIt is " + solider.getRank());
             // game start
-            boolean isWin = rockPaperScissors.play();
+            // boolean isWin = rockPaperScissors.play();
+            minigame = gameFactory.playGame(prepareRandomGame());
+            boolean isWin = minigame.play();
             if (isWin) {
                 System.out.println("Congrats you won the interaction.");
             } else {

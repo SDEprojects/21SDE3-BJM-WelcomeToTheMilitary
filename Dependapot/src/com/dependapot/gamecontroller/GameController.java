@@ -26,9 +26,8 @@ public class GameController {
     private static iMinigame rockPaperScissors = new RPC();
 
     public static void main(String[] args) {
-        spellList.add("Multi-Cam Purse");
-        spellList.add("Bumper Sticker");
-        spellList.add("LuLuRoe Business Card");
+//        spellList.add("Bumper Sticker");
+//        spellList.add("LuLuRoe Business Card");
 
         Dependa usrDep = Welcome.intro(spellList);
         parser = new TextParser();
@@ -121,6 +120,10 @@ public class GameController {
             minigame = gameFactory.playGame(prepareRandomGame());
             boolean isWin = minigame.play();
             if (isWin) {
+                // placeholder to check it gets the correct items based on the facility
+                System.out.println(usrDep.getLocation());
+                System.out.println(fortSill.getItemFromFacility(usrDep.getLocation()));
+                // end of the placeholder
                 System.out.println("Congrats you won the interaction.");
             } else {
                 System.out.println("You have lost. Search for a new scrub!!!");

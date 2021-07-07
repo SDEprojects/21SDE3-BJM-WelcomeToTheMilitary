@@ -6,16 +6,17 @@ import com.welcomeToTheMilitary.attributes.Item;
 public class ServiceMember extends Character {
     public int heal;
     public int level;
-     private String special = "Baking";
-//     Stretch goal is to add private Bldg location pulling from Post/Fort Sill Map
-     private String location;
-     private Inventory inventory = null;
+    private String special = "Baking";
+    private String location;
+    private Inventory inventory = null;
+    private String rank = null;
 
 // ServiceMember Constructor that pulls from Character class
     public ServiceMember(String _name, String _special, String _location ) {
         super(_name);
         this.special = _special;
         this.location = _location;
+        this.rank = "fuzzy"; // initial rank
         inventory = new Inventory();
     }
     public String getName(){
@@ -31,6 +32,13 @@ public class ServiceMember extends Character {
         this.location = _location;
     }
 
+    public String getRank() {
+        return this.rank;
+    }
+
+    public void setRank(String _rank) {
+        this.rank = _rank;
+    }
     // method to obtain item and store it in the inventory
     public void storeItemInVentory(String itemName) {
         System.out.println("Adding up the item: " + itemName);

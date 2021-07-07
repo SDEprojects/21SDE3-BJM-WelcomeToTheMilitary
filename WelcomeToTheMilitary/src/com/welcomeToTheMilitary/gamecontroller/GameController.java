@@ -124,9 +124,16 @@ public class GameController {
             System.out.println("Win or lose: " + isWin);
             if (isWin) {
                 usrDep.storeItemInVentory(fortSill.getItemFromFacility(usrDep.getLocation()));
-                usrDep.viewMyInventory();
-                // end of the placeholder
-                System.out.println("Congrats you won the interaction.");
+                boolean isWorthRank = PromoteHelper.isRankWorthIt(usrDep, solider);
+                if (isWorthRank) {
+                    usrDep.setRank(solider.getRank());
+                    System.out.println("Congrats you won the interaction.\n" +
+                            "Obtained item: " + fortSill.getItemFromFacility(usrDep.getLocation()) + "\n" +
+                            "Player's current rank: " + usrDep.getRank());
+                } else {
+                    System.out.println("Congrats you won the interaction.");
+                    System.out.println("You decided not to take their rank\n" + "It is lower than yours yuck!");
+                }
             } else {
                 System.out.println("You have lost. You maintain your rank but lost your dignity!!!");
             }
@@ -144,20 +151,6 @@ public class GameController {
 //                System.exit(0);
             default:
                 JsonReader.printHelpRequestDataFromJSON();
-//                System.out.println("=".repeat(5) + " Movement " + "=".repeat(5));
-//                System.out.println("Supported movement verb: go | move | drive | walk | run");
-//                System.out.println("Supported movement noun: dfac | barracks | church | px | market | gym");
-//                System.out.println("Example: go dfac | move dfac");
-//                System.out.println("=".repeat(5) + " Interact to Soldier " + "=".repeat(5));
-//                System.out.println("Supported interact verb: talk | approach | interact");
-//                System.out.println(
-//                        "Supported interact noun: brad | jeremy | rogers | shad | arturo | john | brandon |" +
-//                        "laginus | soko | david | stephen");
-//                System.out.println("Example: talk brad | approach jeremy");
-//                System.out.println("=".repeat(5) + " Display possible building in current post " + "=".repeat(5));
-//                System.out.println("Supported display verb: show | display");
-//                System.out.println("Supported display noun: map | location | buildings | building");
-//                System.out.println("Example: | display map | show map");
         }
     }
 

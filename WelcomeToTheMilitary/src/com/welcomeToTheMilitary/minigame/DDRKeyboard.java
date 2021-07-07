@@ -1,5 +1,8 @@
 package com.welcomeToTheMilitary.minigame;
 
+import com.welcomeToTheMilitary.character.FinalBoss;
+import com.welcomeToTheMilitary.character.ServiceMember;
+
 import java.util.Scanner;
 
 public class DDRKeyboard implements iMinigame {
@@ -63,6 +66,11 @@ public class DDRKeyboard implements iMinigame {
     public boolean play() {
         setIsWin(play(getRandom(MIN, MAX)));
         return getIsWin();
+    }
+
+    @Override
+    public boolean play(ServiceMember usr, FinalBoss boss) {
+        return false;
     }
 
     // private playDDR to hide logic from public

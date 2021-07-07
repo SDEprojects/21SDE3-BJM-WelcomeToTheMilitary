@@ -13,11 +13,11 @@ public class Fort_Sill_Map {
     public String name = "Fort Sill";
     private final String description;
 
-    // private -> updated CODE WITH ME
+    // private -> updated CODE WITH Jun
     private HashMap<String, ArrayList<LowerEnlist>> buildings = null;
     private String currentDependaLocation = null;
     private HashMap<String, String> itemBasedOnFacility = null;
-    // END OF CODE WITH ME
+
 
 //    Constructor
     public Fort_Sill_Map(String _name, String description){
@@ -34,7 +34,7 @@ public class Fort_Sill_Map {
     }
 
     // method to prepare items associated to the facility
-    // only being used in the fortsill map class
+    // only being used in the fort sill map class
     private void setUpItems() {
         this.itemBasedOnFacility = new HashMap<>();
         itemBasedOnFacility.put("DFAC", new Item("Dehydrate Eggs").getName());
@@ -114,11 +114,11 @@ public class Fort_Sill_Map {
 //    helper method to set random WO in facilities
 private ArrayList<WarrantOfficer> warrantsInBliss(){
     ArrayList<WarrantOfficer> fortSill = new ArrayList<>();
-    WarrantOfficer WO1 = new WarrantOfficer("WO1", "Chet", "I just traded my 28% APR Camaro for a GeoMetro. Will you marry me!!!");
-    WarrantOfficer WO2 = new WarrantOfficer("WO2", "David", "I don't wash my coffee cup. I also work with computers. Do you DND? Will you marry me!!!");
-    WarrantOfficer WO3 = new WarrantOfficer("WO3", "Michael", "I just left my wife because I want to focus on my career. I'm a Warrant Officer, you know. I can do this forever. Will you marry me!!!");
-    WarrantOfficer WO4 = new WarrantOfficer("WO4", "Phillip", "What year is it? Come with me if you want travel the world. Will you marry me!!!");
-    WarrantOfficer WO5 = new WarrantOfficer("WO5", "Garcia", "Who am I, you ask? I don't exist. I play golf during work hours. Will you marry me!!!");
+    WarrantOfficer WO1 = new WarrantOfficer("WO1", "Chet", "I just traded my 28% APR Camaro for a GeoMetro. Want to become a Warrant!!!");
+    WarrantOfficer WO2 = new WarrantOfficer("WO2", "David", "I don't wash my coffee cup. I also work with computers. Do you DND!!!");
+    WarrantOfficer WO3 = new WarrantOfficer("WO3", "Michael", "I just flew in from Alabama. Do you want to fly helicopters and planes?");
+    WarrantOfficer WO4 = new WarrantOfficer("WO4", "Phillip", "What year is it? Come with me if you want travel the world. Look at my green floppy hat!!!");
+    WarrantOfficer WO5 = new WarrantOfficer("WO5", "Garcia", "Who am I, you ask? I don't exist. I play golf during work hours. Come join the MI Branch where no one is held accountable!");
     fortSill.add(WO1);
     fortSill.add(WO2);
     fortSill.add(WO3);
@@ -219,7 +219,7 @@ private ArrayList<WarrantOfficer> warrantsInBliss(){
              is_Dependa_in_Gym = false;
              is_Dependa_in_PX = false;
              is_Dependa_in_Commisary = false;
-            // ding_description = "A buffet style Dinning Facility with powedered eggs, turkey bacon, and all the water you can have";
+//             building_description = "A buffet style Dinning Facility with powdered eggs, turkey bacon, and all the water you can have";
             enterToBuilding("dfac");
         }else if (noun.equals("px")){
             is_Dependa_in_DFAC = false;
@@ -229,7 +229,7 @@ private ArrayList<WarrantOfficer> warrantsInBliss(){
             is_Dependa_in_PX = true;
             is_Dependa_in_Commisary = false;
             enterToBuilding("px");
-            // building_description = "You do not pay taxes here. Come purchase all your unneccessary needs!!!";
+            // building_description = "You do not pay taxes here. Come purchase all your unnecessary needs!!!";
         }else if (noun.equals("market")){
             is_Dependa_in_DFAC = false;
             is_Dependa_in_Barracks = false;
@@ -256,7 +256,7 @@ private ArrayList<WarrantOfficer> warrantsInBliss(){
             is_Dependa_in_PX = false;
             is_Dependa_in_Commisary = false;
             enterToBuilding("gym");
-//            building_description = "You can sell LuLaRoe leggings here and only do lower body exercises.";
+//            building_description = "You can find rusted gym equipment and listen to 80's rock.";
         }else if(noun.equals("church")){
             is_Dependa_in_DFAC = false;
             is_Dependa_in_Barracks = false;

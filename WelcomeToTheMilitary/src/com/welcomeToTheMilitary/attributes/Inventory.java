@@ -27,6 +27,15 @@ public class Inventory {
         }
     }
 
+    // method to check if the item exist in the inventory
+    public boolean checkInventory(String _itemName) {
+        return inventory.containsKey(_itemName);
+    }
+
+    public boolean isInventoryEmpty() {
+        return inventory.isEmpty();
+    }
+
     public String checkInventory(){
         StringBuilder builder = new StringBuilder();
         List<Item> items = (List<Item>) inventory.values();

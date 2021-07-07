@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7f9a1c2b-7e98-4cf1-9713-b1fedeed7827" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Dependapot.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WelcomeToTheMilitary.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WelcomeToTheMilitary/src/com/welcomeToTheMilitary/bases/Fort_Bliss_Map.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WelcomeToTheMilitary/src/com/welcomeToTheMilitary/character/SeniorEnlist.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/aws.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/google-java-format.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WelcomeToTheMilitary/src/com/welcomeToTheMilitary/bases/Fort_Sill_Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/WelcomeToTheMilitary/src/com/welcomeToTheMilitary/bases/Fort_Sill_Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WelcomeToTheMilitary/src/com/welcomeToTheMilitary/bases/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/WelcomeToTheMilitary/src/com/welcomeToTheMilitary/bases/Post.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WelcomeToTheMilitary/src/com/welcomeToTheMilitary/gamecontroller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/WelcomeToTheMilitary/src/com/welcomeToTheMilitary/gamecontroller/GameController.java" afterDir="false" />
-    </list>
+    <list default="true" id="7f9a1c2b-7e98-4cf1-9713-b1fedeed7827" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,6 +26,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager">
     <configuration name="GameController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -81,5 +69,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

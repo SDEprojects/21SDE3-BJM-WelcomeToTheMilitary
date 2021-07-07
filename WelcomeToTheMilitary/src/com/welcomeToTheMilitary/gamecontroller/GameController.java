@@ -1,5 +1,6 @@
 package com.welcomeToTheMilitary.gamecontroller;
 
+import com.welcomeToTheMilitary.bases.Fort_Bliss_Map;
 import com.welcomeToTheMilitary.bases.Fort_Sill_Map;
 import com.welcomeToTheMilitary.character.ServiceMember;
 import com.welcomeToTheMilitary.character.LowerEnlist;
@@ -20,6 +21,7 @@ public class GameController {
     private static Fort_Sill_Map fortSill = new Fort_Sill_Map("Fort Sill", "Some post");
     private static Scanner input = new Scanner(System.in);
     private static ArrayList<String> spellList = new ArrayList<>();
+    private static Fort_Bliss_Map fortBliss = new Fort_Bliss_Map("Fort Bliss", "So close to Mexico");
 
     // minigame
     private static MinigameFactory gameFactory = new MinigameFactory();
@@ -124,9 +126,16 @@ public class GameController {
             System.out.println("Win or lose: " + isWin);
             if (isWin) {
                 usrDep.storeItemInVentory(fortSill.getItemFromFacility(usrDep.getLocation()));
-                usrDep.viewMyInventory();
-                // end of the placeholder
-                System.out.println("Congrats you won the interaction.");
+                boolean isWorthRank = PromoteHelper.isRankWorthIt(usrDep, solider);
+                if (isWorthRank) {
+                    usrDep.setRank(solider.getRank());
+                    System.out.println("Congrats you won the interaction.\n" +
+                            "Obtained item: " + fortSill.getItemFromFacility(usrDep.getLocation()) + "\n" +
+                            "Player's current rank: " + usrDep.getRank());
+                } else {
+                    System.out.println("Congrats you won the interaction.");
+                    System.out.println("You decided not to take their rank\n" + "It is lower than yours yuck!");
+                }
             } else {
                 System.out.println("You have lost. You maintain your rank but lost your dignity!!!");
             }
@@ -144,20 +153,6 @@ public class GameController {
 //                System.exit(0);
             default:
                 JsonReader.printHelpRequestDataFromJSON();
-//                System.out.println("=".repeat(5) + " Movement " + "=".repeat(5));
-//                System.out.println("Supported movement verb: go | move | drive | walk | run");
-//                System.out.println("Supported movement noun: dfac | barracks | church | px | market | gym");
-//                System.out.println("Example: go dfac | move dfac");
-//                System.out.println("=".repeat(5) + " Interact to Soldier " + "=".repeat(5));
-//                System.out.println("Supported interact verb: talk | approach | interact");
-//                System.out.println(
-//                        "Supported interact noun: brad | jeremy | rogers | shad | arturo | john | brandon |" +
-//                        "laginus | soko | david | stephen");
-//                System.out.println("Example: talk brad | approach jeremy");
-//                System.out.println("=".repeat(5) + " Display possible building in current post " + "=".repeat(5));
-//                System.out.println("Supported display verb: show | display");
-//                System.out.println("Supported display noun: map | location | buildings | building");
-//                System.out.println("Example: | display map | show map");
         }
     }
 
@@ -180,12 +175,19 @@ public class GameController {
             case "gym":
             case "barracks":
             case "market":
+            case "pizza":
+            case "housing":
+            case "starbucks":
+            case "theater":
+            case "mall":
                 System.out.println("Entering: " + noun + " building");
                 fortSill.enterToBuilding(noun);
+                fortBliss.enterToBuilding(noun);
 //                setDependaLocation(noun, usrDep);
                 usrDep.setLocation(noun);
                 System.out.println("Curent " + usrDep.getName() + "'s location: " + usrDep.getLocation());
                 break;
+
             default:
                 System.out.println("These are the possible location you can go!!");
                 System.out.println(fortSill.getBuildings());

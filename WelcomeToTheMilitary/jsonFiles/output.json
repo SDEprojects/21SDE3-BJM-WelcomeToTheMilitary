@@ -1,1 +1,8 @@
-[{"soldier":{"special":"PT BELT","name":"Jun","location":"Fort Sill"}}]
+[
+  {
+    "soldier":{
+      "special":"PT BELT",
+      "name":"Jun","location":"Fort Sill"
+    }
+  }
+]

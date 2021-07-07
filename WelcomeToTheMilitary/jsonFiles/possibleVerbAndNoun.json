@@ -1,0 +1,20 @@
+{
+  "Movement": {
+    "verb": ["go", "move", "drive", "walk", "run"],
+    "noun": ["dfac", "barracks", "church", "px", "market", "gym"],
+    "example": "Example: go dfac | move dfac"
+  },
+
+  "Interact with soldier": {
+    "verb": ["talk", "approach", "interact"],
+    "noun": ["brad", "jeremy", "rogers", "shad", "arturo", "john", "brandon",
+      "laginus", "soko", "david", "stephen"],
+    "example": "Example: talk brad | approach brad"
+  },
+
+  "Display map": {
+    "verb": ["show", "display"],
+    "noun": ["map", "location", "buildings", "building"],
+    "example": "Example: | display map | show map"
+  }
+}

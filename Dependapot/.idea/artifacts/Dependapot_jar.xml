@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="Dependapot:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/Dependapot_jar</output-path>
-    <root id="archive" name="Dependapot.jar">
-      <element id="module-output" name="Dependapot" />
-    </root>
-  </artifact>
-</component>

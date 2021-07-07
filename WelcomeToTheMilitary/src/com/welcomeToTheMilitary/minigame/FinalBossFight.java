@@ -13,12 +13,20 @@ public class FinalBossFight implements iMinigame {
     private static Scanner userAction = new Scanner(System.in);
 
     public FinalBossFight() {
+        clearScreen();
         introduction();
     }
 
     private void introduction() {
         System.out.println("=".repeat(5) + " Final Stage " + "=".repeat(5));
         System.out.println("You finally met the boss");
+        System.out.println("Developer: only the 'attack' command is working so far.\nSorry.. T_T");
+    }
+
+    // clear the screen
+    private static void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
 
     @Override
@@ -33,6 +41,11 @@ public class FinalBossFight implements iMinigame {
             displayBothStatus(usr, boss);
             System.out.print("What is your move?\n> ");
             userCommand = userAction.nextLine();
+            if (userCommand == null || userCommand.length() == 0) {
+                System.out.println("Boss: This is your final mercy!!!");
+                System.out.println("type 'attack' | ");
+                userCommand = userAction.nextLine();
+            }
             userFightBossAction(userCommand, usr, boss);
             BossFightUserRandomAction(usr, boss);
         }

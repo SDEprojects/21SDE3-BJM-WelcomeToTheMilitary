@@ -29,12 +29,19 @@ public class FinalBossFight implements iMinigame {
     @Override
     public boolean play(ServiceMember usr, FinalBoss boss) {
         String userCommand = "";
-        while (usr.getHealth() != 0 && boss.getVitality() != 0) {
-            // fight until someone die
-            System.out.println("What is your move?\n> ");
+        while (usr.getHealth() > 0 && boss.getVitality() > 0) {
+            displayBothStatus(usr, boss);
+            System.out.print("What is your move?\n> ");
             userCommand = userAction.nextLine();
             userFightBossAction(userCommand, usr, boss);
             BossFightUserRandomAction(usr, boss);
+        }
+        if (usr.getHealth() == 0) {
+            System.out.println("You lose");
+            return false;
+        } else if (boss.getVitality() == 0) {
+            System.out.println("You won against final boss in Fort Sill");
+            return true;
         }
         return false;
     }
@@ -57,7 +64,7 @@ public class FinalBossFight implements iMinigame {
     }
 
     private void BossFightUserRandomAction(ServiceMember usr, FinalBoss boss) {
-        String bossActionList[] = {"atatck", "use spell"};
+        String bossActionList[] = {"attack", "use spell"};
         int randomIndex = (int) (Math.random() * (bossActionList.length - 0));
         switch (bossActionList[randomIndex]) {
             case "attack":
@@ -70,11 +77,34 @@ public class FinalBossFight implements iMinigame {
         }
     }
 
-    public static void main(String[] args) {
-        ServiceMember park = new ServiceMember("Park", "a", "fort sill");
-        FinalBoss ssg = new FinalBoss("SFC", "Daniels", 20,30,new Weapons("Fists",5,5,5));
-        FinalBossFight fightBoss = new FinalBossFight();
-        fightBoss.play(park, ssg);
+    // not implemented yet
+    private void displayBothStatus(ServiceMember usr, FinalBoss boss) {
+        // Set up the String
+        String introTitle = "=".repeat(14) + " Status Report " + "=".repeat(14);
+        String playerTitle = "Player";
+        String playerFinalBoss = "Final Boss";
+        String playerRank = usr.getRank();
+        String bossRank = boss.getRank();
+        String playerName = usr.getName();
+        String bossTitle = boss.getName();
+        String playerHealth = "Hp: " + String.valueOf(usr.getHealth());
+        String bossHealth = "Hp: " + String.valueOf(boss.getVitality());
+        String bossWeapon = "Weapon: " + boss.getCidWeapon();
+
+        System.out.println(introTitle);
+        System.out.printf("%-20s %20s %n", playerTitle, playerFinalBoss);
+        System.out.printf("%-20s %20s %n", playerName, bossTitle);
+        System.out.printf("%-20s %20s %n", playerRank, bossRank);
+        System.out.printf("%-20s %20s %n", playerHealth, bossHealth);
+        System.out.printf("%-20s %20s %n", "",bossWeapon);
+        System.out.println("=".repeat(22)  + "=".repeat(22));
     }
+
+//    public static void main(String[] args) {
+//        ServiceMember park = new ServiceMember("Park", "a", "fort sill");
+//        FinalBoss ssg = new FinalBoss("SFC", "Daniels", 20,30,new Weapons("Fists",5,5,5));
+//        FinalBossFight fightBoss = new FinalBossFight();
+//        fightBoss.play(park, ssg);
+//    }
 }
 

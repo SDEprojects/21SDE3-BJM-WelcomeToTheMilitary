@@ -63,7 +63,7 @@ class testMain {
         ServiceMember readServiceMember = jReader.returnSolder();
 
         System.out.println("This was read" + readServiceMember.getLocation() + "Name: " + readServiceMember.getName() + "special: " + readServiceMember.getSpecial());
-
+        jReader.printHelpRequestDataFromJSON();
     }
 
 

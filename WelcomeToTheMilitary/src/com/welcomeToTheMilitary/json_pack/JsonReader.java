@@ -43,6 +43,22 @@ public class JsonReader {
         return soldierToReturn;
     }
 
+    public static void printHelpRequestDataFromJSON() {
+        JSONParser parser = new JSONParser();
+        try {
+            JSONObject helpObject = (JSONObject) parser.parse(new FileReader("jsonFiles/possibleVerbAndNoun.json"));
+            helpObject.keySet().forEach(eachInstruction -> {
+                System.out.println("=".repeat(5) + " " + eachInstruction + " " + "=".repeat(5));
+                JSONObject instructionSet = (JSONObject) helpObject.get(eachInstruction);
+                System.out.println("Supported " + eachInstruction + " verb " + instructionSet.get("verb").toString());
+                System.out.println("Supported " + eachInstruction + " noun " + instructionSet.get("noun").toString());
+                System.out.println("Example " + eachInstruction + " example " + instructionSet.get("example").toString() + "\n");
+            });
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();;
+        }
+    }
+
     private ServiceMember parseSoldierObject(JSONObject soldierObject){
 //Get employee object within list
         JSONObject soldierobj = (JSONObject) soldierObject.get("soldier");

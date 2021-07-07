@@ -3,6 +3,7 @@ package com.welcomeToTheMilitary.gamecontroller;
 import com.welcomeToTheMilitary.bases.Fort_Sill_Map;
 import com.welcomeToTheMilitary.character.ServiceMember;
 import com.welcomeToTheMilitary.character.LowerEnlist;
+import com.welcomeToTheMilitary.json_pack.JsonReader;
 import com.welcomeToTheMilitary.minigame.MinigameFactory;
 import com.welcomeToTheMilitary.minigame.RPC;
 import com.welcomeToTheMilitary.minigame.iMinigame;
@@ -142,20 +143,21 @@ public class GameController {
 //                System.out.println("Thanks for playing");
 //                System.exit(0);
             default:
-                System.out.println("=".repeat(5) + " Movement " + "=".repeat(5));
-                System.out.println("Supported movement verb: go | move | drive | walk | run");
-                System.out.println("Supported movement noun: dfac | barracks | church | px | market | gym");
-                System.out.println("Example: go dfac | move dfac");
-                System.out.println("=".repeat(5) + " Interact to Soldier " + "=".repeat(5));
-                System.out.println("Supported interact verb: talk | approach | interact");
-                System.out.println(
-                        "Supported interact noun: brad | jeremy | rogers | shad | arturo | john | brandon |" +
-                        "laginus | soko | david | stephen");
-                System.out.println("Example: talk brad | approach jeremy");
-                System.out.println("=".repeat(5) + " Display possible building in current post " + "=".repeat(5));
-                System.out.println("Supported display verb: show | display");
-                System.out.println("Supported display noun: map | location | buildings | building");
-                System.out.println("Example: | display map | show map");
+                JsonReader.printHelpRequestDataFromJSON();
+//                System.out.println("=".repeat(5) + " Movement " + "=".repeat(5));
+//                System.out.println("Supported movement verb: go | move | drive | walk | run");
+//                System.out.println("Supported movement noun: dfac | barracks | church | px | market | gym");
+//                System.out.println("Example: go dfac | move dfac");
+//                System.out.println("=".repeat(5) + " Interact to Soldier " + "=".repeat(5));
+//                System.out.println("Supported interact verb: talk | approach | interact");
+//                System.out.println(
+//                        "Supported interact noun: brad | jeremy | rogers | shad | arturo | john | brandon |" +
+//                        "laginus | soko | david | stephen");
+//                System.out.println("Example: talk brad | approach jeremy");
+//                System.out.println("=".repeat(5) + " Display possible building in current post " + "=".repeat(5));
+//                System.out.println("Supported display verb: show | display");
+//                System.out.println("Supported display noun: map | location | buildings | building");
+//                System.out.println("Example: | display map | show map");
         }
     }
 

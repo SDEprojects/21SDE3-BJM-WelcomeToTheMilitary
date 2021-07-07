@@ -1,5 +1,8 @@
 package com.welcomeToTheMilitary.minigame;
 
+import com.welcomeToTheMilitary.character.FinalBoss;
+import com.welcomeToTheMilitary.character.ServiceMember;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -111,6 +114,12 @@ public class RPC implements iMinigame{
     private static void clearConsole() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
+    }
+
+    // placeholder for now, will figure it out
+    @Override
+    public boolean play(ServiceMember usr, FinalBoss boss) {
+        return false;
     }
 
 }

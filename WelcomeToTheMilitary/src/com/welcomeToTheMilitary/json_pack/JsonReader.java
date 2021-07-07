@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -41,6 +43,31 @@ public class JsonReader {
         }
 
         return soldierToReturn;
+    }
+
+    public HashMap<String,String> getSpecials(){
+        HashMap<String,String> specialHash = new HashMap<>();
+        JSONParser jsonParser = new JSONParser();
+        try (FileReader reader = new FileReader("jsonFiles/specials.json"))
+        {
+            //Read JSON file
+            JSONObject obj = (JSONObject) jsonParser.parse(reader);
+
+            //Iterate over employee array
+            obj.keySet().forEach( eachSpecial -> {
+                JSONObject special = (JSONObject) obj.get(eachSpecial);
+                specialHash.put(special.get("name").toString(),special.get("description").toString());
+            } );
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return specialHash;
     }
 
     public static void printHelpRequestDataFromJSON() {

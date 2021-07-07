@@ -3,25 +3,28 @@ package com.welcomeToTheMilitary.tutorial;
 
 import com.welcomeToTheMilitary.character.ServiceMember;
 
+import com.welcomeToTheMilitary.json_pack.JsonReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.InputMismatchException;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Welcome {
 
     static ArrayList<String> spellList = new ArrayList<>();
+    static HashMap<String,String> specialHash = new HashMap<>();
+    private static JsonReader jReader;
 
+    public static void main(String[] args) {
 
-//    public static void main(String[] args) {
-//        spellList.add("Multi-Cam Purse");
-//        spellList.add("Bumper Sticker");
-//        spellList.add("LuLuRoe Business Card");
-//        intro();
-//    }
+        intro(spellList);
+    }
 
     public static ServiceMember intro(ArrayList<String> _spellList){
-
-
+        jReader = new JsonReader();
+        specialHash = jReader.getSpecials();
         spellList = _spellList;
         clearConsole();
         System.out.println("Welcome to the Military!");
@@ -133,25 +136,29 @@ public class Welcome {
     }
 
     public static void spells(){
-        System.out.println("Here are the spell you can chose from: \n" +
-                "Dog Tags: You always wear your dog tags outside fo your shirt. Your military prides deflects attacks.\n" +
-                "Military Skull Tattoo: After Basic Training you got a tattoo of your company \"Army Strong! Queen of Battle!\n" +
-                "High-n-Tight: Your hair is within regulations and it increases your attacks.");
+        System.out.println("Here are the specials you can chose from: \n" +
+                           "~".repeat(41));
+
+        Iterator it = specialHash.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry)it.next();
+            System.out.println(pair.getKey() + ": " + pair.getValue());
+            System.out.println("-".repeat(50));
+
+        }
     }
 
     public static String picSpells(){
 
-        spellList.add("Dog Tags");
-        spellList.add("Military Skull Tattoo");
-        spellList.add("High-n-Tight");
-
         int whileInt = 0;
         while(whileInt == 0){
 
-            System.out.println("Please type in the number associated with the spell you would like to start with: ");
+            System.out.println("Please type in the number associated with the special you would like to start with: ");
             int x = 1;
-            while( x< spellList.size() +1){
-                System.out.println(x + ". " + spellList.get(x - 1));
+
+            for (String key : specialHash.keySet()) {
+                System.out.println(x + ". " + key);
+                spellList.add(key);
                 x++;
             }
 

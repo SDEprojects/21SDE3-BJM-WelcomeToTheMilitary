@@ -1,5 +1,6 @@
 package com.welcomeToTheMilitary.gamecontroller;
 
+import com.welcomeToTheMilitary.bases.Fort_Bliss_Map;
 import com.welcomeToTheMilitary.bases.Fort_Sill_Map;
 import com.welcomeToTheMilitary.character.ServiceMember;
 import com.welcomeToTheMilitary.character.LowerEnlist;
@@ -20,6 +21,7 @@ public class GameController {
     private static Fort_Sill_Map fortSill = new Fort_Sill_Map("Fort Sill", "Some post");
     private static Scanner input = new Scanner(System.in);
     private static ArrayList<String> spellList = new ArrayList<>();
+    private static Fort_Bliss_Map fortBliss = new Fort_Bliss_Map("Fort Bliss", "So close to Mexico");
 
     // minigame
     private static MinigameFactory gameFactory = new MinigameFactory();
@@ -173,12 +175,19 @@ public class GameController {
             case "gym":
             case "barracks":
             case "market":
+            case "pizza":
+            case "housing":
+            case "starbucks":
+            case "theater":
+            case "mall":
                 System.out.println("Entering: " + noun + " building");
                 fortSill.enterToBuilding(noun);
+                fortBliss.enterToBuilding(noun);
 //                setDependaLocation(noun, usrDep);
                 usrDep.setLocation(noun);
                 System.out.println("Curent " + usrDep.getName() + "'s location: " + usrDep.getLocation());
                 break;
+
             default:
                 System.out.println("These are the possible location you can go!!");
                 System.out.println(fortSill.getBuildings());

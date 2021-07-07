@@ -21,7 +21,7 @@ public class FinalBoss{
         this.cidWeapon = cidWeapon;
     }
 
-    public String attack(){
+    public int attack(){
         int max = 9;
         int min = 2;
         Random damage = new Random();
@@ -29,11 +29,16 @@ public class FinalBoss{
         System.out.println(x);
         int att = this.strength/x;
         Math.round(att);
-        return(this.rank +" "+ this.name + " attacked you for " + att + " points of damage");
+        System.out.println(this.rank +" "+ this.name + " attacked you for " + att + " points of damage");
+        return att;
     }
 
     public int getVitality() {
         return this.vitality;
+    }
+
+    public void setVitality(int damage) {
+        this.vitality = this.vitality - damage;
     }
 
     @Override

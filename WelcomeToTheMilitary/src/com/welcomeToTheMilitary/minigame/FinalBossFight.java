@@ -54,9 +54,8 @@ public class FinalBossFight implements iMinigame {
             return false;
         } else if (boss.getVitality() == 0) {
             System.out.println("You won against final boss in Fort Sill");
-            return true;
         }
-        return false;
+        return true;
     }
 
     private void userFightBossAction(String _userCommand, ServiceMember usr, FinalBoss boss) {

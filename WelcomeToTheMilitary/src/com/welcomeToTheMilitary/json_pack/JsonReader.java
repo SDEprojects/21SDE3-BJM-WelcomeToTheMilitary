@@ -21,7 +21,7 @@ public class JsonReader {
         JSONParser jsonParser = new JSONParser();
         ServiceMember soldierToReturn = null;
 
-        try (FileReader reader = new FileReader("jsonFiles/output.json"))
+        try (FileReader reader = new FileReader("src/jsonFiles/output.json"))
         {
             //Read JSON file
             Object obj = jsonParser.parse(reader);
@@ -48,7 +48,7 @@ public class JsonReader {
     public HashMap<String,String> getSpecials(){
         HashMap<String,String> specialHash = new HashMap<>();
         JSONParser jsonParser = new JSONParser();
-        try (FileReader reader = new FileReader("jsonFiles/specials.json"))
+        try (FileReader reader = new FileReader("src/jsonFiles/specials.json"))
         {
             //Read JSON file
             JSONObject obj = (JSONObject) jsonParser.parse(reader);
@@ -73,7 +73,7 @@ public class JsonReader {
     public static void printHelpRequestDataFromJSON() {
         JSONParser parser = new JSONParser();
         try {
-            JSONObject helpObject = (JSONObject) parser.parse(new FileReader("jsonFiles/possibleVerbAndNoun.json"));
+            JSONObject helpObject = (JSONObject) parser.parse(new FileReader("src/jsonFiles/possibleVerbAndNoun.json"));
             helpObject.keySet().forEach(eachInstruction -> {
                 System.out.println("=".repeat(5) + " " + eachInstruction + " " + "=".repeat(5));
                 JSONObject instructionSet = (JSONObject) helpObject.get(eachInstruction);

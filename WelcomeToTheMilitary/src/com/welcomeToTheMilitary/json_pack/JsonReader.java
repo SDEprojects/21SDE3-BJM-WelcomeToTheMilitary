@@ -14,14 +14,16 @@ import org.json.simple.parser.ParseException;
 
 public class JsonReader {
 
-
+    private static String path = JsonReader.class.getProtectionDomain().getCodeSource().getLocation().getPath();
     public ServiceMember returnSolder(){
 
         //JSON parser object to parse read file
         JSONParser jsonParser = new JSONParser();
         ServiceMember soldierToReturn = null;
 
-        try (FileReader reader = new FileReader("src/jsonFiles/output.json"))
+//        String path = JsonReader.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+//        System.out.println("You are about to enter the JSon files" + path);
+        try (FileReader reader = new FileReader("jsonFiles/output.json"))
         {
             //Read JSON file
             Object obj = jsonParser.parse(reader);
@@ -48,7 +50,7 @@ public class JsonReader {
     public HashMap<String,String> getSpecials(){
         HashMap<String,String> specialHash = new HashMap<>();
         JSONParser jsonParser = new JSONParser();
-        try (FileReader reader = new FileReader("src/jsonFiles/specials.json"))
+        try (FileReader reader = new FileReader( "jsonFiles/specials.json"))
         {
             //Read JSON file
             JSONObject obj = (JSONObject) jsonParser.parse(reader);
@@ -73,7 +75,7 @@ public class JsonReader {
     public static void printHelpRequestDataFromJSON() {
         JSONParser parser = new JSONParser();
         try {
-            JSONObject helpObject = (JSONObject) parser.parse(new FileReader("src/jsonFiles/possibleVerbAndNoun.json"));
+            JSONObject helpObject = (JSONObject) parser.parse(new FileReader("jsonFiles/possibleVerbandNoun.json"));
             helpObject.keySet().forEach(eachInstruction -> {
                 System.out.println("=".repeat(5) + " " + eachInstruction + " " + "=".repeat(5));
                 JSONObject instructionSet = (JSONObject) helpObject.get(eachInstruction);

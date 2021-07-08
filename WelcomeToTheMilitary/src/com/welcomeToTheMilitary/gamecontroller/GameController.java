@@ -1,7 +1,9 @@
 package com.welcomeToTheMilitary.gamecontroller;
 
+import com.welcomeToTheMilitary.attributes.Weapons;
 import com.welcomeToTheMilitary.bases.Fort_Bliss_Map;
 import com.welcomeToTheMilitary.bases.Fort_Sill_Map;
+import com.welcomeToTheMilitary.character.FinalBoss;
 import com.welcomeToTheMilitary.character.ServiceMember;
 import com.welcomeToTheMilitary.character.LowerEnlist;
 import com.welcomeToTheMilitary.json_pack.JsonReader;
@@ -24,6 +26,8 @@ public class GameController {
     private static Fort_Bliss_Map fortBliss = new Fort_Bliss_Map("Fort Bliss", "So close to Mexico");
 
     // minigame
+    private static FinalBoss fortSillFinalBoss =
+            new FinalBoss("SFC", "Daniels", 20, 30,new Weapons("Fists",5,5,5));
     private static MinigameFactory gameFactory = new MinigameFactory();
     private static iMinigame minigame = null;
     private static iMinigame rockPaperScissors = new RPC();
@@ -39,6 +43,18 @@ public class GameController {
         String userAction = "";
         int counter = 0;
         while (!userAction.equals("exit") && !userAction.equals("quit")) {
+            // condition that checks if the player's rank is E-6 then it invoke the challenge against the boss
+            if (usrDep.getRank().equals("e-6")) {
+                System.out.println("Reached E-6...");
+                System.out.println("Final Challenge!");
+                minigame = gameFactory.playGame("fort sill game");
+                boolean isWon = minigame.play(usrDep, fortSillFinalBoss);
+                // if player won
+                if (isWon) {
+                    System.out.println("Your journey in FortSill is over soldier..");
+                    break;
+                }
+            }
             if(counter ==0){
                 System.out.println("Welcome to Fort Sill. Your Drill Instructor dropped you off at the gate.");
             }

@@ -1,11 +1,11 @@
 {
   "Fort Sill": {
     "go": {
-      "synonym": ["move", "drive", "walk", "run"],
+      "synonym": ["move", "drive", "walk", "run", "march"],
       "noun": ["dfac", "barracks", "church", "px", "market", "gym"]
     },
     "talk": {
-      "synonym": ["approach", "interact", "communicate"],
+      "synonym": ["approach", "interact", "communicate", "motivate"],
       "noun": ["brad", "jeremy", "rogers", "shad", "arturo", "john", "brandon",
         "laginus", "soko", "david", "stephen"]
     },

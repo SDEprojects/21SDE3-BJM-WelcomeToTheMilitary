@@ -72,24 +72,15 @@ public class GameController {
                 try {
                     switch (response.getVerb().trim()) {
                         case "go":
-                        case "move":
-                        case "drive":
-                        case "walk":
-                        case "run":
                             GameController.enteringBuildingController(response.getNoun(), usrSM);
                             break;
-                        case "display":
                         case "show":
                             GameController.displayBuildings(response.getNoun(), usrSM);
                             break;
                         case "talk":
-                        case "approach":
-                        case "interact":
                             GameController.interactWithNPC(response.getNoun(), usrSM);
                             break;
                         case "help":
-//                        case "quit":
-//                        case "exit":
                             interactHelpRequest(response.getNoun(), usrSM);
                             break;
                         default:

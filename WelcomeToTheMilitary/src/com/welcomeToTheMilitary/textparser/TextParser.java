@@ -48,6 +48,12 @@ public class TextParser {
             this.verb = "";
             return false;
         }
+        if (userInput.equals("jun") || userInput.equals("jon") || userInput.equals("damian") || userInput.equals("jerad")) {
+            this.verb = "jun";
+            this.noun = "haha!";
+            return true;
+        }
+
         String trimmedInput = userInput.trim().toLowerCase();
         // split out to check if the sentence contains more then 2 words
         String splitTrimmedInput[] = trimmedInput.split(" ");

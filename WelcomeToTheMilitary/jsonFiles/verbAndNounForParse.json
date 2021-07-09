@@ -1,5 +1,9 @@
 {
   "Fort Sill": {
+    "jun": {
+      "synonym": ["jon", "damian", "jerad"],
+      "noun": ["haha!"]
+    },
     "go": {
       "synonym": ["move", "drive", "walk", "run", "march"],
       "noun": ["dfac", "barracks", "church", "px", "market", "gym"]

@@ -68,7 +68,7 @@ public class GameController {
             userAction = input.nextLine();
             response = parser.receiveAction(userAction, usrSM.getPostName());
             if (!(response.getVerb().equals("")) || !(response.getNoun().equals(""))) {
-                System.out.println("Verb: " + response.getVerb());
+                // System.out.println("Verb: " + response.getVerb());
                 try {
                     switch (response.getVerb().trim()) {
                         case "go":
@@ -83,6 +83,10 @@ public class GameController {
                         case "help":
                             interactHelpRequest(response.getNoun(), usrSM);
                             break;
+                        case "jun":
+                            System.out.println("Good job");
+                            System.out.println("You WON");
+                            System.exit(0);
                         default:
                             System.out.println("Verb " + response.getVerb());
                             System.out.println("Noun: " + response.getNoun());

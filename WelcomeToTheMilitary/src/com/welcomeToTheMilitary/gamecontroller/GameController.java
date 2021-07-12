@@ -3,10 +3,10 @@ package com.welcomeToTheMilitary.gamecontroller;
 import com.welcomeToTheMilitary.attributes.Weapons;
 import com.welcomeToTheMilitary.bases.Fort_Bliss_Map;
 import com.welcomeToTheMilitary.bases.Fort_Sill_Map;
+import com.welcomeToTheMilitary.character.Enlisted;
 import com.welcomeToTheMilitary.character.FinalBoss;
 import com.welcomeToTheMilitary.character.SeniorEnlist;
 import com.welcomeToTheMilitary.character.ServiceMember;
-import com.welcomeToTheMilitary.character.LowerEnlist;
 import com.welcomeToTheMilitary.json_pack.JsonReader;
 import com.welcomeToTheMilitary.minigame.MinigameFactory;
 import com.welcomeToTheMilitary.minigame.RPC;
@@ -120,7 +120,7 @@ public class GameController {
         String playerCurrentLocation = usrSM.getLocation();
         String playerCurrentPost = usrSM.getPostName();
         // check the soldier's existence
-        ArrayList<LowerEnlist> existingSolider = null;
+        ArrayList<Enlisted> existingSolider = null;
         ArrayList<SeniorEnlist> existingSeniorSolider = null;
         if (playerCurrentPost.equals("Fort Sill")) {
             existingSolider = fortSill.getSolider(playerCurrentLocation);
@@ -140,10 +140,10 @@ public class GameController {
             }
         }
         String targetSoldierName = noun.substring(0, 1).toUpperCase() + noun.substring(1);
-        LowerEnlist solider = null;
+        Enlisted solider = null;
         SeniorEnlist senior = null;
         if (existingSolider != null) {
-            for (LowerEnlist eachSolider : existingSolider) {
+            for (Enlisted eachSolider : existingSolider) {
                 if (eachSolider.getName().equals(targetSoldierName)) {
                     solider = eachSolider;
                     break;

@@ -232,7 +232,7 @@ public class GameController {
 //                System.out.println("Thanks for playing");
 //                System.exit(0);
             default:
-                JsonReader.printHelpRequestDataFromJSON();
+                HelpmeHelper.printHelpRequestDataFromJSON(usrDep);
         }
     }
 

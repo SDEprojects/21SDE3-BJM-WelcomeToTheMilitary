@@ -39,6 +39,7 @@ public class FinalBossFight implements iMinigame {
         String userCommand = "";
         while (usr.getHealth() > 0 && boss.getVitality() > 0) {
             displayBothStatus(usr, boss);
+            System.out.println("Number of Special Remained: " + usr.getNumberOfUserSpecialOnEachFinalBoss());
             System.out.print("What is your move?\n> ");
             userCommand = userAction.nextLine();
             if (userCommand == null || userCommand.length() == 0) {
@@ -47,12 +48,16 @@ public class FinalBossFight implements iMinigame {
                 userCommand = userAction.nextLine();
             }
             userFightBossAction(userCommand, usr, boss);
-            BossFightUserRandomAction(usr, boss);
+            bossFightUserRandomAction(usr, boss);
         }
-        if (usr.getHealth() == 0) {
+        if (usr.getHealth() <= 0 && boss.getVitality() <= 0) {
+            System.out.println("You guys tied!");
+            return false;
+        }
+        else if (usr.getHealth() <= 0) {
             System.out.println("You lose");
             return false;
-        } else if (boss.getVitality() == 0) {
+        } else if (boss.getVitality() <= 0) {
             System.out.println("You won against final boss in Fort Sill");
         }
         return true;
@@ -69,13 +74,22 @@ public class FinalBossFight implements iMinigame {
                 System.out.println("Trying to use item but not implemented yet! hahahah");
                 // need to think
                 return;
+            case "inventory":
+                System.out.println("What item would you like to use: ");
+                usr.viewMyInventory();
+                return;
+            case "special":
+                int userSpecialDamage = (usr.useSpecial());
+                //boss.setVitality(userSpecialDamage);
+                System.out.println("You damaged SFC Daniels for "+ userSpecialDamage);
+                return;
             default:
                 System.out.println("??");
                 return;
         }
     }
 
-    private void BossFightUserRandomAction(ServiceMember usr, FinalBoss boss) {
+    private void bossFightUserRandomAction(ServiceMember usr, FinalBoss boss) {
         String bossActionList[] = {"attack", "use spell"};
         int randomIndex = (int) (Math.random() * (bossActionList.length - 0));
         switch (bossActionList[randomIndex]) {
@@ -112,11 +126,11 @@ public class FinalBossFight implements iMinigame {
         System.out.println("=".repeat(22)  + "=".repeat(22));
     }
 
-//    public static void main(String[] args) {
-//        ServiceMember park = new ServiceMember("Park", "a", "fort sill");
-//        FinalBoss ssg = new FinalBoss("SFC", "Daniels", 20,30,new Weapons("Fists",5,5,5));
-//        FinalBossFight fightBoss = new FinalBossFight();
-//        fightBoss.play(park, ssg);
-//    }
+    public static void main(String[] args) {
+        ServiceMember park = new ServiceMember("Park", "Dog Tags", "fort sill");
+        FinalBoss ssg = new FinalBoss("SFC", "Daniels", 1,100,new Weapons("Fists",5,5,5));
+        FinalBossFight fightBoss = new FinalBossFight();
+        fightBoss.play(park, ssg);
+    }
 }
 

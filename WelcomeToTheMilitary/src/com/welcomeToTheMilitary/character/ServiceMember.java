@@ -99,6 +99,7 @@ public class ServiceMember extends Character {
 
     public String useItem(String _itemName) {
         // check if the item exist
+        System.out.println(_itemName);
         boolean isItemExist = inventory.checkInventory(_itemName);
         if (isItemExist) {
             System.out.println("You used " + _itemName);
@@ -108,7 +109,7 @@ public class ServiceMember extends Character {
     }
 
     public int attack() {
-        System.out.println("Attack: " + this.getStrength());
+//        System.out.println("Attack: " + this.getStrength());
         return this.getStrength();
     }
 
@@ -124,6 +125,11 @@ public class ServiceMember extends Character {
         NUMBER_OF_USE_SPECIAL_ON_EACH_FINAL_BOSS = 3;
         return;
     }
+
+    public int getNumberOfUserSpecialOnEachFinalBoss() {
+        return NUMBER_OF_USE_SPECIAL_ON_EACH_FINAL_BOSS;
+    }
+
 
     public void decreaseNumberOfUseSpecialOnEachFinalBoss() {
         if (NUMBER_OF_USE_SPECIAL_ON_EACH_FINAL_BOSS > 0) {
@@ -142,7 +148,7 @@ public class ServiceMember extends Character {
         // if the player can use the special
         boolean isSpecialUseAbleFlag = false;
         HashMap<String, String> specialHash = RetrieveSpecialHelper.getSpecialName();
-        System.out.println(this.getSpecial());
+        // System.out.println(this.getSpecial());
         // make the key set into String array
         String[] possibleSpecial = specialHash.keySet().toArray(new String[0]);
         for (int i = 0; i < possibleSpecial.length; i++) {

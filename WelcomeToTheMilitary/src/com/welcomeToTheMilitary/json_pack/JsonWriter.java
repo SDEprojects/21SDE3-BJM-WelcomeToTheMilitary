@@ -3,6 +3,7 @@ package com.welcomeToTheMilitary.json_pack;
 import com.welcomeToTheMilitary.character.ServiceMember;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -46,6 +47,8 @@ public class JsonWriter implements iDataToRead {
 }
 
 
+
+
 class testMain {
 
 
@@ -56,14 +59,21 @@ class testMain {
 //        JsonWriter writer = new JsonWriter();
 //        writer.dataToPass(testDependa);
 
-
-
         JsonReader jReader = new JsonReader();
 
         ServiceMember readServiceMember = jReader.returnSolder();
 
+
+
         System.out.println("This was read" + readServiceMember.getLocation() + "Name: " + readServiceMember.getName() + "special: " + readServiceMember.getSpecial());
         jReader.printHelpRequestDataFromJSON();
+
+
+        ArrayList<String> testlist = jReader.getbuilStrings("Fort Bliss");
+
+        for (String name : testlist) {
+            System.out.printf("building name" + name);
+        }
     }
 
 

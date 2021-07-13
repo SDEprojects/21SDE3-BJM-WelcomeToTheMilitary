@@ -1,5 +1,6 @@
 package com.welcomeToTheMilitary.minigame;
 
+import com.welcomeToTheMilitary.attributes.Item;
 import com.welcomeToTheMilitary.boss.FortBlissFinalBoss;
 import com.welcomeToTheMilitary.boss.FortSillFinalBoss;
 import com.welcomeToTheMilitary.character.FinalBoss;
@@ -12,8 +13,6 @@ import java.util.Scanner;
 
 public class FinalBossFight implements iMinigame {
     private ServiceMember player = null;
-    private FinalBoss boss = null;
-
     private Boss tempBoss = null;
 
     // for user input / action
@@ -28,15 +27,6 @@ public class FinalBossFight implements iMinigame {
         System.out.println("=".repeat(5) + " Final Stage " + "=".repeat(5));
         System.out.println("You finally met the boss");
         System.out.println("Developer: only the 'attack' command is working so far.\nSorry.. T_T");
-    }
-
-    private void setBoss(ServiceMember usr) {
-        if (usr.getPostName().equals("Fort Sill")) {
-            tempBoss = new FortSillFinalBoss("SFC", "Daniels", 1,100);
-        }
-        if (usr.getPostName().equals("Fort Bliss")) {
-            tempBoss = new FortBlissFinalBoss("Master", "fort bliss boss", 1,100);
-        }
     }
 
     // clear the screen
@@ -55,10 +45,10 @@ public class FinalBossFight implements iMinigame {
     public boolean play(ServiceMember usr) {
         // testing
         if (usr.getPostName().equals("Fort Sill")) {
-            tempBoss = new FortSillFinalBoss("SFC", "Daniels", 1,100);
+            tempBoss = new FortSillFinalBoss("SFC", "Daniels", 40,150);
         }
         if (usr.getPostName().equals("Fort Bliss")) {
-            tempBoss = new FortBlissFinalBoss("Master", "fort bliss boss", 500,100);
+            tempBoss = new FortBlissFinalBoss("CSM", "Fort Bliss Command Sergeant Major", 100,500);
         }
         // end of testing
         String userCommand = "";
@@ -76,21 +66,19 @@ public class FinalBossFight implements iMinigame {
             if (userCommand.equals("attack") || userCommand.equals("special")){
                 bossFightUserRandomAction(usr, tempBoss);
             } else {
-                System.out.println("SFC Daniels is looking at you menacingly!");
+                System.out.println(tempBoss.getName() + " " + tempBoss.getName() + " is looking at you menacingly!");
             }
-
         }
-        if (usr.getHealth() <= 0 && boss.getVitality() <= 0) {
-            System.out.println("You guys tied!");
-            return false;
-        }
-        else if (usr.getHealth() <= 0) {
+        if (usr.getHealth() <= 0) {
             System.out.println("You lose");
             return false;
-        } else if (boss.getVitality() <= 0) {
+        } else if (tempBoss.getVitality() <= 0) {
             System.out.println("You won against final boss in Fort Sill");
+            return true;
+        } else {
+            System.out.println("You tie");
+            return false;
         }
-        return true;
     }
 
     private void userFightBossAction(String _userCommand, ServiceMember usr, Boss boss) {
@@ -102,8 +90,7 @@ public class FinalBossFight implements iMinigame {
                 System.out.println("You damaged SFC Daniels for "+ userHitDamage);
                 return;
             case "use item":
-                System.out.println("Trying to use item but not implemented yet! hahahah");
-                // need to think
+                utilizeItem(usr);
                 return;
             case "inventory":
                 System.out.println("What item would you like to use: ");
@@ -115,18 +102,52 @@ public class FinalBossFight implements iMinigame {
                 System.out.println("You damaged SFC Daniels for "+ userSpecialDamage);
                 return;
             default:
-                System.out.println("??");
+                System.out.println("=".repeat(10) + " OOPS Invalid Command" + "=".repeat(10));
+                System.out.println("Commands Combat Fighting Mini Game Support");
+                System.out.println("To attack: [attack]");
+                System.out.println("To use item: [use item] -> type item name when it ask");
+                System.out.println("To view inventory: [inventory]");
+                System.out.println("To use special: [special]");
                 return;
         }
     }
 
+    private void utilizeItem(ServiceMember usrSM) {
+        Scanner inputItemName = new Scanner(System.in);
+        System.out.println("Please type the item name\n>");
+        String userSelectedItemInput = inputItemName.nextLine();
+        Item selectedItem = usrSM.useItem(userSelectedItemInput);
+        if (selectedItem == null) {
+            System.out.println("Item does not exist");
+            return;
+        }
+        switch (selectedItem.getName()) {
+            case "blackberry_muffins":
+            case "protein_shake":
+                System.out.println("Increase your hp by 5");
+                usrSM.setHealth(7, true);
+                break;
+            case "amen":
+            case "pt_vest":
+                System.out.println("Increase your attack by 2");
+                usrSM.setStrength(usrSM.getStrength() + 2);
+                break;
+            default: {
+                System.out.println("The item does not exist");
+                break;
+            }
+        }
+    }
+
     private void bossFightUserRandomAction(ServiceMember usr, Boss boss) {
-        String bossActionList[] = {"attack", "use spell"};
+        String bossActionList[] = {"attack"};
         int randomIndex = (int) (Math.random() * (bossActionList.length - 0));
         switch (bossActionList[randomIndex]) {
             case "attack":
+                // temp
+                // int bossHitDamage = boss.attack();
                 int bossHitDamage = boss.attack();
-                usr.setHealth(usr.getHealth() - bossHitDamage, false);
+                usr.setHealth(bossHitDamage, false);
                 return;
             default:
                 System.out.println(bossActionList[randomIndex] + " is not implemented yet");
@@ -144,9 +165,9 @@ public class FinalBossFight implements iMinigame {
         String bossRank = boss.getRank();
         String playerName = usr.getName();
         String bossTitle = boss.getName();
-        String playerHealth = "Hp: " + String.valueOf(usr.getHealth());
-        String bossHealth = "Hp: " + String.valueOf(boss.getVitality());
-
+        String playerHealth = "Hp: " + usr.getHealth();
+        String bossHealth = "Hp: " + boss.getVitality();
+        System.out.println("the hp of the player is " + usr.getHealth());
         System.out.println(introTitle);
         System.out.printf("%-20s %20s %n", playerTitle, playerFinalBoss);
         System.out.printf("%-20s %20s %n", playerName, bossTitle);
@@ -155,12 +176,14 @@ public class FinalBossFight implements iMinigame {
         System.out.println("=".repeat(22)  + "=".repeat(22));
     }
 
-    public static void main(String[] args) {
-        ServiceMember park = new ServiceMember("Park", "Dog Tags", "fort sill");
-        park.setPostName("Fort Bliss");
-        // FinalBoss ssg = new FinalBoss("SFC", "Daniels", 1,100);
-        FinalBossFight fightBoss = new FinalBossFight();
-        fightBoss.play(park);
-    }
+//    public static void main(String[] args) {
+//        ServiceMember park = new ServiceMember("Park", "Dog Tags", "fort sill");
+//        park.setPostName("Fort Bliss");
+//        // FinalBoss ssg = new FinalBoss("SFC", "Daniels", 1,100);
+//        park.storeItemInVentory(new Item("blackberry_muffins", "dfac", "consumable"));
+//        park.storeItemInVentory(new Item("amen", "your hunygry sdf", "weapon"));
+//        FinalBossFight fightBoss = new FinalBossFight();
+//        fightBoss.play(park);
+//    }
 }
 

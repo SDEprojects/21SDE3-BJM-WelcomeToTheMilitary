@@ -31,13 +31,13 @@
   "Fort Bliss": {
     "Movement": {
       "verb": ["go", "move", "drive", "walk", "run", "march"],
-      "noun": ["starbucks", "mall", "housing", "pizza", "theater", "gym"],
-      "example": "Example: go dfac | move dfac"
+      "noun": ["starbucks", "mall", "pizza", "theater", "gym"],
+      "example": "Example: go starbucks | move mall"
     },
 
     "Interact with soldier": {
       "verb": ["talk", "approach", "interact", "communicate"],
-      "noun": ["gary", "steve", "frank", "jose", "roger", "chip", "dylan",
+      "noun": ["jose", "roger", "chip", "dylan",
         "ryan", "danny", "cody", "justin", "lambert", "andy", "stephen"],
       "example": "Example: talk cody | approach roger"
     },

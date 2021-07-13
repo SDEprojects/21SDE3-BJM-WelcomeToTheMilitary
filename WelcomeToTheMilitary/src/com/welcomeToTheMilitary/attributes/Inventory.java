@@ -11,7 +11,14 @@ public class Inventory {
         return inventory.isEmpty();
     }
 
+    public Map<String, Item> getInventory() {
+        return this.inventory;
+    }
+
     public void addItem(Item item){
+        if (item == null) {
+            return;
+        }
         if(!inventory.containsKey(item.getName())){
             inventory.put(item.getName(), item);
 //            System.out.println("From Inventory class: " + this.inventory);
@@ -32,9 +39,9 @@ public class Inventory {
             System.out.println("Your inventory is empty");
             return;
         }
+        System.out.println("=".repeat(20));
+        System.out.println("My Inventory");
         for (String eachKey : inventory.keySet()) {
-            System.out.println("=".repeat(20));
-            System.out.println("My Inventory");
             System.out.println(inventory.get(eachKey));
         }
     }

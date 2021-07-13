@@ -20,7 +20,7 @@ public class SeniorEnlist extends Character {
         return this.attribute;}
 
     public String getName(){
-        return this.name;
+        return super.getName();
     }
 
     @Override

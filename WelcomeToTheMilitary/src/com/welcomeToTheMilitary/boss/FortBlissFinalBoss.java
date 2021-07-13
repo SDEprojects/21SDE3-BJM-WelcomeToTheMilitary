@@ -9,8 +9,8 @@ public class FortBlissFinalBoss extends Boss {
 
     @Override
     public int attack(){
-        int max = 10;
-        int min = 5;
+        int max = 70;
+        int min = 30;
         Random damage = new Random();
         int x = damage.nextInt((max - min) +1) +min;
         System.out.println(x);

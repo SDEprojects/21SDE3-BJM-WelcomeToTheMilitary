@@ -9,7 +9,7 @@ public class MinigameFactory {
             return new RPC();
         } else if (gameType.equals("memorization game")) {
             return new DDRKeyboard();
-        } else if (gameType.equals("fort sill game")) {
+        } else if (gameType.equals("boss game")) {
             return new FinalBossFight();
         }
         return null;

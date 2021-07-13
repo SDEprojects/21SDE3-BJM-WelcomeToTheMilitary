@@ -6,6 +6,7 @@ import com.welcomeToTheMilitary.attributes.RetrieveSpecialHelper;
 import com.welcomeToTheMilitary.json_pack.JsonReader;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class ServiceMember extends Character {
     private String postName = "Fort Sill";
@@ -75,7 +76,7 @@ public class ServiceMember extends Character {
     public void setRank(String _rank) {
         // each level up health += 2
         // each level up strength += 2
-        this.setHealth( this.getHealth() + 2, true);
+        this.setHealth(  2, true);
         this.setStrength( this.getStrength()  + 2);
         this.rank = _rank;
     }
@@ -108,6 +109,11 @@ public class ServiceMember extends Character {
         this.postName = postName;
     }
 
+
+    public Map<String, Item> getInventory() {
+        return this.inventory.getInventory();
+    }
+
     // method to obtain item and store it in the inventory
     public void storeItemInVentory(Item itemName) {
         // System.out.println("Adding up the item: " + itemName);
@@ -126,35 +132,35 @@ public class ServiceMember extends Character {
         if (isItemExist) {
             Item usedItem = inventory.getItem(_itemName);
             System.out.println(usedItem);
-            useItemHelper(usedItem.getType());
+            // useItemHelper(usedItem.getType());
             System.out.println("You used " + _itemName);
             return usedItem;
         }
         return null;
     }
 
-    private void useItemHelper(String type) {
-        if (type == null) {
-            System.out.println("The item cannot be used (type does not exist)");
-            return;
-        }
-        switch (type.toLowerCase()) {
-            case "consumable":
-                System.out.println("consumable type heal hp");
-                this.setHealth(this.getHealth() + 5, true);
-                break;
-            case "effective":
-                System.out.println("effective type");
-                break;
-            case "weapon":
-                System.out.println("Weapon type attack damage increased!");
-                this.setStrength(this.getStrength() + 2);
-                break;
-            default:
-                System.out.println("The current item type is not supported");
-                break;
-        }
-    }
+//    private void useItemHelper(String type) {
+//        if (type == null) {
+//            System.out.println("The item cannot be used (type does not exist)");
+//            return;
+//        }
+//        switch (type.toLowerCase()) {
+//            case "consumable":
+//                System.out.println("consumable type heal hp");
+//                this.setHealth(this.getHealth() + 5, true);
+//                break;
+//            case "effective":
+//                System.out.println("effective type");
+//                break;
+//            case "weapon":
+//                System.out.println("Weapon type attack damage increased!");
+//                this.setStrength(this.getStrength() + 2);
+//                break;
+//            default:
+//                System.out.println("The current item type is not supported");
+//                break;
+//        }
+//    }
 
     public int attack() {
 //        System.out.println("Attack: " + this.getStrength());

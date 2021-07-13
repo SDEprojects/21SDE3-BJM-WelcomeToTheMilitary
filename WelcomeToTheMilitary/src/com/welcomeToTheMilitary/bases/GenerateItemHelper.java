@@ -17,14 +17,13 @@ public class GenerateItemHelper {
         itemFromJSON = new HashMap<>();
     }
     // read json file and create item
-    public JSONObject getItemsFromJSONFile() {
+    public JSONObject getItemsFromJSONFile(String postType) {
         JSONParser parser = new JSONParser();
         InputStream inputStreamForItemJSON =
                 GenerateItemHelper.class.getResourceAsStream("/item.json");
         try(BufferedReader reader = new BufferedReader(new InputStreamReader(inputStreamForItemJSON))) {
             JSONObject itemObj = (JSONObject) parser.parse(reader);
-            JSONObject postItem = (JSONObject) itemObj.get("Fort Sill");
-            // TODO: Need Fort Bliss as well
+            JSONObject postItem = (JSONObject) itemObj.get(postType);
             return postItem;
         } catch(NullPointerException nullPointerException) {
             nullPointerException.printStackTrace();

@@ -43,20 +43,20 @@ public class TextParser {
 
     // for boss stage
     // utilize the idea of method overloading to avoid logic changes
-    public ParseResponse receiveAction(String userActionInput, String post, String typeOfBossStage) {
-        // trim the user action input
-        boolean isValidActionInput = trimUserInput(userActionInput);
-        boolean isOperableCommend = testOperateUserAction(isValidActionInput, post, typeOfBossStage);
-        if (isOperableCommend) {
-            // return verbAndNoun;
-            return new ParseResponse(getNoun(), getVerb());
-        }
-        // placeholder
-        // reset the noun and verb
-        this.verb = "";
-        this.noun = "";
-        return new ParseResponse(getNoun(), getVerb());
-    }
+//    public ParseResponse receiveAction(String userActionInput, String post, String typeOfBossStage) {
+//        // trim the user action input
+//        boolean isValidActionInput = trimUserInput(userActionInput);
+//        boolean isOperableCommend = testOperateUserAction(isValidActionInput, post, typeOfBossStage);
+//        if (isOperableCommend) {
+//            // return verbAndNoun;
+//            return new ParseResponse(getNoun(), getVerb());
+//        }
+//        // placeholder
+//        // reset the noun and verb
+//        this.verb = "";
+//        this.noun = "";
+//        return new ParseResponse(getNoun(), getVerb());
+//    }
 
     // helper method to validate user input
     // delete word "The" or "the"
@@ -117,26 +117,26 @@ public class TextParser {
     }
 
     // user action for the boss stage
-    private boolean testOperateUserAction(boolean isValidActionInput, String postType, String typeOfBossStage) {
-        if (!isValidActionInput) {
-            System.out.println("Formatting Error");
-            return false;
-        }
-        boolean isOperable = false;
-        String verbInput = this.verb;
-        String nounInput = this.noun;
-        if (postType.equals("Fort Sill")) {
-            isOperable = parserHelper.getBossInstructionHelper(verbInput, nounInput, typeOfBossStage);
-        } else if (postType.equals("Fort Bliss")) {
-            isOperable = parserHelper.getBossInstructionHelper(verbInput, nounInput, typeOfBossStage);
-        }
-        if (isOperable) {
-            this.verb = parserHelper.getVerbFromHelper();
-            this.noun = parserHelper.getNounFromHelper();
-            return isOperable;
-        }
-        this.verb = parserHelper.getVerbFromHelper();
-        this.noun = parserHelper.getNounFromHelper();
-        return false;
-    }
+//    private boolean testOperateUserAction(boolean isValidActionInput, String postType, String typeOfBossStage) {
+//        if (!isValidActionInput) {
+//            System.out.println("Formatting Error");
+//            return false;
+//        }
+//        boolean isOperable = false;
+//        String verbInput = this.verb;
+//        String nounInput = this.noun;
+//        if (postType.equals("Fort Sill")) {
+//            isOperable = parserHelper.getBossInstructionHelper(verbInput, nounInput, typeOfBossStage);
+//        } else if (postType.equals("Fort Bliss")) {
+//            isOperable = parserHelper.getBossInstructionHelper(verbInput, nounInput, typeOfBossStage);
+//        }
+//        if (isOperable) {
+//            this.verb = parserHelper.getVerbFromHelper();
+//            this.noun = parserHelper.getNounFromHelper();
+//            return isOperable;
+//        }
+//        this.verb = parserHelper.getVerbFromHelper();
+//        this.noun = parserHelper.getNounFromHelper();
+//        return false;
+//    }
 }

@@ -33,11 +33,11 @@
   "Fort Bliss": {
     "go": {
       "synonym": ["move", "drive", "walk", "run"],
-      "noun": ["starbucks", "mall", "housing", "pizza", "theater", "gym"]
+      "noun": ["starbucks", "mall", "pizza", "theater", "gym"]
     },
     "talk": {
       "synonym": ["approach", "interact", "communicate"],
-      "noun": ["gary", "steve", "frank", "jose", "roger", "chip", "dylan",
+      "noun": ["jose", "roger", "chip", "dylan",
         "ryan", "danny", "cody", "justin", "lambert", "andy", "stephen"]
     },
     "show": {

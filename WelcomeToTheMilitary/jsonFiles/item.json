@@ -23,6 +23,18 @@
       "location": "barracks",
       "description": "No one will ever know, eat up heal your hp by 7",
       "type": "consumable"
+    },
+    "5": {
+      "name": "blueberry_muffins",
+      "location": "px",
+      "description": "No one will ever know, eat up heal your hp by 7",
+      "type": "consumable"
+    },
+    "6": {
+      "name": "hidden_protein_bar",
+      "location": "market",
+      "description": "No one will ever know, eat up heal your hp by 7",
+      "type": "consumable"
     }
   },
   "Fort Bliss": {
@@ -33,7 +45,7 @@
       "type": "consumable"
     },
     "2": {
-      "name": "missionary's_voice",
+      "name": "amen",
       "location": "starbucks",
       "description": "Holy! Holy! attack boss with holy power attack dmg + 2",
       "type": "weapon"
@@ -45,8 +57,20 @@
       "type": "weapon"
     },
     "4": {
-      "name": "hidden_protein_shake",
+      "name": "protein_shake",
       "location": "restaurant",
+      "description": "No one will ever know, eat up heal your hp by 7",
+      "type": "consumable"
+    },
+    "5": {
+      "name": "protein_shake",
+      "location": "mall",
+      "description": "No one will ever know, eat up heal your hp by 7",
+      "type": "consumable"
+    },
+    "6": {
+      "name": "protein_shake",
+      "location": "pizza",
       "description": "No one will ever know, eat up heal your hp by 7",
       "type": "consumable"
     }

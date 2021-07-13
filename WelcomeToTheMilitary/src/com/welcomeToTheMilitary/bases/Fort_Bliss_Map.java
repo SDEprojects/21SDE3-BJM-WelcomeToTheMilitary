@@ -27,15 +27,26 @@ public class Fort_Bliss_Map {
     public Fort_Bliss_Map(String _name, String description){
         this.name = _name;
         this.description = description;
+        generateItemHelper = new GenerateItemHelper();
         setUpFacility();
-        setUpItems();
-        // testSetItems();
+        // setUpItems();
+        testSetItems();
     }
+
+    // method to grab name of the post
+    public String getName() {
+        return name;
+    }
+
+    public Item showItemInTheFacilityTest(String facility) {
+        return testItemBasedOnFacility.get(facility);
+    }
+
     public void testSetItems() {
         this.testItemBasedOnFacility = new HashMap<>();
         try {
             // items in hashmap
-            JSONObject itemsFromJSON  = generateItemHelper.getItemsFromJSONFile();
+            JSONObject itemsFromJSON  = generateItemHelper.getItemsFromJSONFile(this.getName());
             // System.out.println(itemsFromJSON);
             String[] keysArr = Arrays.copyOf(itemsFromJSON.keySet().toArray(), itemsFromJSON.keySet().toArray().length, String[].class);
             // loop through
@@ -48,7 +59,7 @@ public class Fort_Bliss_Map {
                 testItemBasedOnFacility.put(itemLocation, new Item(itemName, description, itemType));
             }
         } catch (NullPointerException e) {
-            System.out.println("Item is null: Fort Sill Map.class");
+            System.out.println("Item is null: Fort Bliss Map.class");
             e.printStackTrace();
         }
     }
@@ -123,7 +134,7 @@ public class Fort_Bliss_Map {
     // put all created soldiers into facility
     private void setUpFacility() {
         this.buildings = new HashMap<>();
-        this.buildings.put("housing", prepareSoldierInHousing());
+        // this.buildings.put("housing", prepareSoldierInHousing());
         this.buildings.put("starbucks", prepareSoldierInStarbucks());
         this.buildings.put("theater", prepareSoldierInTheater());
         this.buildings.put("gym", prepareSoldierInGym());
@@ -132,22 +143,22 @@ public class Fort_Bliss_Map {
     }
 
     // helper method to set up the place with correct soldiers for housing
-    private ArrayList<SeniorEnlist> prepareSoldierInHousing() {
-        ArrayList<SeniorEnlist> housingSoldier = new ArrayList<>();
-        SeniorEnlist E7 = new SeniorEnlist("Gary", "12 deployments in 10 years. Loves to shoot guns", "E-7");
-        SeniorEnlist E8 = new SeniorEnlist("Steve", "Senior Jump Master. GWOT Traplord with amazing humor. 11/10 can you make you laugh", "E-8");
-        SeniorEnlist E9 = new SeniorEnlist("Frank", "Rangers Lead the Way. Have you gone to Ranger School yet?", "E-9");
-        housingSoldier.add(E7);
-        housingSoldier.add(E8);
-        housingSoldier.add(E9);
-        return housingSoldier;
-    }
+//    private ArrayList<SeniorEnlist> prepareSoldierInHousing() {
+//        ArrayList<SeniorEnlist> housingSoldier = new ArrayList<>();
+//        SeniorEnlist E7 = new SeniorEnlist("gary", "12 deployments in 10 years. Loves to shoot guns", "E-7");
+//        SeniorEnlist E8 = new SeniorEnlist("steve", "Senior Jump Master. GWOT Traplord with amazing humor. 11/10 can you make you laugh", "E-8");
+//        SeniorEnlist E9 = new SeniorEnlist("thapa", "Rangers Lead the Way. Have you gone to Ranger School yet?", "E-9");
+//        housingSoldier.add(E7);
+//        housingSoldier.add(E8);
+//        housingSoldier.add(E9);
+//        return housingSoldier;
+//    }
 
 
     // helper method to set up the place with correct soldiers for Starbucks
     private ArrayList<SeniorEnlist> prepareSoldierInStarbucks() {
         ArrayList<SeniorEnlist> starbucksSoldier = new ArrayList<>();
-        SeniorEnlist E5 = new SeniorEnlist("Jose", "Hasn't deployed because he has medical reason. Nobody knows what is wrong with him", "E-5");
+        SeniorEnlist E5 = new SeniorEnlist("Jose", "Hasn't deployed because he has medical reason. Nobody knows what is wrong with him", "E-9");
         SeniorEnlist E6 = new SeniorEnlist("Roger", "Deployed for one month and was sent back for a injury sustained at the gym", "E-6");
         SeniorEnlist E7 = new SeniorEnlist("Chip", "Zero deployments and complains on how weak Warriors are now days", "E-7");
         starbucksSoldier.add(E5);

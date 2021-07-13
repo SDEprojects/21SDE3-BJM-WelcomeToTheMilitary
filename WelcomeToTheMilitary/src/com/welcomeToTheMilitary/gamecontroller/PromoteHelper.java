@@ -29,7 +29,7 @@ public class PromoteHelper {
 
     public static boolean isRankWorthItForBliss(ServiceMember player, SeniorEnlist soldier) {
         if (player.getRank().equals("e-6") || player.getRank().equals("E-6")) {
-            return false;
+            return true;
         }
         String playerSplitRank[] = player.getRank().split("-");
         String soldierSplitRank[] = soldier.getRank().split("-");

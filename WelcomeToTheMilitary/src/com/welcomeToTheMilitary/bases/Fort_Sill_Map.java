@@ -43,7 +43,7 @@ public class Fort_Sill_Map {
         this.testItemBasedOnFacility = new HashMap<>();
         try {
             // items in hashmap
-            JSONObject itemsFromJSON  = generateItemHelper.getItemsFromJSONFile();
+            JSONObject itemsFromJSON  = generateItemHelper.getItemsFromJSONFile(this.getName());
             // System.out.println(itemsFromJSON);
             // TODO: iterate and add into the hashmap
             String[] keysArr = Arrays.copyOf(itemsFromJSON.keySet().toArray(), itemsFromJSON.keySet().toArray().length, String[].class);
@@ -68,16 +68,6 @@ public class Fort_Sill_Map {
         return itemBasedOnFacility.get(facilityName);
     }
 
-    // method to prepare items associated to the facility
-    // only being used in the fort sill map class
-//    private void setUpItems() {
-//        this.itemBasedOnFacility = new HashMap<>();
-//        itemBasedOnFacility.put("dfac", new Item("Dehydrate Eggs").getName());
-//        itemBasedOnFacility.put("px", new Item("Mechanix gloves").getName());
-//        itemBasedOnFacility.put("church", new Item("chaplain's voice").getName());
-//        itemBasedOnFacility.put("gym", new Item("PT Belt").getName());
-//        itemBasedOnFacility.put("barracks", new Item("Dentist Appointment Slip").getName());
-//    }
 
     // method to grab name of the post
     public String getName() {

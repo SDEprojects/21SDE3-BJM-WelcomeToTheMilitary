@@ -2,12 +2,20 @@ package com.welcomeToTheMilitary.boss;
 
 import java.util.Random;
 
+
+
 public class FortBlissFinalBoss {
+
+    private String rank;
+    private String name;
+    private int strength;
+    private int vitality;
+
     public FortBlissFinalBoss(String rank, String name, int _strength, int _vitality) {
 
     }
 
-    @Override
+
     public int attack(){
         int max = 70;
         int min = 30;
@@ -20,7 +28,38 @@ public class FortBlissFinalBoss {
         return att;
     }
 
-    @Override
+    public String getRank() {
+        return rank;
+    }
+
+    public void setRank(String rank) {
+        this.rank = rank;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+    public int getVitality() {
+        return vitality;
+    }
+
+    public void setVitality(int vitality) {
+        this.vitality = vitality;
+    }
+
     public String toString() {
         return "FortBliss Final Boss: {  Rank: " + getRank() +
                 ", Name: " + getName() +

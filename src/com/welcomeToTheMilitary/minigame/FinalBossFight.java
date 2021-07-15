@@ -44,10 +44,10 @@ public class FinalBossFight implements iMinigame {
     public boolean play(ServiceMember usr) {
         // testing
         if (usr.getPostName().equals("Fort Sill")) {
-            tempBoss = new FortSillFinalBoss("SFC", "Daniels", 25,90);
+            tempBoss = new Boss("SFC", "Daniels", 25,90, 5, 2);
         }
         if (usr.getPostName().equals("Fort Bliss")) {
-            tempBoss = new FortBlissFinalBoss("CSM", "Fort Bliss Command Sergeant Major", 50,150);
+            tempBoss = new Boss("CSM", "Fort Bliss Command Sergeant Major", 50,15, 70, 30);
         }
         // end of testing
         String userCommand = "";

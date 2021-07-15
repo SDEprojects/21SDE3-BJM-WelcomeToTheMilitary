@@ -2,31 +2,66 @@ package com.welcomeToTheMilitary.boss;
 
 import java.util.Random;
 
-public class FortSillFinalBoss extends Boss {
+public class FortSillFinalBoss{
+
+    private String rank;
+    private String name;
+    private int strength;
+    private int vitality;
 
     public FortSillFinalBoss(String rank, String name, int _strength, int _vitality ) {
-        super(rank, name, _strength, _vitality);
+
     }
 
-    @Override
     public int attack(){
         int max = 5;
         int min = 2;
         Random damage = new Random();
         int x = damage.nextInt((max - min) +1) +min;
         System.out.println(x);
-        int att = super.getStrength()/x;
+        int att = getStrength()/x;
         Math.round(att);
-        System.out.println(super.getRank() +" "+ super.getName() + " attacked you for " + att + " points of damage");
+        System.out.println(getRank() +" "+ getName() + " attacked you for " + att + " points of damage");
         return att;
     }
 
-    @Override
+    public String getRank() {
+        return rank;
+    }
+
+    public void setRank(String rank) {
+        this.rank = rank;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+    public int getVitality() {
+        return vitality;
+    }
+
+    public void setVitality(int vitality) {
+        this.vitality = vitality;
+    }
+
     public String toString() {
-        return "FortSill Final Boss: {  Rank: " + super.getRank() +
-                ", Name: " + super.getName() +
-                ", Strength: " + super.getStrength() +
-                ", Vitality: " + super.getVitality() +
+        return "FortSill Final Boss: {  Rank: " + getRank() +
+                ", Name: " + getName() +
+                ", Strength: " + getStrength() +
+                ", Vitality: " + getVitality() +
                 '}';
     }
 

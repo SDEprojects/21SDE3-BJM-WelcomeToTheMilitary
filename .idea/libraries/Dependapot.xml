@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="Dependapot">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/Dependapot.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

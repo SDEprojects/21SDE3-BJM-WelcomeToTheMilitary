@@ -2,7 +2,7 @@ package com.welcomeToTheMilitary.bases;
 
 
 import com.welcomeToTheMilitary.attributes.Item;
-import com.welcomeToTheMilitary.character.SeniorEnlist;
+import com.welcomeToTheMilitary.character.Enlisted;
 import com.welcomeToTheMilitary.textparser.ParseResponse;
 import org.json.simple.JSONObject;
 
@@ -12,12 +12,12 @@ import java.util.HashMap;
 import java.util.Random;
 
 public class Fort_Bliss_Map {
-    private Random random_WO_Generator = new Random();
+
     public String name = "Fort Bliss";
     private final String description;
 
-    private HashMap<String, ArrayList<SeniorEnlist>> buildings = null;
-    private String currentDependaLocation = null;
+    private HashMap<String, ArrayList<Enlisted>> buildings = null;
+
     private HashMap<String, String> itemBasedOnFacility = null;
 
     private HashMap<String, Item> testItemBasedOnFacility = null;
@@ -83,9 +83,9 @@ public class Fort_Bliss_Map {
     }
 
     // going to get all the solider based on the building that is passed by parameter
-    public ArrayList<SeniorEnlist> getSolider(String building) {
-        HashMap<String, ArrayList<SeniorEnlist>> data = this.buildings;
-        ArrayList<SeniorEnlist> enlists = data.get(building);
+    public ArrayList<Enlisted> getSolider(String building) {
+        HashMap<String, ArrayList<Enlisted>> data = this.buildings;
+        ArrayList<Enlisted> enlists = data.get(building);
         return enlists;
     }
     // get buildings for
@@ -103,20 +103,19 @@ public class Fort_Bliss_Map {
             return;
         }
         // need a method to get the solider from building
-        ArrayList<SeniorEnlist> foundedSolider = getSolider(building);
+        ArrayList<Enlisted> foundedSolider = getSolider(building);
         System.out.println("You are entering the " + building);
         System.out.println("You find " + foundedSolider.size() + " soldier's from another company");
         System.out.println("You saw...");
-        for (SeniorEnlist eachSoldier : foundedSolider) {
+        for (Enlisted eachSoldier : foundedSolider) {
             System.out.println("Name: " + eachSoldier.getName());
             System.out.println("Attribute: " + eachSoldier.getAttribute());
         }
-        return;
     }
 
 
-    // get solider's name
-    public ArrayList<String> getSoldierNameBasedOnBuilding(String building) {
+    // get soldier's name
+    public ArrayList<String> getSoldierInBuilding(String building) {
         // check if the user is currently at the gate
         if (building.equals("gate")) {
             System.out.println("You are currently at the gate.\nNo one to talk to...T_T");
@@ -124,8 +123,8 @@ public class Fort_Bliss_Map {
         }
         String targetBuilding = building.trim();
         ArrayList<String> nameOfSoldiersInBuilding = new ArrayList<>();
-        ArrayList<SeniorEnlist> soldiersInBuilding = buildings.get(targetBuilding);
-        for (SeniorEnlist eachSoldier : soldiersInBuilding) {
+        ArrayList<Enlisted> soldiersInBuilding = buildings.get(targetBuilding);
+        for (Enlisted eachSoldier : soldiersInBuilding) {
             nameOfSoldiersInBuilding.add(eachSoldier.getName());
         }
         return nameOfSoldiersInBuilding;
@@ -156,11 +155,11 @@ public class Fort_Bliss_Map {
 
 
     // helper method to set up the place with correct soldiers for Starbucks
-    private ArrayList<SeniorEnlist> prepareSoldierInStarbucks() {
-        ArrayList<SeniorEnlist> starbucksSoldier = new ArrayList<>();
-        SeniorEnlist E5 = new SeniorEnlist("Jose", "Hasn't deployed because he has medical reason. Nobody knows what is wrong with him", "E-9");
-        SeniorEnlist E6 = new SeniorEnlist("Roger", "Deployed for one month and was sent back for a injury sustained at the gym", "E-6");
-        SeniorEnlist E7 = new SeniorEnlist("Chip", "Zero deployments and complains on how weak Warriors are now days", "E-7");
+    private ArrayList<Enlisted> prepareSoldierInStarbucks() {
+        ArrayList<Enlisted> starbucksSoldier = new ArrayList<>();
+        Enlisted E5 = new Enlisted("Jose", "Hasn't deployed because he has medical reason. Nobody knows what is wrong with him", "E-9");
+        Enlisted E6 = new Enlisted("Roger", "Deployed for one month and was sent back for a injury sustained at the gym", "E-6");
+        Enlisted E7 = new Enlisted("Chip", "Zero deployments and complains on how weak Warriors are now days", "E-7");
         starbucksSoldier.add(E5);
         starbucksSoldier.add(E6);
         starbucksSoldier.add(E7);
@@ -168,30 +167,30 @@ public class Fort_Bliss_Map {
     }
 
     // helper method to set up the place with correct soldiers for Theater
-    private ArrayList<SeniorEnlist> prepareSoldierInTheater() {
-        ArrayList<SeniorEnlist> theaterSoldier = new ArrayList<>();
-        SeniorEnlist E8 = new SeniorEnlist("Dylan", "Hides from all deployments and schools. Works strictly in Training Environments", "E-8");
-        SeniorEnlist E9 = new SeniorEnlist("Ryan", "Motivator and places soldiers first.", "E-9");
+    private ArrayList<Enlisted> prepareSoldierInTheater() {
+        ArrayList<Enlisted> theaterSoldier = new ArrayList<>();
+        Enlisted E8 = new Enlisted("Dylan", "Hides from all deployments and schools. Works strictly in Training Environments", "E-8");
+        Enlisted E9 = new Enlisted("Ryan", "Motivator and places soldiers first.", "E-9");
         theaterSoldier.add(E8);
         theaterSoldier.add(E9);
         return theaterSoldier;
     }
 
     // helper method to set up the place with correct soldiers for Gym
-    private ArrayList<SeniorEnlist> prepareSoldierInGym() {
-        ArrayList<SeniorEnlist> gymSoldier = new ArrayList<>();
-        SeniorEnlist E7 = new SeniorEnlist("Danny", "Does TikTok videos of his calisthenic workouts. Always works out in uniform.", "E-8");
+    private ArrayList<Enlisted> prepareSoldierInGym() {
+        ArrayList<Enlisted> gymSoldier = new ArrayList<>();
+        Enlisted E7 = new Enlisted("Danny", "Does TikTok videos of his calisthenic workouts. Always works out in uniform.", "E-8");
         gymSoldier.add(E7);
         return gymSoldier;
     }
 
     // helper method to set up the place with correct soldiers for Freedom Crossing (Mall)
-    private ArrayList<SeniorEnlist> prepareSoldierInMall() {
-        ArrayList<SeniorEnlist> mallSoldier = new ArrayList<>();
-        SeniorEnlist E5 = new SeniorEnlist("Cody", "Walks laps around the mall to lose weight but ends up taking a nap at Spencer's.", "E-5");
-        SeniorEnlist E7 = new SeniorEnlist("Justin", "Low Fade and works behind a brown fence", "E-7");
-        SeniorEnlist E8 = new SeniorEnlist("Lambert", "Believes that Warriors should be at work until 1900. Sends everybody to Airborne school.", "E-8");
-        SeniorEnlist E9 = new SeniorEnlist("Andy", "Runs Marathons and you can always see him helping Warriors get in shape", "E-9");
+    private ArrayList<Enlisted> prepareSoldierInMall() {
+        ArrayList<Enlisted> mallSoldier = new ArrayList<>();
+        Enlisted E5 = new Enlisted("Cody", "Walks laps around the mall to lose weight but ends up taking a nap at Spencer's.", "E-5");
+        Enlisted E7 = new Enlisted("Justin", "Low Fade and works behind a brown fence", "E-7");
+        Enlisted E8 = new Enlisted("Lambert", "Believes that Warriors should be at work until 1900. Sends everybody to Airborne school.", "E-8");
+        Enlisted E9 = new Enlisted("Andy", "Runs Marathons and you can always see him helping Warriors get in shape", "E-9");
         mallSoldier.add(E5);
         mallSoldier.add(E7);
         mallSoldier.add(E8);
@@ -200,9 +199,9 @@ public class Fort_Bliss_Map {
     }
 
     // helper method to set up the place with correct soldiers for Anthony's
-    private ArrayList<SeniorEnlist> prepareSoldierInAntPizza() {
-        ArrayList<SeniorEnlist> pizzaSoldier = new ArrayList<>();
-        SeniorEnlist E6 = new SeniorEnlist("Stephen", "Is always having a pizza party in the Admin office. Hasn't filed paperwork in three years. ", "E-6");
+    private ArrayList<Enlisted> prepareSoldierInAntPizza() {
+        ArrayList<Enlisted> pizzaSoldier = new ArrayList<>();
+        Enlisted E6 = new Enlisted("Stephen", "Is always having a pizza party in the Admin office. Hasn't filed paperwork in three years. ", "E-6");
         pizzaSoldier.add(E6);
         return pizzaSoldier;
     }
@@ -218,7 +217,7 @@ public class Fort_Bliss_Map {
         boolean is_Dependa_in_Mall;
         boolean is_Dependa_in_Anthonys;
         System.out.println(noun);
-        currentDependaLocation = "Fort Bliss";
+        //currentDependaLocation = "Fort Bliss";
 //        need to pull from text parser
         String _bldg_name;
 //        do{

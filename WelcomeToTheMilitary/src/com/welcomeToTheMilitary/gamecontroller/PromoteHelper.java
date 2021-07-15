@@ -1,7 +1,7 @@
 package com.welcomeToTheMilitary.gamecontroller;
 
 import com.welcomeToTheMilitary.character.Enlisted;
-import com.welcomeToTheMilitary.character.SeniorEnlist;
+
 import com.welcomeToTheMilitary.character.ServiceMember;
 
 public class PromoteHelper {
@@ -27,7 +27,7 @@ public class PromoteHelper {
         }
     }
 
-    public static boolean isRankWorthItForBliss(ServiceMember player, SeniorEnlist soldier) {
+    public static boolean isRankWorthItForBliss(ServiceMember player, Enlisted soldier) {
         if (player.getRank().equals("e-6") || player.getRank().equals("E-6")) {
             return true;
         }

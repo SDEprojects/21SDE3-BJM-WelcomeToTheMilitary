@@ -1,14 +1,14 @@
 package com.welcomeToTheMilitary.character;
 
-public class Enlisted extends Character{
+public class Enlisted{
     private String rank;
     private String name;
     private String attribute;
 // Constructor
     public Enlisted(String _name, String _attribute, String _rank)
     {
-        super(_name);
-        name = super.getName();
+
+        setName(_name);
         this.attribute = _attribute;
         this.rank = _rank;
     }
@@ -24,10 +24,13 @@ public class Enlisted extends Character{
         return this.name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 
     @Override
     public String toString() {
         return "Enlisted{" +
-                "name ='" + super.getName() +'\'' + "attribute = '" + attribute + '\'' ;
+                "name ='" + getName() +'\'' + "attribute = '" + attribute + '\'' ;
     }
 }

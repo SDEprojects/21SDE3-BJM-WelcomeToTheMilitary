@@ -2,9 +2,7 @@ package com.welcomeToTheMilitary.bases;
 
 import com.welcomeToTheMilitary.attributes.Item;
 import com.welcomeToTheMilitary.character.Enlisted;
-import com.welcomeToTheMilitary.character.WarrantOfficer;
 import com.welcomeToTheMilitary.textparser.ParseResponse;
-import com.welcomeToTheMilitary.textparser.TextParser;
 import org.json.simple.JSONObject;
 
 import java.util.*;
@@ -137,26 +135,22 @@ public class Fort_Sill_Map {
     }
 
 //    helper method to set random WO in facilities
-private ArrayList<WarrantOfficer> warrantsInBliss(){
-    ArrayList<WarrantOfficer> fortSill = new ArrayList<>();
-    WarrantOfficer WO1 = new WarrantOfficer("WO1", "Chet", "I just traded my 28% APR Camaro for a GeoMetro. Want to become a Warrant!!!");
-    WarrantOfficer WO2 = new WarrantOfficer("WO2", "David", "I don't wash my coffee cup. I also work with computers. Do you DND!!!");
-    WarrantOfficer WO3 = new WarrantOfficer("WO3", "Michael", "I just flew in from Alabama. Do you want to fly helicopters and planes?");
-    WarrantOfficer WO4 = new WarrantOfficer("WO4", "Phillip", "What year is it? Come with me if you want travel the world. Look at my green floppy hat!!!");
-    WarrantOfficer WO5 = new WarrantOfficer("WO5", "Garcia", "Who am I, you ask? I don't exist. I play golf during work hours. Come join the MI Branch where no one is held accountable!");
-    fortSill.add(WO1);
-    fortSill.add(WO2);
-    fortSill.add(WO3);
-    fortSill.add(WO4);
-    fortSill.add(WO5);
-    return fortSill;
-}
+//private ArrayList<WarrantOfficer> warrantsInBliss(){
+//    ArrayList<WarrantOfficer> fortSill = new ArrayList<>();
+//    WarrantOfficer WO1 = new WarrantOfficer("WO1", "Chet", "I just traded my 28% APR Camaro for a GeoMetro. Want to become a Warrant!!!");
+//    WarrantOfficer WO2 = new WarrantOfficer("WO2", "David", "I don't wash my coffee cup. I also work with computers. Do you DND!!!");
+//    WarrantOfficer WO3 = new WarrantOfficer("WO3", "Michael", "I just flew in from Alabama. Do you want to fly helicopters and planes?");
+//    WarrantOfficer WO4 = new WarrantOfficer("WO4", "Phillip", "What year is it? Come with me if you want travel the world. Look at my green floppy hat!!!");
+//    WarrantOfficer WO5 = new WarrantOfficer("WO5", "Garcia", "Who am I, you ask? I don't exist. I play golf during work hours. Come join the MI Branch where no one is held accountable!");
+//    fortSill.add(WO1);
+//    fortSill.add(WO2);
+//    fortSill.add(WO3);
+//    fortSill.add(WO4);
+//    fortSill.add(WO5);
+//    return fortSill;
+//}
 // pick a random WO
-    public WarrantOfficer anyWO(){
-        int index = random_WO_Generator.nextInt(warrantsInBliss().size());
-        System.out.println();
-        return warrantsInBliss().get(index);
-    }
+
 
     // helper method to set up the place with correct soldiers for the dfac
     private ArrayList<Enlisted> prepareSoldierInDfac() {
@@ -183,7 +177,7 @@ private ArrayList<WarrantOfficer> warrantsInBliss(){
         ArrayList<Enlisted> commSoldier = new ArrayList<>();
         Enlisted E6 = new Enlisted("Arturo", "Always having a cookout. Dances with products as he puts them into his cart.", "E-6");
         commSoldier.add(E6);
-        warrantsInBliss();
+        //warrantsInBliss();
         return commSoldier;
     }
 

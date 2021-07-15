@@ -1,6 +1,5 @@
 package com.welcomeToTheMilitary.minigame;
 
-import com.welcomeToTheMilitary.character.FinalBoss;
 import com.welcomeToTheMilitary.character.ServiceMember;
 
 import java.util.Scanner;
@@ -16,9 +15,11 @@ public class DDRKeyboard implements iMinigame {
         instruction();
     }
 
-    private boolean getIsWin() {
+    //@Override
+    public boolean getIsWin() {
         return isWin;
     }
+
     private void setIsWin(boolean _isWin) {
         this.isWin = _isWin;
     }
@@ -31,9 +32,13 @@ public class DDRKeyboard implements iMinigame {
 
     // get random
     private int getRandom(int MIN, int MAX) {
+
         int randomIndex = (int) (Math.random() * (MAX - MIN));
         return randomIndex;
+
     }
+
+
 
     private String getDDRInput() {
         Scanner scan = new Scanner(System.in);
@@ -64,8 +69,8 @@ public class DDRKeyboard implements iMinigame {
 
     @Override
     public boolean play() {
-        setIsWin(play(getRandom(MIN, MAX)));
-        return getIsWin();
+        setIsWin(play(getRandom(MIN, MAX))); //this is setting a true or false
+        return false;
     }
 
     @Override

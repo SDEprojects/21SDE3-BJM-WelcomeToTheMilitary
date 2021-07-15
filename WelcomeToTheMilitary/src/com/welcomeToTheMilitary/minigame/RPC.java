@@ -1,6 +1,5 @@
 package com.welcomeToTheMilitary.minigame;
 
-import com.welcomeToTheMilitary.character.FinalBoss;
 import com.welcomeToTheMilitary.character.ServiceMember;
 
 import java.util.Random;

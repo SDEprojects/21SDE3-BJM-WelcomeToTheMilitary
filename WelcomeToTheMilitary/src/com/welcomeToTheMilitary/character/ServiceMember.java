@@ -8,7 +8,8 @@ import com.welcomeToTheMilitary.json_pack.JsonReader;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ServiceMember extends Character {
+public class ServiceMember {
+    private String name;
     private String postName = "Fort Sill";
     public int healPotion;
     public int level;
@@ -26,7 +27,7 @@ public class ServiceMember extends Character {
 
     // ServiceMember Constructor that pulls from Character class
     public ServiceMember(String _name, String _special, String _location ) {
-        super(_name);
+        setName(_name);
         this.special = _special;
         this.location = _location;
         this.rank = "fuzzy"; // initial rank
@@ -55,7 +56,7 @@ public class ServiceMember extends Character {
     }
 
     public String getName(){
-        return super.getName();
+        return name;
     }
     public String getSpecial(){
         return special;
@@ -69,6 +70,10 @@ public class ServiceMember extends Character {
 
     public String getRank() {
         return this.rank;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     // this has to update service member's health and attack damage

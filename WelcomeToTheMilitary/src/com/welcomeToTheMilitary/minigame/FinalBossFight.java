@@ -3,7 +3,6 @@ package com.welcomeToTheMilitary.minigame;
 import com.welcomeToTheMilitary.attributes.Item;
 import com.welcomeToTheMilitary.boss.FortBlissFinalBoss;
 import com.welcomeToTheMilitary.boss.FortSillFinalBoss;
-import com.welcomeToTheMilitary.character.FinalBoss;
 import com.welcomeToTheMilitary.character.ServiceMember;
 
 // testing

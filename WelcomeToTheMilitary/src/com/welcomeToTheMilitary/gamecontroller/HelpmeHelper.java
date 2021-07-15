@@ -32,4 +32,16 @@ public class HelpmeHelper {
             e.printStackTrace();
         }
     }
+
+    //Maybe delete this code?  It only calls the printHelpRequestDataFromJSON method
+    public static void interactHelpRequest(String noun, ServiceMember usrDep) {
+        switch (noun) {
+//            case"exit":
+//            case "quit":
+//                System.out.println("Thanks for playing");
+//                System.exit(0);
+            default:
+                HelpmeHelper.printHelpRequestDataFromJSON(usrDep);
+        }
+    }
 }

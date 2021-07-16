@@ -39,15 +39,15 @@ public Enlisted(String _name, String _attribute, Rank _rank)
     //String to rank converter for JSON loading
     public void setRank(String rank) {
         switch (rank) {
-            case "Rank.E2" -> this.rank = Rank.E2;
-            case "Rank.E3" -> this.rank = Rank.E3;
-            case "Rank.E4" -> this.rank = Rank.E4;
-            case "Rank.E5" -> this.rank = Rank.E5;
-            case "Rank.E6" -> this.rank = Rank.E6;
-            case "Rank.E7" -> this.rank = Rank.E7;
-            case "Rank.E8" -> this.rank = Rank.E8;
-            case "Rank.E9" -> this.rank = Rank.E9;
-            default -> this.rank = Rank.E1;
+            case "Rank.E2" : this.rank = Rank.E2;
+            case "Rank.E3" : this.rank = Rank.E3;
+            case "Rank.E4" : this.rank = Rank.E4;
+            case "Rank.E5" : this.rank = Rank.E5;
+            case "Rank.E6" : this.rank = Rank.E6;
+            case "Rank.E7" : this.rank = Rank.E7;
+            case "Rank.E8" : this.rank = Rank.E8;
+            case "Rank.E9" : this.rank = Rank.E9;
+            default : this.rank = Rank.E1;
         }
     }
 

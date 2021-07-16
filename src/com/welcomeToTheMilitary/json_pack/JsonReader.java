@@ -1,6 +1,7 @@
 package com.welcomeToTheMilitary.json_pack;
 
 import com.welcomeToTheMilitary.attributes.Item;
+import com.welcomeToTheMilitary.character.Enlisted;
 import com.welcomeToTheMilitary.character.ServiceMember;
 
 import java.io.*;
@@ -20,7 +21,8 @@ public class JsonReader {
     //test main
     public static void main(String[] args) throws IOException, ParseException {
         JsonReader jR = new JsonReader();
-        jR.getLocations();
+        //jR.getLocations();
+        jR.getSoldiers();
     }
 
 
@@ -67,6 +69,37 @@ public class JsonReader {
 
         return locations;
 
+    }
+
+    public static HashMap<String, ArrayList<Enlisted>> getSoldiers() throws IOException, ParseException {
+        //Hashmap will hold all soldiers, key = base name, value = arraylist of Enlisted objects
+        HashMap<String, ArrayList<Enlisted>> soldiersList = new HashMap<>();
+
+        //Load our JSON object from file.
+        JSONParser jsonParser = new JSONParser();
+        String jsonItem = "jsonFiles/soldiers.json";
+        String itemContents = new String((Files.readAllBytes(Paths.get(jsonItem))));
+        JSONObject obj = (JSONObject) jsonParser.parse(itemContents);
+
+        //iterate though the base items for each base
+        obj.keySet().forEach(base ->{
+            //create a new K-V Pair for each base & Empty Array List
+            soldiersList.put(base.toString(),new ArrayList<Enlisted>());
+
+
+            JSONObject j = (JSONObject) obj.get(base);
+            //System.out.println(base);
+            //iterate through the individual soldiers for that particular base
+            j.keySet().forEach(baseSoldiers ->{
+                JSONObject soldier = (JSONObject) j.get(baseSoldiers);
+
+                //Creates a new Enlisted object from json objects and adds to SoldiersList based on base name
+                soldiersList.get(base).add(new Enlisted(soldier.get("name").toString(),soldier.get("attribute").toString(),soldier.get("rank").toString(),soldier.get("location").toString()));
+
+            });
+        });
+
+        return soldiersList;
     }
 
     public ServiceMember returnSolder(){

@@ -26,13 +26,11 @@ public class GameController {
     private static Scanner input = new Scanner(System.in);
     private static ArrayList<String> spellList = new ArrayList<>();
     private static Fort_Bliss_Map fortBliss = new Fort_Bliss_Map("Fort Bliss", "So close to Mexico");
-    //private Display fortSill = new Display(Fort_Sill_Map)
-    // minigame
-    //private static FinalBoss fortSillFinalBoss =new FinalBoss("SFC", "Daniels", 1, 1);
     private static MinigameFactory gameFactory = new MinigameFactory();
     private static iMinigame minigame = null;
+    Welcome sepWelcome = new Welcome();
 
-    public static void main(String[] args) throws IOException, ParseException {
+    public static void main(String[] args) throws IOException, ParseException, InterruptedException {
 
 
         ServiceMember usrSM = Welcome.intro(spellList);
@@ -50,14 +48,18 @@ public class GameController {
                 boolean isWon = minigame.play(usrSM);
                 // if player won
                 if (isWon) {
+                    Welcome.separatorTitle();
                     System.out.println("Your journey in Fort Sill is over soldier..");
                     usrSM.setPostName("Fort Bliss");
+                    Welcome.separatorTitle();
                     counter = 9000000;
 //                    break;
                 } else {
                     // lost in fort sill
+                    Welcome.separatorTitle();
                     System.out.println("You challenge your sergeant you lose\nKick out");
                     System.out.println("Game over");
+                    Welcome.separatorTitle();
                     System.exit(0);
                 }
             } else if (usrSM.getRank().equals("E-9") && (usrSM.getPostName().equals("Fort Bliss"))) {
@@ -67,20 +69,28 @@ public class GameController {
                 boolean isWon = minigame.play(usrSM);
                 // if player won
                 if (isWon) {
+                    Welcome.separatorTitle();
                     System.out.println("Your journey in Fort Bliss is over soldier..");
                     System.out.println("You completed the game\nYou won");
+                    Welcome.separatorTitle();
                     System.exit(0);
                 } else {
                     // lost in fort sill
+                    Welcome.separatorTitle();
                     System.out.println("You challenge your sergeant major you lose\nKick out");
                     System.out.println("Game over");
+                    Welcome.separatorTitle();
                     System.exit(0);
                 }
             }
             if (counter == 0) {
+                Welcome.separatorTitle();
                 System.out.println("Welcome to Fort Sill. Your Drill Instructor dropped you off at the gate.");
+                Welcome.separatorTitle();
             } else if (counter == 9000000) {
+                Welcome.separatorTitle();
                 System.out.println("You beat the boss. You are now PCS'ed to Fort Bliss.");
+                Welcome.separatorTitle();
             }
             System.out.println("Enter your action [format= verb + noun] for help type (help me)");
             userAction = input.nextLine();

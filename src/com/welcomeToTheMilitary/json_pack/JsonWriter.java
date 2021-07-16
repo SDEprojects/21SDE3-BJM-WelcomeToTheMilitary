@@ -78,15 +78,15 @@ class testMain {
             System.out.printf("building name" + name);
         }
 
-        Post fortBliss = new Post("Fort Drum", readServiceMember);
-        System.out.println("\nYou " + fortBliss.getName() );
+//        Post fortBliss = new Post("Fort Drum", readServiceMember);
+//        System.out.println("\nYou " + fortBliss.getName() );
+//
+//        HashMap<String,ArrayList<Enlisted>> blissHash = fortBliss.getBuildingsAndSoldiers();
+//
+//        blissHash.keySet().forEach( eachSpecial -> {
+//            System.out.println("\n" + eachSpecial.toString());
 
-        HashMap<String,ArrayList<Enlisted>> blissHash = fortBliss.getBuildingsAndSoldiers();
-
-        blissHash.keySet().forEach( eachSpecial -> {
-            System.out.println("\n" + eachSpecial.toString());
-
-    });
+//    });
     }
 
 

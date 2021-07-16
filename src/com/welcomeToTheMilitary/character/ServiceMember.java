@@ -4,7 +4,10 @@ import com.welcomeToTheMilitary.attributes.Inventory;
 import com.welcomeToTheMilitary.attributes.Item;
 import com.welcomeToTheMilitary.attributes.RetrieveSpecialHelper;
 import com.welcomeToTheMilitary.json_pack.JsonReader;
+import org.json.simple.parser.ParseException;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,9 +19,12 @@ public class ServiceMember {
     private String special = "Baking";
     private String location;
     private Inventory inventory = null;
-    private String rank = null;
+    private Rank rank = null;
     private int health = 0;
     private int strength = 0;
+
+    //arraylist of Items
+    private ArrayList<Item> items = null;
 
     // private Item items = null;
     private String pcsRequest = null;
@@ -26,17 +32,18 @@ public class ServiceMember {
     private static int NUMBER_OF_USE_SPECIAL_ON_EACH_FINAL_BOSS = 3;
 
     // ServiceMember Constructor that pulls from Character class
-    public ServiceMember(String _name, String _special, String _location ) {
+    public ServiceMember(String _name, String _special, String _location) throws IOException, ParseException {
         setName(_name);
         this.special = _special;
         this.location = _location;
-        this.rank = "fuzzy"; // initial rank
+        this.rank = Rank.E1; // initial rank
         inventory = new Inventory();
         // this should be update everytime the soldier get promotes
         this.health = 100;
         this.strength = 5;
         pcsRequest = "No request (Type: request pcs to request a pcs)";
         healPotion = 5;
+        items = JsonReader.getItems();
     }
 
     public int getHealPotion() {
@@ -68,7 +75,7 @@ public class ServiceMember {
         this.location = _location;
     }
 
-    public String getRank() {
+    public Rank getRank() {
         return this.rank;
     }
 
@@ -78,7 +85,7 @@ public class ServiceMember {
 
     // this has to update service member's health and attack damage
     // will be modify with game controller
-    public void setRank(String _rank) {
+    public void setRank(Rank _rank) {
         // each level up health += 2
         // each level up strength += 2
         this.setHealth(  2, true);
@@ -119,7 +126,7 @@ public class ServiceMember {
         return this.inventory.getInventory();
     }
 
-    // method to obtain item and store it in the inventory
+     //method to obtain item and store it in the inventory
     public void storeItemInVentory(Item itemName) {
         // System.out.println("Adding up the item: " + itemName);
         inventory.addItem(itemName);

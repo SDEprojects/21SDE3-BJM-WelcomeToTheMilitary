@@ -1,6 +1,7 @@
 package com.welcomeToTheMilitary.json_pack;
 
 import com.welcomeToTheMilitary.attributes.Item;
+import com.welcomeToTheMilitary.character.Enlisted;
 import com.welcomeToTheMilitary.character.ServiceMember;
 
 import java.io.*;
@@ -51,6 +52,13 @@ public class JsonReader {
             });
         });
         return myItems;
+    }
+
+    public static HashMap<String, Enlisted> getSoldiers() {
+        HashMap<String, Enlisted> soldiersList = new HashMap<>();
+
+
+        return soldiersList;
     }
 
     public ServiceMember returnSolder(){

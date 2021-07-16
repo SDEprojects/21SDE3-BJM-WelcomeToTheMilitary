@@ -11,6 +11,9 @@ public class Display {
     public static void showController(String noun, ServiceMember usrDep, Fort_Sill_Map fortSill, Fort_Bliss_Map fortBliss) {
         if (usrDep.getPostName().equals("Fort Sill")) {
             switch (noun) {
+                case "item":
+                    System.out.println("test");
+                    return;
                 case "map":
                 case "buildings":
                     System.out.println(fortSill.getBuildings());

@@ -15,7 +15,7 @@
     },
     "show": {
       "synonym": ["display", "view"],
-      "noun": ["map", "location", "buildings", "building", "status", "inventory", "pcs", "requests"]
+      "noun": ["map", "location", "buildings", "building", "status", "inventory", "pcs", "requests", "item"]
     },
     "help": {
       "synonym": ["advice"],

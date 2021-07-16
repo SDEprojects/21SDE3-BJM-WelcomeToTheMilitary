@@ -5,6 +5,7 @@ import com.welcomeToTheMilitary.attributes.Item;
 import com.welcomeToTheMilitary.attributes.RetrieveSpecialHelper;
 import com.welcomeToTheMilitary.json_pack.JsonReader;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,6 +20,9 @@ public class ServiceMember {
     private String rank = null;
     private int health = 0;
     private int strength = 0;
+
+    //arraylist of Items
+    private HashMap<String, ArrayList<Item>> items;
 
     // private Item items = null;
     private String pcsRequest = null;
@@ -120,10 +124,10 @@ public class ServiceMember {
     }
 
     // method to obtain item and store it in the inventory
-    public void storeItemInVentory(Item itemName) {
-        // System.out.println("Adding up the item: " + itemName);
-        inventory.addItem(itemName);
-    }
+//    public void storeItemInVentory(Item itemName) {
+//        // System.out.println("Adding up the item: " + itemName);
+//        inventory.addItem(itemName);
+//    }
 
     public void viewMyInventory() {
         inventory.viewInventory();

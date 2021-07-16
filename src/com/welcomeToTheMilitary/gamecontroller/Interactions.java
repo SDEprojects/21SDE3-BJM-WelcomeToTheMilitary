@@ -73,7 +73,8 @@ public class Interactions {
             if (isWin) {
                 if (usrSM.getPostName().equals("Fort Sill")){
                     // TODO: initialize item using JSON is done, work on store it in the inventory
-                    usrSM.storeItemInVentory(fortSill.showItemInTheFacilityTest(usrSM.getLocation()));
+                    //usrSM.storeItemInVentory(fortSill.showItemInTheFacilityTest(usrSM.getLocation()));
+                    //work on items
                     boolean isWorthRank = PromoteHelper.isRankWorthItFortSill(usrSM, soldier);
                     if (isWorthRank) {
                         usrSM.setRank(soldier.getRank());
@@ -131,7 +132,7 @@ public class Interactions {
             System.out.println("Win or lose: " + isWin);
             if (isWin) {
                 if (usrSM.getPostName().equals("Fort Bliss")){
-                    usrSM.storeItemInVentory(fortBliss.showItemInTheFacilityTest(usrSM.getLocation()));
+                    //usrSM.storeItemInVentory(fortBliss.showItemInTheFacilityTest(usrSM.getLocation()));
                     boolean isWorthRank = PromoteHelper.isRankWorthItForBliss(usrSM, senior);
                     if (isWorthRank) {
                         usrSM.setRank(senior.getRank());

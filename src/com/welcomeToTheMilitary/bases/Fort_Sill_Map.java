@@ -86,6 +86,7 @@ public class Fort_Sill_Map {
         for (Enlisted eachSoldier : foundedSolider) {
             System.out.println("Name: " + eachSoldier.getName());
             System.out.println("Attribute: " + eachSoldier.getAttribute());
+            System.out.println("Rank: " + eachSoldier.getRank());
         }
         return;
     }

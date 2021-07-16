@@ -3,6 +3,7 @@ package com.welcomeToTheMilitary.bases;
 
 import com.welcomeToTheMilitary.attributes.Item;
 import com.welcomeToTheMilitary.character.Enlisted;
+import com.welcomeToTheMilitary.character.Rank;
 import com.welcomeToTheMilitary.textparser.ParseResponse;
 import org.json.simple.JSONObject;
 
@@ -157,9 +158,9 @@ public class Fort_Bliss_Map {
     // helper method to set up the place with correct soldiers for Starbucks
     private ArrayList<Enlisted> prepareSoldierInStarbucks() {
         ArrayList<Enlisted> starbucksSoldier = new ArrayList<>();
-        Enlisted E5 = new Enlisted("Jose", "Hasn't deployed because he has medical reason. Nobody knows what is wrong with him", "E-9");
-        Enlisted E6 = new Enlisted("Roger", "Deployed for one month and was sent back for a injury sustained at the gym", "E-6");
-        Enlisted E7 = new Enlisted("Chip", "Zero deployments and complains on how weak Warriors are now days", "E-7");
+        Enlisted E5 = new Enlisted("Jose", "Hasn't deployed because he has medical reason. Nobody knows what is wrong with him", Rank.E9);
+        Enlisted E6 = new Enlisted("Roger", "Deployed for one month and was sent back for a injury sustained at the gym", Rank.E6);
+        Enlisted E7 = new Enlisted("Chip", "Zero deployments and complains on how weak Warriors are now days", Rank.E7);
         starbucksSoldier.add(E5);
         starbucksSoldier.add(E6);
         starbucksSoldier.add(E7);
@@ -169,8 +170,8 @@ public class Fort_Bliss_Map {
     // helper method to set up the place with correct soldiers for Theater
     private ArrayList<Enlisted> prepareSoldierInTheater() {
         ArrayList<Enlisted> theaterSoldier = new ArrayList<>();
-        Enlisted E8 = new Enlisted("Dylan", "Hides from all deployments and schools. Works strictly in Training Environments", "E-8");
-        Enlisted E9 = new Enlisted("Ryan", "Motivator and places soldiers first.", "E-9");
+        Enlisted E8 = new Enlisted("Dylan", "Hides from all deployments and schools. Works strictly in Training Environments", Rank.E8);
+        Enlisted E9 = new Enlisted("Ryan", "Motivator and places soldiers first.", Rank.E9);
         theaterSoldier.add(E8);
         theaterSoldier.add(E9);
         return theaterSoldier;
@@ -179,7 +180,7 @@ public class Fort_Bliss_Map {
     // helper method to set up the place with correct soldiers for Gym
     private ArrayList<Enlisted> prepareSoldierInGym() {
         ArrayList<Enlisted> gymSoldier = new ArrayList<>();
-        Enlisted E7 = new Enlisted("Danny", "Does TikTok videos of his calisthenic workouts. Always works out in uniform.", "E-8");
+        Enlisted E7 = new Enlisted("Danny", "Does TikTok videos of his calisthenic workouts. Always works out in uniform.", Rank.E8);
         gymSoldier.add(E7);
         return gymSoldier;
     }
@@ -187,10 +188,10 @@ public class Fort_Bliss_Map {
     // helper method to set up the place with correct soldiers for Freedom Crossing (Mall)
     private ArrayList<Enlisted> prepareSoldierInMall() {
         ArrayList<Enlisted> mallSoldier = new ArrayList<>();
-        Enlisted E5 = new Enlisted("Cody", "Walks laps around the mall to lose weight but ends up taking a nap at Spencer's.", "E-5");
-        Enlisted E7 = new Enlisted("Justin", "Low Fade and works behind a brown fence", "E-7");
-        Enlisted E8 = new Enlisted("Lambert", "Believes that Warriors should be at work until 1900. Sends everybody to Airborne school.", "E-8");
-        Enlisted E9 = new Enlisted("Andy", "Runs Marathons and you can always see him helping Warriors get in shape", "E-9");
+        Enlisted E5 = new Enlisted("Cody", "Walks laps around the mall to lose weight but ends up taking a nap at Spencer's.", Rank.E5);
+        Enlisted E7 = new Enlisted("Justin", "Low Fade and works behind a brown fence", Rank.E7);
+        Enlisted E8 = new Enlisted("Lambert", "Believes that Warriors should be at work until 1900. Sends everybody to Airborne school.", Rank.E8);
+        Enlisted E9 = new Enlisted("Andy", "Runs Marathons and you can always see him helping Warriors get in shape", Rank.E9);
         mallSoldier.add(E5);
         mallSoldier.add(E7);
         mallSoldier.add(E8);
@@ -201,7 +202,7 @@ public class Fort_Bliss_Map {
     // helper method to set up the place with correct soldiers for Anthony's
     private ArrayList<Enlisted> prepareSoldierInAntPizza() {
         ArrayList<Enlisted> pizzaSoldier = new ArrayList<>();
-        Enlisted E6 = new Enlisted("Stephen", "Is always having a pizza party in the Admin office. Hasn't filed paperwork in three years. ", "E-6");
+        Enlisted E6 = new Enlisted("Stephen", "Is always having a pizza party in the Admin office. Hasn't filed paperwork in three years. ", Rank.E6);
         pizzaSoldier.add(E6);
         return pizzaSoldier;
     }

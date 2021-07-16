@@ -3,6 +3,7 @@ package com.welcomeToTheMilitary.minigame;
 import com.welcomeToTheMilitary.attributes.Item;
 import com.welcomeToTheMilitary.boss.FortBlissFinalBoss;
 import com.welcomeToTheMilitary.boss.FortSillFinalBoss;
+import com.welcomeToTheMilitary.character.Rank;
 import com.welcomeToTheMilitary.character.ServiceMember;
 
 // testing
@@ -160,7 +161,7 @@ public class FinalBossFight implements iMinigame {
         String introTitle = "=".repeat(14) + " Status Report " + "=".repeat(14);
         String playerTitle = "Player";
         String playerFinalBoss = "Final Boss";
-        String playerRank = usr.getRank();
+        String playerRank = usr.getRank().getAbbreviation();
         String bossRank = boss.getRank();
         String playerName = usr.getName();
         String bossTitle = boss.getName();

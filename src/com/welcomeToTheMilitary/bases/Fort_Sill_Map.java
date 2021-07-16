@@ -2,6 +2,7 @@ package com.welcomeToTheMilitary.bases;
 
 import com.welcomeToTheMilitary.attributes.Item;
 import com.welcomeToTheMilitary.character.Enlisted;
+import com.welcomeToTheMilitary.character.Rank;
 import com.welcomeToTheMilitary.textparser.ParseResponse;
 import org.json.simple.JSONObject;
 
@@ -155,9 +156,9 @@ public class Fort_Sill_Map {
     // helper method to set up the place with correct soldiers for the dfac
     private ArrayList<Enlisted> prepareSoldierInDfac() {
         ArrayList<Enlisted> dfacSoldier = new ArrayList<>();
-        Enlisted E1 = new Enlisted("Brad", "High and Thight. Forever skinny", "E-1");
-        Enlisted E2 = new Enlisted("Jeremy", "Can dip a whole can of Skoal Wintergreen. Wears combat boots with his jeans", "E-2");
-        Enlisted E3 = new Enlisted("Rogers", "Has an associates in Political Science. Wears Nine Line Apparel. Says Hooah a lot", "E-3");
+        Enlisted E1 = new Enlisted("Brad", "High and Thight. Forever skinny", Rank.E1);
+        Enlisted E2 = new Enlisted("Jeremy", "Can dip a whole can of Skoal Wintergreen. Wears combat boots with his jeans", Rank.E2);
+        Enlisted E3 = new Enlisted("Rogers", "Has an associates in Political Science. Wears Nine Line Apparel. Says Hooah a lot", Rank.E3);
         dfacSoldier.add(E1);
         dfacSoldier.add(E2);
         dfacSoldier.add(E3);
@@ -166,7 +167,7 @@ public class Fort_Sill_Map {
     // helper method to set up the place with correct soldiers for the PX
     private ArrayList<Enlisted> prepareSoldierInPX(){
         ArrayList<Enlisted> pxSoldier = new ArrayList<>();
-        Enlisted E6 = new Enlisted("Shad", "Grumpy with gray hairs. Walks with a purpose.", "E-6");
+        Enlisted E6 = new Enlisted("Shad", "Grumpy with gray hairs. Walks with a purpose.", Rank.E6);
 //        WarrantOfficer WO1 = new WarrantOfficer()
         pxSoldier.add(E6);
 // add Warrant Officer
@@ -175,7 +176,7 @@ public class Fort_Sill_Map {
     // helper method to set up the place with correct soldiers for the Commissary
     private ArrayList<Enlisted> prepareSoldierInCommissary(){
         ArrayList<Enlisted> commSoldier = new ArrayList<>();
-        Enlisted E6 = new Enlisted("Arturo", "Always having a cookout. Dances with products as he puts them into his cart.", "E-6");
+        Enlisted E6 = new Enlisted("Arturo", "Always having a cookout. Dances with products as he puts them into his cart.", Rank.E6);
         commSoldier.add(E6);
         //warrantsInBliss();
         return commSoldier;
@@ -184,8 +185,8 @@ public class Fort_Sill_Map {
     // helper method to set up the place with correct soldiers for the church
     private ArrayList<Enlisted> prepareSoldierInChurch(){
         ArrayList<Enlisted> churchSoldier = new ArrayList<>();
-        Enlisted E4 = new Enlisted("Mason", "Hide n Seek Champion from his unit. Barracks Lawyer.", "E-4");
-        Enlisted E6 = new Enlisted("John", "Will pray with you and take you to choir practice.", "E-6");
+        Enlisted E4 = new Enlisted("Mason", "Hide n Seek Champion from his unit. Barracks Lawyer.", Rank.E4);
+        Enlisted E6 = new Enlisted("John", "Will pray with you and take you to choir practice.", Rank.E6);
         churchSoldier.add(E4);
         churchSoldier.add(E6);
         return churchSoldier;
@@ -194,7 +195,7 @@ public class Fort_Sill_Map {
     // helper method to set up the place with correct soldiers for the gym
     private ArrayList<Enlisted> prepareSoldierInGym(){
         ArrayList<Enlisted> gymSoldier = new ArrayList<>();
-        Enlisted E5 = new Enlisted("Brandon", "Do you even lift, Bro.", "E-5");
+        Enlisted E5 = new Enlisted("Brandon", "Do you even lift, Bro.", Rank.E5);
 // CID
         gymSoldier.add(E5);
         return gymSoldier;
@@ -202,10 +203,10 @@ public class Fort_Sill_Map {
     // helper method to set up the place with correct soldiers for the Barracks
     private ArrayList<Enlisted> prepareSoldierInBarracks(){
         ArrayList<Enlisted> barracksSoldier = new ArrayList<>();
-        Enlisted E1 = new Enlisted("Laginus", "Got a DUI last week and avoids extra duty.", "E-1");
-        Enlisted E2 = new Enlisted("Soko", "Pot Belly. Always dirty because he's a mechanic. Never fixes anything tho.", "E-2");
-        Enlisted E3 = new Enlisted("David", "Just passed Ranger School. Lives off coffee and MRE's. Listens to Classic Rock.", "E-3");
-        Enlisted E4 = new Enlisted("Stephen", "Has a low-fade. Always preparing for SFAS. Won't tell you what it means.", "E-4");
+        Enlisted E1 = new Enlisted("Laginus", "Got a DUI last week and avoids extra duty.", Rank.E1);
+        Enlisted E2 = new Enlisted("Soko", "Pot Belly. Always dirty because he's a mechanic. Never fixes anything tho.", Rank.E2);
+        Enlisted E3 = new Enlisted("David", "Just passed Ranger School. Lives off coffee and MRE's. Listens to Classic Rock.", Rank.E3);
+        Enlisted E4 = new Enlisted("Stephen", "Has a low-fade. Always preparing for SFAS. Won't tell you what it means.", Rank.E4);
         barracksSoldier.add(E1);
         barracksSoldier.add(E2);
         barracksSoldier.add(E3);

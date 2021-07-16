@@ -32,7 +32,7 @@ public class GameController {
     private static MinigameFactory gameFactory = new MinigameFactory();
     private static iMinigame minigame = null;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
 
         ServiceMember usrSM = Welcome.intro(spellList);

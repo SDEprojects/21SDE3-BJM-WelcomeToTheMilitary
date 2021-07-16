@@ -16,19 +16,49 @@ public class Welcome {
     static ArrayList<String> spellList = new ArrayList<>();
     static HashMap<String,String> specialHash = new HashMap<>();
     private static JsonReader jReader;
+    public static void separatorTitle(){
+        System.out.println("====================================");
+    }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         intro(spellList);
     }
 
-    public static ServiceMember intro(ArrayList<String> _spellList){
+    public static ServiceMember intro(ArrayList<String> _spellList) throws InterruptedException {
         jReader = new JsonReader();
         specialHash = jReader.getSpecials();
         spellList = _spellList;
         clearConsole();
+        //print out new lines to add some space
+        System.out.println("\n"+ "\n" + "\n");
+        //print out ASCII art of Salute
+        System.out.println("       .---.\n" +
+                "  ___ /_____\\\n" +
+                " /\\.-`( '.' )\n" +
+                "/ /    \\_-_/_\n" +
+                "\\ `-.-\"`'V'//-.\n" +
+                " `.__,   |// , \\\n" +
+                "     |Ll //Ll|\\ \\\n" +
+                "     |__//   | \\_\\\n" +
+                "    /---|[]==| / /\n" +
+                "    \\__/ |   \\/\\/\n" +
+                "    /_   | Ll_\\|\n" +
+                "     |`^\"\"\"^`|\n" +
+                "     |   |   |\n" +
+                "     |   |   |\n" +
+                "     |   |   |\n" +
+                "     |   |   |\n" +
+                "     L___l___J\n" +
+                "      |_ | _|\n" +
+                "     (___|___)\n" +
+                "      ^^^ ^^^");
+        System.out.println("\n");
         System.out.println("Welcome to the Military!");
+        Thread.sleep(3000);
+        System.out.println("====================================");
         System.out.println("Would you like to use the tutorial?");
+        System.out.println("====================================");
         Scanner tutorial = new Scanner(System.in);
         String tutorialAnswer = tutorial.nextLine().toLowerCase();
         while (!tutorialAnswer.equals("yes") && !tutorialAnswer.equals("no") && !tutorialAnswer.equals("y")
@@ -40,7 +70,9 @@ public class Welcome {
             clearConsole();
             questions();
         }
+        separatorTitle();
         System.out.println("Would you like see a description of available spells?");
+        separatorTitle();
         String spellAnswer = tutorial.nextLine().toLowerCase();
         while (!spellAnswer.equals("yes") && !spellAnswer.equals("no") && !spellAnswer.equals("y")
                 && !spellAnswer.equals("n")) {
@@ -52,15 +84,19 @@ public class Welcome {
         }
         System.out.println("Press anything to continue");
                 tutorial.nextLine();
+        separatorTitle();
         System.out.println("Now that you are familiar with the game lets go ahead and make your Warrior avatar.");
-
+        separatorTitle();
         String spellReturn = picSpells();
 
         System.out.println("Press anything to continue");
         tutorial.nextLine();
         clearConsole();
 
+
+        separatorTitle();
         System.out.println("Please type in your Warrior's name: ");
+        separatorTitle();
         String dependaName = tutorial.nextLine();
 
 

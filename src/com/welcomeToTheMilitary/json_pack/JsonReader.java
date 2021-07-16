@@ -1,9 +1,12 @@
 package com.welcomeToTheMilitary.json_pack;
 
+import com.welcomeToTheMilitary.attributes.Item;
 import com.welcomeToTheMilitary.character.ServiceMember;
 
 import java.io.*;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import org.json.simple.JSONArray;
@@ -13,10 +16,43 @@ import org.json.simple.parser.ParseException;
 
 public class JsonReader {
 
+
+    //test main
+    public static void main(String[] args) throws IOException, ParseException {
+        JsonReader jR = new JsonReader();
+        jR.getItems();
+    }
+
+
     private Reader reader = null;
     private InputStream inputFileOutputJSON = JsonReader.class.getResourceAsStream("/output.json");
     private InputStream inputFileSpecialJSON = JsonReader.class.getResourceAsStream("/specials.json");
     private InputStream inputFileLocationsJSON = JsonReader.class.getResourceAsStream("/locations.json");
+    private InputStream inputFileItemsJSON = JsonReader.class.getResourceAsStream("/item.json");
+
+
+    public static ArrayList<Item> getItems() throws IOException, ParseException {
+
+        ArrayList<Item> myItems = new ArrayList<>();
+        JSONParser jsonParser = new JSONParser();
+
+        String jsonItem = "jsonFiles/item.json";
+        String itemContents = new String((Files.readAllBytes(Paths.get(jsonItem))));
+        JSONObject obj = (JSONObject) jsonParser.parse(itemContents);
+
+        //iterate though the base items for each base
+        obj.keySet().forEach(base ->{
+            JSONObject j = (JSONObject) obj.get(base);
+
+            //iterate through the individual items for that particular base
+            j.keySet().forEach(baseItems ->{
+                JSONObject items = (JSONObject) j.get(baseItems);
+                myItems.add(new Item(items.get("name").toString()));
+            });
+        });
+        return myItems;
+    }
+
     public ServiceMember returnSolder(){
 
         //JSON parser object to parse read file
@@ -151,7 +187,7 @@ public class JsonReader {
         }
     }
 
-    private ServiceMember parseSoldierObject(JSONObject soldierObject){
+    private ServiceMember parseSoldierObject(JSONObject soldierObject) throws IOException, ParseException {
 //Get employee object within list
         JSONObject soldierobj = (JSONObject) soldierObject.get("soldier");
 
@@ -170,5 +206,4 @@ public class JsonReader {
 
         return new ServiceMember(name,special,location);
     }
-
 }

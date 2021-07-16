@@ -48,7 +48,7 @@ public class Interactions {
                     break;
                 }
             }
-        } else if (existingSeniorSolider != null){
+        } else if (existingSeniorSolider != null) {
             for (Enlisted eachSolider : existingSeniorSolider) {
                 if (eachSolider.getName().equals(targetSoldierName)) {
                     senior = eachSolider;
@@ -71,23 +71,20 @@ public class Interactions {
 
             System.out.println("Win or lose: " + isWin);
             if (isWin) {
-                if (usrSM.getPostName().equals("Fort Sill")){
+                if (usrSM.getPostName().equals("Fort Sill")) {
                     // TODO: initialize item using JSON is done, work on store it in the inventory
-                    //usrSM.storeItemInVentory(fortSill.showItemInTheFacilityTest(usrSM.getLocation()));
-                    //work on items
-                    boolean isWorthRank = PromoteHelper.isRankWorthItFortSill(usrSM, soldier);
+                    usrSM.storeItemInVentory(fortSill.showItemInTheFacilityTest(usrSM.getLocation()));
+                    boolean isWorthRank = PromoteHelper.checkRank(usrSM, soldier);
                     if (isWorthRank) {
-                        usrSM.setRank(soldier.getRank());
+                        PromoteHelper.promote(usrSM, senior);
                         System.out.println("Congrats you won the interaction.\n" +
-                                "Obtained item: " + fortSill.showItemInTheFacilityTest(usrSM.getLocation()) + "\n" +
-                                "Player's current rank: " + usrSM.getRank() + "\nObtained item can be used during final" +
-                                "combat during the Boss stage.");
+                                "Obtained item: " + fortSill.showItemInTheFacilityTest(usrSM.getLocation()));
                     }
-                } else if (usrSM.getPostName().equals("Fort Bliss")){
+
+                } else if (usrSM.getPostName().equals("Fort Bliss")) {
 //                    need to create items
                     System.out.println("No items available in Fort Bliss currently.");
-                }
-                else {
+                } else {
                     System.out.println("Congrats you won the interaction.");
                     System.out.println("You decided not to take their rank\n" + "It is lower than yours yuck!");
                 }
@@ -110,7 +107,7 @@ public class Interactions {
                         System.out.println("Please enter yes/y or no/n.");
                         healAnswer = healInput.nextLine().toLowerCase();
                     }
-                    if (healAnswer.equals("yes") || healAnswer.equals("y")){
+                    if (healAnswer.equals("yes") || healAnswer.equals("y")) {
                         usrSM.setHealth(15, true);
                         System.out.println("You used the healing potion and healed by 15");
                         usrSM.setHealPotion();
@@ -122,7 +119,7 @@ public class Interactions {
                 }
             }
             return;
-        } else if (senior != null){
+        } else if (senior != null) {
             System.out.println("Targeting:" + noun);
             System.out.println("You finally saw " + senior.getName() + "'s rank!\nIt is " + senior.getRank());
 
@@ -131,57 +128,46 @@ public class Interactions {
 
             System.out.println("Win or lose: " + isWin);
             if (isWin) {
-                if (usrSM.getPostName().equals("Fort Bliss")){
-                    //usrSM.storeItemInVentory(fortBliss.showItemInTheFacilityTest(usrSM.getLocation()));
-                    boolean isWorthRank = PromoteHelper.isRankWorthItForBliss(usrSM, senior);
+                if (usrSM.getPostName().equals("Fort Bliss")) {
+                    usrSM.storeItemInVentory(fortBliss.showItemInTheFacilityTest(usrSM.getLocation()));
+                    boolean isWorthRank = PromoteHelper.checkRank(usrSM, senior);
                     if (isWorthRank) {
-                        usrSM.setRank(senior.getRank());
-                        System.out.println("Congrats you won the interaction.\n" +
-                                "Obtained item: " + fortBliss.showItemInTheFacilityTest(usrSM.getLocation()) + "\n" +
-                                "Player's current rank: " + usrSM.getRank() + "\nObtained item can be used during final" +
-                                "combat during the Boss stage.");
-                    }
-                } else if (usrSM.getPostName().equals("Fort Bliss")){
-//                    need to create items
-                    System.out.println("No items available in Fort Bliss currently.");
-                }
-                else {
-                    System.out.println("Congrats you won the interaction.");
-                    System.out.println("You decided not to take their rank\n" + "It is lower than yours yuck!");
-                }
-            } else {
-                System.out.println("You have lost. You maintain your rank but lost your dignity!!!");
-                System.out.println("You lost 5 hp");
-                if (usrSM.getHealth() <= 0) {
-                    System.out.println("You got article 15..");
-                    System.out.println("Separation package...\nBye");
-                    System.exit(0);
-                }
-                usrSM.setHealth(5, false);
-                if (usrSM.getHealPotion() > 0) {
-                    System.out.println("Would you like to heal?");
-                    // yes or no
-                    Scanner healInput = new Scanner(System.in);
-                    String healAnswer = healInput.nextLine().toLowerCase();
-                    while (!healAnswer.equals("yes") && !healAnswer.equals("no") && !healAnswer.equals("y")
-                            && !healAnswer.equals("n")) {
-                        System.out.println("Please enter yes/y or no/n.");
-                        healAnswer = healInput.nextLine().toLowerCase();
-                    }
-                    if (healAnswer.equals("yes") || healAnswer.equals("y")){
-                        usrSM.setHealth(15, true);
-                        System.out.println("You used the healing potion and healed by 15");
-                        usrSM.setHealPotion();
-                        System.out.println("Your current health is " + usrSM.getHealth() + "\nYou now have " + usrSM.getHealPotion() + " heal potion");
+                        PromoteHelper.promote(usrSM, senior);
+                    } else {
+                        System.out.println("You have lost. You maintain your rank but lost your dignity!!!");
+                        System.out.println("You lost 5 hp");
+                        if (usrSM.getHealth() <= 0) {
+                            System.out.println("You got article 15..");
+                            System.out.println("Separation package...\nBye");
+                            System.exit(0);
+                        }
+                        usrSM.setHealth(5, false);
+                        if (usrSM.getHealPotion() > 0) {
+                            System.out.println("Would you like to heal?");
+                            // yes or no
+                            Scanner healInput = new Scanner(System.in);
+                            String healAnswer = healInput.nextLine().toLowerCase();
+                            while (!healAnswer.equals("yes") && !healAnswer.equals("no") && !healAnswer.equals("y")
+                                    && !healAnswer.equals("n")) {
+                                System.out.println("Please enter yes/y or no/n.");
+                                healAnswer = healInput.nextLine().toLowerCase();
+                            }
+                            if (healAnswer.equals("yes") || healAnswer.equals("y")) {
+                                usrSM.setHealth(15, true);
+                                System.out.println("You used the healing potion and healed by 15");
+                                usrSM.setHealPotion();
+                                System.out.println("Your current health is " + usrSM.getHealth() + "\nYou now have " + usrSM.getHealPotion() + " heal potion");
 
+                            }
+                        } else {
+                            System.out.println("You have no health potion");
+                        }
                     }
-                } else {
-                    System.out.println("You have no health potion");
+                    return;
                 }
+                System.out.println("Cannot find the soldier you are looking for");
+                return;
             }
-            return;
         }
-        System.out.println("Cannot find the soldier you are looking for");
-        return;
     }
 }

@@ -1,36 +1,50 @@
 package com.welcomeToTheMilitary.character;
 
 public class Enlisted{
-    private String rank;
+    private Rank rank;
     private String name;
     private String attribute;
-// Constructor
-    public Enlisted(String _name, String _attribute, String _rank)
-    {
+    private String location;
 
+// Constructor
+    public Enlisted(String _name, String _attribute, Rank _rank)
+    {
         setName(_name);
         this.attribute = _attribute;
         this.rank = _rank;
     }
 
-    public String getRank() {
-        return this.rank;
+    //Getters & Setters
+
+    public Rank getRank() {
+        return rank;
     }
 
-    public String getAttribute(){
-        return this.attribute;}
+    public void setRank(Rank rank) {
+        this.rank = rank;
+    }
 
-    public String getName(){
-        return this.name;
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "Enlisted{" +
-                "name ='" + getName() +'\'' + "attribute = '" + attribute + '\'' ;
+    public String getAttribute() {
+        return attribute;
+    }
+
+    public void setAttribute(String attribute) {
+        this.attribute = attribute;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }

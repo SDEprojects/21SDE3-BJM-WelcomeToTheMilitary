@@ -3,7 +3,6 @@ package com.welcomeToTheMilitary.character;
 import com.welcomeToTheMilitary.attributes.Inventory;
 import com.welcomeToTheMilitary.attributes.Item;
 import com.welcomeToTheMilitary.attributes.RetrieveSpecialHelper;
-import com.welcomeToTheMilitary.json_pack.JsonReader;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,7 +16,7 @@ public class ServiceMember {
     private String special = "Baking";
     private String location;
     private Inventory inventory = null;
-    private String rank = null;
+    private Rank rank = null;
     private int health = 0;
     private int strength = 0;
 
@@ -34,7 +33,7 @@ public class ServiceMember {
         setName(_name);
         this.special = _special;
         this.location = _location;
-        this.rank = "fuzzy"; // initial rank
+        this.rank = Rank.E1; // initial rank
         inventory = new Inventory();
         // this should be update everytime the soldier get promotes
         this.health = 100;
@@ -72,7 +71,7 @@ public class ServiceMember {
         this.location = _location;
     }
 
-    public String getRank() {
+    public Rank getRank() {
         return this.rank;
     }
 
@@ -82,7 +81,7 @@ public class ServiceMember {
 
     // this has to update service member's health and attack damage
     // will be modify with game controller
-    public void setRank(String _rank) {
+    public void setRank(Rank _rank) {
         // each level up health += 2
         // each level up strength += 2
         this.setHealth(  2, true);

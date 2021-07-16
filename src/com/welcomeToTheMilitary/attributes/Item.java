@@ -15,6 +15,10 @@ public class Item {
         this.type = _type;
     }
 
+    public Item(String name){
+        this.name = name;
+    }
+
     public String getName(){
         return name;
     }

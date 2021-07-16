@@ -109,7 +109,7 @@ public class Fort_Bliss_Map {
         System.out.println("You find " + foundedSolider.size() + " soldier's from another company");
         System.out.println("You saw...");
         for (Enlisted eachSoldier : foundedSolider) {
-            System.out.println("Name: " + eachSoldier.getName());
+            System.out.println("Name: " + eachSoldier.getName() + " Rank: " + eachSoldier.getRank());
             System.out.println("Attribute: " + eachSoldier.getAttribute());
         }
     }

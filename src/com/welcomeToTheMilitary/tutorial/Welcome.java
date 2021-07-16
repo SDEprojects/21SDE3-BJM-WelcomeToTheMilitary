@@ -4,6 +4,9 @@ package com.welcomeToTheMilitary.tutorial;
 import com.welcomeToTheMilitary.character.ServiceMember;
 
 import com.welcomeToTheMilitary.json_pack.JsonReader;
+import org.json.simple.parser.ParseException;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.InputMismatchException;
@@ -17,12 +20,12 @@ public class Welcome {
     static HashMap<String,String> specialHash = new HashMap<>();
     private static JsonReader jReader;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ParseException {
 
         intro(spellList);
     }
 
-    public static ServiceMember intro(ArrayList<String> _spellList){
+    public static ServiceMember intro(ArrayList<String> _spellList) throws IOException, ParseException {
         jReader = new JsonReader();
         specialHash = jReader.getSpecials();
         spellList = _spellList;

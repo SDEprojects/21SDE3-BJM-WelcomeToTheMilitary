@@ -3,7 +3,10 @@ package com.welcomeToTheMilitary.character;
 import com.welcomeToTheMilitary.attributes.Inventory;
 import com.welcomeToTheMilitary.attributes.Item;
 import com.welcomeToTheMilitary.attributes.RetrieveSpecialHelper;
+import com.welcomeToTheMilitary.json_pack.JsonReader;
+import org.json.simple.parser.ParseException;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +24,7 @@ public class ServiceMember {
     private int strength = 0;
 
     //arraylist of Items
-    private HashMap<String, ArrayList<Item>> items;
+    private ArrayList<Item> items = null;
 
     // private Item items = null;
     private String pcsRequest = null;
@@ -29,7 +32,7 @@ public class ServiceMember {
     private static int NUMBER_OF_USE_SPECIAL_ON_EACH_FINAL_BOSS = 3;
 
     // ServiceMember Constructor that pulls from Character class
-    public ServiceMember(String _name, String _special, String _location ) {
+    public ServiceMember(String _name, String _special, String _location) throws IOException, ParseException {
         setName(_name);
         this.special = _special;
         this.location = _location;
@@ -40,6 +43,7 @@ public class ServiceMember {
         this.strength = 5;
         pcsRequest = "No request (Type: request pcs to request a pcs)";
         healPotion = 5;
+        items = JsonReader.getItems();
     }
 
     public int getHealPotion() {
@@ -122,11 +126,11 @@ public class ServiceMember {
         return this.inventory.getInventory();
     }
 
-    // method to obtain item and store it in the inventory
-//    public void storeItemInVentory(Item itemName) {
-//        // System.out.println("Adding up the item: " + itemName);
-//        inventory.addItem(itemName);
-//    }
+     //method to obtain item and store it in the inventory
+    public void storeItemInVentory(Item itemName) {
+        // System.out.println("Adding up the item: " + itemName);
+        inventory.addItem(itemName);
+    }
 
     public void viewMyInventory() {
         inventory.viewInventory();

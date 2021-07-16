@@ -4,6 +4,7 @@ import com.welcomeToTheMilitary.bases.Fort_Bliss_Map;
 import com.welcomeToTheMilitary.bases.Fort_Sill_Map;
 
 import com.welcomeToTheMilitary.character.ServiceMember;
+import com.welcomeToTheMilitary.json_pack.JsonReader;
 import com.welcomeToTheMilitary.minigame.MinigameFactory;
 import com.welcomeToTheMilitary.minigame.iMinigame;
 import com.welcomeToTheMilitary.textparser.ParseResponse;
@@ -102,11 +103,7 @@ public class GameController {
                             break;
                         case "request":
                             // method to retrieve all possible post
-                            String pcsSelect = getPossibleBuildingsForPCS(response.getNoun(), usrSM);
-                            usrSM.setPcsRequest(pcsSelect);
-                            System.out.println("You submitted the pcs form to " + pcsSelect);
-
-
+                            applyToPcs();
                             break;
                         case "jun":
                             System.out.println("Good job");
@@ -127,45 +124,13 @@ public class GameController {
     } // end of while loop
 
     // private method to get possible buildings for pcs
-    private static String getPossibleBuildingsForPCS(String noun, ServiceMember usrSM) {
-
-        //replace with "DENIED"
-        InputStream locationJSONFile = GameController.class.getResourceAsStream("/locations.json");
-        JSONParser parserForLocation = new JSONParser();
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(locationJSONFile))) {
-            JSONObject locationObj = (JSONObject) parserForLocation.parse(reader);
-            String[] keysArrItem = Arrays.copyOf(locationObj.keySet().toArray(), locationObj.keySet().toArray().length, String[].class);
-            ArrayList<String> pcsLocationList = new ArrayList<>();
-            Scanner pcsInput = new Scanner(System.in);
-            int whileInt = 0;
-            while (whileInt == 0) {
-                System.out.println("Please type in the number associated with the post you would like to move to: ");
-                int x = 1;
-
-                for (String key : keysArrItem) {
-                    System.out.println(x + ". " + key);
-                    x++;
-                }
-
-                try{
-                    int pcsSelection = pcsInput.nextInt();
-
-                    if(pcsSelection > 0 && pcsSelection < keysArrItem.length +1) {
-                        pcsSelection--;
-                        return keysArrItem[pcsSelection];
-                    }
-                }catch (InputMismatchException ignored){
-
-                }
-            }
-
-        } catch (IOException | ParseException e) {
-            System.out.println(e);
-        }
-        return "";
+    private static void applyToPcs() throws IOException, ParseException, InterruptedException {
+        JsonReader jsonReader = new JsonReader();
+        System.out.println("Please type the post you would like to move to: ");
+        System.out.println(jsonReader.getLocations());
+        Scanner pcsInput = new Scanner(System.in);
+        pcsInput.next();
+        Thread.sleep(800);
+        System.out.println("Sorry to inform you but your application has been denied");
     }
-
-
-
-
 }

@@ -24,7 +24,7 @@ public class ServiceMember {
     private int strength = 0;
 
     //arraylist of Items
-    private ArrayList<Item> items = null;
+    private ArrayList<Item> items = new ArrayList<>();
 
     // private Item items = null;
     private String pcsRequest = null;
@@ -43,7 +43,6 @@ public class ServiceMember {
         this.strength = 5;
         pcsRequest = "No request (Type: request pcs to request a pcs)";
         healPotion = 5;
-        items = JsonReader.getItems();
     }
 
     public int getHealPotion() {

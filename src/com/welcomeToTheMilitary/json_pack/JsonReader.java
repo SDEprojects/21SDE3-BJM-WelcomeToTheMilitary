@@ -1,7 +1,6 @@
 package com.welcomeToTheMilitary.json_pack;
 
 import com.welcomeToTheMilitary.attributes.Item;
-import com.welcomeToTheMilitary.character.Enlisted;
 import com.welcomeToTheMilitary.character.ServiceMember;
 
 import java.io.*;
@@ -21,7 +20,7 @@ public class JsonReader {
     //test main
     public static void main(String[] args) throws IOException, ParseException {
         JsonReader jR = new JsonReader();
-        jR.getItems();
+        jR.getLocations();
     }
 
 
@@ -54,11 +53,20 @@ public class JsonReader {
         return myItems;
     }
 
-    public static HashMap<String, Enlisted> getSoldiers() {
-        HashMap<String, Enlisted> soldiersList = new HashMap<>();
+    public static ArrayList<String> getLocations() throws IOException, ParseException {
+        ArrayList<String> locations = new ArrayList<>();
+        JSONParser jsonParser = new JSONParser();
 
+        String jsonLocations = "jsonFiles/locations.json";
+        String locationContents = new String((Files.readAllBytes(Paths.get(jsonLocations))));
+        JSONObject obj = (JSONObject) jsonParser.parse(locationContents);
 
-        return soldiersList;
+        obj.keySet().forEach(location -> {
+            locations.add(location.toString());
+        });
+
+        return locations;
+
     }
 
     public ServiceMember returnSolder(){

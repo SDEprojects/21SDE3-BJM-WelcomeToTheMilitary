@@ -164,7 +164,7 @@ public class TextParserHelper {
     public boolean getCoreInstructionHelper(String userActionVerb, String userActionNoun, String postType) {
         JSONParser jsonParser = new JSONParser();
         InputStream inputStreamVerbAndNounForParseJSON =
-                TextParserHelper.class.getResourceAsStream("verbAndNounForParse.json");
+                TextParserHelper.class.getResourceAsStream("/verbAndNounForParse.json");
         // read file
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStreamVerbAndNounForParseJSON))) {
             JSONObject helpObject = (JSONObject) jsonParser.parse(reader);

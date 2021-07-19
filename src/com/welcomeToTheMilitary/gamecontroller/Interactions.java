@@ -92,56 +92,7 @@ public class Interactions {
                         }
                     }
                 }
-//        } else if (senior != null) {
-//            System.out.println("Targeting:" + noun);
-//            System.out.println("You finally saw " + senior.getName() + "'s rank!\nIt is " + senior.getRank());
-//
-//            gameFactory.playGame();
-//            boolean isWin = gameFactory.playGame().play(); //returns true/false if game is won
-//
-//            System.out.println("Win or lose: " + isWin);
-//            if (isWin) {
-//                if (usrSM.getPostName().equals("Fort Bliss")) {
-//                    usrSM.storeItemInVentory(fortBliss.showItemInTheFacilityTest(usrSM.getLocation()));
-//                    boolean isWorthRank = PromoteHelper.checkRank(usrSM, senior);
-//                    if (isWorthRank) {
-//                        PromoteHelper.promote(usrSM, senior);
-//                    } else {
-//                        System.out.println("You have lost. You maintain your rank but lost your dignity!!!");
-//                        System.out.println("You lost 5 hp");
-//                        if (usrSM.getHealth() <= 0) {
-//                            System.out.println("You got article 15..");
-//                            System.out.println("Separation package...\nBye");
-//                            System.exit(0);
-//                        }
-//                        usrSM.setHealth(5, false);
-//                        if (usrSM.getHealPotion() > 0) {
-//                            System.out.println("Would you like to heal?");
-//                            // yes or no
-//                            Scanner healInput = new Scanner(System.in);
-//                            String healAnswer = healInput.nextLine().toLowerCase();
-//                            while (!healAnswer.equals("yes") && !healAnswer.equals("no") && !healAnswer.equals("y")
-//                                    && !healAnswer.equals("n")) {
-//                                System.out.println("Please enter yes/y or no/n.");
-//                                healAnswer = healInput.nextLine().toLowerCase();
-//                            }
-//                            if (healAnswer.equals("yes") || healAnswer.equals("y")) {
-//                                usrSM.setHealth(15, true);
-//                                System.out.println("You used the healing potion and healed by 15");
-//                                usrSM.setHealPotion();
-//                                System.out.println("Your current health is " + usrSM.getHealth() + "\nYou now have " + usrSM.getHealPotion() + " heal potion");
-//
-//                            }
-//                        } else {
-//                            System.out.println("You have no health potion");
-//                        }
-//                    }
-//                    return;
-//                }
-//                System.out.println("Cannot find the soldier you are looking for");
-//                return;
-//            }
-//        }
+
             }
         }
     }

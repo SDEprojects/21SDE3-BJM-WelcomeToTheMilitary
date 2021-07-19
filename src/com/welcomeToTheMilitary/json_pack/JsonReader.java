@@ -1,7 +1,8 @@
 package com.welcomeToTheMilitary.json_pack;
 
 import com.welcomeToTheMilitary.attributes.Item;
-import com.welcomeToTheMilitary.bases.Map;
+import com.welcomeToTheMilitary.bases.BaseMap;
+
 import com.welcomeToTheMilitary.character.Enlisted;
 import com.welcomeToTheMilitary.character.ServiceMember;
 
@@ -29,7 +30,7 @@ public class JsonReader {
 
         System.out.println(jR.getBuildingStrings("Fort Sill"));
 
-        Map map = new Map("Fort Sill");
+        BaseMap map = new BaseMap("Fort Sill", "stuff");
         map.displaySoldiers("market");
         map.displayItems("market");
     }

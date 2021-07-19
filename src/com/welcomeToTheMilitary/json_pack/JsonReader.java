@@ -18,7 +18,6 @@ import org.json.simple.parser.ParseException;
 
 public class JsonReader {
 
-
     private static InputStream inputFileLocationsJSON = JsonReader.class.getResourceAsStream("/locations.json");;
 
     //test main
@@ -33,7 +32,6 @@ public class JsonReader {
         map.displaySoldiers("market");
         map.displayItems("market");
     }
-
 
     private Reader reader = null;
     private InputStream inputFileOutputJSON = JsonReader.class.getResourceAsStream("/output.json");
@@ -76,9 +74,7 @@ public class JsonReader {
         obj.keySet().forEach(location -> {
             locations.add(location.toString());
         });
-
         return locations;
-
     }
 
     public static HashMap<String, ArrayList<Enlisted>> getSoldiers() throws IOException, ParseException {
@@ -170,12 +166,6 @@ public class JsonReader {
 
         return specialHash;
     }
-
-//    JSONParser jsonParser = new JSONParser();
-//
-//    String jsonItem = "jsonFiles/item.json";
-//    String itemContents = new String((Files.readAllBytes(Paths.get(jsonItem))));
-//    JSONObject obj = (JSONObject) jsonParser.parse(itemContents);
 
     public static ArrayList<String> getBuildingStrings(String postname) throws IOException, ParseException {
         ArrayList<String> buildingsList = new ArrayList<>();

@@ -1,6 +1,9 @@
 package com.welcomeToTheMilitary.textparser;
 
+import org.json.simple.parser.ParseException;
 import org.junit.Test;
+
+import java.io.IOException;
 
 import static org.junit.Assert.*;
 
@@ -11,7 +14,7 @@ public class TextParserTest {
     private final String FORTBLISS = "Fort Bliss";
 
     @Test
-    public void receiveActionSuccessFortSill() {
+    public void receiveActionSuccessFortSill() throws IOException, ParseException {
         // test for success path for fort sill
         String successResponse = "go dfac";
         response = textParser.receiveAction(successResponse,FORTSILL);
@@ -23,7 +26,7 @@ public class TextParserTest {
     }
 
     @Test
-    public void receiveActionSuccessForInteractNPCFortSill() {
+    public void receiveActionSuccessForInteractNPCFortSill() throws IOException, ParseException {
         String successResponse = "talk to e-1";
         response = textParser.receiveAction(successResponse, FORTSILL);
         String actualVerb = response.getVerb();
@@ -33,7 +36,7 @@ public class TextParserTest {
     }
 
     @Test
-    public void receiveActionSuccessForBliss() {
+    public void receiveActionSuccessForBliss() throws IOException, ParseException {
         String successResponse = "move starbucks";
         response = textParser.receiveAction(successResponse, FORTBLISS);
         String actualVerb = response.getVerb();
@@ -45,7 +48,7 @@ public class TextParserTest {
     }
 
     @Test
-    public void receiveActionSuccessFortBliss() {
+    public void receiveActionSuccessFortBliss() throws IOException, ParseException {
         String successResponse = "talk e-7";
         response = textParser.receiveAction(successResponse, FORTBLISS);
         String actualVerb = response.getVerb();
@@ -55,7 +58,7 @@ public class TextParserTest {
     }
 
     @Test
-    public void receiveActionEmptyInputFortSill() {
+    public void receiveActionEmptyInputFortSill() throws IOException, ParseException {
         // it returns an empty string when we get empty string from user
         String emptyResponse = "";
         response = textParser.receiveAction(emptyResponse, FORTSILL);
@@ -67,7 +70,7 @@ public class TextParserTest {
     }
 
     @Test
-    public void receiveActionEmptyInputFortBliss() {
+    public void receiveActionEmptyInputFortBliss() throws IOException, ParseException {
         String emptyResponse = "";
         response = textParser.receiveAction(emptyResponse, FORTBLISS);
         String actualVerb = response.getVerb();
@@ -77,7 +80,7 @@ public class TextParserTest {
     }
 
     @Test
-    public void receiveActionNullInputFortSill() {
+    public void receiveActionNullInputFortSill() throws IOException, ParseException {
         // if the input is null somehow, it should return empty string
         String nullResponse = null;
         response = textParser.receiveAction(nullResponse, FORTSILL);
@@ -88,7 +91,7 @@ public class TextParserTest {
     }
 
     @Test
-    public void receiveActionNullInputFortBliss() {
+    public void receiveActionNullInputFortBliss() throws IOException, ParseException {
         // testcase for null
         // it should return empty string for both verb and noun
         String nullResponse = null;
@@ -100,7 +103,7 @@ public class TextParserTest {
     }
 
     @Test
-    public void receiveActionInvalidActionFortSill() {
+    public void receiveActionInvalidActionFortSill() throws IOException, ParseException  {
         // invalid verb
         // invalid verb should return empty string
         String invalidActionVerb = " ge eez";
@@ -112,7 +115,7 @@ public class TextParserTest {
     }
 
     @Test
-    public void receiveActionInvalidActionFortBliss() {
+    public void receiveActionInvalidActionFortBliss() throws IOException, ParseException {
         // invalid verb
         // should return both verb and noun with empty string
         String invalidActionVerb = "asdfasdf asdf";
@@ -124,7 +127,7 @@ public class TextParserTest {
     }
 
     @Test
-    public void receiveActionInvalidNounFortSill() {
+    public void receiveActionInvalidNounFortSill() throws IOException, ParseException {
         // invalid noun
         // should return both verb and noun with empty string
         String invalidActionNoun = "move asdf";
@@ -136,7 +139,7 @@ public class TextParserTest {
     }
 
     @Test
-    public void receiveActionInvalidNounFortBliss() {
+    public void receiveActionInvalidNounFortBliss() throws IOException, ParseException {
         // invalid noun
         // should return both verb and noun with empty string
         String invalidActionNoun = "drive zxbzx";

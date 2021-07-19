@@ -1,6 +1,9 @@
 package com.welcomeToTheMilitary.textparser;
 
 
+import org.json.simple.parser.ParseException;
+
+import java.io.IOException;
 
 public class TextParser {
     private String noun = null;
@@ -23,7 +26,7 @@ public class TextParser {
 
     // this method will return an arraylist that contains verb and noun order
     // @return ParseResponse obj
-    public ParseResponse receiveAction(String userActionInput, String post) {
+    public ParseResponse receiveAction(String userActionInput, String post) throws IOException, ParseException {
         // trim the user action input
         boolean isValidActionInput = trimUserInput(userActionInput);
         // remove for testing for purpose
@@ -93,7 +96,7 @@ public class TextParser {
         return true;
     }
 
-    private boolean testOperateUserAction(boolean isValidActionInput, String postType) {
+    private boolean testOperateUserAction(boolean isValidActionInput, String postType) throws IOException, ParseException {
         if (!isValidActionInput) {
             System.out.println("Formatting Error");
             return false;

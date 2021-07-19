@@ -1,8 +1,10 @@
 package com.welcomeToTheMilitary.gamecontroller;
 
+import com.welcomeToTheMilitary.bases.BaseMap;
 import com.welcomeToTheMilitary.bases.Fort_Bliss_Map;
 import com.welcomeToTheMilitary.bases.Fort_Sill_Map;
 
+import com.welcomeToTheMilitary.character.Rank;
 import com.welcomeToTheMilitary.character.ServiceMember;
 import com.welcomeToTheMilitary.json_pack.JsonReader;
 import com.welcomeToTheMilitary.minigame.MinigameFactory;
@@ -21,18 +23,24 @@ import java.io.InputStreamReader;
 import java.util.*;
 
 public class GameController {
+
+
     private static ParseResponse response = null;
     private static TextParser parser = null;
-    private static Fort_Sill_Map fortSill = new Fort_Sill_Map("Fort Sill", "Some post");
     private static Scanner input = new Scanner(System.in);
     private static ArrayList<String> spellList = new ArrayList<>();
-    private static Fort_Bliss_Map fortBliss = new Fort_Bliss_Map("Fort Bliss", "So close to Mexico");
     private static MinigameFactory gameFactory = new MinigameFactory();
     private static iMinigame minigame = null;
     Welcome sepWelcome = new Welcome();
 
-    public static void main(String[] args) throws IOException, ParseException, InterruptedException {
+    public GameController() throws IOException, ParseException {
+    }
 
+    public static void main(String[] args) throws IOException, ParseException, InterruptedException {
+        BaseMap fortSill = new BaseMap("Fort Sill", "Some post");
+        BaseMap fortBliss = new BaseMap("Fort Bliss", "So close to Mexico");
+
+        BaseMap currentMap = fortSill;
 
         ServiceMember usrSM = Welcome.intro(spellList);
         parser = new TextParser();
@@ -42,7 +50,7 @@ public class GameController {
         int counter = 0;
         while (!userAction.equals("exit") && !userAction.equals("quit")) {
             // condition that checks if the player's rank is E-6 then it invoke the challenge against the boss
-            if (usrSM.getRank().equals("E-6") && (usrSM.getPostName().equals("Fort Sill"))) {
+            if (usrSM.getRank().equals(Rank.E6) && (usrSM.getPostName().equals("Fort Sill"))) {
                 System.out.println("Reached E-6...");
                 System.out.println("Final Challenge!");
                 minigame = gameFactory.playGame("boss game");
@@ -52,6 +60,7 @@ public class GameController {
                     Welcome.separatorTitle();
                     System.out.println("Your journey in Fort Sill is over soldier..");
                     usrSM.setPostName("Fort Bliss");
+                    currentMap = fortBliss;
                     Welcome.separatorTitle();
                     counter = 9000000;
 //                    break;
@@ -63,7 +72,7 @@ public class GameController {
                     Welcome.separatorTitle();
                     System.exit(0);
                 }
-            } else if (usrSM.getRank().equals("E-9") && (usrSM.getPostName().equals("Fort Bliss"))) {
+            } else if (usrSM.getRank().equals(Rank.E9) && (usrSM.getPostName().equals("Fort Bliss"))) {
                 System.out.println("Reached E-9...");
                 System.out.println("Final Challenge!");
                 minigame = gameFactory.playGame("boss game");
@@ -100,14 +109,14 @@ public class GameController {
                 try {
                     switch (response.getVerb().trim()) {
                         case "go":
-                            Display.enteringBuildingController(response.getNoun(), usrSM, fortSill, fortBliss);
+                            Display.enteringBuildingController(response.getNoun(), usrSM, currentMap);
                             break;
                         case "show":
                             System.out.println("game controller test show");
-                            Display.showController(response.getNoun(), usrSM, fortSill, fortBliss);
+                            Display.showController(response.getNoun(), usrSM, currentMap);
                             break;
                         case "talk":
-                            Interactions.interactWithNPC(response.getNoun(), usrSM, fortSill, fortBliss);
+                            Interactions.interactWithNPC(response.getNoun(), usrSM, currentMap);
                             break;
                         case "help":
                             HelpmeHelper.interactHelpRequest(response.getNoun(), usrSM);

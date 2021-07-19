@@ -1,7 +1,7 @@
 package com.welcomeToTheMilitary.json_pack;
 
 import com.welcomeToTheMilitary.attributes.Item;
-import com.welcomeToTheMilitary.bases.Map;
+import com.welcomeToTheMilitary.bases.BaseMap;
 import com.welcomeToTheMilitary.character.Enlisted;
 import com.welcomeToTheMilitary.character.ServiceMember;
 
@@ -25,11 +25,13 @@ public class JsonReader {
     public static void main(String[] args) throws IOException, ParseException {
         JsonReader jR = new JsonReader();
         //jR.getLocations();
-        jR.getSoldiers();
+        //jR.getSoldiers();
 
-        Map map = new Map("Fort Sill");
-        map.displaySoldiers("market");
-        map.displayItems("market");
+        //BaseMap map = new BaseMap("Fort Sill", "Some place in OK");
+        //map.displaySoldiers("market");
+        //map.displayItems("market");
+
+        JsonReader.getBuildingStrings("Fort Sill");
     }
 
 

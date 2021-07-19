@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class BaseMap {
+public class Map {
 
     //fields
     private String name;
@@ -19,13 +19,13 @@ public class BaseMap {
     private ArrayList<Enlisted> soldiers;
 
 
-    public BaseMap() throws IOException, ParseException {
+    public Map() throws IOException, ParseException {
         setItems();
         setBuildings();
         setSoldiers();
     }
 
-    public BaseMap(String name, String description) throws IOException, ParseException {
+    public Map(String name) throws IOException, ParseException {
         this.name = name;
         setItems();
         setBuildings();
@@ -67,22 +67,13 @@ public class BaseMap {
         return buildings;
     }
 
-    public void setBuildings(){
-        this.buildings = JsonReader.getBuildingStrings(name);
+    public void setBuildings() throws IOException, ParseException {
+        ArrayList<String> locations = JsonReader.getBuildingStrings(name);
+        this.buildings = locations;
     }
 
     public ArrayList<Enlisted> getSoldiers() {
         return soldiers;
-    }
-
-    public ArrayList<Enlisted> getSoldiers(String currentLocation) {
-        ArrayList<Enlisted> soldiersInBuilding = new ArrayList<>();
-        for(Enlisted enlisted : soldiers){
-            if(enlisted.getLocation().equals(currentLocation)){
-                soldiersInBuilding.add(enlisted);
-            }
-        }
-        return soldiersInBuilding;
     }
 
     public void setSoldiers() throws IOException, ParseException {
@@ -97,38 +88,11 @@ public class BaseMap {
         }
     }
 
-    public void displayItems(String currentLocation) {
-        for (Item i : items) {
-            if (i.getLocation().equals(currentLocation)) {
+    public void displayItems(String currentLocation){
+        for(Item i: items){
+            if(i.getLocation().equals(currentLocation)){
                 System.out.println(i);
             }
         }
     }
-
-
-
-    public void removeOneItem(String item, String currentLocation) {
-        Item removeItem = null;
-        for (Item i : items) {
-            if (i.getLocation().equals(currentLocation)) {
-                removeItem = i;
-            }
-        }
-        items.remove(removeItem);
-    }
-    public Item getCurrentItem(String currentLocation) {
-        Item currentItem = null;
-
-        for (Item i : items) {
-            if (i.getLocation().equals(currentLocation)) {
-                currentItem = i;
-            }
-        }
-        if (currentItem != null ){
-            removeOneItem(currentItem.getName(), currentLocation);
-        }
-        System.out.println("Obtained Item: " + currentItem.getName() + "!");
-        return currentItem;
-    }
-
 }

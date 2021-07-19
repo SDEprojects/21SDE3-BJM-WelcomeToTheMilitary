@@ -103,6 +103,7 @@ public class GameController {
                             Display.enteringBuildingController(response.getNoun(), usrSM, fortSill, fortBliss);
                             break;
                         case "show":
+                            System.out.println("game controller test show");
                             Display.showController(response.getNoun(), usrSM, fortSill, fortBliss);
                             break;
                         case "talk":

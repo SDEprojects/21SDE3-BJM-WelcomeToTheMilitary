@@ -40,13 +40,21 @@ public Enlisted(String _name, String _attribute, Rank _rank)
     public void setRank(String rank) {
         switch (rank) {
             case "Rank.E2" : this.rank = Rank.E2;
+                break;
             case "Rank.E3" : this.rank = Rank.E3;
+                break;
             case "Rank.E4" : this.rank = Rank.E4;
+                break;
             case "Rank.E5" : this.rank = Rank.E5;
+                break;
             case "Rank.E6" : this.rank = Rank.E6;
+                break;
             case "Rank.E7" : this.rank = Rank.E7;
+                break;
             case "Rank.E8" : this.rank = Rank.E8;
+                break;
             case "Rank.E9" : this.rank = Rank.E9;
+                break;
             default : this.rank = Rank.E1;
         }
     }
@@ -59,7 +67,6 @@ public Enlisted(String _name, String _attribute, Rank _rank)
         if (name != null && !name.equals("")) {
             this.name = name;
         }
-
     }
 
     public String getAttribute() {
@@ -80,5 +87,15 @@ public Enlisted(String _name, String _attribute, Rank _rank)
         if (location != null && !location.equals("")) {
             this.location = location;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Enlisted{" +
+                "name='" + name + '\'' +
+                ", attribute='" + attribute + '\'' +
+                ", rank=" + rank +
+                ", location='" + location + '\'' +
+                '}';
     }
 }

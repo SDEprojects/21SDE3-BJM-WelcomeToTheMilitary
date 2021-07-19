@@ -102,7 +102,13 @@ public class GameController {
                 System.out.println("You beat the boss. You are now PCS'ed to Fort Bliss.");
                 Welcome.separatorTitle();
             }
-            System.out.println("Enter your action [format= verb + noun] for help type (help me)");
+            //display persistent information for players to track
+            System.out.println("~~~~ " + usrSM.getName() + " Rank " + usrSM.getRank());
+            System.out.println("~~~~ Service Member Health = " + usrSM.getHealth() + " ~~~~");
+            System.out.println("~~~~ Current Iventory " + usrSM.getInventory());
+            System.out.println("~~~~ Current Location = " + usrSM.getLocation() + " ~~~~");
+            System.out.println("~~~~ Special abilites " + usrSM.getSpecial() + " ~~~~");
+            System.out.println("Enter your action [format= verb + noun] for help type (help me)\n" + "-".repeat(50));
             userAction = input.nextLine();
             response = parser.receiveAction(userAction, usrSM.getPostName());
             if (!(response.getVerb().equals("")) || !(response.getNoun().equals(""))) {

@@ -10,7 +10,7 @@ public class Display {
         if (usrDep.getPostName().equals("Fort Sill")) {
             switch (noun) {
                 case "item":
-                    System.out.println("Show controller test");
+                    System.out.println("Show controller test item");
                     return;
                 case "map":
                 case "buildings":

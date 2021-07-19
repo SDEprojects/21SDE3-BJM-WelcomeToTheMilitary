@@ -24,8 +24,10 @@ public class JsonReader {
     //test main
     public static void main(String[] args) throws IOException, ParseException {
         JsonReader jR = new JsonReader();
-        //jR.getLocations();
+        jR.getLocations();
         jR.getSoldiers();
+
+        System.out.println(jR.getBuildingStrings("Fort Sill"));
 
         Map map = new Map("Fort Sill");
         map.displaySoldiers("market");
@@ -169,14 +171,22 @@ public class JsonReader {
         return specialHash;
     }
 
-    public static ArrayList<String> getBuildingStrings(String postname){
+//    JSONParser jsonParser = new JSONParser();
+//
+//    String jsonItem = "jsonFiles/item.json";
+//    String itemContents = new String((Files.readAllBytes(Paths.get(jsonItem))));
+//    JSONObject obj = (JSONObject) jsonParser.parse(itemContents);
+
+    public static ArrayList<String> getBuildingStrings(String postname) throws IOException, ParseException {
         ArrayList<String> buildingsList = new ArrayList<>();
         JSONParser jsonParser = new JSONParser();
+        String jsonLocation = "jsonFiles/locations.json";
+
         // try (FileReader reader = new FileReader( "jsonFiles/specials.json"))
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputFileLocationsJSON)))
-        {
+        String locationContents = new String((Files.readAllBytes(Paths.get(jsonLocation))));
+
             //Read JSON file
-            JSONObject obj = (JSONObject) jsonParser.parse(reader);
+            JSONObject obj = (JSONObject) jsonParser.parse(locationContents);
 
             //Iterate over employee array
             obj.keySet().forEach( eachLocation -> {
@@ -210,17 +220,7 @@ public class JsonReader {
                     System.out.println("dsafas");
                      // buildingsList = (ArrayList<String>) buildings;
                 }
-
             } );
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
         return buildingsList;
     }
 

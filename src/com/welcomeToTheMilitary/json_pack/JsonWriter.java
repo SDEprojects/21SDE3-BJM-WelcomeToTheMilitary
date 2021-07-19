@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
 
 public class JsonWriter implements iDataToRead {
 
@@ -54,7 +55,7 @@ class testMain {
 
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ParseException {
 //        Object testDependa = new ServiceMember("Jerad", "Dog Tags", "Fort Sill");
 //        JsonWriter writer = new JsonWriter();
 //        writer.dataToPass(testDependa);

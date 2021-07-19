@@ -67,7 +67,7 @@ public class Map {
         return buildings;
     }
 
-    public void setBuildings(){
+    public void setBuildings() throws IOException, ParseException {
         ArrayList<String> locations = JsonReader.getBuildingStrings(name);
         this.buildings = locations;
     }

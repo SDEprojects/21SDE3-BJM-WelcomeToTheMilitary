@@ -6,21 +6,21 @@ import com.welcomeToTheMilitary.character.ServiceMember;
 
 public class Display {
 
-
-
     public static void showController(String noun, ServiceMember usrDep, Fort_Sill_Map fortSill, Fort_Bliss_Map fortBliss) {
         if (usrDep.getPostName().equals("Fort Sill")) {
             switch (noun) {
                 case "item":
-                    System.out.println("test");
+                    System.out.println("Show controller test");
                     return;
                 case "map":
                 case "buildings":
+                    System.out.println("buildings controller test");
                     System.out.println(fortSill.getBuildings());
                     return;
                 case "building":
                 case "location":
                     // System.out.println(fo)
+                    System.out.println("building controller test");
                     System.out.println("You are currently in " + usrDep.getLocation() + ", at Fort Sill");
                     // System.out.println("You s");
                     return;

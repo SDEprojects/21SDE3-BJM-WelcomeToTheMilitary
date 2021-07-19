@@ -1,6 +1,7 @@
 package com.welcomeToTheMilitary.json_pack;
 
 import com.welcomeToTheMilitary.attributes.Item;
+import com.welcomeToTheMilitary.bases.Map;
 import com.welcomeToTheMilitary.character.Enlisted;
 import com.welcomeToTheMilitary.character.ServiceMember;
 
@@ -18,18 +19,23 @@ import org.json.simple.parser.ParseException;
 public class JsonReader {
 
 
+    private static InputStream inputFileLocationsJSON = JsonReader.class.getResourceAsStream("/locations.json");;
+
     //test main
     public static void main(String[] args) throws IOException, ParseException {
         JsonReader jR = new JsonReader();
         //jR.getLocations();
         jR.getSoldiers();
+
+        Map map = new Map("Fort Sill");
+        map.displaySoldiers("market");
+        map.displayItems("market");
     }
 
 
     private Reader reader = null;
     private InputStream inputFileOutputJSON = JsonReader.class.getResourceAsStream("/output.json");
     private InputStream inputFileSpecialJSON = JsonReader.class.getResourceAsStream("/specials.json");
-    private InputStream inputFileLocationsJSON = JsonReader.class.getResourceAsStream("/locations.json");
     private InputStream inputFileItemsJSON = JsonReader.class.getResourceAsStream("/item.json");
 
 
@@ -49,7 +55,9 @@ public class JsonReader {
             //iterate through the individual items for that particular base
             j.keySet().forEach(baseItems ->{
                 JSONObject items = (JSONObject) j.get(baseItems);
-                myItems.add(new Item(items.get("name").toString()));
+                myItems.add(new Item(items.get("name").toString(), items.get("description").toString(),
+                        items.get("type").toString(),Integer.parseInt(items.get("value").toString()),
+                        items.get("base").toString(), items.get("location").toString()));
             });
         });
         return myItems;
@@ -161,7 +169,7 @@ public class JsonReader {
         return specialHash;
     }
 
-    public ArrayList<String> getbuilStrings(String postname){
+    public static ArrayList<String> getBuildingStrings(String postname){
         ArrayList<String> buildingsList = new ArrayList<>();
         JSONParser jsonParser = new JSONParser();
         // try (FileReader reader = new FileReader( "jsonFiles/specials.json"))

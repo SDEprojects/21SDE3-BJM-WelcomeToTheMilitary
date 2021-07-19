@@ -24,7 +24,7 @@
       "verb": ["exit", "quit"],
       "noun": ["game"],
       "example": "Example: | exit game | quit game"
-    },
+    }
 
 
   },
@@ -44,7 +44,7 @@
 
     "Display map": {
       "verb": ["show", "display"],
-      "noun": ["map", "location", "buildings", "building", "status", "inventory", "pcs", "requests"],
+      "noun": ["map", "location", "buildings", "building", "status", "inventory", "pcs", "requests", "item"],
       "example": "Example: | display map | show map | show status"
     },
 

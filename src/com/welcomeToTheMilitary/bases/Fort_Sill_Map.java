@@ -53,7 +53,8 @@ public class Fort_Sill_Map {
                 String itemLocation = String.valueOf(eachItem.get("location"));
                 String description = String.valueOf(eachItem.get("description"));
                 String itemType = String.valueOf(eachItem.get("type"));
-                testItemBasedOnFacility.put(itemLocation, new Item(itemName, description, itemType));
+                int itemValue = 0;
+                testItemBasedOnFacility.put(itemLocation, new Item(itemName, description, itemType, itemValue));
             }
         } catch (NullPointerException e) {
             System.out.println("Item is null: Fort Sill Map.class");

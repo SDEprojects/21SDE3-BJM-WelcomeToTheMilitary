@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Map {
+public class BaseMap {
 
     //fields
     private String name;
@@ -19,13 +19,13 @@ public class Map {
     private ArrayList<Enlisted> soldiers;
 
 
-    public Map() throws IOException, ParseException {
+    public BaseMap() throws IOException, ParseException {
         setItems();
         setBuildings();
         setSoldiers();
     }
 
-    public Map(String name) throws IOException, ParseException {
+    public BaseMap(String name, String description) throws IOException, ParseException {
         this.name = name;
         setItems();
         setBuildings();
@@ -67,13 +67,22 @@ public class Map {
         return buildings;
     }
 
-    public void setBuildings() throws IOException, ParseException {
-        ArrayList<String> locations = JsonReader.getBuildingStrings(name);
-        this.buildings = locations;
+    public void setBuildings() throws IOException, ParseException{
+        this.buildings = JsonReader.getBuildingStrings(name);
     }
 
     public ArrayList<Enlisted> getSoldiers() {
         return soldiers;
+    }
+
+    public ArrayList<Enlisted> getSoldiers(String currentLocation) {
+        ArrayList<Enlisted> soldiersInBuilding = new ArrayList<>();
+        for(Enlisted enlisted : soldiers){
+            if(enlisted.getLocation().equals(currentLocation)){
+                soldiersInBuilding.add(enlisted);
+            }
+        }
+        return soldiersInBuilding;
     }
 
     public void setSoldiers() throws IOException, ParseException {
@@ -88,11 +97,38 @@ public class Map {
         }
     }
 
-    public void displayItems(String currentLocation){
-        for(Item i: items){
-            if(i.getLocation().equals(currentLocation)){
+    public void displayItems(String currentLocation) {
+        for (Item i : items) {
+            if (i.getLocation().equals(currentLocation)) {
                 System.out.println(i);
             }
         }
     }
+
+
+
+    public void removeOneItem(String item, String currentLocation) {
+        Item removeItem = null;
+        for (Item i : items) {
+            if (i.getLocation().equals(currentLocation)) {
+                removeItem = i;
+            }
+        }
+        items.remove(removeItem);
+    }
+    public Item getCurrentItem(String currentLocation) {
+        Item currentItem = null;
+
+        for (Item i : items) {
+            if (i.getLocation().equals(currentLocation)) {
+                currentItem = i;
+            }
+        }
+        if (currentItem != null ){
+            removeOneItem(currentItem.getName(), currentLocation);
+        }
+        System.out.println("Obtained Item: " + currentItem.getName() + "!");
+        return currentItem;
+    }
+
 }

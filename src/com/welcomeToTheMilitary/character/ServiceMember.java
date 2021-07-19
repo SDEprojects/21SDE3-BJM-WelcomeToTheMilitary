@@ -128,7 +128,7 @@ public class ServiceMember {
      //method to obtain item and store it in the inventory
     public void storeItemInVentory(Item itemName) {
         // System.out.println("Adding up the item: " + itemName);
-        inventory.addItem(itemName);
+        items.add(itemName);
     }
 
     public void viewMyInventory() {

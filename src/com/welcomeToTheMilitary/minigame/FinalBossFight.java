@@ -1,9 +1,6 @@
 package com.welcomeToTheMilitary.minigame;
 
 import com.welcomeToTheMilitary.attributes.Item;
-import com.welcomeToTheMilitary.boss.FortBlissFinalBoss;
-import com.welcomeToTheMilitary.boss.FortSillFinalBoss;
-import com.welcomeToTheMilitary.character.Rank;
 import com.welcomeToTheMilitary.character.ServiceMember;
 
 // testing

@@ -1,15 +1,12 @@
 package com.welcomeToTheMilitary.character;
 
-import com.welcomeToTheMilitary.attributes.Inventory;
 import com.welcomeToTheMilitary.attributes.Item;
 import com.welcomeToTheMilitary.attributes.RetrieveSpecialHelper;
-import com.welcomeToTheMilitary.json_pack.JsonReader;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 public class ServiceMember {
     private String name;
@@ -18,7 +15,7 @@ public class ServiceMember {
     public int level;
     private String special = "Baking";
     private String location;
-    private Inventory inventory = null;
+
     private Rank rank = null;
     private int health = 0;
     private int strength = 0;
@@ -37,7 +34,6 @@ public class ServiceMember {
         this.special = _special;
         this.location = _location;
         this.rank = Rank.E1; // initial rank
-        inventory = new Inventory();
         // this should be update everytime the soldier get promotes
         this.health = 100;
         this.strength = 5;
@@ -125,9 +121,6 @@ public class ServiceMember {
     }
 
 
-    public Map<String, Item> getInventory() {
-        return this.inventory.getInventory();
-    }
 
      //method to obtain item and store it in the inventory
     public void storeItemInVentory(Item itemName) {
@@ -135,9 +128,6 @@ public class ServiceMember {
         items.add(itemName);
     }
 
-    public void viewMyInventory() {
-        inventory.viewInventory();
-    }
 
     //takes an Item parameter
     public void useItem(Item item) {
@@ -223,10 +213,10 @@ public class ServiceMember {
     @Override
     public String toString() {
         String inventory = "";
-        if (this.inventory == null || this.inventory.isInventoryEmpty()) {
+        if (this.items == null || this.items.isEmpty()) {
             inventory = "Inventory is empty";
         } else {
-            inventory = this.inventory.toString();
+            inventory = this.items.toString();
         }
         return "=".repeat(5) + "Report Status" + " " + "=".repeat(5)
                 + "\nName: " + this.getName() + "\nRank: " + this.getRank()

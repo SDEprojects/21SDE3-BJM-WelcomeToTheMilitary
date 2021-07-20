@@ -1,8 +1,6 @@
 package com.welcomeToTheMilitary.gamecontroller;
 
 import com.welcomeToTheMilitary.bases.BaseMap;
-import com.welcomeToTheMilitary.bases.Fort_Bliss_Map;
-import com.welcomeToTheMilitary.bases.Fort_Sill_Map;
 import com.welcomeToTheMilitary.character.ServiceMember;
 import org.json.simple.parser.ParseException;
 

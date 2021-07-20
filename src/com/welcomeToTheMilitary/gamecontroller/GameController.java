@@ -1,8 +1,6 @@
 package com.welcomeToTheMilitary.gamecontroller;
 
 import com.welcomeToTheMilitary.bases.BaseMap;
-import com.welcomeToTheMilitary.bases.Fort_Bliss_Map;
-import com.welcomeToTheMilitary.bases.Fort_Sill_Map;
 
 import com.welcomeToTheMilitary.character.Rank;
 import com.welcomeToTheMilitary.character.ServiceMember;
@@ -12,14 +10,9 @@ import com.welcomeToTheMilitary.minigame.iMinigame;
 import com.welcomeToTheMilitary.textparser.ParseResponse;
 import com.welcomeToTheMilitary.textparser.TextParser;
 import com.welcomeToTheMilitary.tutorial.Welcome;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.*;
 
 public class GameController {

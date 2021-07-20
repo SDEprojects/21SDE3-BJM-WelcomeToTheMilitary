@@ -54,6 +54,7 @@ public class GameController {
                     System.out.println("Your journey in Fort Sill is over soldier..");
                     usrSM.setPostName("Fort Bliss");
                     currentMap = fortBliss;
+                    usrSM.setLocation(currentMap.getName());
                     Welcome.separatorTitle();
                     counter = 9000000;
 //                    break;

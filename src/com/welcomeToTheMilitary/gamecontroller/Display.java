@@ -14,7 +14,7 @@ public class Display {
 
             switch (noun) {
                 case "item":
-                    System.out.println("Show controller test item");
+                    System.out.println(usrDep.getItems());
                     return;
                 case "map":
                 case "buildings":
@@ -31,9 +31,6 @@ public class Display {
                 case "status":
                     //if "status" is noun, it'll call player's current status
                     status(usrDep);
-                    return;
-                case "inventory":
-                    usrDep.viewMyInventory();
                     return;
 
                 default:

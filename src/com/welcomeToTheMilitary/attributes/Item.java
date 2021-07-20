@@ -7,6 +7,8 @@ public class Item {
     private boolean stackable = false;
     private String type;
     private String description = null;
+
+
     private int value;
     private String map;
     private String location;
@@ -29,6 +31,8 @@ public class Item {
         this.map = _map;
         this.location = _location;
     }
+
+
 
     public String getMap() {
         return map;
@@ -54,6 +58,10 @@ public class Item {
         return name;
     }
 
+    public int getValue() {
+        return value;
+    }
+
     // getters and setters
     public String getDescription() {
         return this.description;
@@ -69,8 +77,7 @@ public class Item {
         return "\nItem name: " + this.getName() + '\n' +
                 "Item description: " + this.getDescription() +
                 "\ntype: " + type +
-                "\nvalue: " + value +
-                "\nlocation: " + location + "\n"
+                "\nvalue: " + value + "\n"
         ;
     }
 }

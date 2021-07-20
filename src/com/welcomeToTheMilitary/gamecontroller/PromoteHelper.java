@@ -8,7 +8,7 @@ public class PromoteHelper {
 
 
     public static boolean checkRank(ServiceMember player, Enlisted soldier) {
-        return player.getRank().getValue() > soldier.getRank().getValue();
+        return player.getRank().getValue() < soldier.getRank().getValue();
     }
 
     public static void promote(ServiceMember player, Enlisted soldier) {

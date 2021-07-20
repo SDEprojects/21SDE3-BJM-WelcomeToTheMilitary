@@ -75,6 +75,12 @@ public class Boss {
 
     }
 
+    public void subtractVitality(int vitality) {
+        if (vitality >= 1) {
+            this.vitality -= vitality;
+        }
+    }
+
     public int getAttackMax() {
         return attackMax;
     }

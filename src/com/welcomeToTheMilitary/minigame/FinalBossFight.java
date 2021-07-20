@@ -42,7 +42,7 @@ public class FinalBossFight implements iMinigame {
     public boolean play(ServiceMember usr) {
         // testing
         if (usr.getPostName().equals("Fort Sill")) {
-            tempBoss = new Boss("SFC", "Daniels", 25,90, 5, 2);
+            tempBoss = new Boss("SFC", "Daniels", 25,90, 10, 2);
         }
         if (usr.getPostName().equals("Fort Bliss")) {
             tempBoss = new Boss("CSM", "Fort Bliss Command Sergeant Major", 50,15, 70, 30);
@@ -83,7 +83,7 @@ public class FinalBossFight implements iMinigame {
             case "attack":
                 int userHitDamage = usr.attack();
                 System.out.println("attacking the boss");
-                boss.setVitality(userHitDamage);
+                boss.subtractVitality(userHitDamage);
                 System.out.println("You damaged SFC Daniels for "+ userHitDamage);
                 return;
             case "use item":
@@ -95,7 +95,7 @@ public class FinalBossFight implements iMinigame {
                 return;
             case "special":
                 int userSpecialDamage = (usr.useSpecial());
-                boss.setVitality(userSpecialDamage);
+                boss.subtractVitality(userSpecialDamage);
                 System.out.println("You damaged SFC Daniels for "+ userSpecialDamage);
                 return;
             default:
@@ -160,15 +160,6 @@ public class FinalBossFight implements iMinigame {
         System.out.printf("%-20s %20s %n", playerHealth, bossHealth);
         System.out.println("=".repeat(22)  + "=".repeat(22));
     }
-
-//    public static void main(String[] args) {
-//        ServiceMember park = new ServiceMember("Park", "Dog Tags", "fort sill");
-//        park.setPostName("Fort Bliss");
-//        // FinalBoss ssg = new FinalBoss("SFC", "Daniels", 1,100);
-//        park.storeItemInVentory(new Item("blackberry_muffins", "dfac", "consumable"));
-//        park.storeItemInVentory(new Item("amen", "your hunygry sdf", "weapon"));
-//        FinalBossFight fightBoss = new FinalBossFight();
-//        fightBoss.play(park);
-//    }
+    
 }
 

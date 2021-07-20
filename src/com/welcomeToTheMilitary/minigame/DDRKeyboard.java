@@ -10,7 +10,6 @@ public class DDRKeyboard implements iMinigame {
     private static int MIN = 0;
     private static int MAX = 5;
 
-
     public DDRKeyboard() {
         instruction();
     }
@@ -32,13 +31,9 @@ public class DDRKeyboard implements iMinigame {
 
     // get random
     private int getRandom(int MIN, int MAX) {
-
         int randomIndex = (int) (Math.random() * (MAX - MIN));
         return randomIndex;
-
     }
-
-
 
     private String getDDRInput() {
         Scanner scan = new Scanner(System.in);
@@ -50,8 +45,8 @@ public class DDRKeyboard implements iMinigame {
     // some thread to count down and clear the screen
     private void countScreenTimerMemorize() {
         try {
-            for (int timer = 4; timer > 0; timer--) {
-                Thread.sleep(1000);
+            for (int timer = 3; timer > 0; timer--) {
+                Thread.sleep(700);
                 System.out.println("Count Down to memorize: " + timer);
             }
             // clear screen
@@ -69,8 +64,8 @@ public class DDRKeyboard implements iMinigame {
 
     @Override
     public boolean play() {
-        setIsWin(play(getRandom(MIN, MAX))); //this is setting a true or false
-        return false;
+        //setIsWin(play(getRandom(MIN, MAX))); //this is setting a true or false
+        return playMe();
     }
 
     @Override
@@ -79,10 +74,9 @@ public class DDRKeyboard implements iMinigame {
     }
 
     // private playDDR to hide logic from public
-    private boolean play(int randIndex) {
-        int ddrLife = 1;
-        int randomIndex = randIndex;
-        StringBuilder strBuilder = new StringBuilder(DDR_OPTION[randomIndex]);
+    private boolean playMe() {
+        int random = getRandom(MIN, MAX);
+        StringBuilder strBuilder = new StringBuilder(DDR_OPTION[random]);
         for (int i = 0; i < 3; i++) {
             // display word to type
             System.out.println("Memorize the String..");
@@ -94,13 +88,14 @@ public class DDRKeyboard implements iMinigame {
             // append next word
             if (strBuilder.toString().equals(ddrInput)) {
                 System.out.println("Match");
+                if(i == 2) return true;
             } else {
-                ddrLife--;
+                return false;
             }
             // get another random text and append it to str builder
-            randomIndex = getRandom(MIN, MAX);
+            int randomIndex = getRandom(MIN, MAX);
             strBuilder.append(DDR_OPTION[randomIndex]);
         }
-        return ddrLife > 0;
+        return false;
     }
 }

@@ -36,7 +36,7 @@ public class ServiceMember {
         this.rank = Rank.E1; // initial rank
         // this should be update everytime the soldier get promotes
         this.health = 100;
-        this.strength = 5;
+        this.strength = 7;
         pcsRequest = "No request (Type: request pcs to request a pcs)";
         healPotion = 5;
     }

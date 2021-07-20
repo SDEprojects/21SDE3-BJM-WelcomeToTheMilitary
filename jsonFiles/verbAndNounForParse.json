@@ -1,60 +1,221 @@
 {
   "Fort Sill": {
     "jun": {
-      "synonym": ["jon", "damian", "jerad"],
-      "noun": ["haha!"]
+      "synonym": [
+        "jon",
+        "damian",
+        "jerad"
+      ],
+      "noun": [
+        "haha!"
+      ]
     },
     "go": {
-      "synonym": ["move", "drive", "walk", "run", "march"],
-      "noun": ["dfac", "barracks", "church", "px", "market", "gym"]
+      "synonym": [
+        "move",
+        "drive",
+        "walk",
+        "run",
+        "march"
+      ],
+      "noun": [
+        "dfac",
+        "barracks",
+        "church",
+        "px",
+        "market",
+        "gym"
+      ]
     },
     "talk": {
-      "synonym": ["approach", "interact", "communicate", "motivate"],
-      "noun": ["brad", "jeremy", "rogers", "shad", "arturo", "john", "brandon",
-        "laginus", "soko", "david", "stephen"]
+      "synonym": [
+        "approach",
+        "interact",
+        "communicate",
+        "motivate"
+      ],
+      "noun": [
+        "brad",
+        "jeremy",
+        "rogers",
+        "shad",
+        "arturo",
+        "john",
+        "brandon",
+        "laginus",
+        "soko",
+        "david",
+        "stephen"
+      ]
     },
     "show": {
-      "synonym": ["display", "view"],
-      "noun": ["map", "location", "buildings", "building", "status", "inventory", "pcs", "requests"]
+      "synonym": [
+        "display",
+        "view",
+        "check",
+        "see"
+      ],
+      "noun": [
+        "map",
+        "location",
+        "buildings",
+        "building",
+        "status",
+        "inventory",
+        "pcs",
+        "requests",
+        "item"
+      ]
     },
     "help": {
-      "synonym": ["advice"],
-      "noun": ["me", "it"]
+      "synonym": [
+        "advice"
+      ],
+      "noun": [
+        "me",
+        "it"
+      ]
     },
     "exit": {
-      "synonym": ["quit"],
-      "noun": ["game"]
+      "synonym": [
+        "quit"
+      ],
+      "noun": [
+        "game"
+      ]
     },
     "request": {
-      "synonym": ["ask", "volunteer"],
-      "noun": ["pcs", "move"]
+      "synonym": [
+        "ask",
+        "volunteer"
+      ],
+      "noun": [
+        "pcs",
+        "move"
+      ]
+    },
+    "use": {
+      "synonym": [
+        "utilize",
+        "eat",
+        "drink",
+        "consume"
+      ],
+      "noun": [
+        "blueberry_muffins",
+        "knife",
+        "pt_belt",
+        "hidden_protein_bar",
+        "blackberry_muffins",
+        "chaplain's_voice"
+      ],
+      "save": {
+        "synonym": [
+          "save"
+        ]
+      }
     }
   },
   "Fort Bliss": {
     "go": {
-      "synonym": ["move", "drive", "walk", "run"],
-      "noun": ["starbucks", "mall", "pizza", "theater", "gym"]
+      "synonym": [
+        "move",
+        "drive",
+        "walk",
+        "run"
+      ],
+      "noun": [
+        "starbucks",
+        "mall",
+        "pizza",
+        "theater",
+        "gym"
+      ]
     },
     "talk": {
-      "synonym": ["approach", "interact", "communicate"],
-      "noun": ["jose", "roger", "chip", "dylan",
-        "ryan", "danny", "cody", "justin", "lambert", "andy", "stephen"]
+      "synonym": [
+        "approach",
+        "interact",
+        "communicate"
+      ],
+      "noun": [
+        "jose",
+        "roger",
+        "chip",
+        "dylan",
+        "ryan",
+        "danny",
+        "cody",
+        "justin",
+        "lambert",
+        "andy",
+        "stephens"
+      ]
     },
     "show": {
-      "synonym": ["display", "view"],
-      "noun": ["map", "location", "buildings", "building", "status", "inventory", "pcs", "requests"]
+      "synonym": [
+        "display",
+        "view",
+        "check",
+        "see"
+      ],
+      "noun": [
+        "map",
+        "location",
+        "buildings",
+        "building",
+        "status",
+        "inventory",
+        "pcs",
+        "requests",
+        "item"
+      ]
     },
     "help": {
-      "synonym": ["advice"],
-      "noun": ["me", "it"]
+      "synonym": [
+        "advice"
+      ],
+      "noun": [
+        "me",
+        "it"
+      ]
     },
     "exit": {
-      "synonym": ["quit"],
-      "noun": ["game"]
+      "synonym": [
+        "quit"
+      ],
+      "noun": [
+        "game"
+      ]
     },
     "request": {
-      "synonym": ["ask", "volunteer"],
-      "noun": ["pcs", "move"]
+      "synonym": [
+        "ask",
+        "volunteer"
+      ],
+      "noun": [
+        "pcs",
+        "move"
+      ]
+    },
+    "use": {
+      "synonym": [
+        "utilize",
+        "eat",
+        "drink",
+        "consume"
+      ],
+      "noun": [
+        "blackberry_muffins",
+        "amen",
+        "pt_vest",
+        "protein_shake"
+      ],
+      "save": {
+        "synonym": [
+          "save"
+        ]
+      }
     }
   }
 }

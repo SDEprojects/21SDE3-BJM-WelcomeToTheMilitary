@@ -4,75 +4,99 @@
       "name": "blueberry_muffins",
       "location": "dfac",
       "description": "You hungry soldier? Eat up and heal your hp by 7",
-      "type": "consumable"
+      "type": "consumable",
+      "value": 7,
+      "base": "Fort Sill"
     },
     "2": {
-      "name": "chaplain's_voice",
+      "name": "chaplain_voice",
       "location": "church",
       "description": "Holy! Holy! attack boss with holy power attack dmg + 2",
-      "type": "weapon"
+      "type": "weapon",
+      "value": 2,
+      "base": "Fort Sill"
     },
     "3": {
       "name": "pt_belt",
       "location": "gym",
       "description": "Don't forget your PT Belt! increase attack dmg + 2",
-      "type": "weapon"
+      "type": "weapon",
+      "value": 2,
+      "base": "Fort Sill"
     },
     "4": {
       "name": "hidden_protein_bar",
       "location": "barracks",
       "description": "No one will ever know, eat up heal your hp by 7",
-      "type": "consumable"
+      "type": "consumable",
+      "value": 7,
+      "base": "Fort Sill"
     },
     "5": {
-      "name": "blueberry_muffins",
+      "name": "mre",
       "location": "px",
       "description": "No one will ever know, eat up heal your hp by 7",
-      "type": "consumable"
+      "type": "consumable",
+      "value": 7,
+      "base": "Fort Sill"
     },
     "6": {
-      "name": "hidden_protein_bar",
+      "name": "bag_nasty",
       "location": "market",
       "description": "No one will ever know, eat up heal your hp by 7",
-      "type": "consumable"
+      "type": "consumable",
+      "value": 7,
+      "base": "Fort Sill"
     }
   },
   "Fort Bliss": {
     "1": {
-      "name": "blackberry_muffins",
+      "name": "monster_drink",
       "location": "housing",
       "description": "You hungry soldier? Eat up and heal your hp by 7",
-      "type": "consumable"
+      "type": "consumable",
+      "value": 7,
+      "base": "Fort Bliss"
     },
     "2": {
       "name": "amen",
       "location": "starbucks",
       "description": "Holy! Holy! attack boss with holy power attack dmg + 2",
-      "type": "weapon"
+      "type": "consumable",
+      "value": 2,
+      "base": "Fort Bliss"
     },
     "3": {
       "name": "pt_vest",
       "location": "theater",
       "description": "Don't forget your PT Belt! increase attack dmg + 2",
-      "type": "weapon"
+      "type": "weapon",
+      "value": 2,
+      "base": "Fort Bliss"
     },
     "4": {
       "name": "protein_shake",
       "location": "restaurant",
       "description": "No one will ever know, eat up heal your hp by 7",
-      "type": "consumable"
+      "type": "consumable",
+      "value": 7,
+      "base": "Fort Bliss"
     },
     "5": {
-      "name": "protein_shake",
+      "name": "burrito",
       "location": "mall",
       "description": "No one will ever know, eat up heal your hp by 7",
-      "type": "consumable"
+      "type": "consumable",
+      "value": 7,
+      "base": "Fort Bliss"
     },
     "6": {
-      "name": "protein_shake",
+      "name": "garlic_bread",
       "location": "pizza",
       "description": "No one will ever know, eat up heal your hp by 7",
-      "type": "consumable"
+      "type": "consumable",
+      "value": 7,
+      "base": "Fort Bliss"
     }
   }
 }

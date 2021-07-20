@@ -10,13 +10,13 @@
     "Interact with soldier": {
       "verb": ["talk", "approach", "interact", "communicate", "motivate"],
       "noun": ["brad", "jeremy", "rogers", "shad", "arturo", "john", "brandon",
-        "laginus", "soko", "david", "stephen"],
+        "laginus", "soko", "david", "stephens"],
       "example": "Example: talk brad | approach brad"
     },
 
     "Display map": {
       "verb": ["show", "display"],
-      "noun": ["map", "location", "buildings", "building", "status", "inventory", "pcs", "requests"],
+      "noun": ["map", "location", "buildings", "building", "status", "inventory", "pcs", "requests", "item"],
       "example": "Example: | display map | show map | show status"
     },
 
@@ -25,8 +25,16 @@
       "noun": ["game"],
       "example": "Example: | exit game | quit game"
     },
-
-
+    "Save the game": {
+      "verb": ["save"],
+      "noun": ["game"],
+      "example":"Example: | save  game"
+    },
+    "Load previous saved game": {
+      "verb": ["load"],
+      "noun": ["game"],
+      "example":"Example: | load game"
+    }
   },
   "Fort Bliss": {
     "Movement": {
@@ -38,13 +46,13 @@
     "Interact with soldier": {
       "verb": ["talk", "approach", "interact", "communicate"],
       "noun": ["jose", "roger", "chip", "dylan",
-        "ryan", "danny", "cody", "justin", "lambert", "andy", "stephen"],
+        "ryan", "danny", "cody", "justin", "lambert", "andy", "stephens"],
       "example": "Example: talk cody | approach roger"
     },
 
     "Display map": {
       "verb": ["show", "display"],
-      "noun": ["map", "location", "buildings", "building", "status", "inventory", "pcs", "requests"],
+      "noun": ["map", "location", "buildings", "building", "status", "inventory", "pcs", "requests", "item"],
       "example": "Example: | display map | show map | show status"
     },
 
@@ -52,6 +60,17 @@
       "verb": ["exit", "quit"],
       "noun": ["game"],
       "example": "Example: | exit game | quit game"
+    },
+    "Save the game": {
+      "verb": ["save"],
+      "noun": ["game"],
+      "example":"Example: | save  game"
+    },
+
+    "Load previous saved game": {
+      "verb": ["load"],
+      "noun": ["game"],
+      "example":"Example: | load game"
     }
   }
 }

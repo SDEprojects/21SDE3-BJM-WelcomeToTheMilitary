@@ -1,8 +1,6 @@
 package com.welcomeToTheMilitary.minigame;
 
 import com.welcomeToTheMilitary.attributes.Item;
-import com.welcomeToTheMilitary.boss.FortBlissFinalBoss;
-import com.welcomeToTheMilitary.boss.FortSillFinalBoss;
 import com.welcomeToTheMilitary.character.ServiceMember;
 
 // testing
@@ -44,7 +42,7 @@ public class FinalBossFight implements iMinigame {
     public boolean play(ServiceMember usr) {
         // testing
         if (usr.getPostName().equals("Fort Sill")) {
-            tempBoss = new Boss("SFC", "Daniels", 25,90, 5, 2);
+            tempBoss = new Boss("SFC", "Daniels", 25,90, 10, 2);
         }
         if (usr.getPostName().equals("Fort Bliss")) {
             tempBoss = new Boss("CSM", "Fort Bliss Command Sergeant Major", 50,15, 70, 30);
@@ -85,7 +83,7 @@ public class FinalBossFight implements iMinigame {
             case "attack":
                 int userHitDamage = usr.attack();
                 System.out.println("attacking the boss");
-                boss.setVitality(userHitDamage);
+                boss.subtractVitality(userHitDamage);
                 System.out.println("You damaged SFC Daniels for "+ userHitDamage);
                 return;
             case "use item":
@@ -93,11 +91,11 @@ public class FinalBossFight implements iMinigame {
                 return;
             case "inventory":
                 System.out.println("What item would you like to use: ");
-                usr.viewMyInventory();
+                System.out.println(usr.getItems().toString());
                 return;
             case "special":
                 int userSpecialDamage = (usr.useSpecial());
-                boss.setVitality(userSpecialDamage);
+                boss.subtractVitality(userSpecialDamage);
                 System.out.println("You damaged SFC Daniels for "+ userSpecialDamage);
                 return;
             default:
@@ -115,27 +113,15 @@ public class FinalBossFight implements iMinigame {
         Scanner inputItemName = new Scanner(System.in);
         System.out.println("Please type the item name\n>");
         String userSelectedItemInput = inputItemName.nextLine();
-        Item selectedItem = usrSM.useItem(userSelectedItemInput);
-        if (selectedItem == null) {
-            System.out.println("Item does not exist");
-            return;
-        }
-        switch (selectedItem.getName()) {
-            case "blackberry_muffins":
-            case "protein_shake":
-                System.out.println("Increase your hp by 5");
-                usrSM.setHealth(7, true);
-                break;
-            case "amen":
-            case "pt_vest":
-                System.out.println("Increase your attack by 2");
-                usrSM.setStrength(usrSM.getStrength() + 2);
-                break;
-            default: {
-                System.out.println("The item does not exist");
-                break;
+
+        Item itemToUse = null;
+
+        for(Item item : usrSM.getItems()){
+            if(item.getName().equals(userSelectedItemInput)){
+                itemToUse = item;
             }
         }
+        usrSM.useItem(itemToUse);
     }
 
     private void bossFightUserRandomAction(ServiceMember usr, Boss boss) {
@@ -160,7 +146,7 @@ public class FinalBossFight implements iMinigame {
         String introTitle = "=".repeat(14) + " Status Report " + "=".repeat(14);
         String playerTitle = "Player";
         String playerFinalBoss = "Final Boss";
-        String playerRank = usr.getRank();
+        String playerRank = usr.getRank().getAbbreviation();
         String bossRank = boss.getRank();
         String playerName = usr.getName();
         String bossTitle = boss.getName();
@@ -174,15 +160,6 @@ public class FinalBossFight implements iMinigame {
         System.out.printf("%-20s %20s %n", playerHealth, bossHealth);
         System.out.println("=".repeat(22)  + "=".repeat(22));
     }
-
-//    public static void main(String[] args) {
-//        ServiceMember park = new ServiceMember("Park", "Dog Tags", "fort sill");
-//        park.setPostName("Fort Bliss");
-//        // FinalBoss ssg = new FinalBoss("SFC", "Daniels", 1,100);
-//        park.storeItemInVentory(new Item("blackberry_muffins", "dfac", "consumable"));
-//        park.storeItemInVentory(new Item("amen", "your hunygry sdf", "weapon"));
-//        FinalBossFight fightBoss = new FinalBossFight();
-//        fightBoss.play(park);
-//    }
+    
 }
 

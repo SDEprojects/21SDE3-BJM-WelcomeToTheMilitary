@@ -1,9 +1,15 @@
 package com.welcomeToTheMilitary.json_pack;
 
+import com.welcomeToTheMilitary.attributes.Item;
+import com.welcomeToTheMilitary.bases.BaseMap;
+
+import com.welcomeToTheMilitary.character.Enlisted;
 import com.welcomeToTheMilitary.character.ServiceMember;
 
 import java.io.*;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import org.json.simple.JSONArray;
@@ -13,10 +19,96 @@ import org.json.simple.parser.ParseException;
 
 public class JsonReader {
 
+    private static InputStream inputFileLocationsJSON = JsonReader.class.getResourceAsStream("/locations.json");;
+
+    //test main
+    public static void main(String[] args) throws IOException, ParseException {
+        JsonReader jR = new JsonReader();
+        jR.getLocations();
+        jR.getSoldiers();
+
+        System.out.println(jR.getBuildingStrings("Fort Sill"));
+
+        BaseMap map = new BaseMap("Fort Sill", "stuff");
+        map.displaySoldiers("market");
+        map.displayItems("market");
+    }
+
     private Reader reader = null;
     private InputStream inputFileOutputJSON = JsonReader.class.getResourceAsStream("/output.json");
     private InputStream inputFileSpecialJSON = JsonReader.class.getResourceAsStream("/specials.json");
-    private InputStream inputFileLocationsJSON = JsonReader.class.getResourceAsStream("/locations.json");
+    private InputStream inputFileItemsJSON = JsonReader.class.getResourceAsStream("/item.json");
+
+
+    public static ArrayList<Item> getItems() throws IOException, ParseException {
+
+        ArrayList<Item> myItems = new ArrayList<>();
+        JSONParser jsonParser = new JSONParser();
+
+        String jsonItem = "jsonFiles/item.json";
+        String itemContents = new String((Files.readAllBytes(Paths.get(jsonItem))));
+        JSONObject obj = (JSONObject) jsonParser.parse(itemContents);
+
+        //iterate though the base items for each base
+        obj.keySet().forEach(base ->{
+            JSONObject j = (JSONObject) obj.get(base);
+
+            //iterate through the individual items for that particular base
+            j.keySet().forEach(baseItems ->{
+                JSONObject items = (JSONObject) j.get(baseItems);
+                myItems.add(new Item(items.get("name").toString(), items.get("description").toString(),
+                        items.get("type").toString(),Integer.parseInt(items.get("value").toString()),
+                        items.get("base").toString(), items.get("location").toString()));
+            });
+        });
+        return myItems;
+    }
+
+    public static ArrayList<String> getLocations() throws IOException, ParseException {
+        ArrayList<String> locations = new ArrayList<>();
+        JSONParser jsonParser = new JSONParser();
+
+        String jsonLocations = "jsonFiles/locations.json";
+        String locationContents = new String((Files.readAllBytes(Paths.get(jsonLocations))));
+        JSONObject obj = (JSONObject) jsonParser.parse(locationContents);
+
+        obj.keySet().forEach(location -> {
+            locations.add(location.toString());
+        });
+        return locations;
+    }
+
+    public static HashMap<String, ArrayList<Enlisted>> getSoldiers() throws IOException, ParseException {
+        //Hashmap will hold all soldiers, key = base name, value = arraylist of Enlisted objects
+        HashMap<String, ArrayList<Enlisted>> soldiersList = new HashMap<>();
+
+        //Load our JSON object from file.
+        JSONParser jsonParser = new JSONParser();
+        String jsonItem = "jsonFiles/soldiers.json";
+        String itemContents = new String((Files.readAllBytes(Paths.get(jsonItem))));
+        JSONObject obj = (JSONObject) jsonParser.parse(itemContents);
+
+        //iterate though the base items for each base
+        obj.keySet().forEach(base ->{
+            //create a new K-V Pair for each base & Empty Array List
+            soldiersList.put(base.toString(),new ArrayList<Enlisted>());
+
+
+            JSONObject j = (JSONObject) obj.get(base);
+            //System.out.println(base);
+            //iterate through the individual soldiers for that particular base
+            j.keySet().forEach(baseSoldiers ->{
+                JSONObject soldier = (JSONObject) j.get(baseSoldiers);
+
+                //Creates a new Enlisted object from json objects and adds to SoldiersList based on base name
+                soldiersList.get(base).add(new Enlisted(soldier.get("name").toString(),soldier.get("attribute").toString(),soldier.get("rank").toString(),soldier.get("location").toString()));
+
+            });
+        });
+
+        return soldiersList;
+    }
+
     public ServiceMember returnSolder(){
 
         //JSON parser object to parse read file
@@ -76,14 +168,16 @@ public class JsonReader {
         return specialHash;
     }
 
-    public ArrayList<String> getbuilStrings(String postname){
+    public static ArrayList<String> getBuildingStrings(String postname) throws IOException, ParseException {
         ArrayList<String> buildingsList = new ArrayList<>();
         JSONParser jsonParser = new JSONParser();
+        String jsonLocation = "jsonFiles/locations.json";
+
         // try (FileReader reader = new FileReader( "jsonFiles/specials.json"))
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputFileLocationsJSON)))
-        {
+        String locationContents = new String((Files.readAllBytes(Paths.get(jsonLocation))));
+
             //Read JSON file
-            JSONObject obj = (JSONObject) jsonParser.parse(reader);
+            JSONObject obj = (JSONObject) jsonParser.parse(locationContents);
 
             //Iterate over employee array
             obj.keySet().forEach( eachLocation -> {
@@ -117,17 +211,7 @@ public class JsonReader {
                     System.out.println("dsafas");
                      // buildingsList = (ArrayList<String>) buildings;
                 }
-
             } );
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
         return buildingsList;
     }
 
@@ -151,7 +235,7 @@ public class JsonReader {
         }
     }
 
-    private ServiceMember parseSoldierObject(JSONObject soldierObject){
+    private ServiceMember parseSoldierObject(JSONObject soldierObject) throws IOException, ParseException {
 //Get employee object within list
         JSONObject soldierobj = (JSONObject) soldierObject.get("soldier");
 
@@ -170,5 +254,4 @@ public class JsonReader {
 
         return new ServiceMember(name,special,location);
     }
-
 }

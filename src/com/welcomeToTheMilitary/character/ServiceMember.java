@@ -1,24 +1,26 @@
 package com.welcomeToTheMilitary.character;
 
-import com.welcomeToTheMilitary.attributes.Inventory;
 import com.welcomeToTheMilitary.attributes.Item;
 import com.welcomeToTheMilitary.attributes.RetrieveSpecialHelper;
-import com.welcomeToTheMilitary.json_pack.JsonReader;
+import org.json.simple.parser.ParseException;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 public class ServiceMember {
     private String name;
     private String postName = "Fort Sill";
     public int healPotion;
-    public int level;
+    public int fitnessCounter;
     private String special = "Baking";
     private String location;
-    private Inventory inventory = null;
-    private String rank = null;
+    private Rank rank = null;
     private int health = 0;
     private int strength = 0;
+
+    //arraylist of Items
+    private ArrayList<Item> items = new ArrayList<>();
 
     // private Item items = null;
     private String pcsRequest = null;
@@ -26,17 +28,21 @@ public class ServiceMember {
     private static int NUMBER_OF_USE_SPECIAL_ON_EACH_FINAL_BOSS = 3;
 
     // ServiceMember Constructor that pulls from Character class
-    public ServiceMember(String _name, String _special, String _location ) {
+    public ServiceMember(String _name, String _special, String _location) throws IOException, ParseException {
         setName(_name);
         this.special = _special;
         this.location = _location;
-        this.rank = "fuzzy"; // initial rank
-        inventory = new Inventory();
+        this.rank = Rank.E1; // initial rank
         // this should be update everytime the soldier get promotes
         this.health = 100;
-        this.strength = 5;
+        this.strength = 7;
+        this.fitnessCounter = 0;
         pcsRequest = "No request (Type: request pcs to request a pcs)";
         healPotion = 5;
+    }
+
+    public ArrayList<Item> getItems() {
+        return items;
     }
 
     public int getHealPotion() {
@@ -55,6 +61,17 @@ public class ServiceMember {
         this.pcsRequest = _pcsRequest;
     }
 
+    public int getFitnessCounter() {
+        return fitnessCounter;
+    }
+
+    public void setFitnessCounter(int fitnessCounter) {
+        if (fitnessCounter > 0) {
+            this.fitnessCounter = fitnessCounter;
+        }
+
+    }
+
     public String getName(){
         return name;
     }
@@ -68,7 +85,7 @@ public class ServiceMember {
         this.location = _location;
     }
 
-    public String getRank() {
+    public Rank getRank() {
         return this.rank;
     }
 
@@ -78,7 +95,7 @@ public class ServiceMember {
 
     // this has to update service member's health and attack damage
     // will be modify with game controller
-    public void setRank(String _rank) {
+    public void setRank(Rank _rank) {
         // each level up health += 2
         // each level up strength += 2
         this.setHealth(  2, true);
@@ -115,57 +132,44 @@ public class ServiceMember {
     }
 
 
-    public Map<String, Item> getInventory() {
-        return this.inventory.getInventory();
-    }
 
-    // method to obtain item and store it in the inventory
+     //method to obtain item and store it in the inventory
     public void storeItemInVentory(Item itemName) {
         // System.out.println("Adding up the item: " + itemName);
-        inventory.addItem(itemName);
+        items.add(itemName);
     }
 
-    public void viewMyInventory() {
-        inventory.viewInventory();
-    }
 
-    public Item useItem(String _itemName) {
-        System.out.println("Inside useItem method");
-        // check if the item exist
-        System.out.println(_itemName);
-        boolean isItemExist = inventory.checkInventory(_itemName);
-        if (isItemExist) {
-            Item usedItem = inventory.getItem(_itemName);
-            System.out.println(usedItem);
-            // useItemHelper(usedItem.getType());
-            System.out.println("You used " + _itemName);
-            return usedItem;
+    //takes an Item parameter
+    public void useItem(Item item) {
+        //if consumable
+        if(!this.items.contains(item)){
+            System.out.println("No item in your inventory");
+            return;
         }
-        return null;
+
+        if(this.items.contains(item) && item.getType().equals("consumable")){
+            System.out.println("Using " + item.getName());
+            setHealth(item.getValue(), true);
+            items.remove(item);
+            return;
+        }
+        //if weapon
+        if(this.items.contains(item)){
+            System.out.println("Using " + item.getName());
+        }
     }
 
-//    private void useItemHelper(String type) {
-//        if (type == null) {
-//            System.out.println("The item cannot be used (type does not exist)");
-//            return;
-//        }
-//        switch (type.toLowerCase()) {
-//            case "consumable":
-//                System.out.println("consumable type heal hp");
-//                this.setHealth(this.getHealth() + 5, true);
-//                break;
-//            case "effective":
-//                System.out.println("effective type");
-//                break;
-//            case "weapon":
-//                System.out.println("Weapon type attack damage increased!");
-//                this.setStrength(this.getStrength() + 2);
-//                break;
-//            default:
-//                System.out.println("The current item type is not supported");
-//                break;
-//        }
-//    }
+    //takes a string parameter for user input in the GameController class
+    public void useItem(String item) {
+        Item itemToUse = null;
+        for(Item itemInList : this.items){
+            if(itemInList.getName().equals(item)){
+                itemToUse = itemInList;
+            }
+        }
+        useItem(itemToUse);
+    }
 
     public int attack() {
 //        System.out.println("Attack: " + this.getStrength());
@@ -175,7 +179,6 @@ public class ServiceMember {
     // setter to set Number of special the player can use to fight against boss
     public void setNumberOfUseSpecialOnEachFinalBoss() {
         NUMBER_OF_USE_SPECIAL_ON_EACH_FINAL_BOSS = 3;
-        return;
     }
 
     public int getNumberOfUserSpecialOnEachFinalBoss() {
@@ -185,7 +188,6 @@ public class ServiceMember {
     public void decreaseNumberOfUseSpecialOnEachFinalBoss() {
         if (NUMBER_OF_USE_SPECIAL_ON_EACH_FINAL_BOSS > 0) {
             NUMBER_OF_USE_SPECIAL_ON_EACH_FINAL_BOSS -= 1;
-            return;
         }
     }
 
@@ -220,10 +222,10 @@ public class ServiceMember {
     @Override
     public String toString() {
         String inventory = "";
-        if (this.inventory == null || this.inventory.isInventoryEmpty()) {
+        if (this.items == null || this.items.isEmpty()) {
             inventory = "Inventory is empty";
         } else {
-            inventory = this.inventory.toString();
+            inventory = this.items.toString();
         }
         return "=".repeat(5) + "Report Status" + " " + "=".repeat(5)
                 + "\nName: " + this.getName() + "\nRank: " + this.getRank()

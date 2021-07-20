@@ -41,7 +41,7 @@ public class GameController {
         // below this line while loop
         String userAction = "";
         int counter = 0;
-        while (!userAction.equals("exit") && !userAction.equals("quit")) {
+        while (!userAction.equals("exit") && !userAction.equals("quit") && !userAction.equals("save")) {
             // condition that checks if the player's rank is E-6 then it invoke the challenge against the boss
             if (usrSM.getRank().equals(Rank.E6) && (usrSM.getPostName().equals("Fort Sill"))) {
                 System.out.println("Reached E-6...");

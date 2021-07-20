@@ -2,13 +2,9 @@ package com.welcomeToTheMilitary.attributes;
 
 public class Item {
     private String name;
-    private Attributes attr;
     private int amount;
-    private boolean stackable = false;
     private String type;
     private String description = null;
-
-
     private int value;
     private String map;
     private String location;
@@ -16,7 +12,7 @@ public class Item {
     public Item(String _name, String _description, String _type, int _value){
         this.name = _name;
         this.description = _description;
-        this.attr = new Attributes(0, 0);
+
         this.type = _type;
         this.value = _value;
     }
@@ -25,7 +21,7 @@ public class Item {
     public Item(String _name, String _description, String _type, int _value, String _map, String _location){
         this.name = _name;
         this.description = _description;
-        this.attr = new Attributes(0, 0);
+
         this.type = _type;
         this.value = _value;
         this.map = _map;

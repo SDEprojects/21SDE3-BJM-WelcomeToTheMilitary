@@ -90,7 +90,7 @@ public class TextParserTest {
     public void receiveActionInvalidNoun() throws IOException, ParseException {
         // invalid noun
         // should return both verb and noun with empty string
-        String invalidActionNoun = "move asdf";
+        String invalidActionNoun = "move asdf"; 
         response = textParser.receiveAction(invalidActionNoun, FORTSILL);
         String actualVerb = response.getVerb();
         String actualNoun = response.getNoun();

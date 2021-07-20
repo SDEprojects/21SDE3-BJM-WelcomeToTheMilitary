@@ -33,7 +33,7 @@
       "base": "Fort Sill"
     },
     "5": {
-      "name": "blueberry_muffins",
+      "name": "MRE",
       "location": "px",
       "description": "No one will ever know, eat up heal your hp by 7",
       "type": "consumable",
@@ -41,7 +41,7 @@
       "base": "Fort Sill"
     },
     "6": {
-      "name": "hidden_protein_bar",
+      "name": "Bag_Nasty",
       "location": "market",
       "description": "No one will ever know, eat up heal your hp by 7",
       "type": "consumable",
@@ -51,7 +51,7 @@
   },
   "Fort Bliss": {
     "1": {
-      "name": "blackberry_muffins",
+      "name": "Monster_drink",
       "location": "housing",
       "description": "You hungry soldier? Eat up and heal your hp by 7",
       "type": "consumable",
@@ -83,7 +83,7 @@
       "base": "Fort Bliss"
     },
     "5": {
-      "name": "protein_shake",
+      "name": "7/11_burrito",
       "location": "mall",
       "description": "No one will ever know, eat up heal your hp by 7",
       "type": "consumable",
@@ -91,12 +91,12 @@
       "base": "Fort Bliss"
     },
     "6": {
-      "name": "protein_shake",
+      "name": "Garlic_bread",
       "location": "pizza",
       "description": "No one will ever know, eat up heal your hp by 7",
       "type": "consumable",
       "value": 7,
       "base": "Fort Bliss"
-    }
+    }git 
   }
 }

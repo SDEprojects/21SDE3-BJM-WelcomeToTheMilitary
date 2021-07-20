@@ -12,10 +12,9 @@ public class ServiceMember {
     private String name;
     private String postName = "Fort Sill";
     public int healPotion;
-    public int level;
+    public int fitnessCounter;
     private String special = "Baking";
     private String location;
-
     private Rank rank = null;
     private int health = 0;
     private int strength = 0;
@@ -37,6 +36,7 @@ public class ServiceMember {
         // this should be update everytime the soldier get promotes
         this.health = 100;
         this.strength = 7;
+        this.fitnessCounter = 0;
         pcsRequest = "No request (Type: request pcs to request a pcs)";
         healPotion = 5;
     }
@@ -59,6 +59,17 @@ public class ServiceMember {
 
     public void setPcsRequest(String _pcsRequest) {
         this.pcsRequest = _pcsRequest;
+    }
+
+    public int getFitnessCounter() {
+        return fitnessCounter;
+    }
+
+    public void setFitnessCounter(int fitnessCounter) {
+        if (fitnessCounter > 0) {
+            this.fitnessCounter = fitnessCounter;
+        }
+
     }
 
     public String getName(){
@@ -168,7 +179,6 @@ public class ServiceMember {
     // setter to set Number of special the player can use to fight against boss
     public void setNumberOfUseSpecialOnEachFinalBoss() {
         NUMBER_OF_USE_SPECIAL_ON_EACH_FINAL_BOSS = 3;
-        return;
     }
 
     public int getNumberOfUserSpecialOnEachFinalBoss() {
@@ -178,7 +188,6 @@ public class ServiceMember {
     public void decreaseNumberOfUseSpecialOnEachFinalBoss() {
         if (NUMBER_OF_USE_SPECIAL_ON_EACH_FINAL_BOSS > 0) {
             NUMBER_OF_USE_SPECIAL_ON_EACH_FINAL_BOSS -= 1;
-            return;
         }
     }
 

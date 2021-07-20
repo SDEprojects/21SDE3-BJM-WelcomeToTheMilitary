@@ -39,33 +39,38 @@ public class TextParserHelper {
     }
 
     public boolean getCoreInstructionHelper(String userActionVerb, String userActionNoun, String postType) throws IOException, ParseException {
-        JSONParser jsonParser = new JSONParser();
 
+        JSONParser jsonParser = new JSONParser();
         String jsonInstructions = "jsonFiles/verbAndNounForParse.json";
         String instructionContents = new String((Files.readAllBytes((Paths.get(jsonInstructions)))));
 
-            JSONObject helpObject = (JSONObject) jsonParser.parse(instructionContents);
-            JSONObject fortSillData = (JSONObject) helpObject.get(postType);
-//            System.out.println("TextParser Data: " + fortSillData);
-            JSONObject matchingAction = (JSONObject) fortSillData.get(userActionVerb);
-            if (matchingAction != null) {
-                // found matching key
-                // do something
+        JSONObject helpObject = (JSONObject) jsonParser.parse(instructionContents);
+        JSONObject verbAndNounData = (JSONObject) helpObject.get(postType);
+        JSONObject matchingAction = (JSONObject) verbAndNounData.get(userActionVerb);
 
-                String isValidNoun = checkUserEnterNounValid(matchingAction, userActionNoun);
-                if (isValidNoun != null) {
-                    verbAndNoun.put("verb", userActionVerb);
-                    verbAndNoun.put("noun", isValidNoun);
-                    return true;
-                }
+        if (matchingAction != null) {
+
+            //bypasses the noun validation if user want to use an item
+            if(userActionVerb.equals("use")) {
+                verbAndNoun.put("verb", userActionVerb);
+                verbAndNoun.put("noun", userActionNoun);
+                return true;
+            }
+
+            String isValidNoun = checkUserEnterNounValid(matchingAction, userActionNoun);
+            if (isValidNoun != null) {
+                verbAndNoun.put("verb", userActionVerb);
+                verbAndNoun.put("noun", isValidNoun);
+                return true;
+            }
             } else {
                 // check all synonym
                 String possibleMatchedSynonym = null;
                 String possibleMatchedKey = null;
-                String[] keysArr = Arrays.copyOf(fortSillData.keySet().toArray(), fortSillData.keySet().toArray().length, String[].class);
+                String[] keysArr = Arrays.copyOf(verbAndNounData.keySet().toArray(), verbAndNounData.keySet().toArray().length, String[].class);
                 // System.out.println(Arrays.toString(keysArr));
                 for (int i = 0; i < keysArr.length; i++) {
-                    JSONObject synonymAndNoun = (JSONObject) fortSillData.get(keysArr[i]);
+                    JSONObject synonymAndNoun = (JSONObject) verbAndNounData.get(keysArr[i]);
                     // System.out.println("syn and noun: " + synonymAndNoun);
                     JSONArray synonym = (JSONArray)synonymAndNoun.get("synonym");
                     for (Object eachSynonymValue : synonym) {
@@ -82,7 +87,7 @@ public class TextParserHelper {
                 }
 
                 if (possibleMatchedSynonym != null) {
-                    JSONObject jsonObject = (JSONObject) fortSillData.get(possibleMatchedKey);
+                    JSONObject jsonObject = (JSONObject) verbAndNounData.get(possibleMatchedKey);
                     String isUserActionNounExist = checkUserEnterNounValid(jsonObject, userActionNoun);
 
                     if (isUserActionNounExist != null) {

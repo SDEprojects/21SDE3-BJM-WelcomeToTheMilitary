@@ -108,7 +108,12 @@
         "hidden_protein_bar",
         "blackberry_muffins",
         "chaplain's_voice"
-      ]
+      ],
+      "save": {
+        "synonym": [
+          "save"
+        ]
+      }
     }
   },
   "Fort Bliss": {
@@ -205,7 +210,12 @@
         "amen",
         "pt_vest",
         "protein_shake"
-      ]
+      ],
+      "save": {
+        "synonym": [
+          "save"
+        ]
+      }
     }
   }
 }

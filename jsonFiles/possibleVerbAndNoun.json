@@ -24,9 +24,17 @@
       "verb": ["exit", "quit"],
       "noun": ["game"],
       "example": "Example: | exit game | quit game"
+    },
+    "Save the game": {
+      "verb": ["save"],
+      "noun": ["game"],
+      "example":"Example: | save  game"
+    },
+    "Load previous saved game": {
+      "verb": ["load"],
+      "noun": ["game"],
+      "example":"Example: | load game"
     }
-
-
   },
   "Fort Bliss": {
     "Movement": {
@@ -52,6 +60,17 @@
       "verb": ["exit", "quit"],
       "noun": ["game"],
       "example": "Example: | exit game | quit game"
+    },
+    "Save the game": {
+      "verb": ["save"],
+      "noun": ["game"],
+      "example":"Example: | save  game"
+    },
+
+    "Load previous saved game": {
+      "verb": ["load"],
+      "noun": ["game"],
+      "example":"Example: | load game"
     }
   }
 }

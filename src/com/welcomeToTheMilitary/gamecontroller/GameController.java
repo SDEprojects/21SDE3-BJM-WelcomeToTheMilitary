@@ -118,7 +118,6 @@ public class GameController {
                             Display.enteringBuildingController(response.getNoun(), usrSM, currentMap);
                             break;
                         case "show":
-                            System.out.println("game controller test show");
                             Display.showController(response.getNoun(), usrSM, currentMap);
                             break;
                         case "talk":
@@ -128,8 +127,12 @@ public class GameController {
                             HelpmeHelper.interactHelpRequest(response.getNoun(), usrSM);
                             break;
                         case "request":
-                            // method to retrieve all possible post
                             applyToPcs();
+                            break;
+                        case "use":
+                            usrSM.useItem(response.getNoun());
+                            System.out.println("testing use");
+
                             break;
                         case "jun":
                             System.out.println("Good job");

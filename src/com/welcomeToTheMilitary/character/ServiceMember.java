@@ -45,6 +45,10 @@ public class ServiceMember {
         healPotion = 5;
     }
 
+    public ArrayList<Item> getItems() {
+        return items;
+    }
+
     public int getHealPotion() {
         return this.healPotion;
     }
@@ -135,43 +139,36 @@ public class ServiceMember {
         inventory.viewInventory();
     }
 
-    public Item useItem(String _itemName) {
-        System.out.println("Inside useItem method");
-        // check if the item exist
-        System.out.println(_itemName);
-        boolean isItemExist = inventory.checkInventory(_itemName);
-        if (isItemExist) {
-            Item usedItem = inventory.getItem(_itemName);
-            System.out.println(usedItem);
-            // useItemHelper(usedItem.getType());
-            System.out.println("You used " + _itemName);
-            return usedItem;
+    //takes an Item parameter
+    public void useItem(Item item) {
+        //if consumable
+        if(!this.items.contains(item)){
+            System.out.println("No item in your inventory");
+            return;
         }
-        return null;
+
+        if(this.items.contains(item) && item.getType().equals("consumable")){
+            System.out.println("Using " + item.getName());
+            setHealth(item.getValue(), true);
+            items.remove(item);
+            return;
+        }
+        //if weapon
+        if(this.items.contains(item)){
+            System.out.println("Using " + item.getName());
+        }
     }
 
-//    private void useItemHelper(String type) {
-//        if (type == null) {
-//            System.out.println("The item cannot be used (type does not exist)");
-//            return;
-//        }
-//        switch (type.toLowerCase()) {
-//            case "consumable":
-//                System.out.println("consumable type heal hp");
-//                this.setHealth(this.getHealth() + 5, true);
-//                break;
-//            case "effective":
-//                System.out.println("effective type");
-//                break;
-//            case "weapon":
-//                System.out.println("Weapon type attack damage increased!");
-//                this.setStrength(this.getStrength() + 2);
-//                break;
-//            default:
-//                System.out.println("The current item type is not supported");
-//                break;
-//        }
-//    }
+    //takes a string parameter for user input in the GameController class
+    public void useItem(String item) {
+        Item itemToUse = null;
+        for(Item itemInList : this.items){
+            if(itemInList.getName().equals(item)){
+                itemToUse = itemInList;
+            }
+        }
+        useItem(itemToUse);
+    }
 
     public int attack() {
 //        System.out.println("Attack: " + this.getStrength());

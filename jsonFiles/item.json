@@ -15,7 +15,6 @@
       "type": "weapon",
       "value": 2,
       "base": "Fort Sill"
-
     },
     "3": {
       "name": "pt_belt",
@@ -24,7 +23,6 @@
       "type": "weapon",
       "value": 2,
       "base": "Fort Sill"
-
     },
     "4": {
       "name": "hidden_protein_bar",
@@ -33,7 +31,6 @@
       "type": "consumable",
       "value": 7,
       "base": "Fort Sill"
-
     },
     "5": {
       "name": "blueberry_muffins",
@@ -42,7 +39,6 @@
       "type": "consumable",
       "value": 7,
       "base": "Fort Sill"
-
     },
     "6": {
       "name": "hidden_protein_bar",
@@ -51,7 +47,6 @@
       "type": "consumable",
       "value": 7,
       "base": "Fort Sill"
-
     }
   },
   "Fort Bliss": {
@@ -62,7 +57,6 @@
       "type": "consumable",
       "value": 7,
       "base": "Fort Bliss"
-
     },
     "2": {
       "name": "amen",
@@ -70,8 +64,7 @@
       "description": "Holy! Holy! attack boss with holy power attack dmg + 2",
       "type": "weapon",
       "value": 2,
-      "base": "Fort Bliss",
-
+      "base": "Fort Bliss"
     },
     "3": {
       "name": "pt_vest",
@@ -80,7 +73,6 @@
       "type": "weapon",
       "value": 2,
       "base": "Fort Bliss"
-
     },
     "4": {
       "name": "protein_shake",
@@ -89,7 +81,6 @@
       "type": "consumable",
       "value": 7,
       "base": "Fort Bliss"
-
     },
     "5": {
       "name": "protein_shake",
@@ -98,7 +89,6 @@
       "type": "consumable",
       "value": 7,
       "base": "Fort Bliss"
-
     },
     "6": {
       "name": "protein_shake",
@@ -107,7 +97,6 @@
       "type": "consumable",
       "value": 7,
       "base": "Fort Bliss"
-
     }
   }
 }

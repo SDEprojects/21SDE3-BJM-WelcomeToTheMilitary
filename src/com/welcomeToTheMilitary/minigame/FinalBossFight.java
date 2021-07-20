@@ -116,27 +116,15 @@ public class FinalBossFight implements iMinigame {
         Scanner inputItemName = new Scanner(System.in);
         System.out.println("Please type the item name\n>");
         String userSelectedItemInput = inputItemName.nextLine();
-        Item selectedItem = usrSM.useItem(userSelectedItemInput);
-        if (selectedItem == null) {
-            System.out.println("Item does not exist");
-            return;
-        }
-        switch (selectedItem.getName()) {
-            case "blackberry_muffins":
-            case "protein_shake":
-                System.out.println("Increase your hp by 5");
-                usrSM.setHealth(7, true);
-                break;
-            case "amen":
-            case "pt_vest":
-                System.out.println("Increase your attack by 2");
-                usrSM.setStrength(usrSM.getStrength() + 2);
-                break;
-            default: {
-                System.out.println("The item does not exist");
-                break;
+
+        Item itemToUse = null;
+
+        for(Item item : usrSM.getItems()){
+            if(item.getName().equals(userSelectedItemInput)){
+                itemToUse = item;
             }
         }
+        usrSM.useItem(itemToUse);
     }
 
     private void bossFightUserRandomAction(ServiceMember usr, Boss boss) {

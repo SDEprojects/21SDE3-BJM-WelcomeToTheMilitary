@@ -47,7 +47,7 @@ public class Display {
         System.out.println("Player attack damage: " + usrDep.getStrength());
         System.out.println("Player's inventory:");
         System.out.println("Player's Permanent Change of Station request: " + usrDep.getPcsRequest());
-        usrDep.viewMyInventory();
+        System.out.println(usrDep.getItems().toString());
     }
 
     public static void enteringBuildingController(String noun, ServiceMember usrSM, BaseMap currentMap) throws IOException, ParseException {
@@ -57,43 +57,6 @@ public class Display {
         currentMap.displaySoldiers(usrSM.getLocation());
         System.out.println("Entering: " + noun + " building");
         System.out.println("Current " + usrSM.getName() + "'s location: " + usrSM.getLocation());
-//        if (usrSM.getPostName().equals("Fort Sill")) {
-//            switch (lowerNoun) {
-//                case "dfac":
-//                case "px":
-//                case "church":
-//                case "gym":
-//                case "barracks":
-//                case "market":
-//                    System.out.println("Entering: " + noun + " building");
-//                    fortSill.enterToBuilding(noun);
-//                    usrSM.setLocation(noun);
-//                    System.out.println("Current " + usrSM.getName() + "'s location: " + usrSM.getLocation());
-//                    break;
-//                default:
-//                    System.out.println("These are the possible location you can go!!");
-//                    System.out.println(fortSill.getBuildings());
-//                    break;
-//            }
-//        } else if (usrSM.getPostName().equals("Fort Bliss")) {
-//            switch (lowerNoun) {
-//                case "gym":
-//                case "pizza":
-//                case "housing":
-//                case "starbucks":
-//                case "theater":
-//                case "mall":
-//                    System.out.println("Entering: " + noun + " building");
-//                    fortBliss.enterToBuilding(noun);
-//                    usrSM.setLocation(noun);
-//                    System.out.println("Current " + usrSM.getName() + "'s location: " + usrSM.getLocation());
-//                    break;
-//
-//                default:
-//                    System.out.println("These are the possible location you can go!!");
-//                    System.out.println(fortSill.getBuildings());
-//                    break;
-//            }
-//        }
+
     }
 }

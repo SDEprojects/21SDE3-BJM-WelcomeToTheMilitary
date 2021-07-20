@@ -91,7 +91,7 @@ public class FinalBossFight implements iMinigame {
                 return;
             case "inventory":
                 System.out.println("What item would you like to use: ");
-                usr.viewMyInventory();
+                System.out.println(usr.getItems().toString());
                 return;
             case "special":
                 int userSpecialDamage = (usr.useSpecial());

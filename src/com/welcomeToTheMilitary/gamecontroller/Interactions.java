@@ -44,6 +44,13 @@ public class Interactions {
                 System.out.println("You finally saw " + soldier.getName() + "'s rank!\nIt is " + soldier.getRank());
                 // game start
 
+                //commented out for testing purposes
+                //only accepts fight if the opposing players rank is at most higher than 2
+//                if(soldier.getRank().ordinal() - usrSM.getRank().ordinal() > 2){
+//                    System.out.println("Their rank is much higher. Challenge someone who's closer to your rank");
+//                    return;
+//                }
+
                 gameFactory.playGame();
 
                 boolean isWin = gameFactory.playGame().play(); //access's miniGame and returns true or false from MiniGame if Won.

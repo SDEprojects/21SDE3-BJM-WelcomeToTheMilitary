@@ -6,16 +6,14 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 
 public class HelpmeHelper {
     public static void printHelpRequestDataFromJSON(ServiceMember usr) {
         JSONParser parser = new JSONParser();
         InputStream inputFilePossibleVerbAndNounJSON = JsonReader.class.getResourceAsStream("/possibleVerbAndNoun.json");
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputFilePossibleVerbAndNounJSON, "UTF-8")))
+        try (FileReader reader = new FileReader( "jsonFiles/possibleVerbAndNoun.json"))
+        //try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputFilePossibleVerbAndNounJSON, "UTF-8")))
         {
             Object helpObjectObj = parser.parse(reader);
             JSONObject helpObjectHelpme = (JSONObject) helpObjectObj;

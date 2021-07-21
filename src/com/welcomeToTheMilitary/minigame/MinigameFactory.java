@@ -11,6 +11,7 @@ public class MinigameFactory {
         gameList.add("rock paper scissors");
         gameList.add("memorization game");
         gameList.add("blitz math");
+        gameList.add("crack the code");
         final int min = 0;
         final int max = gameList.size();
         int randomIndex = (int) (Math.random() * (max - min));
@@ -29,7 +30,9 @@ public class MinigameFactory {
             return new DDRKeyboard();
         } else if (game.equals("blitz math")) {
             return new BlitzMath();
-        }else if (game.equals("boss game")) {
+        }else if (game.equals("crack the code")) {
+            return new CrackTheCode();
+        } else if (game.equals("boss game")) {
             return new FinalBossFight();
         } else {
             return null;

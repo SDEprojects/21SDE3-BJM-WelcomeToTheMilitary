@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ServiceMember {
+public class ServiceMember implements java.io.Serializable{
     private String name;
     private String postName = "Fort Sill";
     public int healPotion;

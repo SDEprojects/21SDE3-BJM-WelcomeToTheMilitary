@@ -16,7 +16,7 @@ import org.json.simple.parser.ParseException;
 import java.io.IOException;
 import java.util.*;
 
-public class GameController {
+public class GameController implements java.io.Serializable {
 
 
     private static ParseResponse response = null;
@@ -26,6 +26,11 @@ public class GameController {
     private static MinigameFactory gameFactory = new MinigameFactory();
     private static iMinigame minigame = null;
     Welcome sepWelcome = new Welcome();
+
+    //instance of SaveAndLoad class
+    SaveAndLoad savedGame = new SaveAndLoad();
+    SaveAndLoad loadedGame = new SaveAndLoad();
+
 
     public GameController() throws IOException, ParseException {
     }
@@ -38,6 +43,15 @@ public class GameController {
 
         ServiceMember usrSM = Welcome.intro(spellList);
         parser = new TextParser();
+
+        //instance of SaveAndLoad class
+        SaveAndLoad savedGame = new SaveAndLoad();
+        SaveAndLoad loadedGame = new SaveAndLoad();
+
+        //Saved method
+        savedGame.saveGame();
+        //Loaded method
+        loadedGame.loadGame();
 
         // below this line while loop
         String userAction = "";
@@ -137,6 +151,15 @@ public class GameController {
                             System.out.println("Good job");
                             System.out.println("You WON");
                             System.exit(0);
+
+                        case "save":
+                            System.out.println("Saving game...");
+                            savedGame.saveGame();
+                            break;
+                        case "load":
+                            System.out.println("Loading game...");
+                            loadedGame.loadGame();
+                            break;
                         default:
                             System.out.println("Verb " + response.getVerb());
                             System.out.println("Noun: " + response.getNoun());

@@ -1,6 +1,6 @@
 package com.welcomeToTheMilitary.character;
 
-public class Enlisted{
+public class Enlisted implements java.io.Serializable{
 
     private String name;
     private String attribute;

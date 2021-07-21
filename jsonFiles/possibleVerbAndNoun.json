@@ -34,6 +34,11 @@
       "verb": ["load"],
       "noun": ["game"],
       "example":"Example: | load game"
+    },
+    "PT for stats": {
+      "verb": ["do"],
+      "noun": ["pt"],
+      "example":"do pt"
     }
   },
   "Fort Bliss": {
@@ -71,6 +76,11 @@
       "verb": ["load"],
       "noun": ["game"],
       "example":"Example: | load game"
+    },
+    "PT for stats": {
+      "verb": ["do"],
+      "noun": ["pt"],
+      "example":"do pt"
     }
   }
 }

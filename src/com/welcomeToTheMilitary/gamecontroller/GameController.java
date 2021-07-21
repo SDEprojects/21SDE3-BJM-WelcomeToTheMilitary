@@ -6,6 +6,7 @@ import com.welcomeToTheMilitary.character.Rank;
 import com.welcomeToTheMilitary.character.ServiceMember;
 import com.welcomeToTheMilitary.json_pack.JsonReader;
 import com.welcomeToTheMilitary.minigame.MinigameFactory;
+import com.welcomeToTheMilitary.minigame.PTGame;
 import com.welcomeToTheMilitary.minigame.iMinigame;
 import com.welcomeToTheMilitary.textparser.ParseResponse;
 import com.welcomeToTheMilitary.textparser.TextParser;
@@ -125,8 +126,12 @@ public class GameController {
                             break;
                         case "use":
                             usrSM.useItem(response.getNoun());
-                            System.out.println("testing use");
-
+                            break;
+                        case "do":
+                            if (response.getNoun().equals("pt")){
+                                PTGame game = new PTGame();
+                                game.doPt(usrSM);
+                            }
                             break;
                         case "jun":
                             System.out.println("Good job");

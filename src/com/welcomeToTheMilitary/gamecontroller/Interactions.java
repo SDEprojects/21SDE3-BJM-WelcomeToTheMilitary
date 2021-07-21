@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Interactions {
+
+    static Scanner scanner = new Scanner(System.in);
+
     public static void interactWithNPC(String noun, ServiceMember usrSM, BaseMap currentMap) {
         MinigameFactory gameFactory = new MinigameFactory();
         if (noun == null || noun.length() == 0) {
@@ -40,6 +43,20 @@ public class Interactions {
 
             // founded case
             if (soldier != null) {
+
+                //gives a choice to battle or talk to player
+                System.out.println("Would you like to talk or battle?");
+                if(scanner.nextLine().equals("talk")){
+                    System.out.println("Hi there");
+                    return;
+                }
+                else if(scanner.nextLine().equals("battle")){
+
+                }
+                else{
+                    System.out.println("not a valid choice");
+                    return;
+                }
 
                 //player won't be able to interact with the same npc if already won
                 if(!soldier.isCanInteract()){

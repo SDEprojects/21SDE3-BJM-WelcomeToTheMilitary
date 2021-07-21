@@ -3,72 +3,84 @@
     "1": {
       "name": "Brad",
       "attribute": "High and Thight. Forever skinny",
+      "line": "Hi there",
       "rank": "Rank.E1",
       "location": "dfac"
     },
     "2": {
       "name": "Brody",
       "attribute": "Can dip a whole can of Skoal Wintergreen. Wears combat boots with his jeans",
+      "line": "Hi there",
       "rank": "Rank.E2",
       "location": "dfac"
     },
     "3": {
       "name": "Rogers",
       "attribute": "Has an associates in Political Science. Wears Nine Line Apparel. Says Hooah a lot",
+      "line": "Hi there",
       "rank": "Rank.E3",
       "location": "dfac"
     },
     "4": {
       "name": "Shad",
       "attribute": "Grumpy with gray hairs. Walks with a purpose.",
+      "line": "Hi there",
       "rank": "Rank.E6",
       "location": "px"
     },
     "5": {
       "name": "Arturo",
       "attribute": "Always having a cookout. Dances with products as he puts them into his cart.",
+      "line": "Hi there",
       "rank": "Rank.E6",
       "location": "market"
     },
     "6": {
       "name": "Mason",
       "attribute": "Hide n Seek Champion from his unit. Barracks Lawyer.",
+      "line": "Hi there",
       "rank": "Rank.E4",
       "location": "church"
     },
     "7": {
       "name": "John",
       "attribute": "Will pray with you and take you to choir practice.",
+      "line": "Hi there",
       "rank": "Rank.E6",
       "location": "church"
     },
     "8": {
       "name": "Brandon",
       "attribute": "Do you even lift, Bro.",
+      "line": "Hi there",
       "rank": "Rank.E5",
       "location": "gym"
     },
     "9": {
       "name": "Laginus",
       "attribute": "Got a DUI last week and avoids extra duty.",
+      "line": "Hi there",
       "rank": "Rank.E1",
       "location": "barracks"
     },
     "11": {
       "name": "Soko",
       "attribute": "Pot Belly. Always dirty because he's a mechanic. Never fixes anything tho.",
+      "line": "Hi there",
       "rank": "Rank.E2",
       "location": "barracks"
     },
     "12": {
       "name": "David",
       "attribute": "Just passed Ranger School. Lives off coffee and MRE's. Listens to Classic Rock.",
+      "line": "Hi there",
       "rank": "Rank.E3",
       "location": "barracks"
     },
     "13": {
       "name": "Stephen",
       "attribute": "Has a low-fade. Always preparing for SFAS. Won't tell you what it means.",
+      "line": "Hi there",
       "rank": "Rank.E4",
       "location": "barracks"
     }
@@ -77,72 +89,84 @@
     "1": {
       "name": "Jose",
       "attribute": "Hasn't deployed because he has medical reason. Nobody knows what is wrong with him",
+      "line": "Hi there",
       "rank": "Rank.E9",
       "location": "starbucks"
     },
     "2": {
       "name": "Roger",
       "attribute": "Deployed for one month and was sent back for a injury sustained at the gym",
+      "line": "Hi there",
       "rank": "Rank.E6",
       "location": "starbucks"
     },
     "3": {
       "name": "Chip",
       "attribute": "Zero deployments and complains on how weak Warriors are now days",
+      "line": "Hi there",
       "rank": "Rank.E7",
       "location": "starbucks"
     },
     "4": {
       "name": "Dylan",
       "attribute": "Hides from all deployments and schools. Works strictly in Training Environments",
+      "line": "Hi there",
       "rank": "Rank.E8",
       "location": "theater"
     },
     "5": {
       "name": "Ryan",
       "attribute": "Motivator and places soldiers first.",
+      "line": "Hi there",
       "rank": "Rank.E9",
       "location": "theater"
     },
     "6": {
       "name": "Cody",
       "attribute": "Walks laps around the mall to lose weight but ends up taking a nap at Spencer's.",
+      "line": "Hi there",
       "rank": "Rank.E5",
       "location": "mall"
     },
     "7": {
       "name": "Justin",
       "attribute": "Low Fade and works behind a brown fence",
+      "line": "Hi there",
       "rank": "Rank.E7",
       "location": "mall"
     },
     "8": {
       "name": "Lambert",
       "attribute": "Believes that Warriors should be at work until 1900. Sends everybody to Airborne school.",
+      "line": "Hi there",
       "rank": "Rank.E8",
       "location": "mall"
     },
     "9": {
       "name": "Andy",
       "attribute": "Runs Marathons and you can always see him helping Warriors get in shape",
+      "line": "Hi there",
       "rank": "Rank.E9",
       "location": "mall"
     },
     "10": {
       "name": "Stephens",
       "attribute": "Is always having a pizza party in the Admin office. Hasn't filed paperwork in three years.",
+      "line": "Hi there",
       "rank": "Rank.E6",
       "location": "pizza"
     },
     "11": {
       "name": "Marco",
       "attribute": "Always at home playing games",
+      "line": "Hi there",
       "rank": "Rank.E6",
       "location": "housing"
     },
     "12": {
       "name": "Arnold",
       "attribute": "He wants to get huge but can't seem to put on weight.",
+      "line": "Hi there",
       "rank": "Rank.E7",
       "location": "gym"
     }

@@ -6,6 +6,7 @@ public class Enlisted implements java.io.Serializable{
     private String attribute;
     private Rank rank;
     private String location;
+    private String line;
 
     //can interact with soldiers at first
     private boolean canInteract = true;

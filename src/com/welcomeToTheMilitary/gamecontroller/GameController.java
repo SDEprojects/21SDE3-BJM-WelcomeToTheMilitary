@@ -18,7 +18,6 @@ import java.util.*;
 
 public class GameController implements java.io.Serializable {
 
-
     private static ParseResponse response = null;
     private static TextParser parser = null;
     private static Scanner input = new Scanner(System.in);
@@ -46,13 +45,6 @@ public class GameController implements java.io.Serializable {
 
         ServiceMember usrSM = Welcome.intro(spellList);
         parser = new TextParser();
-
-
-
-//        //Saved method
-//        savedGame.saveGame();
-//        //Loaded method
-//        loadedGame.loadGame();
 
         // below this line while loop
         String userAction = "";

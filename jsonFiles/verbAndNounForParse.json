@@ -114,6 +114,16 @@
           "save"
         ]
       }
+    },
+    "do": {
+      "synonym": [
+        "try",
+        "run",
+        "start"
+      ],
+      "noun": [
+        "pt"
+      ]
     }
   },
   "Fort Bliss": {
@@ -216,6 +226,16 @@
           "save"
         ]
       }
+    },
+    "do": {
+      "synonym": [
+        "try",
+        "run",
+        "start"
+      ],
+      "noun": [
+        "pt"
+      ]
     }
   }
 }

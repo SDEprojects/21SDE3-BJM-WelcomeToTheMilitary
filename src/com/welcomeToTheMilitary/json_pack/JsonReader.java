@@ -145,8 +145,8 @@ public class JsonReader {
     public HashMap<String,String> getSpecials(){
         HashMap<String,String> specialHash = new HashMap<>();
         JSONParser jsonParser = new JSONParser();
-        // try (FileReader reader = new FileReader( "jsonFiles/specials.json"))
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputFileSpecialJSON)))
+         try (FileReader reader = new FileReader( "jsonFiles/specials.json"))
+        //try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputFileSpecialJSON)))
         {
             //Read JSON file
             JSONObject obj = (JSONObject) jsonParser.parse(reader);

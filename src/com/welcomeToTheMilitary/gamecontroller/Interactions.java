@@ -61,6 +61,11 @@ public class Interactions {
 
                 boolean isWin = gameFactory.playGame().play(); //access's miniGame and returns true or false from MiniGame if Won.
 
+                //loses 5 health when player loses in minigame
+                if(!isWin){
+                    usrSM.setHealth(usrSM.getHealth() - 5);
+                }
+
                 System.out.println("Win or lose: " + isWin);
                 if (isWin) {
                     if (usrSM.getPostName().equals("Fort Sill") || usrSM.getPostName().equals("Fort Bliss")) {

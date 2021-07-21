@@ -13,7 +13,7 @@ public class SaveAndLoad implements java.io.Serializable {
     public SaveAndLoad() throws IOException, ParseException {
     }
 
-    public void saveGame(){
+    public static void saveGame(){
         try{
             //create a new output object to save game
             FileOutputStream fos = new FileOutputStream("Game.txt");
@@ -33,7 +33,7 @@ public class SaveAndLoad implements java.io.Serializable {
             e.printStackTrace();
         }
     }
-    public void loadGame(){
+    public static void loadGame(){
         try{
             FileInputStream fis = new FileInputStream("Game.txt");
             ObjectInputStream ois = new ObjectInputStream(fis);

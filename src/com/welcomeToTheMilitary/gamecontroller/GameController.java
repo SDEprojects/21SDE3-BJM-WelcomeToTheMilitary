@@ -27,15 +27,18 @@ public class GameController implements java.io.Serializable {
     private static iMinigame minigame = null;
     Welcome sepWelcome = new Welcome();
 
-    //instance of SaveAndLoad class
-    SaveAndLoad savedGame = new SaveAndLoad();
-    SaveAndLoad loadedGame = new SaveAndLoad();
-
-
     public GameController() throws IOException, ParseException {
     }
 
     public static void main(String[] args) throws IOException, ParseException, InterruptedException {
+
+        System.out.println("Would you like to load the game?");
+
+        if(input.nextLine().equals("yes")){
+            System.out.println("Loading game...");
+            SaveAndLoad.loadGame();
+        }
+
         BaseMap fortSill = new BaseMap("Fort Sill", "Some post");
         BaseMap fortBliss = new BaseMap("Fort Bliss", "So close to Mexico");
 
@@ -44,14 +47,12 @@ public class GameController implements java.io.Serializable {
         ServiceMember usrSM = Welcome.intro(spellList);
         parser = new TextParser();
 
-        //instance of SaveAndLoad class
-        SaveAndLoad savedGame = new SaveAndLoad();
-        SaveAndLoad loadedGame = new SaveAndLoad();
 
-        //Saved method
-        savedGame.saveGame();
-        //Loaded method
-        loadedGame.loadGame();
+
+//        //Saved method
+//        savedGame.saveGame();
+//        //Loaded method
+//        loadedGame.loadGame();
 
         // below this line while loop
         String userAction = "";
@@ -151,14 +152,9 @@ public class GameController implements java.io.Serializable {
                             System.out.println("Good job");
                             System.out.println("You WON");
                             System.exit(0);
-
                         case "save":
                             System.out.println("Saving game...");
-                            savedGame.saveGame();
-                            break;
-                        case "load":
-                            System.out.println("Loading game...");
-                            loadedGame.loadGame();
+                            SaveAndLoad.saveGame();
                             break;
                         default:
                             System.out.println("Verb " + response.getVerb());

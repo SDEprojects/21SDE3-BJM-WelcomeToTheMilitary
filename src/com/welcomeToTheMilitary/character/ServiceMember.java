@@ -16,6 +16,7 @@ public class ServiceMember implements java.io.Serializable{
     private String special = "Baking";
     private String location;
     private Rank rank = null;
+
     private int health = 0;
     private int strength = 0;
 
@@ -105,6 +106,10 @@ public class ServiceMember implements java.io.Serializable{
 
     public int getHealth() {
         return this.health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
     }
 
     public void setHealth(int _health, boolean isHeal) {

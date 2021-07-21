@@ -7,6 +7,9 @@ public class Enlisted{
     private Rank rank;
     private String location;
 
+    //can interact with soldiers at first
+    private boolean canInteract = true;
+
 // Constructors
 
     //temporary
@@ -88,6 +91,15 @@ public Enlisted(String _name, String _attribute, Rank _rank)
             this.location = location;
         }
     }
+
+    public boolean isCanInteract() {
+        return canInteract;
+    }
+
+    public void setCanInteract(boolean canInteract) {
+        this.canInteract = canInteract;
+    }
+
 
     @Override
     public String toString() {

@@ -45,7 +45,9 @@
         "laginus",
         "soko",
         "david",
-        "stephen"
+        "stephen",
+        "brody",
+        "mason"
       ]
     },
     "show": {
@@ -139,7 +141,8 @@
         "mall",
         "pizza",
         "theater",
-        "gym"
+        "gym",
+        "housing"
       ]
     },
     "talk": {
@@ -159,7 +162,9 @@
         "justin",
         "lambert",
         "andy",
-        "stephens"
+        "stephens",
+        "brody",
+        "mason"
       ]
     },
     "show": {

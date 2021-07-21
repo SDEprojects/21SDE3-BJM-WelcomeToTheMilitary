@@ -11,6 +11,7 @@ import com.welcomeToTheMilitary.minigame.iMinigame;
 import com.welcomeToTheMilitary.textparser.ParseResponse;
 import com.welcomeToTheMilitary.textparser.TextParser;
 import com.welcomeToTheMilitary.tutorial.Welcome;
+import com.welcomeToTheMilitary.gui.mainDisplay;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
@@ -36,6 +37,9 @@ public class GameController implements java.io.Serializable {
     }
 
     public static void main(String[] args) throws IOException, ParseException, InterruptedException {
+        //Generate UI
+
+
         BaseMap fortSill = new BaseMap("Fort Sill", "Some post");
         BaseMap fortBliss = new BaseMap("Fort Bliss", "So close to Mexico");
 

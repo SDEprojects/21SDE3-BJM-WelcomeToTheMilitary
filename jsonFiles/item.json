@@ -9,6 +9,22 @@
       "base": "Fort Sill"
     },
     "2": {
+      "name": "stale_chips",
+      "location": "dfac",
+      "description": "old and almost expired chips. Not very tasty",
+      "type": "consumable",
+      "value": 1,
+      "base": "Fort Sill"
+    },
+    "3": {
+      "name": "dry_chicken_breast",
+      "location": "dfac",
+      "description": "High in protein, taste like microwaved rubber",
+      "type": "consumable",
+      "value": 3,
+      "base": "Fort Sill"
+    },
+    "4": {
       "name": "chaplain_voice",
       "location": "church",
       "description": "Holy! Holy! attack boss with holy power attack dmg + 2",
@@ -16,7 +32,15 @@
       "value": 2,
       "base": "Fort Sill"
     },
-    "3": {
+    "5": {
+      "name": "pamphlet",
+      "location": "church",
+      "description": "call 1-800-JESUS to know more about Jesus",
+      "type": "weapon",
+      "value": 1,
+      "base": "Fort Sill"
+    },
+    "6": {
       "name": "pt_belt",
       "location": "gym",
       "description": "Don't forget your PT Belt! increase attack dmg + 2",
@@ -24,7 +48,7 @@
       "value": 2,
       "base": "Fort Sill"
     },
-    "4": {
+    "7": {
       "name": "hidden_protein_bar",
       "location": "barracks",
       "description": "No one will ever know, eat up heal your hp by 7",
@@ -32,7 +56,31 @@
       "value": 7,
       "base": "Fort Sill"
     },
-    "5": {
+    "8": {
+      "name": "pocket_knife",
+      "location": "barracks",
+      "description": "a handy tool that can use to cut stuff",
+      "type": "weapon",
+      "value": 1,
+      "base": "Fort Sill"
+    },
+    "9": {
+      "name": "potato_chips",
+      "location": "barracks",
+      "description": "a not very healthy snack",
+      "type": "consumable",
+      "value": 1,
+      "base": "Fort Sill"
+    },
+    "10": {
+      "name": "water_bottle",
+      "location": "barracks",
+      "description": "a 500mL water bottle",
+      "type": "consumable",
+      "value": 2,
+      "base": "Fort Sill"
+    },
+    "11": {
       "name": "mre",
       "location": "px",
       "description": "No one will ever know, eat up heal your hp by 7",
@@ -40,7 +88,7 @@
       "value": 7,
       "base": "Fort Sill"
     },
-    "6": {
+    "12": {
       "name": "bag_nasty",
       "location": "market",
       "description": "No one will ever know, eat up heal your hp by 7",
@@ -53,49 +101,97 @@
     "1": {
       "name": "monster_drink",
       "location": "housing",
-      "description": "You hungry soldier? Eat up and heal your hp by 7",
+      "description": "energy drink that's really not good for you",
       "type": "consumable",
-      "value": 7,
+      "value": 3,
       "base": "Fort Bliss"
     },
     "2": {
-      "name": "amen",
+      "name": "coffee",
       "location": "starbucks",
-      "description": "Holy! Holy! attack boss with holy power attack dmg + 2",
+      "description": "no sugar added black coffee",
       "type": "consumable",
       "value": 2,
       "base": "Fort Bliss"
     },
     "3": {
-      "name": "pt_vest",
+      "name": "scone",
+      "location": "starbucks",
+      "description": "a delicious but a little expensive treat",
+      "type": "consumable",
+      "value": 3,
+      "base": "Fort Bliss"
+    },
+    "4": {
+      "name": "barista_phone_number",
+      "location": "starbucks",
+      "description": "A phone number of the cute barista you've been looking at",
+      "type": "consumable",
+      "value": 4,
+      "base": "Fort Bliss"
+    },
+    "5": {
+      "name": "popcorn",
       "location": "theater",
+      "description": "a healthy snack. just don't add butter",
+      "type": "consumable",
+      "value": 2,
+      "base": "Fort Bliss"
+    },
+    "6": {
+      "name": "chocolate",
+      "location": "theater",
+      "description": "A tasty treat!",
+      "type": "consumable",
+      "value": 2,
+      "base": "Fort Bliss"
+    },
+    "7": {
+      "name": "pt_vest",
+      "location": "gym",
       "description": "Don't forget your PT Belt! increase attack dmg + 2",
       "type": "weapon",
       "value": 2,
       "base": "Fort Bliss"
     },
-    "4": {
+    "8": {
       "name": "protein_shake",
-      "location": "restaurant",
-      "description": "No one will ever know, eat up heal your hp by 7",
+      "location": "mall",
+      "description": "all protein!",
       "type": "consumable",
-      "value": 7,
+      "value": 2,
       "base": "Fort Bliss"
     },
-    "5": {
+    "9": {
       "name": "burrito",
       "location": "mall",
-      "description": "No one will ever know, eat up heal your hp by 7",
+      "description": "burrito with tons of beans",
       "type": "consumable",
-      "value": 7,
+      "value": 3,
       "base": "Fort Bliss"
     },
-    "6": {
+    "10": {
+      "name": "milkshake",
+      "location": "mall",
+      "description": "a high calorie drink",
+      "type": "consumable",
+      "value": 2,
+      "base": "Fort Bliss"
+    },
+    "11": {
+      "name": "fries",
+      "location": "mall",
+      "description": "delicious and fresh fries",
+      "type": "consumable",
+      "value": 2,
+      "base": "Fort Bliss"
+    },
+    "12": {
       "name": "garlic_bread",
       "location": "pizza",
-      "description": "No one will ever know, eat up heal your hp by 7",
+      "description": "yummy bread!",
       "type": "consumable",
-      "value": 7,
+      "value": 2,
       "base": "Fort Bliss"
     }
   }

@@ -19,26 +19,7 @@ import org.json.simple.parser.ParseException;
 
 public class JsonReader {
 
-    private static InputStream inputFileLocationsJSON = JsonReader.class.getResourceAsStream("/locations.json");;
-
-    //test main
-    public static void main(String[] args) throws IOException, ParseException {
-        JsonReader jR = new JsonReader();
-        jR.getLocations();
-        jR.getSoldiers();
-
-        System.out.println(jR.getBuildingStrings("Fort Sill"));
-
-        BaseMap map = new BaseMap("Fort Sill", "stuff");
-        map.displaySoldiers("market");
-        map.displayItems("market");
-    }
-
-    private Reader reader = null;
     private InputStream inputFileOutputJSON = JsonReader.class.getResourceAsStream("/output.json");
-    private InputStream inputFileSpecialJSON = JsonReader.class.getResourceAsStream("/specials.json");
-    private InputStream inputFileItemsJSON = JsonReader.class.getResourceAsStream("/item.json");
-
 
     public static ArrayList<Item> getItems() throws IOException, ParseException {
 

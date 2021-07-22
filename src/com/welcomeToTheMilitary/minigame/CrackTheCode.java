@@ -24,7 +24,7 @@ public class CrackTheCode implements iMinigame{
         return false;
     }
 
-    private String[] codes = {"passwords", "passwords", "passwords", "passwords"};
+    private String[] codes = {"passwords", "buildings", "computer", "stopwatch", "information"};
 
 
     public String getRandomWord(){
@@ -85,18 +85,16 @@ public class CrackTheCode implements iMinigame{
 
                 System.out.println("Current tries: " + tries);
                 System.out.println(outputWord);
+
+                if(tries > 10){
+                    return false;
+                }
             }
             catch (StringIndexOutOfBoundsException e){
                 System.out.println("Please enter a letter");
             }
         }
-
-        if(tries > 10){
-            return false;
-        }
-        else{
-            return true;
-        }
+        return true;
     }
 
 }

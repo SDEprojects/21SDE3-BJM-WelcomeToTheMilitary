@@ -5,12 +5,22 @@ import com.welcomeToTheMilitary.bases.BaseMap;
 import com.welcomeToTheMilitary.character.Enlisted;
 import com.welcomeToTheMilitary.character.ServiceMember;
 import com.welcomeToTheMilitary.minigame.MinigameFactory;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
+import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Interactions {
-    public static void interactWithNPC(String noun, ServiceMember usrSM, BaseMap currentMap) {
+
+    static Scanner scanner = new Scanner(System.in);
+
+    public static void interactWithNPC(String noun, ServiceMember usrSM, BaseMap currentMap) throws IOException, ParseException {
         MinigameFactory gameFactory = new MinigameFactory();
         if (noun == null || noun.length() == 0) {
             System.out.println("Invalid soldier");
@@ -37,9 +47,30 @@ public class Interactions {
                 }
             }
 
-
             // founded case
             if (soldier != null) {
+
+                //gives a choice to battle or talk to player
+                System.out.println("Would you like to talk or battle?");
+                String playerInput = scanner.nextLine();
+
+                //if player wants to talk
+                if(playerInput.equals("talk")){
+                    JSONParser jsonParser = new JSONParser();
+                    String jsonSoldiers = "jsonFiles/soldiersTest.json";
+                    String soldiersContents = new String((Files.readAllBytes((Paths.get(jsonSoldiers)))));
+
+                    JSONObject j = (JSONObject) jsonParser.parse(soldiersContents);
+                    JSONObject soldiers = (JSONObject) j.get(soldier.getName());
+                    String soldierLine = soldiers.get("line").toString();
+                    System.out.println(soldierLine);
+
+                    return;
+                }
+                else if(!playerInput.equals("battle")){
+                    System.out.println("not a valid choice");
+                    return;
+                }
 
                 //player won't be able to interact with the same npc if already won
                 if(!soldier.isCanInteract()){
@@ -47,6 +78,7 @@ public class Interactions {
                     return;
                 }
 
+                //player engaging battle
                 System.out.println("Targeting:" + noun);
                 System.out.println("You finally saw " + soldier.getName() + "'s rank!\nIt is " + soldier.getRank());
                 // game start
@@ -60,6 +92,11 @@ public class Interactions {
                 gameFactory.playGame();
 
                 boolean isWin = gameFactory.playGame().play(); //access's miniGame and returns true or false from MiniGame if Won.
+
+                //loses 5 health when player loses in minigame
+                if(!isWin){
+                    usrSM.setHealth(usrSM.getHealth() - 5);
+                }
 
                 System.out.println("Win or lose: " + isWin);
                 if (isWin) {

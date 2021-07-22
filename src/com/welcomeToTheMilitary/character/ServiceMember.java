@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ServiceMember {
+public class ServiceMember implements java.io.Serializable{
     private String name;
     private String postName = "Fort Sill";
     public int healPotion;
@@ -16,6 +16,7 @@ public class ServiceMember {
     private String special = "Baking";
     private String location;
     private Rank rank = null;
+
     private int health = 0;
     private int strength = 0;
 
@@ -105,6 +106,10 @@ public class ServiceMember {
 
     public int getHealth() {
         return this.health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
     }
 
     public void setHealth(int _health, boolean isHeal) {

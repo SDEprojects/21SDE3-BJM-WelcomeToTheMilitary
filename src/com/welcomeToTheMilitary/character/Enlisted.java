@@ -1,11 +1,19 @@
 package com.welcomeToTheMilitary.character;
 
+import org.json.simple.parser.JSONParser;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 public class Enlisted implements java.io.Serializable{
 
     private String name;
     private String attribute;
     private Rank rank;
     private String location;
+
+    private String line;
 
     //can interact with soldiers at first
     private boolean canInteract = true;
@@ -100,6 +108,14 @@ public Enlisted(String _name, String _attribute, Rank _rank)
         this.canInteract = canInteract;
     }
 
+    public String getLine() {
+        return line;
+    }
+
+    public void setLine(String line){
+
+        this.line = line;
+    }
 
     @Override
     public String toString() {

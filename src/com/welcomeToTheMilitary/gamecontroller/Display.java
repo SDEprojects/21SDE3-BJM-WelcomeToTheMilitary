@@ -28,12 +28,10 @@ public class Display {
                     //if "status" is noun, it'll call player's current status
                     status(usrDep);
                     return;
-
                 default:
                     System.out.println("These are the possible location you can go!!");
                     break;
             }
-
     }
 
     public static void status(ServiceMember usrDep) {

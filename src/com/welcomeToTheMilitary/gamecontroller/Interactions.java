@@ -5,7 +5,14 @@ import com.welcomeToTheMilitary.bases.BaseMap;
 import com.welcomeToTheMilitary.character.Enlisted;
 import com.welcomeToTheMilitary.character.ServiceMember;
 import com.welcomeToTheMilitary.minigame.MinigameFactory;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
+import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -13,7 +20,7 @@ public class Interactions {
 
     static Scanner scanner = new Scanner(System.in);
 
-    public static void interactWithNPC(String noun, ServiceMember usrSM, BaseMap currentMap) {
+    public static void interactWithNPC(String noun, ServiceMember usrSM, BaseMap currentMap) throws IOException, ParseException {
         MinigameFactory gameFactory = new MinigameFactory();
         if (noun == null || noun.length() == 0) {
             System.out.println("Invalid soldier");
@@ -46,14 +53,22 @@ public class Interactions {
 
                 //gives a choice to battle or talk to player
                 System.out.println("Would you like to talk or battle?");
-                if(scanner.nextLine().equals("talk")){
-                    System.out.println("Hi there");
+                String playerInput = scanner.nextLine();
+
+                //if player wants to talk
+                if(playerInput.equals("talk")){
+                    JSONParser jsonParser = new JSONParser();
+                    String jsonSoldiers = "jsonFiles/soldiersTest.json";
+                    String soldiersContents = new String((Files.readAllBytes((Paths.get(jsonSoldiers)))));
+
+                    JSONObject j = (JSONObject) jsonParser.parse(soldiersContents);
+                    JSONObject soldiers = (JSONObject) j.get(soldier.getName());
+                    String soldierLine = soldiers.get("line").toString();
+                    System.out.println(soldierLine);
+
                     return;
                 }
-                else if(scanner.nextLine().equals("battle")){
-
-                }
-                else{
+                else if(!playerInput.equals("battle")){
                     System.out.println("not a valid choice");
                     return;
                 }
@@ -64,6 +79,7 @@ public class Interactions {
                     return;
                 }
 
+                //player engaging battle
                 System.out.println("Targeting:" + noun);
                 System.out.println("You finally saw " + soldier.getName() + "'s rank!\nIt is " + soldier.getRank());
                 // game start

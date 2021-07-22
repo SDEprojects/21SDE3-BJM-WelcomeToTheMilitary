@@ -31,12 +31,12 @@ public class GameController implements java.io.Serializable {
 
     public static void main(String[] args) throws IOException, ParseException, InterruptedException {
 
-        System.out.println("Would you like to load the game?");
-
-        if(input.nextLine().equals("yes")){
-            System.out.println("Loading game...");
-            SaveAndLoad.loadGame();
-        }
+//        System.out.println("Would you like to load the game?");
+//
+//        if(input.nextLine().equals("yes")){
+//            System.out.println("Loading game...");
+//            SaveAndLoad.loadGame();
+//        }
 
         BaseMap fortSill = new BaseMap("Fort Sill", "Some post");
         BaseMap fortBliss = new BaseMap("Fort Bliss", "So close to Mexico");
@@ -144,10 +144,10 @@ public class GameController implements java.io.Serializable {
                             System.out.println("Good job");
                             System.out.println("You WON");
                             System.exit(0);
-                        case "save":
-                            System.out.println("Saving game...");
-                            SaveAndLoad.saveGame();
-                            break;
+//                        case "save":
+//                            System.out.println("Saving game...");
+//                            SaveAndLoad.saveGame();
+//                            break;
                         default:
                             System.out.println("Verb " + response.getVerb());
                             System.out.println("Noun: " + response.getNoun());

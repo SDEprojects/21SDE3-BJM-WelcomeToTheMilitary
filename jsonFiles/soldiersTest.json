@@ -7,139 +7,139 @@
   },
   "Brody": {
     "attribute": "Can dip a whole can of Skoal Wintergreen. Wears combat boots with his jeans",
-    "line": "Hi there",
+    "line": "I'm always ready!",
     "rank": "Rank.E2",
     "location": "dfac"
   },
   "Rogers": {
     "attribute": "Has an associates in Political Science. Wears Nine Line Apparel. Says Hooah a lot",
-    "line": "Hi there",
+    "line": "Hooooah soldier! Go get your degree",
     "rank": "Rank.E3",
     "location": "dfac"
   },
   "Shad": {
     "attribute": "Grumpy with gray hairs. Walks with a purpose.",
-    "line": "Hi there",
+    "line": "Man, my back hurts. 3 more years till retirement",
     "rank": "Rank.E6",
     "location": "px"
   },
   "Arturo": {
     "attribute": "Always having a cookout. Dances with products as he puts them into his cart.",
-    "line": "Hi there",
+    "line": "I am a great cook! Come over sometime for dinner.",
     "rank": "Rank.E6",
     "location": "market"
   },
   "Mason": {
     "attribute": "Hide n Seek Champion from his unit. Barracks Lawyer.",
-    "line": "Hi there",
+    "line": "Now you see me, now you don't!",
     "rank": "Rank.E4",
     "location": "church"
   },
   "John": {
     "attribute": "Will pray with you and take you to choir practice.",
-    "line": "Hi there",
+    "line": "Would you like to talk about Jesus?",
     "rank": "Rank.E6",
     "location": "church"
   },
   "Brandon": {
     "attribute": "Do you even lift, Bro.",
-    "line": "Hi there",
+    "line": "DO YOU EVEN LIFT?!",
     "rank": "Rank.E5",
     "location": "gym"
   },
   "Laginus": {
     "attribute": "Got a DUI last week and avoids extra duty.",
-    "line": "Hi there",
+    "line": "Don't drink and drive man. JUST DONT!",
     "rank": "Rank.E1",
     "location": "barracks"
   },
   "Soko": {
     "attribute": "Pot Belly. Always dirty because he's a mechanic. Never fixes anything tho.",
-    "line": "Hi there",
+    "line": "Need a hand?",
     "rank": "Rank.E2",
     "location": "barracks"
   },
   "David": {
     "attribute": "Just passed Ranger School. Lives off coffee and MRE's. Listens to Classic Rock.",
-    "line": "Hi there",
+    "line": "I'm a badass. What else can I say?",
     "rank": "Rank.E3",
     "location": "barracks"
   },
   "Stephen": {
     "attribute": "Has a low-fade. Always preparing for SFAS. Won't tell you what it means.",
-    "line": "Hi there",
+    "line": "I get a haircut every week to stay looking fresh",
     "rank": "Rank.E4",
     "location": "barracks"
   },
   "Jose": {
       "attribute": "Hasn't deployed because he has medical reason. Nobody knows what is wrong with him",
-      "line": "Hi there",
+      "line": "I'm getting 100% disability when I get out",
       "rank": "Rank.E9",
       "location": "starbucks"
     },
   "Roger": {
       "attribute": "Deployed for one month and was sent back for a injury sustained at the gym",
-      "line": "Hi there",
+      "line": "I never should have deadlifted that 405lbs. Now I messed up my back",
       "rank": "Rank.E6",
       "location": "starbucks"
     },
   "Chip": {
       "attribute": "Zero deployments and complains on how weak Warriors are now days",
-      "line": "Hi there",
+      "line": "You guys are lucky I am having issues with my dental. Or I would have been deployed by now",
       "rank": "Rank.E7",
       "location": "starbucks"
     },
   "Dylan": {
       "attribute": "Hides from all deployments and schools. Works strictly in Training Environments",
-      "line": "Hi there",
+      "line": "Can't wait to get out of the Army! Why did I even sign up in the first place",
       "rank": "Rank.E8",
       "location": "theater"
     },
   "Ryan": {
       "attribute": "Motivator and places soldiers first.",
-      "line": "Hi there",
+      "line": "If you need any help, just call me",
       "rank": "Rank.E9",
       "location": "theater"
     },
   "Cody": {
       "attribute": "Walks laps around the mall to lose weight but ends up taking a nap at Spencer's.",
-      "line": "Hi there",
+      "line": "Oh, thanks for waking me up. Have you seen my kids?",
       "rank": "Rank.E5",
       "location": "mall"
     },
   "Justin": {
       "attribute": "Low Fade and works behind a brown fence",
-      "line": "Hi there",
+      "line": "Time to get a haircut soon",
       "rank": "Rank.E7",
       "location": "mall"
     },
   "Lambert": {
       "attribute": "Believes that Warriors should be at work until 1900. Sends everybody to Airborne school.",
-      "line": "Hi there",
+      "line": "Work hard, and work harder!",
       "rank": "Rank.E8",
       "location": "mall"
   },
   "Andy": {
       "attribute": "Runs Marathons and you can always see him helping Warriors get in shape",
-      "line": "Hi there",
+      "line": "You looking a little round there bud. Wanna go for a run with me?",
       "rank": "Rank.E9",
       "location": "mall"
     },
   "Stephens": {
       "attribute": "Is always having a pizza party in the Admin office. Hasn't filed paperwork in three years.",
-      "line": "Hi there",
+      "line": "I love pizza! My favorite flavor is cheeseburger pizza",
       "rank": "Rank.E6",
       "location": "pizza"
     },
   "Marco": {
       "attribute": "Always at home playing games",
-      "line": "Hi there",
+      "line": "I'll smash you on fortnite bro",
       "rank": "Rank.E6",
       "location": "housing"
     },
   "Arnold": {
       "attribute": "He wants to get huge but can't seem to put on weight.",
-      "line": "Hi there",
+      "line": "If I cant gain mass, I'll just be the most ripped dude out here",
       "rank": "Rank.E7",
       "location": "gym"
     }

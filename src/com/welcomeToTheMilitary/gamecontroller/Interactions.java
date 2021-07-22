@@ -47,7 +47,6 @@ public class Interactions {
                 }
             }
 
-
             // founded case
             if (soldier != null) {
 

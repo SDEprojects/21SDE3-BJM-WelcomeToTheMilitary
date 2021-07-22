@@ -16,13 +16,11 @@ public class Display {
                     return;
                 case "map":
                 case "buildings":
-                    System.out.println("buildings controller test");
                     System.out.println(currentMap.getBuildings());
                     return;
                 case "building":
                 case "location":
                     // System.out.println(fo)
-                    System.out.println("building controller test");
                     System.out.println("You are currently in " + usrDep.getLocation() + ", at Fort Sill");
                     // System.out.println("You s");
                     return;
@@ -30,12 +28,10 @@ public class Display {
                     //if "status" is noun, it'll call player's current status
                     status(usrDep);
                     return;
-
                 default:
                     System.out.println("These are the possible location you can go!!");
                     break;
             }
-
     }
 
     public static void status(ServiceMember usrDep) {

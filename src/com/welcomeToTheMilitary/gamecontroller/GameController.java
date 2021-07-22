@@ -11,14 +11,12 @@ import com.welcomeToTheMilitary.minigame.iMinigame;
 import com.welcomeToTheMilitary.textparser.ParseResponse;
 import com.welcomeToTheMilitary.textparser.TextParser;
 import com.welcomeToTheMilitary.tutorial.Welcome;
-import com.welcomeToTheMilitary.gui.mainDisplay;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 import java.util.*;
 
-public class GameController {
-
+public class GameController implements java.io.Serializable {
 
     private static ParseResponse response = null;
     private static TextParser parser = null;
@@ -32,8 +30,13 @@ public class GameController {
     }
 
     public static void main(String[] args) throws IOException, ParseException, InterruptedException {
-        //Generate UI
 
+//        System.out.println("Would you like to load the game?");
+//
+//        if(input.nextLine().equals("yes")){
+//            System.out.println("Loading game...");
+//            SaveAndLoad.loadGame();
+//        }
 
         BaseMap fortSill = new BaseMap("Fort Sill", "Some post");
         BaseMap fortBliss = new BaseMap("Fort Bliss", "So close to Mexico");
@@ -141,6 +144,10 @@ public class GameController {
                             System.out.println("Good job");
                             System.out.println("You WON");
                             System.exit(0);
+//                        case "save":
+//                            System.out.println("Saving game...");
+//                            SaveAndLoad.saveGame();
+//                            break;
                         default:
                             System.out.println("Verb " + response.getVerb());
                             System.out.println("Noun: " + response.getNoun());

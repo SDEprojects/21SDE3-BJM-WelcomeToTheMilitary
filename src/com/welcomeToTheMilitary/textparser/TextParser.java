@@ -1,6 +1,7 @@
 package com.welcomeToTheMilitary.textparser;
 
 
+import com.welcomeToTheMilitary.gamecontroller.SaveAndLoad;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
@@ -86,6 +87,9 @@ public class TextParser {
             System.out.println("Exiting game");
             this.verb = "exit";
             this.noun = "game";
+        } else if(splitTrimmedInput[0].equals("save")){
+            System.out.println("Saving game...");
+            SaveAndLoad.saveGame();
         } else {
             // some message
             this.verb = "";

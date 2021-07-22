@@ -32,27 +32,32 @@ public class Display {
                     System.out.println("These are the possible location you can go!!");
                     break;
             }
+
+    }
+    public static String showController(ServiceMember member, BaseMap currentMap) {
+
+        return "Current Post: " + member.getPostName() + "\n" +
+                "Location: " + member.getLocation() + "\n" +
+                "Buildings: " + currentMap.getBuildings().toString() + "\n"
+
+                ;
+    };
+
+    public static String status(ServiceMember usrDep) {
+        return usrDep.getRank().getAbbreviation() + " "+ usrDep.getName() + "\n" +
+                "Special: " + usrDep.getSpecial()+ "\n" +
+                "Health: " + usrDep.getHealth() + "\n" +
+                "Strength: " + usrDep.getStrength() + "\n" +
+                "Inventory: " + usrDep.getItems();
     }
 
-    public static void status(ServiceMember usrDep) {
-        System.out.println("=".repeat(10) + " Status Report " + "=".repeat(10));
-        System.out.println("Player name: " + usrDep.getName());
-        System.out.println("Player rank: " + usrDep.getRank());
-        System.out.println("Player's special: " + usrDep.getSpecial());
-        System.out.println("Player health: " + usrDep.getHealth());
-        System.out.println("Player attack damage: " + usrDep.getStrength());
-        System.out.println("Player's inventory:");
-        System.out.println("Player's Permanent Change of Station request: " + usrDep.getPcsRequest());
-        System.out.println(usrDep.getItems().toString());
-    }
-
-    public static void enteringBuildingController(String noun, ServiceMember usrSM, BaseMap currentMap) throws IOException, ParseException {
+    public static String enteringBuildingController(String noun, ServiceMember usrSM, BaseMap currentMap) throws IOException, ParseException {
         String lowerNoun = noun.toLowerCase();
         usrSM.setLocation(lowerNoun);
-
         currentMap.displaySoldiers(usrSM.getLocation());
+
         System.out.println("Entering: " + noun + " building");
         System.out.println("Current " + usrSM.getName() + "'s location: " + usrSM.getLocation());
-
+        return "Entering: "+ noun + " building";
     }
 }

@@ -5,12 +5,14 @@ import com.welcomeToTheMilitary.bases.BaseMap;
 import com.welcomeToTheMilitary.character.Enlisted;
 import com.welcomeToTheMilitary.character.ServiceMember;
 import com.welcomeToTheMilitary.minigame.MinigameFactory;
+import org.json.simple.parser.ParseException;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Interactions {
-    public static void interactWithNPC(String noun, ServiceMember usrSM, BaseMap currentMap) {
+    public static void interactWithNPC(String noun, ServiceMember usrSM, BaseMap currentMap) throws IOException, ParseException {
         MinigameFactory gameFactory = new MinigameFactory();
         if (noun == null || noun.length() == 0) {
             System.out.println("Invalid soldier");

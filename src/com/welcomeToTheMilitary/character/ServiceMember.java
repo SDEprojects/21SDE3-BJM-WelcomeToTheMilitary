@@ -196,6 +196,16 @@ public class ServiceMember implements java.io.Serializable{
         }
     }
 
+    public String listItemsForStats() {
+        StringBuilder itemList = new StringBuilder();
+
+        for (Item item : this.items) {
+            itemList.append(item.getName()).append(" ").append("Value:").append(item.getValue()).append("\n");
+        }
+
+        return itemList.toString();
+    }
+
     // use spell
     public int useSpecial() {
         if (NUMBER_OF_USE_SPECIAL_ON_EACH_FINAL_BOSS <= 0) {

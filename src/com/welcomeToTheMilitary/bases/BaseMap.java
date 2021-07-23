@@ -131,4 +131,14 @@ public class BaseMap {
         return currentItem;
     }
 
+    public String listBuildingsForMap() {
+        StringBuilder buildList = new StringBuilder();
+
+        for (String building : this.buildings) {
+            buildList.append(building).append("\n");
+        }
+
+        return buildList.toString();
+    }
+
 }

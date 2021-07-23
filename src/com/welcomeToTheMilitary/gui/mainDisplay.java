@@ -24,6 +24,7 @@ public class mainDisplay {
     private JTextArea mainTextArea;
     private Font mainTextFont = new Font("Arial", Font.PLAIN,24);
     private Font sideTextFont = new Font("Arial", Font.PLAIN,18);
+    private Font sideTextSmallFont = new Font("Arial", Font.PLAIN,16);
 
     private JPanel mapAreaPanel;
     private JTextArea mapAreaText;
@@ -157,7 +158,8 @@ public class mainDisplay {
         statsAreaText.setBounds(550,300,210, 275);
         statsAreaText.setBackground(sidePanelColor);
         statsAreaText.setForeground(Color.WHITE);
-        statsAreaText.setFont(sideTextFont);
+        statsAreaText.setFont(sideTextSmallFont);
+        statsAreaText.setLineWrap(true);
         statsAreaPanel.add(statsAreaText);
 
         //Input Text Area

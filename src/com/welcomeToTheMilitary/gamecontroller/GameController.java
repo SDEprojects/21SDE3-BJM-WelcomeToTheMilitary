@@ -143,7 +143,7 @@ public class GameController implements java.io.Serializable {
 
                             break;
                         case "talk":
-                            Interactions.interactWithNPC(response.getNoun(), usrSM, currentMap);
+                            Interactions.interactWithNPC(response.getNoun(), usrSM, currentMap, gui);
                             break;
                         case "help":
                             HelpmeHelper.interactHelpRequest(response.getNoun(), usrSM);

@@ -21,7 +21,7 @@ public class mainDisplay {
 
     //Main Game Fields
     private JPanel mainTextPanel;
-    private JTextArea mainTextArea;
+    private static JTextArea mainTextArea;
     private Font mainTextFont = new Font("Arial", Font.PLAIN,20);
     private Font sideTextFont = new Font("Arial", Font.PLAIN,18);
     private Font sideTextSmallFont = new Font("Arial", Font.PLAIN,16);
@@ -231,10 +231,10 @@ public class mainDisplay {
         return mainTextArea;
     }
 
-    public void setMainTextArea(String mainTextString) {
-        this.mainTextArea.setText(mainTextString);
-        frame.revalidate();
-        frame.repaint();
+    public static void setMainTextArea(String mainTextString) {
+        mainTextArea.setText(mainTextString);
+//        frame.revalidate();
+//        frame.repaint();
     }
 
     public JTextArea getMapAreaText() {

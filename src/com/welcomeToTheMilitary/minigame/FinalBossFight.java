@@ -2,20 +2,29 @@ package com.welcomeToTheMilitary.minigame;
 
 import com.welcomeToTheMilitary.attributes.Item;
 import com.welcomeToTheMilitary.character.ServiceMember;
+import com.welcomeToTheMilitary.gamecontroller.Display;
+import com.welcomeToTheMilitary.gamecontroller.HelpmeHelper;
+import com.welcomeToTheMilitary.gamecontroller.Interactions;
+import com.welcomeToTheMilitary.textparser.ParseResponse;
+import com.welcomeToTheMilitary.textparser.TextParser;
 
 // testing
 import com.welcomeToTheMilitary.boss.Boss;
+import org.json.simple.parser.ParseException;
 // end of testing
+import java.io.IOException;
 import java.util.Scanner;
 
 public class FinalBossFight implements iMinigame {
     private ServiceMember player = null;
     private Boss tempBoss = null;
+    private static ParseResponse response = null;
+    private static TextParser parser = null;
 
     // for user input / action
     private static Scanner userAction = new Scanner(System.in);
 
-    public FinalBossFight() {
+    public FinalBossFight() throws IOException, ParseException {
         clearScreen();
         introduction();
     }
@@ -23,7 +32,6 @@ public class FinalBossFight implements iMinigame {
     private void introduction() {
         System.out.println("=".repeat(5) + " Final Stage " + "=".repeat(5));
         System.out.println("You finally met the boss");
-        System.out.println("Developer: only the 'attack' command is working so far.\nSorry.. T_T");
     }
 
     // clear the screen
@@ -60,10 +68,17 @@ public class FinalBossFight implements iMinigame {
                 userCommand = userAction.nextLine();
             }
             userFightBossAction(userCommand, usr, tempBoss);
-            if (userCommand.equals("attack") || userCommand.equals("special")){
+            if (userCommand.equals("attack") || userCommand.equals("special")) {
                 bossFightUserRandomAction(usr, tempBoss);
             } else {
                 System.out.println(tempBoss.getName() + " " + tempBoss.getName() + " is looking at you menacingly!");
+            }
+            //Service member using items in battle
+           if(userCommand.equals("items")){
+               System.out.println("What item do you want to use? " + usr.getItems());
+               //user prompt on iem wanted to use
+               String battleItem = userAction.nextLine();
+               usr.useItem(battleItem);
             }
         }
         if (usr.getHealth() <= 0) {

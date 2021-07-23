@@ -33,7 +33,7 @@ public class ServiceMember implements java.io.Serializable{
         setName(_name);
         this.special = _special;
         this.location = _location;
-        this.rank = Rank.E5; // initial rank
+        this.rank = Rank.E1; // initial rank
         // this should be update everytime the soldier get promotes
         this.health = 100;
         this.strength = 7;
@@ -131,6 +131,13 @@ public class ServiceMember implements java.io.Serializable{
     public void setStrength(int _strength) {
         this.strength = _strength;
     }
+    public void setStrength(int battleStrength, boolean dmgBoost){
+        if(dmgBoost){
+            this.strength += battleStrength;
+        }else {
+            this.strength -= battleStrength;
+        }
+    }
 
     public String getPostName() {
         return postName;
@@ -152,20 +159,25 @@ public class ServiceMember implements java.io.Serializable{
     //takes an Item parameter
     public void useItem(Item item) {
         //if consumable
-        if(!this.items.contains(item)){
+        if (!this.items.contains(item)) {
             System.out.println("No item in your inventory");
             return;
         }
 
-        if(this.items.contains(item) && item.getType().equals("consumable")){
+        if (this.items.contains(item) && item.getType().equals("consumable")) {
             System.out.println("Using " + item.getName());
             setHealth(item.getValue(), true);
             items.remove(item);
             return;
-        }
-        //if weapon
-        if(this.items.contains(item)){
-            System.out.println("Using " + item.getName());
+        } else {
+            //if weapon
+            if (this.items.contains(item) && item.getType().equals("weapon")) {
+                System.out.println("Equipping item " + item.getName());
+                setStrength(item.getValue(),true);
+                items.remove(item);
+                System.out.println("This " + item.getName() + " will give me a damage boost!");
+                return;
+            }
         }
     }
 

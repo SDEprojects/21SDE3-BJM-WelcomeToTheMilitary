@@ -38,7 +38,7 @@ public class Display {
 
         return "Current Post: " + member.getPostName() + "\n" +
                 "Location: " + member.getLocation() + "\n" +
-                "Buildings: " + currentMap.getBuildings().toString() + "\n"
+                "Buildings: " + currentMap.listBuildingsForMap()+ "\n"
 
                 ;
     };
@@ -48,7 +48,7 @@ public class Display {
                 "Special: " + usrDep.getSpecial()+ "\n" +
                 "Health: " + usrDep.getHealth() + "\n" +
                 "Strength: " + usrDep.getStrength() + "\n" +
-                "Inventory: " + usrDep.getItems();
+                "Inventory: \n" + usrDep.listItemsForStats();
     }
 
     public static String enteringBuildingController(String noun, ServiceMember usrSM, BaseMap currentMap) throws IOException, ParseException {

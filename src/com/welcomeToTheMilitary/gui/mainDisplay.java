@@ -22,7 +22,7 @@ public class mainDisplay {
     //Main Game Fields
     private JPanel mainTextPanel;
     private JTextArea mainTextArea;
-    private Font mainTextFont = new Font("Arial", Font.PLAIN,24);
+    private Font mainTextFont = new Font("Arial", Font.PLAIN,20);
     private Font sideTextFont = new Font("Arial", Font.PLAIN,18);
     private Font sideTextSmallFont = new Font("Arial", Font.PLAIN,16);
 

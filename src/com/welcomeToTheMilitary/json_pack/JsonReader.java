@@ -30,8 +30,8 @@ public class JsonReader {
         System.out.println(jR.getBuildingStrings("Fort Sill"));
 
         BaseMap map = new BaseMap("Fort Sill", "stuff");
-        map.displaySoldiers("market");
-        map.displayItems("market");
+//        map.displaySoldiers("market");
+//        map.displayItems("market");
     }
 
     private Reader reader = null;

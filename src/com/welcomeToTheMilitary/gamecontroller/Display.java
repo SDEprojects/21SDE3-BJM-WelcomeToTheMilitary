@@ -2,6 +2,7 @@ package com.welcomeToTheMilitary.gamecontroller;
 
 import com.welcomeToTheMilitary.bases.BaseMap;
 import com.welcomeToTheMilitary.character.ServiceMember;
+import com.welcomeToTheMilitary.gui.mainDisplay;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
@@ -51,13 +52,13 @@ public class Display {
                 "Inventory: \n" + usrDep.listItemsForStats();
     }
 
-    public static String enteringBuildingController(String noun, ServiceMember usrSM, BaseMap currentMap) throws IOException, ParseException {
+    public static void enteringBuildingController(String noun, ServiceMember usrSM, BaseMap currentMap, mainDisplay gui) throws IOException, ParseException {
         String lowerNoun = noun.toLowerCase();
         usrSM.setLocation(lowerNoun);
-        currentMap.displaySoldiers(usrSM.getLocation());
+        currentMap.displaySoldiers(usrSM.getLocation(), gui);
 
         System.out.println("Entering: " + noun + " building");
         System.out.println("Current " + usrSM.getName() + "'s location: " + usrSM.getLocation());
-        return "Entering: "+ noun + " building";
+
     }
 }

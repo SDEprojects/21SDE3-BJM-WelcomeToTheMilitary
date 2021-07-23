@@ -114,6 +114,7 @@ public class GameController implements java.io.Serializable {
                 System.out.println("Welcome to Fort Sill. Your Drill Instructor dropped you off at the gate.");
                 gui.setMainTextArea("Welcome to Fort Sill. Your Drill Instructor dropped you off at the gate.");
                 Welcome.separatorTitle();
+                counter = 1;
             } else if (counter == 9000000) {
                 Welcome.separatorTitle();
                 System.out.println("You beat the boss. You are now PCS'ed to Fort Bliss.");
@@ -124,19 +125,18 @@ public class GameController implements java.io.Serializable {
             gui.setStatsAreaText(Display.status(usrSM));
             gui.setMapAreaText(Display.showController(usrSM,currentMap));
 
-            System.out.println("Enter your action [format= verb + noun] for help type (help me)\n" + "-".repeat(50));
-            userAction = input.nextLine();
-            //userAction = null;
-            //while(userAction == null || userAction.equals("")) {
-               // userAction = gui.getUserAction();
-            //}
+            //System.out.println("Enter your action [format= verb + noun] for help type (help me)\n" + "-".repeat(50));
+            //userAction = input.nextLine();
+
+
+            userAction = gui.getUserAction();
+
             response = parser.receiveAction(userAction, usrSM.getPostName());
             if (!(response.getVerb().equals("")) || !(response.getNoun().equals(""))) {
-                try {
+//                try {
                     switch (response.getVerb().trim()) {
                         case "go":
-                            Display.enteringBuildingController(response.getNoun(), usrSM, currentMap);
-                            gui.setMainTextArea(Display.enteringBuildingController(response.getNoun(), usrSM, currentMap));
+                            Display.enteringBuildingController(response.getNoun(), usrSM, currentMap, gui);
                             break;
                         case "show":
                             Display.showController(response.getNoun(), usrSM, currentMap);
@@ -173,14 +173,15 @@ public class GameController implements java.io.Serializable {
                             System.out.println("Noun: " + response.getNoun());
                             break;
                     }
-                } catch (Exception e) {
-                    System.out.println("Invalid action: type 'help me' to get info");
-                    gui.setMainTextArea("Invalid action: type 'help me' to get info");
-
-                    e.printStackTrace();
-                } // end of try-catch
+                    gui.setUserAction(""); // Resets userAction
+//                } catch (Exception e) {
+//                    System.out.println("Invalid action: type 'help me' to get info");
+//                    gui.setMainTextArea("Invalid action: type 'help me' to get info");
+//
+//                    e.printStackTrace();
+//                } // end of try-catch
             }// end of try-catch
-            counter++;
+            //counter++;
         } // end of if statement
     } // end of while loop
 

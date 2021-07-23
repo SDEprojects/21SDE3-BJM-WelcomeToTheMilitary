@@ -24,9 +24,6 @@ public class FinalBossFight implements iMinigame {
     // for user input / action
     private static Scanner userAction = new Scanner(System.in);
 
-    //instance of service member
-    ServiceMember usrSM = new ServiceMember();
-
     public FinalBossFight() throws IOException, ParseException {
         clearScreen();
         introduction();
@@ -35,7 +32,6 @@ public class FinalBossFight implements iMinigame {
     private void introduction() {
         System.out.println("=".repeat(5) + " Final Stage " + "=".repeat(5));
         System.out.println("You finally met the boss");
-        System.out.println("Developer: only the 'attack' command is working so far.\nSorry.. T_T");
     }
 
     // clear the screen
@@ -81,8 +77,8 @@ public class FinalBossFight implements iMinigame {
            if(userCommand.equals("items")){
                System.out.println("What item do you want to use? " + usr.getItems());
                //user prompt on iem wanted to use
-               String itemToUse = userAction.nextLine();
-               usrSM.useItem(itemToUse);
+               String battleItem = userAction.nextLine();
+               usr.useItem(battleItem);
             }
         }
         if (usr.getHealth() <= 0) {

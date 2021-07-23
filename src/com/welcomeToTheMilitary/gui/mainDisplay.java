@@ -21,7 +21,7 @@ public class mainDisplay {
 
     //Main Game Fields
     private JPanel mainTextPanel;
-    private JTextArea mainTextArea;
+    private static JTextArea mainTextArea;
     private Font mainTextFont = new Font("Arial", Font.PLAIN,20);
     private Font sideTextFont = new Font("Arial", Font.PLAIN,18);
     private Font sideTextSmallFont = new Font("Arial", Font.PLAIN,16);
@@ -34,7 +34,7 @@ public class mainDisplay {
 
     private JPanel userActionPanel;
     private JTextField userActionBox;
-    private String userAction;
+    private static String userAction;
 
     //Colors
     private Color mainTextAreaColor = new Color(97,96,81);
@@ -124,7 +124,7 @@ public class mainDisplay {
         mainTextPanel.setForeground(Color.WHITE);
 
         //Main Text Area
-        mainTextArea = new JTextArea(" when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum");
+        mainTextArea = new JTextArea(" ");
         mainTextArea.setBounds(30,35,500,430);//Same as mainTextPanel
         mainTextArea.setBackground(sidePanelColor);
         mainTextArea.setForeground(Color.WHITE);
@@ -139,7 +139,7 @@ public class mainDisplay {
         mapAreaPanel.setForeground(Color.WHITE);
 
         //Map Area Text
-        mapAreaText = new JTextArea("Testing the Text on the Map");
+        mapAreaText = new JTextArea("");
         mapAreaText.setBounds(550,35,210,250);
         mapAreaText.setBackground(sidePanelColor);
         mapAreaText.setForeground(Color.WHITE);
@@ -154,7 +154,7 @@ public class mainDisplay {
         statsAreaPanel.setForeground(Color.WHITE);
 
         //Stats Area Text
-        statsAreaText = new JTextArea("Testing Stats:");
+        statsAreaText = new JTextArea("");
         statsAreaText.setBounds(550,300,210, 275);
         statsAreaText.setBackground(sidePanelColor);
         statsAreaText.setForeground(Color.WHITE);
@@ -187,21 +187,6 @@ public class mainDisplay {
 
         //Listen for Enter
 
-
-//        userActionBox.addFocusListener(new FocusAdapter() {
-//            @Override
-//            public void focusGained(FocusEvent e) {
-//                super.focusGained(e);
-//                userActionBox.setText("");
-//            }
-//
-//            @Override
-//            public void focusLost(FocusEvent e) {
-//                super.focusLost(e);
-//                userActionBox.setText("Enter action (noun + verb)");
-//            }
-//        });
-
         //Handler for text field.  Sets UserAction string for textParser Processing
         userActionBox.addKeyListener(new KeyAdapter() {
            @Override
@@ -215,6 +200,10 @@ public class mainDisplay {
 
         frame.revalidate();
         frame.repaint();
+    }
+    //Welcome Screen Tutorial GUI
+    public void tutorialScreen() {
+
     }
 // Handler
     public class TitleScreenButton implements ActionListener{
@@ -231,10 +220,10 @@ public class mainDisplay {
         return mainTextArea;
     }
 
-    public void setMainTextArea(String mainTextString) {
-        this.mainTextArea.setText(mainTextString);
-        frame.revalidate();
-        frame.repaint();
+    public static void setMainTextArea(String mainTextString) {
+        mainTextArea.setText(mainTextString);
+//        frame.revalidate();
+//        frame.repaint();
     }
 
     public JTextArea getMapAreaText() {
@@ -257,11 +246,11 @@ public class mainDisplay {
         frame.repaint();
     }
 
-    public String getUserAction() {
+    public static String getUserAction() {
         return userAction;
     }
 
-    public void setUserAction(String userAction) {
-        this.userAction = userAction;
+    public static void setUserAction(String _userAction) {
+        userAction = _userAction;
     }
 }

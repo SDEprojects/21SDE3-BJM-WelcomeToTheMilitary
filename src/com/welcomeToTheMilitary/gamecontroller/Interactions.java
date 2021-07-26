@@ -6,6 +6,8 @@ import com.welcomeToTheMilitary.character.Enlisted;
 import com.welcomeToTheMilitary.character.ServiceMember;
 import com.welcomeToTheMilitary.gui.mainDisplay;
 import com.welcomeToTheMilitary.minigame.MinigameFactory;
+import com.welcomeToTheMilitary.textparser.ParseResponse;
+import com.welcomeToTheMilitary.textparser.TextParser;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -19,7 +21,8 @@ import java.util.Scanner;
 
 public class Interactions {
 
-    static Scanner scanner = new Scanner(System.in);
+    private static ParseResponse response = null;
+    private static TextParser parser = new TextParser();
 
     public static void interactWithNPC(String noun, ServiceMember usrSM, BaseMap currentMap) throws IOException, ParseException {
         MinigameFactory gameFactory = new MinigameFactory();
@@ -56,10 +59,12 @@ public class Interactions {
                 //gives a choice to battle or talk to player
                 System.out.println("Would you like to talk or battle?");
                 mainDisplay.setMainTextArea("Would you like to talk or battle?");
-                String playerInput = scanner.nextLine();
+
+                String userAction = mainDisplay.getUserAction();
+                response = parser.receiveAction(userAction, usrSM.getPostName());
 
                 //if player wants to talk
-                if(playerInput.equals("talk")){
+                if(userAction.equals("talk " + soldier.getName())){
                     JSONParser jsonParser = new JSONParser();
                     String jsonSoldiers = "jsonFiles/soldiersTest.json";
                     String soldiersContents = new String((Files.readAllBytes((Paths.get(jsonSoldiers)))));
@@ -68,10 +73,11 @@ public class Interactions {
                     JSONObject soldiers = (JSONObject) j.get(soldier.getName());
                     String soldierLine = soldiers.get("line").toString();
                     System.out.println(soldierLine);
+                    mainDisplay.setMainTextArea(soldierLine);
 
                     return;
                 }
-                else if(!playerInput.equals("battle")){
+                else if(!userAction.equals("battle")){
                     System.out.println("not a valid choice");
                     mainDisplay.setMainTextArea("not a valid choice");
                     return;

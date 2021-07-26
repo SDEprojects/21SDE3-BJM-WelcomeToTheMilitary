@@ -35,7 +35,7 @@ public class GameController implements java.io.Serializable {
     public GameController() throws IOException, ParseException {
     }
 
-    public void mainGame() throws IOException, ParseException, InterruptedException {
+    public void mainGame(String name, String special) throws IOException, ParseException, InterruptedException {
 
 
 
@@ -47,7 +47,7 @@ public class GameController implements java.io.Serializable {
             BaseMap currentMap = fortSill;
 
             //Start the player with data gathered from gui
-            ServiceMember usrSM = new ServiceMember("BOB", "Dog Tags", "Fort Sill");
+            ServiceMember usrSM = new ServiceMember(name, special, "Fort Sill");
 
             parser = new TextParser();
 

@@ -119,11 +119,9 @@ public Enlisted(String _name, String _attribute, Rank _rank)
 
     @Override
     public String toString() {
-        return "Enlisted{" +
-                "name='" + name + '\'' +
-                ", attribute='" + attribute + '\'' +
-                ", rank=" + rank +
-                ", location='" + location + '\'' +
-                '}';
+        return
+                rank + " " + name + '\n' +
+                "Description: " + attribute
+               ;
     }
 }

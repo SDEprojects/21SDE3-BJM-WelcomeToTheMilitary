@@ -2,6 +2,7 @@ package com.welcomeToTheMilitary.bases;
 
 import com.welcomeToTheMilitary.attributes.Item;
 import com.welcomeToTheMilitary.character.Enlisted;
+import com.welcomeToTheMilitary.gui.mainDisplay;
 import com.welcomeToTheMilitary.json_pack.JsonReader;
 import org.json.simple.parser.ParseException;
 
@@ -89,12 +90,17 @@ public class BaseMap {
         this.soldiers = JsonReader.getSoldiers().get(name);
     }
 
-    public void displaySoldiers(String currentLocation) throws IOException, ParseException {
+    public void displaySoldiers(String currentLocation, mainDisplay gui) throws IOException, ParseException {
+        StringBuilder soldierList = new StringBuilder();
+        soldierList.append("Entering ").append(currentLocation).append(" building!").append("\n");
+        soldierList.append("_".repeat(45)).append("\n");
         for(Enlisted enlisted : soldiers){
             if(enlisted.getLocation().equals(currentLocation)){
                 System.out.println(enlisted);
+                soldierList.append(enlisted).append("\n").append("_".repeat(45));
             }
         }
+        gui.setMainTextArea(soldierList.toString());
     }
 
     public void displayItems(String currentLocation) {
@@ -129,6 +135,16 @@ public class BaseMap {
         }
         System.out.println("Obtained Item: " + currentItem.getName() + "!");
         return currentItem;
+    }
+
+    public String listBuildingsForMap() {
+        StringBuilder buildList = new StringBuilder();
+
+        for (String building : this.buildings) {
+            buildList.append(building).append("\n");
+        }
+
+        return buildList.toString();
     }
 
 }

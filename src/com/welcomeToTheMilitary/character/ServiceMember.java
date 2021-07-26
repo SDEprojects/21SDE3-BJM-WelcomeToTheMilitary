@@ -42,6 +42,10 @@ public class ServiceMember implements java.io.Serializable{
         healPotion = 5;
     }
 
+    public ServiceMember() {
+
+    }
+
     public ArrayList<Item> getItems() {
         return items;
     }
@@ -127,6 +131,13 @@ public class ServiceMember implements java.io.Serializable{
     public void setStrength(int _strength) {
         this.strength = _strength;
     }
+    public void setStrength(int battleStrength, boolean dmgBoost){
+        if(dmgBoost){
+            this.strength += battleStrength;
+        }else {
+            this.strength -= battleStrength;
+        }
+    }
 
     public String getPostName() {
         return postName;
@@ -148,20 +159,25 @@ public class ServiceMember implements java.io.Serializable{
     //takes an Item parameter
     public void useItem(Item item) {
         //if consumable
-        if(!this.items.contains(item)){
+        if (!this.items.contains(item)) {
             System.out.println("No item in your inventory");
             return;
         }
 
-        if(this.items.contains(item) && item.getType().equals("consumable")){
+        if (this.items.contains(item) && item.getType().equals("consumable")) {
             System.out.println("Using " + item.getName());
             setHealth(item.getValue(), true);
             items.remove(item);
             return;
-        }
-        //if weapon
-        if(this.items.contains(item)){
-            System.out.println("Using " + item.getName());
+        } else {
+            //if weapon
+            if (this.items.contains(item) && item.getType().equals("weapon")) {
+                System.out.println("Equipping item " + item.getName());
+                setStrength(item.getValue(),true);
+                items.remove(item);
+                System.out.println("This " + item.getName() + " will give me a damage boost!");
+                return;
+            }
         }
     }
 
@@ -194,6 +210,16 @@ public class ServiceMember implements java.io.Serializable{
         if (NUMBER_OF_USE_SPECIAL_ON_EACH_FINAL_BOSS > 0) {
             NUMBER_OF_USE_SPECIAL_ON_EACH_FINAL_BOSS -= 1;
         }
+    }
+
+    public String listItemsForStats() {
+        StringBuilder itemList = new StringBuilder();
+
+        for (Item item : this.items) {
+            itemList.append(item.getName()).append(" ").append("Value:").append(item.getValue()).append("\n");
+        }
+
+        return itemList.toString();
     }
 
     // use spell

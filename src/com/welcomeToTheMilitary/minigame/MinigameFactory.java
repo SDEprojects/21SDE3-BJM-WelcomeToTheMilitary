@@ -1,10 +1,13 @@
 package com.welcomeToTheMilitary.minigame;
 
+import org.json.simple.parser.ParseException;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class MinigameFactory {
 
-    public iMinigame playGame() {
+    public iMinigame playGame() throws IOException, ParseException {
 
         //Adds all our minigames to ArrayList and grabs one at random
         ArrayList<String> gameList = new ArrayList<>();
@@ -21,7 +24,7 @@ public class MinigameFactory {
 
     }
 
-    public iMinigame playGame(String game) {
+    public iMinigame playGame(String game) throws IOException, ParseException {
 
         //returns the random game
         if (game.equals("rock paper scissors")) {

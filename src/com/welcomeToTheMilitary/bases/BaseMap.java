@@ -90,7 +90,7 @@ public class BaseMap {
         this.soldiers = JsonReader.getSoldiers().get(name);
     }
 
-    public void displaySoldiers(String currentLocation, mainDisplay gui) throws IOException, ParseException {
+    public void displaySoldiers(String currentLocation) throws IOException, ParseException {
         StringBuilder soldierList = new StringBuilder();
         soldierList.append("Entering ").append(currentLocation).append(" building!").append("\n");
         soldierList.append("_".repeat(45)).append("\n");
@@ -100,7 +100,7 @@ public class BaseMap {
                 soldierList.append(enlisted).append("\n").append("_".repeat(45));
             }
         }
-        gui.setMainTextArea(soldierList.toString());
+        mainDisplay.setMainTextArea(soldierList.toString());
     }
 
     public void displayItems(String currentLocation) {

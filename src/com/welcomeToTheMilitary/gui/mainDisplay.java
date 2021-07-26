@@ -1,65 +1,83 @@
 package com.welcomeToTheMilitary.gui;
 
+import com.welcomeToTheMilitary.character.ServiceMember;
+import com.welcomeToTheMilitary.gamecontroller.GameController;
+import com.welcomeToTheMilitary.tutorial.NewWelcome;
+import org.json.simple.parser.ParseException;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 
 public class mainDisplay {
-    JFrame frame = new JFrame("Welcome to the Military!");
-    private Container container;
+    private static JFrame frame = new JFrame("Welcome to the Military!");
+    private static Container container;
 
     //Title Screen Fields
-    private JPanel titleNamePanel;
-    private JLabel titleNameLabel;
-    private Font titleFont = new Font("Arial", Font.PLAIN,50);
-    private JLabel titleImage;
-    private JPanel titleImagePanel;
-    private JButton startButton;
-    private JPanel startButtonPanel;
-    private TitleScreenButton tsButton = new TitleScreenButton();
+    private static JPanel titleNamePanel;
+    private static JLabel titleNameLabel;
+    private static Font titleFont = new Font("Arial", Font.PLAIN,50);
+    private static JLabel titleImage;
+    private static JPanel titleImagePanel;
+    private static JButton startButton;
+    private static JPanel startButtonPanel;
+    private static TitleScreenButton tsButton = new TitleScreenButton();
+    private static boolean startButtonClicked = false;
+
+
+    //Tutorial Screen Fields
+    private static JPanel tutorialTitlePanel;
+    private static JLabel tutorialTitleLabel;
+    private static JPanel tutorialMainPanel;
+    private static JTextArea tutorialMainText;
+    private static Font tutorialFont = new Font("Arial", Font.PLAIN,26);
+
+    //New Player Form
+    private static JPanel newPlayerTitlePanel;
+    private static JLabel newPlayerTitleLabel;
+    private static JTextField newPlayerNameField;
+    private static JLabel special1Label;
+    private static JLabel special2Label;
+    private static JLabel special3Label;
+    private static JLabel special4Label;
+    private static JRadioButton special1Button;
+    private static JRadioButton special2Button;
+    private static JRadioButton special3Button;
+    private static JRadioButton special4Button;
+    private static ButtonGroup specialsButtonGroup;
 
 
     //Main Game Fields
-    private JPanel mainTextPanel;
+    private static JPanel mainTextPanel;
     private static JTextArea mainTextArea;
-    private Font mainTextFont = new Font("Arial", Font.PLAIN,20);
-    private Font sideTextFont = new Font("Arial", Font.PLAIN,18);
-    private Font sideTextSmallFont = new Font("Arial", Font.PLAIN,16);
+    private static Font mainTextFont = new Font("Arial", Font.PLAIN,20);
+    private static Font sideTextFont = new Font("Arial", Font.PLAIN,18);
+    private static Font sideTextSmallFont = new Font("Arial", Font.PLAIN,16);
 
-    private JPanel mapAreaPanel;
-    private JTextArea mapAreaText;
+    private static JPanel mapAreaPanel;
+    private static JTextArea mapAreaText;
 
-    private JPanel statsAreaPanel;
-    private JTextArea statsAreaText;
+    private static JPanel statsAreaPanel;
+    private static JTextArea statsAreaText;
 
-    private JPanel userActionPanel;
-    private JTextField userActionBox;
+    private static JPanel userActionPanel;
+    private static JTextField userActionBox;
     private static String userAction;
 
     //Colors
-    private Color mainTextAreaColor = new Color(97,96,81);
-    private Color mainBackgroundColor = new Color(82,102,70);
-    private Color sidePanelColor = new Color(97,96,81);
-    private Color sidePanelTextColor = Color.WHITE;
+    private static Color mainTextAreaColor = new Color(97,96,81);
+    private static Color mainBackgroundColor = new Color(82,102,70);
+    private static Color sidePanelColor = new Color(97,96,81);
+    private static Color sidePanelTextColor = Color.WHITE;
 
-    public mainDisplay() {
+    //grab service member after gui builds
+    private static String name;
+    private static String special;
 
-        frame.setPreferredSize(new Dimension(800, 650));
-        //frame.setContentPane(new mainDisplay().rootPanel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().setBackground(mainBackgroundColor);
-        frame.setLayout(null);
-        frame.pack();
-        container = frame.getContentPane();
 
-        //Sends our JFrame to title screen
 
-        titleScreen();
-
-        frame.setVisible(true);
-    }
-
-    public void titleScreen() {
+    public static  void titleScreen() {
 
 
         //Title Screen
@@ -109,7 +127,7 @@ public class mainDisplay {
 
     }
 
-    public void gameScreen() {
+    public  static void gameScreen(){
         container.remove(startButtonPanel);//
         container.remove(titleNamePanel);// Not working for some reason..
         container.remove(startButton);
@@ -183,7 +201,7 @@ public class mainDisplay {
         container.add(userActionPanel);
 
         //Clear user action first
-        this.userAction = "";
+        userAction = "";
 
         //Listen for Enter
 
@@ -200,18 +218,40 @@ public class mainDisplay {
 
         frame.revalidate();
         frame.repaint();
+
+
+
     }
     //Welcome Screen Tutorial GUI
-    public void tutorialScreen() {
+    public static void tutorialScreen(){
+        //Doing this to not run tutorial before start button is pushed
+
+
+        //Tutorial Title Panel
+        tutorialTitlePanel = new JPanel();
+        tutorialTitlePanel.setBounds(75,30, 650, 50);
+        tutorialTitlePanel.setBackground(Color.yellow);
+        tutorialTitlePanel.setForeground(Color.white);
+        //Label
+        tutorialTitleLabel = new JLabel("Military Tutorial");
+        tutorialTitleLabel.setFont(tutorialFont);
+        tutorialTitleLabel.setForeground(Color.white);
+        tutorialTitlePanel.add(tutorialTitleLabel);
+
+        //Tutorial Main Panel
+
+        //Add stuff to container
+        container.add(tutorialTitlePanel);
 
     }
 // Handler
-    public class TitleScreenButton implements ActionListener{
+    public static class TitleScreenButton implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent e) {
-
             gameScreen();
+            //tutorialScreen();
+            setStartButtonClicked(true);
         }
     }
 
@@ -226,24 +266,24 @@ public class mainDisplay {
 //        frame.repaint();
     }
 
-    public JTextArea getMapAreaText() {
+    public  static JTextArea getMapAreaText() {
         return mapAreaText;
     }
 
-    public void setMapAreaText(String mapAreaString) {
-        this.mapAreaText.setText(mapAreaString);
-        frame.revalidate();
-        frame.repaint();
+    public static void setMapAreaText(String mapAreaString) {
+        mainDisplay.mapAreaText.setText(mapAreaString);
+//        frame.revalidate();
+//        frame.repaint();
     }
 
-    public JTextArea getStatsAreaText() {
+    public  static JTextArea getStatsAreaText() {
         return statsAreaText;
     }
 
-    public void setStatsAreaText(String statsAreaTextString) {
-        this.statsAreaText.setText(statsAreaTextString);
-        frame.revalidate();
-        frame.repaint();
+    public static void setStatsAreaText(String statsAreaTextString) {
+        mainDisplay.statsAreaText.setText(statsAreaTextString);
+//        frame.revalidate();
+//        frame.repaint();
     }
 
     public static String getUserAction() {
@@ -252,5 +292,59 @@ public class mainDisplay {
 
     public static void setUserAction(String _userAction) {
         userAction = _userAction;
+    }
+
+    public static String getName() {
+        return name;
+    }
+
+    public static void setName(String name) {
+        mainDisplay.name = name;
+    }
+
+    public  static String getSpecial() {
+        return special;
+    }
+
+    public static void setSpecial(String special) {
+        mainDisplay.special = special;
+    }
+
+    public static boolean isStartButtonClicked() {
+        return startButtonClicked;
+    }
+
+    public static void setStartButtonClicked(boolean startButtonClicked) {
+        mainDisplay.startButtonClicked = startButtonClicked;
+    }
+
+    public static void main(String[] args)  throws IOException, ParseException, InterruptedException{
+
+        frame.setPreferredSize(new Dimension(800, 650));
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().setBackground(mainBackgroundColor);
+        frame.setLayout(null);
+        frame.pack();
+        container = frame.getContentPane();
+
+        //Sends our JFrame to title screen
+        frame.setVisible(true);
+
+        GameController game = new GameController();
+
+
+        while(true) {
+            if (!isStartButtonClicked()) {
+                titleScreen();
+            }
+
+            while(isStartButtonClicked()) {
+                game.mainGame();
+            }
+            frame.revalidate();
+            frame.repaint();
+        }
+
+
     }
 }

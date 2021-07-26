@@ -331,7 +331,11 @@ public class MainDisplay {
     }
 
     public static void gameScreen() {
-
+        container.remove(newPlayerTitlePanel);
+        container.remove(newPlayerNameTextPanel);
+        container.remove(specialsPanel);
+        container.remove(specialDescriptionPanel);
+        container.remove(newPlayerButtonPanel);
 
         //Main Text Panel
         mainTextPanel = new JPanel();

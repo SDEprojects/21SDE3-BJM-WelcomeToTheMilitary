@@ -79,49 +79,48 @@ public class mainDisplay {
 
     public static  void titleScreen() {
 
+        if (!startButtonClicked) {
+            //Title Screen
+            titleNamePanel = new JPanel();
+            titleNamePanel.setBounds(150, 100, 550, 100);
+            titleNamePanel.setBackground(mainBackgroundColor);
 
-        //Title Screen
-        titleNamePanel = new JPanel();
-        titleNamePanel.setBounds(150, 100, 550, 100);
-        titleNamePanel.setBackground(mainBackgroundColor);
-
-        //Title Screen Label
-        titleNameLabel = new JLabel("Welcome to the Military!");
-        titleNameLabel.setFont(titleFont);
-        titleNameLabel.setForeground(Color.white);
+            //Title Screen Label
+            titleNameLabel = new JLabel("Welcome to the Military!");
+            titleNameLabel.setFont(titleFont);
+            titleNameLabel.setForeground(Color.white);
 
 //        Title Image
-        titleImagePanel = new JPanel();
-        titleImagePanel.setBounds(350,230, 100,97);
-        //titleImagePanel.setBackground(Color.BLUE);
+            titleImagePanel = new JPanel();
+            titleImagePanel.setBounds(350, 230, 100, 97);
+            //titleImagePanel.setBackground(Color.BLUE);
 
-        ImageIcon icon = new ImageIcon("lib/pvt_small.png");
-        titleImage = new JLabel(icon);
+            ImageIcon icon = new ImageIcon("lib/pvt_small.png");
+            titleImage = new JLabel(icon);
 
-        //Start Button Panel
-        startButtonPanel = new JPanel();
-        startButtonPanel.setBounds(300,350,200,75);
-        startButtonPanel.setBackground(mainBackgroundColor);
+            //Start Button Panel
+            startButtonPanel = new JPanel();
+            startButtonPanel.setBounds(300, 350, 200, 75);
+            startButtonPanel.setBackground(mainBackgroundColor);
 
-        //Start Button
-        startButton = new JButton("Click to Start");
-        startButton.setBackground(Color.DARK_GRAY);
-        startButton.setForeground(Color.white);
-        startButton.setFont(new Font("Arial", Font.PLAIN,26));
+            //Start Button
+            startButton = new JButton("Click to Start");
+            startButton.setBackground(Color.DARK_GRAY);
+            startButton.setForeground(Color.white);
+            startButton.setFont(new Font("Arial", Font.PLAIN, 26));
 
 
+            //Adds title screen to main container
+            titleImagePanel.add(titleImage);
+            titleNamePanel.add(titleNameLabel);
+            startButtonPanel.add(startButton);
 
-        //Adds title screen to main container
-        titleImagePanel.add(titleImage);
-        titleNamePanel.add(titleNameLabel);
-        startButtonPanel.add(startButton);
+            container.add(startButtonPanel);
+            container.add(titleNamePanel);
+            container.add(titleImagePanel);
 
-        container.add(startButtonPanel);
-        container.add(titleNamePanel);
-        container.add(titleImagePanel);
-
-        startButton.addActionListener(tsButton); // sends button click to TSButtonAction
-
+            startButton.addActionListener(tsButton); // sends button click to TSButtonAction
+        }
         frame.revalidate();
         frame.repaint();
 
@@ -262,8 +261,8 @@ public class mainDisplay {
 
     public static void setMainTextArea(String mainTextString) {
         mainTextArea.setText(mainTextString);
-//        frame.revalidate();
-//        frame.repaint();
+        frame.revalidate();
+        frame.repaint();
     }
 
     public  static JTextArea getMapAreaText() {
@@ -272,8 +271,8 @@ public class mainDisplay {
 
     public static void setMapAreaText(String mapAreaString) {
         mainDisplay.mapAreaText.setText(mapAreaString);
-//        frame.revalidate();
-//        frame.repaint();
+        frame.revalidate();
+       frame.repaint();
     }
 
     public  static JTextArea getStatsAreaText() {
@@ -282,8 +281,8 @@ public class mainDisplay {
 
     public static void setStatsAreaText(String statsAreaTextString) {
         mainDisplay.statsAreaText.setText(statsAreaTextString);
-//        frame.revalidate();
-//        frame.repaint();
+        frame.revalidate();
+       frame.repaint();
     }
 
     public static String getUserAction() {
@@ -331,15 +330,20 @@ public class mainDisplay {
         frame.setVisible(true);
 
         GameController game = new GameController();
-
+        boolean runTitle = true;
 
         while(true) {
-            if (!isStartButtonClicked()) {
+
+            while(runTitle) {
                 titleScreen();
+                runTitle=false;
             }
 
             while(isStartButtonClicked()) {
+
                 game.mainGame();
+                frame.revalidate();
+                frame.repaint();
             }
             frame.revalidate();
             frame.repaint();

@@ -1,12 +1,10 @@
 package com.welcomeToTheMilitary.tutorial;
 
-import com.welcomeToTheMilitary.character.ServiceMember;
-import com.welcomeToTheMilitary.gui.mainDisplay;
+import com.welcomeToTheMilitary.gui.MainDisplay;
 import com.welcomeToTheMilitary.json_pack.JsonReader;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -22,24 +20,24 @@ public class NewWelcome {
     public String[] intro() throws InterruptedException, IOException, ParseException {
 
 
-        String tutorialAnswer = mainDisplay.getUserAction();
+        String tutorialAnswer = MainDisplay.getUserAction();
 
         while (tutorialAnswer.equals("")) {
-            mainDisplay.setMainTextArea("Would you like to use the tutorial? \n Please enter Yes/y or No/no");
+            MainDisplay.setMainTextArea("Would you like to use the tutorial? \n Please enter Yes/y or No/no");
             if (tutorialAnswer.equals("yes") || tutorialAnswer.equals("y")) {
-                mainDisplay.setUserAction("");
+                MainDisplay.setUserAction("");
                 //Ask questions
 
                 //Tutorial is now all or nothing
-                mainDisplay.setMainTextArea(questionOne());
+                MainDisplay.setMainTextArea(questionOne());
                 Thread.sleep(2000);
 
                 //
-                mainDisplay.setMainTextArea(questionTwo());
+                MainDisplay.setMainTextArea(questionTwo());
                 Thread.sleep(3000);
 
                 //
-                mainDisplay.setMainTextArea(questionThree());
+                MainDisplay.setMainTextArea(questionThree());
                 Thread.sleep(3000);
 
 
@@ -52,21 +50,21 @@ public class NewWelcome {
             }
 
         }
-        mainDisplay.setUserAction("");
+        MainDisplay.setUserAction("");
 
-        String spellAnswer = mainDisplay.getUserAction();
+        String spellAnswer = MainDisplay.getUserAction();
 
         do {
-            mainDisplay.setMainTextArea(spells());
+            MainDisplay.setMainTextArea(spells());
         } while (!spells().contains(spellAnswer));
 
 
-        mainDisplay.setUserAction("");//clear once again
+        MainDisplay.setUserAction("");//clear once again
 
-        String memberName = mainDisplay.getUserAction();
+        String memberName = MainDisplay.getUserAction();
 
         do {
-            mainDisplay.setMainTextArea("Please enter your name!");
+            MainDisplay.setMainTextArea("Please enter your name!");
         } while (memberName.equals(""));
 
         String[] memberData = {memberName,spellAnswer,"Fort Bliss"};

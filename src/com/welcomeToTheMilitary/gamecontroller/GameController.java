@@ -12,7 +12,7 @@ import com.welcomeToTheMilitary.textparser.ParseResponse;
 import com.welcomeToTheMilitary.textparser.TextParser;
 import com.welcomeToTheMilitary.tutorial.NewWelcome;
 import com.welcomeToTheMilitary.tutorial.Welcome;
-import com.welcomeToTheMilitary.gui.mainDisplay;
+import com.welcomeToTheMilitary.gui.MainDisplay;
 import org.json.simple.parser.ParseException;
 
 
@@ -57,7 +57,7 @@ public class GameController implements java.io.Serializable {
             while (!userAction.equals("exit") && !userAction.equals("quit") && !userAction.equals("save")) {
                 // condition that checks if the player's rank is E-6 then it invoke the challenge against the boss
                 if (usrSM.getRank().equals(Rank.E6) && (usrSM.getPostName().equals("Fort Sill"))) {
-                    mainDisplay.setMainTextArea("Reached E-6..." + "\n" +
+                    MainDisplay.setMainTextArea("Reached E-6..." + "\n" +
                             "Final Challenge!"
                     );
                     System.out.println("Reached E-6...");
@@ -67,7 +67,7 @@ public class GameController implements java.io.Serializable {
                     // if player won
                     if (isWon) {
                         Welcome.separatorTitle();
-                        mainDisplay.setMainTextArea("Your journey in Fort Sill is over soldier..");
+                        MainDisplay.setMainTextArea("Your journey in Fort Sill is over soldier..");
                         System.out.println("Your journey in Fort Sill is over soldier..");
                         usrSM.setPostName("Fort Bliss");
                         currentMap = fortBliss;
@@ -79,7 +79,7 @@ public class GameController implements java.io.Serializable {
                         // lost in fort sill
                         Welcome.separatorTitle();
 
-                        mainDisplay.setMainTextArea("You challenged your sergeant and lost" + "\n" + "Game Over!");
+                        MainDisplay.setMainTextArea("You challenged your sergeant and lost" + "\n" + "Game Over!");
 
                         Welcome.separatorTitle();
                         System.exit(0);
@@ -87,7 +87,7 @@ public class GameController implements java.io.Serializable {
                 } else if (usrSM.getRank().equals(Rank.E9) && (usrSM.getPostName().equals("Fort Bliss"))) {
                     System.out.println("Reached E-9...");
                     System.out.println("Final Challenge!");
-                    mainDisplay.setMainTextArea("Reached E-9..." + "\n" +
+                    MainDisplay.setMainTextArea("Reached E-9..." + "\n" +
                             "Final Challenge!"
                     );
                     minigame = gameFactory.playGame("boss game");
@@ -97,7 +97,7 @@ public class GameController implements java.io.Serializable {
                         Welcome.separatorTitle();
                         System.out.println("Your journey in Fort Bliss is over soldier..");
                         System.out.println("You completed the game\nYou won");
-                        mainDisplay.setMainTextArea("Your journey in Fort Bliss is over soldier.." + "\n" +
+                        MainDisplay.setMainTextArea("Your journey in Fort Bliss is over soldier.." + "\n" +
                                 "You completed the game! Here's your DD214."
                         );
                         Welcome.separatorTitle();
@@ -107,7 +107,7 @@ public class GameController implements java.io.Serializable {
                         Welcome.separatorTitle();
                         System.out.println("You challenge your sergeant major you lose\nKick out");
                         System.out.println("Game over");
-                        mainDisplay.setMainTextArea("You challenged your sergeant major and lost" + "\n" + "Game Over!");
+                        MainDisplay.setMainTextArea("You challenged your sergeant major and lost" + "\n" + "Game Over!");
                         Welcome.separatorTitle();
                         System.exit(0);
                     }
@@ -115,24 +115,24 @@ public class GameController implements java.io.Serializable {
                 if (counter == 0) {
                     Welcome.separatorTitle();
                     System.out.println("Welcome to Fort Sill. Your Drill Instructor dropped you off at the gate.");
-                    mainDisplay.setMainTextArea("Welcome to Fort Sill. Your Drill Instructor dropped you off at the gate.");
+                    MainDisplay.setMainTextArea("Welcome to Fort Sill. Your Drill Instructor dropped you off at the gate.");
                     Welcome.separatorTitle();
                     counter = 1;
                 } else if (counter == 9000000) {
                     Welcome.separatorTitle();
                     System.out.println("You beat the boss. You are now PCS'ed to Fort Bliss.");
-                    mainDisplay.setMainTextArea("You beat the boss. You are now PCS'ed to Fort Bliss.");
+                    MainDisplay.setMainTextArea("You beat the boss. You are now PCS'ed to Fort Bliss.");
                     Welcome.separatorTitle();
                 }
                 //display persistent information for players to track
-                mainDisplay.setStatsAreaText(Display.status(usrSM));
-                mainDisplay.setMapAreaText(Display.showController(usrSM, currentMap));
+                MainDisplay.setStatsAreaText(Display.status(usrSM));
+                MainDisplay.setMapAreaText(Display.showController(usrSM, currentMap));
 
                 //System.out.println("Enter your action [format= verb + noun] for help type (help me)\n" + "-".repeat(50));
                 //userAction = input.nextLine();
 
 
-                userAction = mainDisplay.getUserAction();
+                userAction = MainDisplay.getUserAction();
 
                 response = parser.receiveAction(userAction, usrSM.getPostName());
                 if (!(response.getVerb().equals("")) || !(response.getNoun().equals(""))) {
@@ -177,7 +177,7 @@ public class GameController implements java.io.Serializable {
                             System.out.println("Noun: " + response.getNoun());
                             break;
                     }
-                    mainDisplay.setUserAction(""); // Resets userAction
+                    MainDisplay.setUserAction(""); // Resets userAction
 //                } catch (Exception e) {
 //                    System.out.println("Invalid action: type 'help me' to get info");
 //                    gui.setMainTextArea("Invalid action: type 'help me' to get info");
@@ -195,13 +195,13 @@ public class GameController implements java.io.Serializable {
 
             System.out.println("Please type the post you would like to move to: ");
             System.out.println(JsonReader.getLocations());
-            mainDisplay.setMainTextArea("Please type the post you would like to move to: " + "\n" +
+            MainDisplay.setMainTextArea("Please type the post you would like to move to: " + "\n" +
                     JsonReader.getLocations());
             Scanner pcsInput = new Scanner(System.in);
             pcsInput.next();
             Thread.sleep(800);
             System.out.println("Sorry to inform you but your application has been denied");
-            mainDisplay.setMainTextArea("Sorry to inform you but your application has been denied");
+            MainDisplay.setMainTextArea("Sorry to inform you but your application has been denied");
         }
 
 }

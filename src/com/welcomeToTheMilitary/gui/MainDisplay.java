@@ -1,8 +1,6 @@
 package com.welcomeToTheMilitary.gui;
 
-import com.welcomeToTheMilitary.character.ServiceMember;
 import com.welcomeToTheMilitary.gamecontroller.GameController;
-import com.welcomeToTheMilitary.tutorial.NewWelcome;
 import org.json.simple.parser.ParseException;
 
 import javax.swing.*;
@@ -10,7 +8,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
 
-public class mainDisplay {
+public class MainDisplay {
     private static JFrame frame = new JFrame("Welcome to the Military!");
     private static Container container;
 
@@ -270,7 +268,7 @@ public class mainDisplay {
     }
 
     public static void setMapAreaText(String mapAreaString) {
-        mainDisplay.mapAreaText.setText(mapAreaString);
+        MainDisplay.mapAreaText.setText(mapAreaString);
         frame.revalidate();
        frame.repaint();
     }
@@ -280,7 +278,7 @@ public class mainDisplay {
     }
 
     public static void setStatsAreaText(String statsAreaTextString) {
-        mainDisplay.statsAreaText.setText(statsAreaTextString);
+        MainDisplay.statsAreaText.setText(statsAreaTextString);
         frame.revalidate();
        frame.repaint();
     }
@@ -298,7 +296,7 @@ public class mainDisplay {
     }
 
     public static void setName(String name) {
-        mainDisplay.name = name;
+        MainDisplay.name = name;
     }
 
     public  static String getSpecial() {
@@ -306,7 +304,7 @@ public class mainDisplay {
     }
 
     public static void setSpecial(String special) {
-        mainDisplay.special = special;
+        MainDisplay.special = special;
     }
 
     public static boolean isStartButtonClicked() {
@@ -314,7 +312,7 @@ public class mainDisplay {
     }
 
     public static void setStartButtonClicked(boolean startButtonClicked) {
-        mainDisplay.startButtonClicked = startButtonClicked;
+        MainDisplay.startButtonClicked = startButtonClicked;
     }
 
     public static void main(String[] args)  throws IOException, ParseException, InterruptedException{

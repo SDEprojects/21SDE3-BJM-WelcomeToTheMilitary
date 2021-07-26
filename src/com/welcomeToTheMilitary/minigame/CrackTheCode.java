@@ -1,6 +1,7 @@
 package com.welcomeToTheMilitary.minigame;
 
 import com.welcomeToTheMilitary.character.ServiceMember;
+import com.welcomeToTheMilitary.gui.mainDisplay;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -47,6 +48,7 @@ public class CrackTheCode implements iMinigame{
     public boolean playMe(){
 
         System.out.println("You have 10 tries to guess the word!");
+        mainDisplay.setMainTextArea("");
 
         int tries = 0;
 

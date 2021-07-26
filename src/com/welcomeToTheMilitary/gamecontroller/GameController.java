@@ -38,14 +38,6 @@ public class GameController implements java.io.Serializable {
     public void mainGame() throws IOException, ParseException, InterruptedException {
 
 
-//        System.out.println("Would you like to load the game?");
-//
-//        if(input.nextLine().equals("yes")){
-//            System.out.println("Loading game...");
-//            SaveAndLoad.loadGame();
-//        }
-
-
 
 
         BaseMap fortSill = new BaseMap("Fort Sill", "Some post");

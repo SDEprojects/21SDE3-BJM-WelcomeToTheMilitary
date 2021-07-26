@@ -30,11 +30,11 @@ public class MinigameFactory {
         if (game.equals("rock paper scissors")) {
             return new RPC();
         } else if (game.equals("memorization game")) {
-            return new DDRKeyboard();
+            return new RPC();
         } else if (game.equals("blitz math")) {
-            return new BlitzMath();
+            return new RPC();
         }else if (game.equals("crack the code")) {
-            return new CrackTheCode();
+            return new RPC();
         } else if (game.equals("boss game")) {
             return new FinalBossFight();
         } else {

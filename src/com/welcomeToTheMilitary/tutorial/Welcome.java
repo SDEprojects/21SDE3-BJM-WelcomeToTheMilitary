@@ -3,7 +3,7 @@ package com.welcomeToTheMilitary.tutorial;
 
 import com.welcomeToTheMilitary.character.ServiceMember;
 
-import com.welcomeToTheMilitary.gui.mainDisplay;
+import com.welcomeToTheMilitary.gui.MainDisplay;
 import com.welcomeToTheMilitary.json_pack.JsonReader;
 import org.json.simple.parser.ParseException;
 
@@ -66,7 +66,7 @@ public class Welcome {
         Scanner tutorial = new Scanner(System.in);
 
         //Start GUI!
-        mainDisplay.setMainTextArea("Would you like to use the tutorial? \n Please enter Yes/y or No/no");
+        MainDisplay.setMainTextArea("Would you like to use the tutorial? \n Please enter Yes/y or No/no");
         //
         String tutorialAnswer = tutorial.nextLine().toLowerCase();
 //        String tutorialAnswer = mainDisplay.getUserAction();

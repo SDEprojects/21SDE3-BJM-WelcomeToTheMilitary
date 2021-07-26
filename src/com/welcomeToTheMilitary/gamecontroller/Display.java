@@ -2,7 +2,6 @@ package com.welcomeToTheMilitary.gamecontroller;
 
 import com.welcomeToTheMilitary.bases.BaseMap;
 import com.welcomeToTheMilitary.character.ServiceMember;
-import com.welcomeToTheMilitary.gui.mainDisplay;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;

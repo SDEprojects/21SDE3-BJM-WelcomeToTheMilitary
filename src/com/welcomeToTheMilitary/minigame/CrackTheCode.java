@@ -25,7 +25,7 @@ public class CrackTheCode implements iMinigame{
         return false;
     }
 
-    private String[] codes = {"passwords", "buildings", "computer", "stopwatch", "information"};
+    private String[] codes = {"passwords", "buildings", "computer", "messages", "information"};
 
 
     public String getRandomWord(){
@@ -47,8 +47,10 @@ public class CrackTheCode implements iMinigame{
 
     public boolean playMe(){
 
+        StringBuilder output = new StringBuilder();
+
         System.out.println("You have 10 tries to guess the word!");
-        MainDisplay.setMainTextArea("");
+        MainDisplay.setMainTextArea(output.append("You have 10 tries to guess the word!").toString());
 
         int tries = 0;
 

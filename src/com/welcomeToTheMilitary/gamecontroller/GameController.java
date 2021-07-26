@@ -194,6 +194,7 @@ public class GameController implements java.io.Serializable {
                 JsonReader.getLocations());
         Scanner pcsInput = new Scanner(System.in);
         pcsInput.next();
+        System.out.println("Processing...");
         Thread.sleep(800);
         System.out.println("Sorry to inform you but your application has been denied");
         gui.setMainTextArea("Sorry to inform you but your application has been denied");

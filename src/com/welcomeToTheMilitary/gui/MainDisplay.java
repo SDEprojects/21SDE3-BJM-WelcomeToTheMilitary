@@ -539,7 +539,7 @@ public class MainDisplay {
 
             if (isStartButtonClicked()) {
 
-                game.mainGame();
+                game.mainGame(name, special);
                 frame.revalidate();
                 frame.repaint();
             }

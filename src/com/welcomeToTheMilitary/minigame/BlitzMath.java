@@ -1,6 +1,7 @@
 package com.welcomeToTheMilitary.minigame;
 
 import com.welcomeToTheMilitary.character.ServiceMember;
+import com.welcomeToTheMilitary.gui.mainDisplay;
 
 import java.util.Scanner;
 
@@ -25,22 +26,27 @@ public class BlitzMath implements iMinigame{
         int rand2 = (int)(random2 * ((MAX - MIN) + 1)) + MIN;
 
         System.out.println("What is " + rand1 + " + " + rand2);
+        mainDisplay.setMainTextArea("What is " + rand1 + " + " + rand2);
 
         int playerAnswer = playerAnswerOnTime();
 
         if(playerAnswer == rand1 + rand2){
             System.out.println("You got it");
+            mainDisplay.setMainTextArea("You got it");
             return true;
         }
         else{
             System.out.println("Wrong!");
+            mainDisplay.setMainTextArea("Wrong");
             return false;
         }
     }
 
     public int playerAnswerOnTime() {
         System.out.println("Add These");
+        mainDisplay.setMainTextArea("Add These");
         System.out.println("You have 6 seconds to answer");
+        mainDisplay.setMainTextArea("add these\n, you have 6 seconds to answer");
 
         //sets the start time
         long startTime = System.currentTimeMillis();
@@ -59,10 +65,12 @@ public class BlitzMath implements iMinigame{
                 return playerAnswer;
             }
             else System.out.println("Timer is up");
+            mainDisplay.setMainTextArea("Timer is up");
             return -1;
         }
         catch(NumberFormatException e){
             System.out.println("Not a valid input");
+            mainDisplay.setMainTextArea("Not a valid input");
         }
         return -1;
     }

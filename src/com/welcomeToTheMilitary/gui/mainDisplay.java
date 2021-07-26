@@ -337,7 +337,7 @@ public class mainDisplay {
             if (!isStartButtonClicked()) {
                 titleScreen();
             }
-            
+
             while(isStartButtonClicked()) {
                 game.mainGame();
             }

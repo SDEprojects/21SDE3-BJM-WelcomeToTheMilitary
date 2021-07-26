@@ -19,26 +19,7 @@ import org.json.simple.parser.ParseException;
 
 public class JsonReader {
 
-    private static InputStream inputFileLocationsJSON = JsonReader.class.getResourceAsStream("/locations.json");;
-
-    //test main
-    public static void main(String[] args) throws IOException, ParseException {
-        JsonReader jR = new JsonReader();
-        jR.getLocations();
-        jR.getSoldiers();
-
-        System.out.println(jR.getBuildingStrings("Fort Sill"));
-
-        BaseMap map = new BaseMap("Fort Sill", "stuff");
-//        map.displaySoldiers("market");
-//        map.displayItems("market");
-    }
-
-    private Reader reader = null;
     private InputStream inputFileOutputJSON = JsonReader.class.getResourceAsStream("/output.json");
-    private InputStream inputFileSpecialJSON = JsonReader.class.getResourceAsStream("/specials.json");
-    private InputStream inputFileItemsJSON = JsonReader.class.getResourceAsStream("/item.json");
-
 
     public static ArrayList<Item> getItems() throws IOException, ParseException {
 
@@ -173,7 +154,6 @@ public class JsonReader {
         JSONParser jsonParser = new JSONParser();
         String jsonLocation = "jsonFiles/locations.json";
 
-        // try (FileReader reader = new FileReader( "jsonFiles/specials.json"))
         String locationContents = new String((Files.readAllBytes(Paths.get(jsonLocation))));
 
             //Read JSON file
@@ -182,12 +162,12 @@ public class JsonReader {
             //Iterate over employee array
             obj.keySet().forEach( eachLocation -> {
 
-                if(postname.equals("Fort Bliss") && eachLocation.toString().equals("Fort Bliss")){
+                if(postname.equals("Fort Bliss") && eachLocation.toString().equals("Fort Bliss")) {
                     System.out.println(eachLocation.toString());
                     JSONObject location = (JSONObject) obj.get(eachLocation);
-                    JSONArray buildArray = (JSONArray) location.get("buildings") ;
+                    JSONArray buildArray = (JSONArray) location.get("buildings");
 
-                    for(int i = 0; i< buildArray.size();i++){
+                    for (int i = 0; i < buildArray.size(); i++) {
                         buildingsList.add(buildArray.get(i).toString());
                     }
                 }
@@ -215,24 +195,19 @@ public class JsonReader {
         return buildingsList;
     }
 
-    public static void printHelpRequestDataFromJSON() {
+    public static void printHelpRequestDataFromJSON() throws IOException, ParseException {
         JSONParser parser = new JSONParser();
-        InputStream inputFilePossibleVerbAndNounJSON = JsonReader.class.getResourceAsStream("/possibleVerbAndNoun.json");
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputFilePossibleVerbAndNounJSON, "UTF-8")))
-        {
-            Object helpObjectObj = parser.parse(reader);
-            JSONObject helpObject = (JSONObject) helpObjectObj;
-            // helpObject = (JSONObject) parser.parse(new FileReader("jsonFiles/possibleVerbandNoun.json"));
-            helpObject.keySet().forEach(eachInstruction -> {
-                System.out.println("=".repeat(5) + " " + eachInstruction + " " + "=".repeat(5));
-                JSONObject instructionSet = (JSONObject) helpObject.get(eachInstruction);
-                System.out.println("Supported " + eachInstruction + " verb " + instructionSet.get("verb").toString());
-                System.out.println("Supported " + eachInstruction + " noun " + instructionSet.get("noun").toString());
-                System.out.println("Example " + eachInstruction + " example " + instructionSet.get("example").toString() + "\n");
-            });
-        } catch (IOException | ParseException e) {
-            e.printStackTrace();;
-        }
+        String inputFilePossibleVerbAndNounJSON = new String(Files.readAllBytes(Paths.get("/possibleVerbAndNoun.json")));
+
+        Object helpObjectObj = parser.parse(inputFilePossibleVerbAndNounJSON);
+        JSONObject helpObject = (JSONObject) helpObjectObj;
+        helpObject.keySet().forEach(eachInstruction -> {
+            System.out.println("=".repeat(5) + " " + eachInstruction + " " + "=".repeat(5));
+            JSONObject instructionSet = (JSONObject) helpObject.get(eachInstruction);
+            System.out.println("Supported " + eachInstruction + " verb " + instructionSet.get("verb").toString());
+            System.out.println("Supported " + eachInstruction + " noun " + instructionSet.get("noun").toString());
+            System.out.println("Example " + eachInstruction + " example " + instructionSet.get("example").toString() + "\n");
+        });
     }
 
     private ServiceMember parseSoldierObject(JSONObject soldierObject) throws IOException, ParseException {

@@ -109,7 +109,7 @@ public class TextParserHelper {
     }
 
     // method to get appropriate noun
-    private String checkUserEnterNounValid(JSONObject _jsonObject, String userActionNoun) {
+    public String checkUserEnterNounValid(JSONObject _jsonObject, String userActionNoun) {
         JSONArray possibleNounArray = (JSONArray) _jsonObject.get("noun");
         // System.out.println(possibleNounArray);
         for (int i = 0; i < possibleNounArray.size(); i++) {

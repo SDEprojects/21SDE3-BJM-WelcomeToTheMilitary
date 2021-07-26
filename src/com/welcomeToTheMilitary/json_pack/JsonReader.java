@@ -142,7 +142,7 @@ public class JsonReader {
         return soldierToReturn;
     }
 
-    public HashMap<String,String> getSpecials(){
+    public static HashMap<String,String> getSpecials(){
         HashMap<String,String> specialHash = new HashMap<>();
         JSONParser jsonParser = new JSONParser();
          try (FileReader reader = new FileReader( "jsonFiles/specials.json"))

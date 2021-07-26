@@ -19,7 +19,7 @@ import java.util.Scanner;
 
 public class Interactions {
 
-    public static void interactWithNPC(String noun, ServiceMember usrSM, BaseMap currentMap) throws IOException, ParseException {
+    public static void interactWithNPC(String noun, ServiceMember usrSM, BaseMap currentMap) throws IOException, ParseException, InterruptedException {
         MinigameFactory gameFactory = new MinigameFactory();
         if (noun == null || noun.length() == 0) {
             System.out.println("Invalid soldier");
@@ -80,11 +80,7 @@ public class Interactions {
                     }
 
                     //player engaging battle
-                    System.out.println("Targeting:" + noun);
-                    System.out.println("You finally saw " + soldier.getName() + "'s rank!\nIt is " + soldier.getRank());
-                    MainDisplay.setMainTextArea(output.append("Targeting: " + noun + "\n" +
-                            "You finally saw " + soldier.getName() + "'s rank!\nIt is " + soldier.getRank()
-                    ).toString());
+                    MainDisplay.setMainTextArea(output.append("Targeting: " + soldier.getName() + " ").toString());
 
                     // game start
 
@@ -95,6 +91,8 @@ public class Interactions {
                         return;
                     }
 
+                    output.setLength(0);
+                    Thread.sleep(2000);
                     gameFactory.playGame();
 
                     boolean isWin = gameFactory.playGame().play(); //access's miniGame and returns true or false from MiniGame if Won.
@@ -105,8 +103,9 @@ public class Interactions {
                     }
 
                     System.out.println("Win or lose: " + isWin);
-                    MainDisplay.setMainTextArea(output.append("Win or lose: " + isWin).toString());
                     if (isWin) {
+
+                        MainDisplay.setMainTextArea("Congratulations, you won!");
                         if (usrSM.getPostName().equals("Fort Sill") || usrSM.getPostName().equals("Fort Bliss")) {
 
                             //setting the interaction to false so player can't interact with the same person
@@ -117,12 +116,12 @@ public class Interactions {
                             if (isWorthRank) {
                                 PromoteHelper.promote(usrSM, soldier);
                                 System.out.println("Congrats you won the interaction.\n");
-                                MainDisplay.setMainTextArea(output.append("Congrats you won the interaction!").toString());
+                                MainDisplay.setMainTextArea(output.append("Congrats you won the interaction! \nYou have ranked up!").toString());
                             } else {
-                                System.out.println("Congrats you won the interaction.");
+                                System.out.println("Congrats you won the interaction.\n");
                                 System.out.println("You decided not to take their rank\n" + "It is lower than yours yuck!");
-                                MainDisplay.setMainTextArea(output.append("Congrats you won the interaction." +
-                                        "You decided not to take their rank\n. It is lower than yours yuck!").toString());
+                                MainDisplay.setMainTextArea(output.append("Congrats you won the interaction.\n" +
+                                        "You decided not to take their rank because it is lower \nthan yours yuck!").toString());
                             }
                         } else {
                             System.out.println("You have lost. You maintain your rank but lost your dignity!!!");
@@ -166,6 +165,10 @@ public class Interactions {
                                 MainDisplay.setMainTextArea("You have no health potion");
                             }
                         }
+                    }
+                    //if you lost
+                    else{
+                        MainDisplay.setMainTextArea("You have lost. You maintain your rank \nbut lost your dignity!!! You lost 5 hp");
                     }
                 }
 //                else{

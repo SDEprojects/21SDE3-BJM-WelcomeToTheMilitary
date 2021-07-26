@@ -2,6 +2,7 @@ package com.welcomeToTheMilitary.minigame;
 
 import com.welcomeToTheMilitary.Main;
 import com.welcomeToTheMilitary.character.ServiceMember;
+import com.welcomeToTheMilitary.gamecontroller.Interactions;
 import com.welcomeToTheMilitary.gui.MainDisplay;
 
 import java.util.Random;
@@ -12,7 +13,7 @@ public class RPC implements iMinigame{
     String[] moves = {"Rock","Paper","Scissors"};
 
     @Override
-    public boolean play() {
+    public boolean play() throws InterruptedException {
 
         int x = 1;
 
@@ -26,6 +27,7 @@ public class RPC implements iMinigame{
 
         while(!isDraw){
             clearConsole();
+
             if(resultDraw){
                 System.out.println("Last Game was a Draw!! play again\n" +
                         "_________________________________");
@@ -64,33 +66,41 @@ public class RPC implements iMinigame{
                             resultDraw = true;
                         }
                     }
-                } catch (NumberFormatException ignored) {
+                } catch (NumberFormatException | InterruptedException ignored) {
 
                 }
             }
+            Thread.sleep(2000);
             output.setLength(0);
         }
         return false;
     }
 
-    private String getWinner(int user, int comp){
+    private String getWinner(int user, int comp) throws InterruptedException {
 
         StringBuilder output = new StringBuilder();
 
         System.out.println("You Picked "+ moves[user]+"\nThe Soldier Picked " + moves[comp]);
-        MainDisplay.setMainTextArea(output.append("You Picked "+ moves[user]+"\nThe Soldier Picked " + moves[comp]).toString());
+        MainDisplay.setMainTextArea(output.append("You Picked "+ moves[user]+"\nThe Soldier Picked " + moves[comp] + "\n").toString());
+
         if (user == 0) {
             //condiotional for comp moves
             if(comp == 0) {
+                output.setLength(0);
                 return "draw";
             }
             else if (comp ==1){
                 System.out.println("Paper covers Rock");
                 MainDisplay.setMainTextArea(output.append("Paper covers Rock").toString());
+
+                Thread.sleep(3000);
+                output.setLength(0);
             return "loss";
             }else if(comp ==2){
                 System.out.println("Rock crushes Scissors");
                 MainDisplay.setMainTextArea(output.append("Rock crushes Scissors").toString());
+                Thread.sleep(3000);
+                output.setLength(0);
                 return "win";
             }
         }else if(user == 1){
@@ -98,6 +108,8 @@ public class RPC implements iMinigame{
             if(comp == 0) {
                 System.out.println("Paper covers Rock");
                 MainDisplay.setMainTextArea(output.append("Paper covers Rock").toString());
+                Thread.sleep(3000);
+                output.setLength(0);
                 return "win";
             }
             else if (comp ==1){
@@ -105,6 +117,8 @@ public class RPC implements iMinigame{
             }else if(comp ==2){
                 System.out.println("Scissors cuts Paper");
                 MainDisplay.setMainTextArea(output.append("Scissors cuts Paper").toString());
+                Thread.sleep(3000);
+                output.setLength(0);
                 return "loss";
             }
         }else if(user == 2) {
@@ -112,16 +126,19 @@ public class RPC implements iMinigame{
             if (comp == 0) {
                 System.out.println("Rock crushes Scissors");
                 MainDisplay.setMainTextArea(output.append("Rock crushes Scissors").toString());
+                Thread.sleep(3000);
+                output.setLength(0);
                 return "loss";
             } else if (comp == 1) {
                 System.out.println("Scissors cuts Paper");
                 MainDisplay.setMainTextArea(output.append("Scissors cuts Paper").toString());
+                Thread.sleep(3000);
+                output.setLength(0);
                 return "win";
             } else if (comp == 2) {
                 return "draw";
             }
         }
-        output.setLength(0);
         return "";
     }
 

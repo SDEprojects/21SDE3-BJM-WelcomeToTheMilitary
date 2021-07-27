@@ -2,6 +2,7 @@ package com.welcomeToTheMilitary.character;
 
 import com.welcomeToTheMilitary.attributes.Item;
 import com.welcomeToTheMilitary.attributes.RetrieveSpecialHelper;
+import com.welcomeToTheMilitary.gui.MainDisplay;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
@@ -161,22 +162,25 @@ public class ServiceMember implements java.io.Serializable{
         //if consumable
         if (!this.items.contains(item)) {
             System.out.println("No item in your inventory");
+            MainDisplay.setMainTextArea("No item in your inventory");
             return;
         }
 
         if (this.items.contains(item) && item.getType().equals("consumable")) {
             System.out.println("Using " + item.getName());
+            MainDisplay.setMainTextArea("Using " + item.getName());
             setHealth(item.getValue(), true);
             items.remove(item);
-            return;
         } else {
             //if weapon
             if (this.items.contains(item) && item.getType().equals("weapon")) {
-                System.out.println("Equipping item " + item.getName());
+
                 setStrength(item.getValue(),true);
                 items.remove(item);
+                System.out.println("Equipping item " + item.getName());
                 System.out.println("This " + item.getName() + " will give me a damage boost!");
-                return;
+                MainDisplay.setMainTextArea("Equipping item " + item.getName() + "\n" +
+                        "This " + item.getName() + " will give me a damage boost!");
             }
         }
     }
@@ -223,10 +227,12 @@ public class ServiceMember implements java.io.Serializable{
     }
 
     // use spell
-    public int useSpecial() {
+    public int useSpecial() throws InterruptedException {
         if (NUMBER_OF_USE_SPECIAL_ON_EACH_FINAL_BOSS <= 0) {
             System.out.println("You cannot use spell anymore");
             System.out.println("Attacking the boss with the normal strength");
+            MainDisplay.setMainTextArea("You cannot use spell anymore.  Attacking the boss with the normal strength");
+            Thread.sleep(2000);
             return this.getStrength();
         }
         // if the player can use the special
@@ -238,6 +244,8 @@ public class ServiceMember implements java.io.Serializable{
         for (int i = 0; i < possibleSpecial.length; i++) {
             if (possibleSpecial[i].equals(this.getSpecial())) {
                 System.out.println("Using my speciality! " + getSpecial() + specialHash.get(getSpecial()));
+                MainDisplay.setMainTextArea("Using my speciality! " + getSpecial() + specialHash.get(getSpecial()));
+                Thread.sleep(2000); // Makes sure to show text for a few seconds
                 isSpecialUseAbleFlag = true;
             }
         }
@@ -247,6 +255,8 @@ public class ServiceMember implements java.io.Serializable{
         }
         System.out.println("The special you typed does not exist");
         System.out.println("Attacking the boss with the normal strength");
+        MainDisplay.setMainTextArea("The special you typed does not exist! Attacking the boss with the normal strength");
+        Thread.sleep(2000);
         return this.getStrength();
     }
 

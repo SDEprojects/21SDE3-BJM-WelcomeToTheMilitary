@@ -9,6 +9,7 @@ import java.awt.event.*;
 import java.io.IOException;
 
 public class MainDisplay {
+    private static String os = System.getProperty("os.name");
     private static JFrame frame = new JFrame("Welcome to the Military!");
     private static Container container;
 
@@ -112,6 +113,9 @@ public class MainDisplay {
             startButton = new JButton("Click to Start");
             startButton.setBackground(Color.DARK_GRAY);
             startButton.setForeground(Color.white);
+            if (os.equals("Mac OS X")) {
+                startButton.setForeground(Color.black);
+            }
             startButton.setFont(new Font("Arial", Font.PLAIN, 26));
 
 
@@ -194,6 +198,9 @@ public class MainDisplay {
         createCharacterButton = new JButton("Create Character ");
         createCharacterButton.setBackground(Color.DARK_GRAY);
         createCharacterButton.setForeground(Color.white);
+        if (os.equals("Mac OS X")) {
+            createCharacterButton.setForeground(Color.black);
+        }
         createCharacterButton.setFont(new Font("Arial", Font.PLAIN, 26));
         characterButtonPanel.add(createCharacterButton);
 
@@ -305,6 +312,9 @@ public class MainDisplay {
         newPlayerButton.setBounds(75, 300, 200, 60);
         newPlayerButton.setBackground(mainTextAreaColor);
         newPlayerButton.setForeground(Color.white);
+        if (os.equals("Mac OS X")) {
+            newPlayerButton.setForeground(Color.black);
+        }
         newPlayerButtonPanel.add(newPlayerButton);
 
         //Add Stuff to container
@@ -546,7 +556,7 @@ public class MainDisplay {
             if (isStartButtonClicked()) {
 
                 game.mainGame(name, special);
-                
+
 //                frame.revalidate();
 //                frame.repaint();
             }

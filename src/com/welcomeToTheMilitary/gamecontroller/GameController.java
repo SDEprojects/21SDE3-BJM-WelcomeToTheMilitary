@@ -114,8 +114,10 @@ public class GameController implements java.io.Serializable {
                 }
                 if (counter == 0) {
                     Welcome.separatorTitle();
-                    System.out.println("Welcome to Fort Sill. Your Drill Instructor dropped you off at the gate.");
-                    MainDisplay.setMainTextArea("Welcome to Fort Sill. Your Drill Instructor dropped you off at the gate.");
+                    System.out.println("Welcome to Fort Sill. Your Drill Instructor dropped you \n off at the gate.");
+                    MainDisplay.setMainTextArea("Welcome to Fort Sill. Your Drill Instructor dropped you   off at the gate."+ "\n"+ "\n"  +
+                            HelpmeHelper.printHelpRequestDataFromJSON(usrSM));
+
                     Welcome.separatorTitle();
                     counter = 1;
                 } else if (counter == 9000000) {
@@ -150,7 +152,7 @@ public class GameController implements java.io.Serializable {
                             Interactions.interactWithNPC(response.getNoun(), usrSM, currentMap);
                             break;
                         case "help":
-                            HelpmeHelper.interactHelpRequest(response.getNoun(), usrSM);
+                            MainDisplay.setMainTextArea(HelpmeHelper.printHelpRequestDataFromJSON(usrSM));
                             break;
                         case "request":
                             applyToPcs();
@@ -193,15 +195,14 @@ public class GameController implements java.io.Serializable {
         // private method to get possible buildings for pcs
         private static void applyToPcs () throws IOException, ParseException, InterruptedException {
 
-            System.out.println("Please type the post you would like to move to: ");
-            System.out.println(JsonReader.getLocations());
             MainDisplay.setMainTextArea("Please type the post you would like to move to: " + "\n" +
-                    JsonReader.getLocations());
-            Scanner pcsInput = new Scanner(System.in);
-            pcsInput.next();
-            Thread.sleep(800);
-            System.out.println("Sorry to inform you but your application has been denied");
-            MainDisplay.setMainTextArea("Sorry to inform you but your application has been denied");
-        }
+                        JsonReader.getLocations());
+            Thread.sleep(10_000);
 
+            MainDisplay.setMainTextArea("Processing...");
+            Thread.sleep(3000);
+            System.out.println("Sorry to inform you but your application has been denied");
+            MainDisplay.setMainTextArea("Sorry to inform you but your application has been \ndenied");
+
+        }
 }

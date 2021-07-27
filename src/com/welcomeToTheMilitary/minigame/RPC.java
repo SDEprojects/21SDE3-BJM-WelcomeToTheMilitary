@@ -92,13 +92,13 @@ public class RPC implements iMinigame{
                 System.out.println("Paper covers Rock");
                 MainDisplay.setMainTextArea(output.append("Paper covers Rock").toString());
 
-                Thread.sleep(3000);
+                Thread.sleep(5000);
                 output.setLength(0);
             return "loss";
             }else if(comp ==2){
                 System.out.println("Rock crushes Scissors");
                 MainDisplay.setMainTextArea(output.append("Rock crushes Scissors").toString());
-                Thread.sleep(3000);
+                Thread.sleep(5000);
                 output.setLength(0);
                 return "win";
             }
@@ -107,7 +107,7 @@ public class RPC implements iMinigame{
             if(comp == 0) {
                 System.out.println("Paper covers Rock");
                 MainDisplay.setMainTextArea(output.append("Paper covers Rock").toString());
-                Thread.sleep(3000);
+                Thread.sleep(5000);
                 output.setLength(0);
                 return "win";
             }
@@ -116,7 +116,7 @@ public class RPC implements iMinigame{
             }else if(comp ==2){
                 System.out.println("Scissors cuts Paper");
                 MainDisplay.setMainTextArea(output.append("Scissors cuts Paper").toString());
-                Thread.sleep(3000);
+                Thread.sleep(5000);
                 output.setLength(0);
                 return "loss";
             }
@@ -125,13 +125,13 @@ public class RPC implements iMinigame{
             if (comp == 0) {
                 System.out.println("Rock crushes Scissors");
                 MainDisplay.setMainTextArea(output.append("Rock crushes Scissors").toString());
-                Thread.sleep(3000);
+                Thread.sleep(5000);
                 output.setLength(0);
                 return "loss";
             } else if (comp == 1) {
                 System.out.println("Scissors cuts Paper");
                 MainDisplay.setMainTextArea(output.append("Scissors cuts Paper").toString());
-                Thread.sleep(3000);
+                Thread.sleep(5000);
                 output.setLength(0);
                 return "win";
             } else if (comp == 2) {

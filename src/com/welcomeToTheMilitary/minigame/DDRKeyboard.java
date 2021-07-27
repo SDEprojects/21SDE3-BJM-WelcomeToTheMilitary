@@ -48,18 +48,18 @@ public class DDRKeyboard implements iMinigame {
         return randomIndex;
     }
 
-    private String getDDRInput() throws InterruptedException {
-        Scanner scan = new Scanner(System.in);
-        System.out.print("Type the word that was displayed:\n> ");
-        MainDisplay.setMainTextArea(output.append("Type the word that was displayed:\n").toString());
-        String inputData = MainDisplay.getUserAction();
-        output.setLength(0);
-        Thread.sleep(3000);
-        return inputData;
-    }
+//    private String getDDRInput() throws InterruptedException {
+//        Scanner scan = new Scanner(System.in);
+//        System.out.print("Type the word that was displayed:\n> ");
+//        MainDisplay.setMainTextArea(output.append("Type the word that was displayed:\n").toString());
+//        String inputData = MainDisplay.getUserAction();
+//        output.setLength(0);
+//        Thread.sleep(3000);
+//        return inputData;
+//    }
 
     // some thread to count down and clear the screen
-    private void countScreenTimerMemorize() {
+    public void countScreenTimerMemorize() {
         try {
             for (int timer = 5; timer > 0; timer--) {
                 Thread.sleep(1000);
@@ -94,6 +94,8 @@ public class DDRKeyboard implements iMinigame {
 
     // private playDDR to hide logic from public
     private boolean playMe() throws InterruptedException {
+
+        MainDisplay.setUserAction("");
         String stringToGuess = randomStrings();
 
             // display word to type

@@ -195,15 +195,14 @@ public class GameController implements java.io.Serializable {
         // private method to get possible buildings for pcs
         private static void applyToPcs () throws IOException, ParseException, InterruptedException {
 
-            System.out.println("Please type the post you would like to move to: ");
-            System.out.println(JsonReader.getLocations());
             MainDisplay.setMainTextArea("Please type the post you would like to move to: " + "\n" +
-                    JsonReader.getLocations());
-            Scanner pcsInput = new Scanner(System.in);
-            pcsInput.next();
-            Thread.sleep(800);
-            System.out.println("Sorry to inform you but your application has been denied");
-            MainDisplay.setMainTextArea("Sorry to inform you but your application has been denied");
-        }
+                        JsonReader.getLocations());
+            Thread.sleep(10_000);
 
+            MainDisplay.setMainTextArea("Processing...");
+            Thread.sleep(3000);
+            System.out.println("Sorry to inform you but your application has been denied");
+            MainDisplay.setMainTextArea("Sorry to inform you but your application has been \ndenied");
+
+        }
 }

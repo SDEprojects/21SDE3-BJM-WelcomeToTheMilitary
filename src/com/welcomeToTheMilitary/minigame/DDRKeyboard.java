@@ -59,7 +59,7 @@ public class DDRKeyboard implements iMinigame {
     }
 
     // some thread to count down and clear the screen
-    private void countScreenTimerMemorize() {
+    public void countScreenTimerMemorize() {
         try {
             for (int timer = 5; timer > 0; timer--) {
                 Thread.sleep(1000);
@@ -94,6 +94,8 @@ public class DDRKeyboard implements iMinigame {
 
     // private playDDR to hide logic from public
     private boolean playMe() throws InterruptedException {
+
+        MainDisplay.setUserAction("");
         String stringToGuess = randomStrings();
 
             // display word to type

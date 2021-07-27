@@ -523,7 +523,6 @@ public class MainDisplay {
         boolean runTutorial = true;
         boolean runCharacterScreen = true;
 
-
         while (true) {
 
             if (runTitle) {

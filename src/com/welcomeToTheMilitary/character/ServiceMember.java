@@ -34,7 +34,7 @@ public class ServiceMember implements java.io.Serializable{
         setName(_name);
         this.special = _special;
         this.location = _location;
-        this.rank = Rank.E6; // initial rank
+        this.rank = Rank.E1; // initial rank
         // this should be update everytime the soldier get promotes
         this.health = 100;
         this.strength = 7;

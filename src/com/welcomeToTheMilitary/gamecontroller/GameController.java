@@ -194,10 +194,17 @@ public class GameController implements java.io.Serializable {
 
         // private method to get possible buildings for pcs
         private static void applyToPcs () throws IOException, ParseException, InterruptedException {
+            String command = "";
+            MainDisplay.setUserAction("");
 
             MainDisplay.setMainTextArea("Please type the post you would like to move to: " + "\n" +
                         JsonReader.getLocations());
-            Thread.sleep(10_000);
+            while (command.equals(""))
+            {
+                command = MainDisplay.getUserAction();
+                System.out.println("");
+            }
+
 
             MainDisplay.setMainTextArea("Processing...");
             Thread.sleep(3000);

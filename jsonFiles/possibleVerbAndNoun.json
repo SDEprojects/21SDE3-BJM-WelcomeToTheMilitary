@@ -18,6 +18,11 @@
       "verb": ["do"],
       "noun": ["pt"],
       "example":" do pt"
+    },
+    "Change Base": {
+      "verb": ["request"],
+      "noun": ["pcs"],
+      "example":" request pcs"
     }
   },
   "Fort Bliss":
@@ -39,6 +44,11 @@
       "verb": ["do"],
       "noun": ["pt"],
       "example":" do pt"
+    },
+    "Change Base": {
+      "verb": ["request"],
+      "noun": ["pcs"],
+      "example":" request pcs"
     }
   }
 }

@@ -28,13 +28,13 @@ public class MinigameFactory {
 
         //returns the random game
         if (game.equals("rock paper scissors")) {
-            return new CrackTheCode();
+            return new DDRKeyboard();
         } else if (game.equals("memorization game")) {
-            return new CrackTheCode();
+            return new DDRKeyboard();
         } else if (game.equals("blitz math")) {
-            return new CrackTheCode();
+            return new DDRKeyboard();
         }else if (game.equals("crack the code")) {
-            return new CrackTheCode();
+            return new DDRKeyboard();
         } else if (game.equals("boss game")) {
             return new FinalBossFight();
         } else {

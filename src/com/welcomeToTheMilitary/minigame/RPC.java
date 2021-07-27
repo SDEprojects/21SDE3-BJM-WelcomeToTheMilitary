@@ -17,7 +17,6 @@ public class RPC implements iMinigame{
 
         int x = 1;
 
-        Scanner myObj = new Scanner(System.in);  // Create a Scanner object
         StringBuilder output = new StringBuilder();
 
         clearConsole();

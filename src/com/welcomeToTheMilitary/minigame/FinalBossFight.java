@@ -5,6 +5,7 @@ import com.welcomeToTheMilitary.character.ServiceMember;
 import com.welcomeToTheMilitary.gamecontroller.Display;
 import com.welcomeToTheMilitary.gamecontroller.HelpmeHelper;
 import com.welcomeToTheMilitary.gamecontroller.Interactions;
+import com.welcomeToTheMilitary.gui.MainDisplay;
 import com.welcomeToTheMilitary.textparser.ParseResponse;
 import com.welcomeToTheMilitary.textparser.TextParser;
 
@@ -21,17 +22,21 @@ public class FinalBossFight implements iMinigame {
     private static ParseResponse response = null;
     private static TextParser parser = null;
 
+    private StringBuilder output = new StringBuilder();
+
     // for user input / action
     private static Scanner userAction = new Scanner(System.in);
 
-    public FinalBossFight() throws IOException, ParseException {
+    public FinalBossFight() throws IOException, ParseException, InterruptedException {
         clearScreen();
         introduction();
     }
 
-    private void introduction() {
+    private void introduction() throws InterruptedException {
         System.out.println("=".repeat(5) + " Final Stage " + "=".repeat(5));
         System.out.println("You finally met the boss");
+        MainDisplay.setMainTextArea(output.append("You finally met the boss").toString());
+        Thread.sleep(1000);
     }
 
     // clear the screen
@@ -60,11 +65,16 @@ public class FinalBossFight implements iMinigame {
         while (usr.getHealth() > 0 && tempBoss.getVitality() > 0) {
             displayBothStatus(usr, tempBoss);
             System.out.println("Number of Special Remained: " + usr.getNumberOfUserSpecialOnEachFinalBoss());
-            System.out.print("What is your move?\n> ");
+            MainDisplay.setMainTextArea(output.append("Number of Special Remained: " + usr.getNumberOfUserSpecialOnEachFinalBoss()).toString());
+            System.out.print("What is your move?\n");
+            MainDisplay.setMainTextArea(output.append("What is your move?\n").toString());
+
             userCommand = userAction.nextLine();
             if (userCommand == null || userCommand.length() == 0) {
                 System.out.println("Boss: This is your final mercy!!!");
-                System.out.println("type 'attack' | ");
+                MainDisplay.setMainTextArea(output.append("Boss: This is your final mercy!!!").toString());
+                System.out.println("type 'attack'");
+                MainDisplay.setMainTextArea(output.append("type 'attack'").toString());
                 userCommand = userAction.nextLine();
             }
             userFightBossAction(userCommand, usr, tempBoss);
@@ -72,23 +82,29 @@ public class FinalBossFight implements iMinigame {
                 bossFightUserRandomAction(usr, tempBoss);
             } else {
                 System.out.println(tempBoss.getName() + " " + tempBoss.getName() + " is looking at you menacingly!");
+                MainDisplay.setMainTextArea(output.append(tempBoss.getName() + " " + tempBoss.getName() + " is looking at you menacingly!").toString());
             }
             //Service member using items in battle
            if(userCommand.equals("items")){
                System.out.println("What item do you want to use? " + usr.getItems());
                //user prompt on iem wanted to use
-               String battleItem = userAction.nextLine();
+               //String battleItem = userAction.nextLine();
+               String battleItem = MainDisplay.getUserAction();
+               Thread.sleep(3000);
                usr.useItem(battleItem);
             }
         }
         if (usr.getHealth() <= 0) {
             System.out.println("You lose");
+            MainDisplay.setMainTextArea("You lose");
             return false;
         } else if (tempBoss.getVitality() <= 0) {
             System.out.println("You won against final boss in Fort Sill");
+            MainDisplay.setMainTextArea("You won against final boss in Fort Sill");
             return true;
         } else {
             System.out.println("You tie");
+            MainDisplay.setMainTextArea("It's a tie!");
             return false;
         }
     }
@@ -98,8 +114,10 @@ public class FinalBossFight implements iMinigame {
             case "attack":
                 int userHitDamage = usr.attack();
                 System.out.println("attacking the boss");
+                MainDisplay.setMainTextArea(output.append("attacking the boss").toString());
                 boss.subtractVitality(userHitDamage);
                 System.out.println("You damaged SFC Daniels for "+ userHitDamage);
+                MainDisplay.setMainTextArea(output.append("You damaged SFC Daniels for "+ userHitDamage).toString());
                 return;
             case "use item":
                 utilizeItem(usr);
@@ -112,6 +130,7 @@ public class FinalBossFight implements iMinigame {
                 int userSpecialDamage = (usr.useSpecial());
                 boss.subtractVitality(userSpecialDamage);
                 System.out.println("You damaged SFC Daniels for "+ userSpecialDamage);
+                MainDisplay.setMainTextArea(output.append("You damaged SFC Daniels for "+ userSpecialDamage).toString());
                 return;
             default:
                 System.out.println("=".repeat(10) + " OOPS Invalid Command" + "=".repeat(10));

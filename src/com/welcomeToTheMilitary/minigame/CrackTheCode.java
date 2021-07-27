@@ -44,11 +44,13 @@ public class CrackTheCode implements iMinigame{
 
     public boolean playMe() throws InterruptedException {
 
+        MainDisplay.setUserAction(" ");
+
         StringBuilder output = new StringBuilder();
 
         System.out.println("You have 10 tries to guess the word!");
         MainDisplay.setMainTextArea(output.append("You have 10 tries to guess the word!\n").toString());
-        MainDisplay.setMainTextArea(output.append("You have 5 seconds to keep guessing letters or\nit'll count towards your guess").toString());
+        MainDisplay.setMainTextArea(output.append("You have 5 seconds to keep guessing letters or\nit'll count towards your guess\n").toString());
         output.setLength(0);
         Thread.sleep(10_000);
 
@@ -56,21 +58,21 @@ public class CrackTheCode implements iMinigame{
         int tries = -1;
 
         String randomWord = getRandomWord();
-        Scanner scanner = new Scanner(System.in);
 
         char[] lettersToGuess = randomWord.toCharArray();
         char[] outputWord = maskTheWord(randomWord).toCharArray();
         HashSet<Character> lettersGuessed = new HashSet<>();
 
+        lettersGuessed.remove(" ");
+
         System.out.println(outputWord);
 
             while(!Arrays.equals(lettersToGuess, outputWord)){
-
+                Thread.sleep(1000);
                 try{
                     MainDisplay.setMainTextArea(output.append("Enter a letter\n").toString());
 
                     //player's letter guess
-
                     char userInput = MainDisplay.getUserAction().charAt(0);
                     lettersGuessed.add(userInput);
 
@@ -97,9 +99,18 @@ public class CrackTheCode implements iMinigame{
                     MainDisplay.setMainTextArea(output.append("Current tries: " + tries  + "\n").toString());
                     System.out.println(outputWord);
                     MainDisplay.setMainTextArea(output.append(Arrays.toString(outputWord) + "\n").toString());
-                    MainDisplay.setMainTextArea("Current guesses so far: " + output.append(lettersGuessed));
+                    MainDisplay.setMainTextArea(output.append("Current guesses so far: " + lettersGuessed + "\n").toString());
 
-                    Thread.sleep(5000);
+                    //timer
+                    try {
+                        for (int timer = 5; timer > 0; timer--) {
+                            Thread.sleep(1000);
+                            MainDisplay.setMainTextArea(output.append("\nTimer expires in: " + timer + "\n").toString());
+                        }
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
                     output.setLength(0);
 
                     if(tries > 10){

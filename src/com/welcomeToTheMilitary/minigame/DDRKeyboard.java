@@ -48,15 +48,15 @@ public class DDRKeyboard implements iMinigame {
         return randomIndex;
     }
 
-    private String getDDRInput() throws InterruptedException {
-        Scanner scan = new Scanner(System.in);
-        System.out.print("Type the word that was displayed:\n> ");
-        MainDisplay.setMainTextArea(output.append("Type the word that was displayed:\n").toString());
-        String inputData = MainDisplay.getUserAction();
-        output.setLength(0);
-        Thread.sleep(3000);
-        return inputData;
-    }
+//    private String getDDRInput() throws InterruptedException {
+//        Scanner scan = new Scanner(System.in);
+//        System.out.print("Type the word that was displayed:\n> ");
+//        MainDisplay.setMainTextArea(output.append("Type the word that was displayed:\n").toString());
+//        String inputData = MainDisplay.getUserAction();
+//        output.setLength(0);
+//        Thread.sleep(3000);
+//        return inputData;
+//    }
 
     // some thread to count down and clear the screen
     public void countScreenTimerMemorize() {

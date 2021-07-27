@@ -105,7 +105,6 @@ public class Interactions {
                     System.out.println("Win or lose: " + isWin);
                     if (isWin) {
 
-                        MainDisplay.setMainTextArea("Congratulations, you won!");
                         if (usrSM.getPostName().equals("Fort Sill") || usrSM.getPostName().equals("Fort Bliss")) {
 
                             //setting the interaction to false so player can't interact with the same person

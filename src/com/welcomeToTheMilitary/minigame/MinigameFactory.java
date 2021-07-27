@@ -32,7 +32,7 @@ public class MinigameFactory {
         } else if (game.equals("memorization game")) {
             return new DDRKeyboard();
         } else if (game.equals("blitz math")) {
-            return new BlitzMath();
+            return new RPC();
         }else if (game.equals("crack the code")) {
             return new RPC();
         } else if (game.equals("boss game")) {

@@ -16,6 +16,6 @@ public class PromoteHelper {
         player.setRank(soldier.getRank());
         System.out.println("Congratulations! You've been promoted to + " + player.getRank().getAbbreviation());
         MainDisplay.setMainTextArea("Congratulations! You've been promoted to + " + player.getRank().getAbbreviation());
-        Thread.sleep(200);
+        Thread.sleep(3500);
     }
 }

@@ -114,8 +114,8 @@ public class GameController implements java.io.Serializable {
                 }
                 if (counter == 0) {
                     Welcome.separatorTitle();
-                    System.out.println("Welcome to Fort Sill. Your Drill Instructor dropped you off at the gate.");
-                    MainDisplay.setMainTextArea("Welcome to Fort Sill. Your Drill Instructor dropped you off at the gate."+ "\n"+ "\n"  +
+                    System.out.println("Welcome to Fort Sill. Your Drill Instructor dropped you \n off at the gate.");
+                    MainDisplay.setMainTextArea("Welcome to Fort Sill. Your Drill Instructor dropped you   off at the gate."+ "\n"+ "\n"  +
                             HelpmeHelper.printHelpRequestDataFromJSON(usrSM));
 
                     Welcome.separatorTitle();

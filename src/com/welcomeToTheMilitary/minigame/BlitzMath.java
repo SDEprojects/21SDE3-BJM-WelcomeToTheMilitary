@@ -5,72 +5,84 @@ import com.welcomeToTheMilitary.gui.MainDisplay;
 
 import java.util.Scanner;
 
-public class BlitzMath implements iMinigame{
+public class BlitzMath implements iMinigame {
 
     private int MIN = 6;
     private int MAX = 19;
     private int playerScore = 0;
-    private int seconds = 8000;
+    private int seconds = 18000;
+    public StringBuilder stringBuilderMath = new StringBuilder();
 
-    public boolean addThis(){
+    public boolean addThis() throws InterruptedException {
+        //clear userAction method
+        MainDisplay.setUserAction("");
+        //create Stringbuilder obj to append text for gui
+        stringBuilderMath = new StringBuilder();
+        //create and initialize math random objects to be added by user
         double random1 = Math.random();
         double random2 = Math.random();
-
-        int rand1 = (int)(random1 * ((MAX - MIN) + 1)) + MIN;
-        int rand2 = (int)(random2 * ((MAX - MIN) + 1)) + MIN;
-
+        //logic to add random numbers and get sum
+        int rand1 = (int) (random1 * ((MAX - MIN) + 1)) + MIN;
+        int rand2 = (int) (random2 * ((MAX - MIN) + 1)) + MIN;
+        //print to terminal the 2 random numbers
         System.out.println("What is " + rand1 + " + " + rand2);
-        MainDisplay.setMainTextArea("What is " + rand1 + " + " + rand2);
+        //print to gui for user
+        MainDisplay.setMainTextArea("What is " + rand1 + " + " + rand2 + '\n' + " You have " + seconds / 2000 + " seconds to answer");
 
+        //sleep to allow time for user to read
+//        Thread.sleep(6000);
+
+        //run timer method
         int playerAnswer = playerAnswerOnTime();
 
-        if(playerAnswer == rand1 + rand2){
+        if (playerAnswer == rand1 + rand2) {
             System.out.println("You got it");
             MainDisplay.setMainTextArea("You got it");
             return true;
-        }
-        else{
+        } else {
             System.out.println("Wrong!");
             MainDisplay.setMainTextArea("Wrong");
             return false;
         }
     }
 
-    public int playerAnswerOnTime() {
-        System.out.println("Add These");
-        MainDisplay.setMainTextArea("Add These");
-        System.out.println("You have " + seconds/1000 + " seconds to answer");
-        MainDisplay.setMainTextArea("You have\n, you have 6 seconds to answer");
-
-        //sets the start time
+    public int playerAnswerOnTime() throws InterruptedException {
+        /* define start and end time for while loop
+        start time */
         long startTime = System.currentTimeMillis();
+        System.out.println(startTime);
+        // end time for while loop
+        long endTime = startTime + seconds;
+        // while loop will end from difference
+        long difference = (endTime - startTime);
 
-        Scanner userInput = new Scanner(System.in);
+        int playerAnswer = -1;
+        MainDisplay.setUserAction(String.valueOf(playerAnswer));
+        //while loop with timer to exit
 
-        try{
-            int playerAnswer = Integer.parseInt(userInput.nextLine());
-            //sets the end time
-            long endTime = System.currentTimeMillis();
+            try {
+                //parse user answer and convert from String to integer
 
-            long difference = (endTime - startTime);
+                while (playerAnswer == -1) {
 
-            //if its less than how many seconds
-            if(difference < seconds){
-                return playerAnswer;
+                    playerAnswer = Integer.parseInt(MainDisplay.getUserAction());
+                    if (System.currentTimeMillis() > endTime) {
+                        break;
+                    }
+
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Not a valid input");
+                MainDisplay.setMainTextArea("Not a valid input");
+
+                return -1;
             }
-            else System.out.println("Too slow soldier!");
-            MainDisplay.setMainTextArea("Too slow soldier");
-            return -1;
-        }
-        catch(NumberFormatException e){
-            System.out.println("Not a valid input");
-            MainDisplay.setMainTextArea("Not a valid input");
-        }
-        return -1;
+
+        return playerAnswer;
     }
 
     @Override
-    public boolean play() {
+    public boolean play() throws InterruptedException {
         return addThis();
     }
 

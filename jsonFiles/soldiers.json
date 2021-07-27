@@ -2,12 +2,12 @@
   "Fort Sill": {
     "1": {
       "name": "Brad",
-      "attribute": "High and Thight. Forever skinny",
+      "attribute": "High and Tight. Forever skinny",
       "rank": "Rank.E1",
       "location": "dfac"
     },
     "2": {
-      "name": "Brad",
+      "name": "Brody",
       "attribute": "Can dip a whole can of Skoal Wintergreen. Wears combat boots with his jeans",
       "rank": "Rank.E2",
       "location": "dfac"
@@ -133,7 +133,18 @@
       "attribute": "Is always having a pizza party in the Admin office. Hasn't filed paperwork in three years.",
       "rank": "Rank.E6",
       "location": "pizza"
+    },
+    "11": {
+      "name": "Marco",
+      "attribute": "Always at home playing games",
+      "rank": "Rank.E6",
+      "location": "housing"
+    },
+    "12": {
+      "name": "Arnold",
+      "attribute": "He wants to get huge but can't seem to put on weight.",
+      "rank": "Rank.E7",
+      "location": "gym"
     }
-
   }
 }

@@ -1,26 +1,33 @@
 package com.welcomeToTheMilitary.minigame;
 
+import org.json.simple.parser.ParseException;
+
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class MinigameFactory {
 
-    public iMinigame playGame() {
+    public iMinigame playGame() throws IOException, ParseException, InterruptedException {
 
         //Adds all our minigames to ArrayList and grabs one at random
         ArrayList<String> gameList = new ArrayList<>();
         gameList.add("rock paper scissors");
         gameList.add("memorization game");
         gameList.add("blitz math");
-        final int min = 0;
+        gameList.add("crack the code");
+
         final int max = gameList.size();
-        int randomIndex = (int) (Math.random() * (max - min));
-        String game = gameList.get(randomIndex);
+        Random randInt = new Random();
+        int randIndex = randInt.nextInt(max);
+
+        String game = gameList.get(randIndex);
 
         return playGame(game);
 
     }
 
-    public iMinigame playGame(String game) {
+    public iMinigame playGame(String game) throws IOException, ParseException, InterruptedException {
 
         //returns the random game
         if (game.equals("rock paper scissors")) {
@@ -29,7 +36,9 @@ public class MinigameFactory {
             return new DDRKeyboard();
         } else if (game.equals("blitz math")) {
             return new BlitzMath();
-        }else if (game.equals("boss game")) {
+        }else if (game.equals("crack the code")) {
+            return new CrackTheCode();
+        } else if (game.equals("boss game")) {
             return new FinalBossFight();
         } else {
             return null;

@@ -2,13 +2,14 @@ package com.welcomeToTheMilitary.character;
 
 import com.welcomeToTheMilitary.attributes.Item;
 import com.welcomeToTheMilitary.attributes.RetrieveSpecialHelper;
+import com.welcomeToTheMilitary.gui.MainDisplay;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ServiceMember {
+public class ServiceMember implements java.io.Serializable{
     private String name;
     private String postName = "Fort Sill";
     public int healPotion;
@@ -16,6 +17,7 @@ public class ServiceMember {
     private String special = "Baking";
     private String location;
     private Rank rank = null;
+
     private int health = 0;
     private int strength = 0;
 
@@ -39,6 +41,10 @@ public class ServiceMember {
         this.fitnessCounter = 0;
         pcsRequest = "No request (Type: request pcs to request a pcs)";
         healPotion = 5;
+    }
+
+    public ServiceMember() {
+
     }
 
     public ArrayList<Item> getItems() {
@@ -107,6 +113,10 @@ public class ServiceMember {
         return this.health;
     }
 
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
     public void setHealth(int _health, boolean isHeal) {
         if (isHeal) {
             this.health += _health;
@@ -121,6 +131,13 @@ public class ServiceMember {
 
     public void setStrength(int _strength) {
         this.strength = _strength;
+    }
+    public void setStrength(int battleStrength, boolean dmgBoost){
+        if(dmgBoost){
+            this.strength += battleStrength;
+        }else {
+            this.strength -= battleStrength;
+        }
     }
 
     public String getPostName() {
@@ -143,20 +160,28 @@ public class ServiceMember {
     //takes an Item parameter
     public void useItem(Item item) {
         //if consumable
-        if(!this.items.contains(item)){
+        if (!this.items.contains(item)) {
             System.out.println("No item in your inventory");
+            MainDisplay.setMainTextArea("No item in your inventory");
             return;
         }
 
-        if(this.items.contains(item) && item.getType().equals("consumable")){
+        if (this.items.contains(item) && item.getType().equals("consumable")) {
             System.out.println("Using " + item.getName());
+            MainDisplay.setMainTextArea("Using " + item.getName());
             setHealth(item.getValue(), true);
             items.remove(item);
-            return;
-        }
-        //if weapon
-        if(this.items.contains(item)){
-            System.out.println("Using " + item.getName());
+        } else {
+            //if weapon
+            if (this.items.contains(item) && item.getType().equals("weapon")) {
+
+                setStrength(item.getValue(),true);
+                items.remove(item);
+                System.out.println("Equipping item " + item.getName());
+                System.out.println("This " + item.getName() + " will give me a damage boost!");
+                MainDisplay.setMainTextArea("Equipping item " + item.getName() + "\n" +
+                        "This " + item.getName() + " will give me a damage boost!");
+            }
         }
     }
 
@@ -191,32 +216,41 @@ public class ServiceMember {
         }
     }
 
+    public String listItemsForStats() {
+        StringBuilder itemList = new StringBuilder();
+
+        for (Item item : this.items) {
+            itemList.append(item.getName()).append(" ").append("Value:").append(item.getValue()).append("\n");
+        }
+
+        return itemList.toString();
+    }
+
     // use spell
-    public int useSpecial() {
-        if (NUMBER_OF_USE_SPECIAL_ON_EACH_FINAL_BOSS <= 0) {
-            System.out.println("You cannot use spell anymore");
-            System.out.println("Attacking the boss with the normal strength");
-            return this.getStrength();
-        }
+    public int useSpecial() throws InterruptedException {
+
         // if the player can use the special
-        boolean isSpecialUseAbleFlag = false;
-        HashMap<String, String> specialHash = RetrieveSpecialHelper.getSpecialName();
-        // System.out.println(this.getSpecial());
-        // make the key set into String array
-        String[] possibleSpecial = specialHash.keySet().toArray(new String[0]);
-        for (int i = 0; i < possibleSpecial.length; i++) {
-            if (possibleSpecial[i].equals(this.getSpecial())) {
-                System.out.println("Using my speciality! " + getSpecial() + specialHash.get(getSpecial()));
-                isSpecialUseAbleFlag = true;
-            }
+        String specialMove = MainDisplay.getSpecial();
+
+        int increasedDamage = 0;
+        switch(specialMove){
+
+            case "Dog Tags":
+                increasedDamage = 3;
+                break;
+            case "Military SkullTatoo":
+                increasedDamage = 2;
+                break;
+            case "High-n-Tight":
+                increasedDamage = 4;
+                break;
+            case "Punisher Hat":
+                increasedDamage = 1;
+                break;
         }
-        if (isSpecialUseAbleFlag) {
-            this.decreaseNumberOfUseSpecialOnEachFinalBoss();
-            return this.getStrength() + RetrieveSpecialHelper.getSpecialDamage(getSpecial());
-        }
-        System.out.println("The special you typed does not exist");
-        System.out.println("Attacking the boss with the normal strength");
-        return this.getStrength();
+
+        Thread.sleep(2000);
+        return this.getStrength() + increasedDamage;
     }
 
     @Override

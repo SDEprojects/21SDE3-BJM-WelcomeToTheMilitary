@@ -1,6 +1,7 @@
 package com.welcomeToTheMilitary.textparser;
 
 
+import com.welcomeToTheMilitary.gamecontroller.SaveAndLoad;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
@@ -86,11 +87,14 @@ public class TextParser {
             System.out.println("Exiting game");
             this.verb = "exit";
             this.noun = "game";
+        } else if(splitTrimmedInput[0].equals("save")){
+            System.out.println("Saving game...");
+            SaveAndLoad.saveGame();
         } else {
             // some message
             this.verb = "";
             this.noun = "";
-            System.out.println("Invalid input:\nDesired input format: verb + noun\n for help type (help me)");
+            //System.out.println("Invalid input:\nDesired input format: verb + noun\n for help type (help me)");
             return false;
         }
         return true;
@@ -98,7 +102,7 @@ public class TextParser {
 
     private boolean testOperateUserAction(boolean isValidActionInput, String postType) throws IOException, ParseException {
         if (!isValidActionInput) {
-            System.out.println("Formatting Error");
+            //System.out.println("Formatting Error");
             return false;
         }
         boolean isOperable = false;

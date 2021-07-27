@@ -2,75 +2,53 @@
   "Fort Sill":
   {
     "Movement": {
-      "verb": ["go", "move", "drive", "walk", "run", "march"],
-      "noun": ["dfac", "barracks", "church", "px", "market", "gym"],
-      "example": "Example: go dfac | move dfac"
+      "verb": ["go", "move"],
+      "noun": ["dfac", "barracks", "etc"],
+      "example": " Example: go dfac | move dfac"
     },
 
     "Interact with soldier": {
-      "verb": ["talk", "approach", "interact", "communicate", "motivate"],
-      "noun": ["brad", "jeremy", "rogers", "shad", "arturo", "john", "brandon",
-        "laginus", "soko", "david", "stephens"],
-      "example": "Example: talk brad | approach brad"
+      "verb": ["talk", "battle"],
+      "noun": ["brad", "jeremy", "etc"],
+      "example": " Example: talk brad | approach brad"
+
     },
 
-    "Display map": {
-      "verb": ["show", "display"],
-      "noun": ["map", "location", "buildings", "building", "status", "inventory", "pcs", "requests", "item"],
-      "example": "Example: | display map | show map | show status"
+    "PT for strength": {
+      "verb": ["do"],
+      "noun": ["pt"],
+      "example":" do pt"
     },
-
-    "Exit the game": {
-      "verb": ["exit", "quit"],
-      "noun": ["game"],
-      "example": "Example: | exit game | quit game"
-    },
-    "Save the game": {
-      "verb": ["save"],
-      "noun": ["game"],
-      "example":"Example: | save  game"
-    },
-    "Load previous saved game": {
-      "verb": ["load"],
-      "noun": ["game"],
-      "example":"Example: | load game"
+    "Change Base": {
+      "verb": ["request"],
+      "noun": ["pcs"],
+      "example":" request pcs"
     }
   },
-  "Fort Bliss": {
+  "Fort Bliss":
+  {
     "Movement": {
-      "verb": ["go", "move", "drive", "walk", "run", "march"],
-      "noun": ["starbucks", "mall", "pizza", "theater", "gym"],
-      "example": "Example: go starbucks | move mall"
+      "verb": ["go", "move"],
+      "noun": ["dfac", "barracks", "etc"],
+      "example": " Example: go dfac | move dfac"
     },
 
     "Interact with soldier": {
-      "verb": ["talk", "approach", "interact", "communicate"],
-      "noun": ["jose", "roger", "chip", "dylan",
-        "ryan", "danny", "cody", "justin", "lambert", "andy", "stephens"],
-      "example": "Example: talk cody | approach roger"
+      "verb": ["talk", "battle"],
+      "noun": ["brad", "jeremy", "etc"],
+      "example": " Example: talk brad | approach brad"
+
     },
 
-    "Display map": {
-      "verb": ["show", "display"],
-      "noun": ["map", "location", "buildings", "building", "status", "inventory", "pcs", "requests", "item"],
-      "example": "Example: | display map | show map | show status"
+    "PT for strength": {
+      "verb": ["do"],
+      "noun": ["pt"],
+      "example":" do pt"
     },
-
-    "Exit the game": {
-      "verb": ["exit", "quit"],
-      "noun": ["game"],
-      "example": "Example: | exit game | quit game"
-    },
-    "Save the game": {
-      "verb": ["save"],
-      "noun": ["game"],
-      "example":"Example: | save  game"
-    },
-
-    "Load previous saved game": {
-      "verb": ["load"],
-      "noun": ["game"],
-      "example":"Example: | load game"
+    "Change Base": {
+      "verb": ["request"],
+      "noun": ["pcs"],
+      "example":" request pcs"
     }
   }
 }

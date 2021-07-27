@@ -1,5 +1,7 @@
 package com.welcomeToTheMilitary.boss;
 
+import com.welcomeToTheMilitary.gui.MainDisplay;
+
 import java.util.Random;
 
 public class Boss {
@@ -23,13 +25,15 @@ public class Boss {
     }
 
     //Methods
-    public int attack() {
+    public int attack() throws InterruptedException {
         Random damage = new Random();
         int damageBase = damage.nextInt((attackMax - attackMin) +1) +attackMin;
 
         int attackStrength = getStrength()/damageBase;
         Math.round(attackStrength);
         System.out.println(getRank() +" "+ getName() + " attacked you for " + attackStrength + " points of damage");
+        MainDisplay.setMainTextArea(getRank() +" "+ getName() + " attacked you for " + attackStrength + " points of damage");
+        Thread.sleep(2000);
 
         return attackStrength;
     }

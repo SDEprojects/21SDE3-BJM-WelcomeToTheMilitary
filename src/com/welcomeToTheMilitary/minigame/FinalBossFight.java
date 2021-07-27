@@ -174,7 +174,7 @@ public class FinalBossFight implements iMinigame {
         usrSM.useItem(itemToUse);
     }
 
-    private void bossFightUserRandomAction(ServiceMember usr, Boss boss) {
+    private void bossFightUserRandomAction(ServiceMember usr, Boss boss) throws InterruptedException {
         String bossActionList[] = {"attack"};
         int randomIndex = (int) (Math.random() * (bossActionList.length - 0));
         switch (bossActionList[randomIndex]) {

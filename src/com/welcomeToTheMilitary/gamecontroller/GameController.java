@@ -69,8 +69,8 @@ public class GameController implements java.io.Serializable {
                         Welcome.separatorTitle();
                         MainDisplay.setMainTextArea("Your journey in Fort Sill is over soldier..");
                         System.out.println("Your journey in Fort Sill is over soldier..");
-                        usrSM.setPostName("Fort Bliss");
                         currentMap = fortBliss;
+                        usrSM.setPostName("Fort Bliss");
                         usrSM.setLocation(currentMap.getName());
                         Welcome.separatorTitle();
                         counter = 9000000;
@@ -122,9 +122,9 @@ public class GameController implements java.io.Serializable {
                     counter = 1;
                 } else if (counter == 9000000) {
                     Welcome.separatorTitle();
-                    System.out.println("You beat the boss. You are now PCS'ed to Fort Bliss.");
                     MainDisplay.setMainTextArea("You beat the boss. You are now PCS'ed to Fort Bliss.");
                     Welcome.separatorTitle();
+                    counter++;
                 }
                 //display persistent information for players to track
                 MainDisplay.setStatsAreaText(Display.status(usrSM));

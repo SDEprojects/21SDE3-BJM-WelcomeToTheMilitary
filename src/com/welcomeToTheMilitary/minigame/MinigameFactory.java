@@ -17,7 +17,7 @@ public class MinigameFactory {
         gameList.add("crack the code");
         final int min = 0;
         final int max = gameList.size();
-        int randomIndex = (int) (Math.random() * (max - min));
+        int randomIndex = (int) (Math.random() * (max - min) + 1);
         String game = gameList.get(randomIndex);
 
         return playGame(game);

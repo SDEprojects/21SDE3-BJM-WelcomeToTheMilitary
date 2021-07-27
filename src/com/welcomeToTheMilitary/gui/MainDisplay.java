@@ -218,6 +218,9 @@ public class MainDisplay {
         container.remove(tutorialMainPanel);
         container.remove(characterButtonPanel);
 
+        frame.revalidate();
+        frame.repaint();
+
         //Remove Tutorial Main Panel Stuff
         //container.remove(tutorialMainPanel);
 
@@ -328,6 +331,8 @@ public class MainDisplay {
             gameScreen();
             setStartButtonClicked(true);
         });
+//        frame.revalidate();
+//        frame.repaint();
     }
 
     public static void gameScreen() {
@@ -522,10 +527,10 @@ public class MainDisplay {
         boolean runTitle = true;
         boolean runTutorial = true;
         boolean runCharacterScreen = true;
-
+        System.out.println("game controller made");
 
         while (true) {
-
+            System.out.println("entering 1st Loop");
             if (runTitle) {
                 titleScreen();
                 runTitle = false;
@@ -540,11 +545,12 @@ public class MainDisplay {
             if (isStartButtonClicked()) {
 
                 game.mainGame(name, special);
-                frame.revalidate();
-                frame.repaint();
+                System.out.println("mainGame Ran");
+//                frame.revalidate();
+//                frame.repaint();
             }
-            frame.revalidate();
-            frame.repaint();
+//            frame.revalidate();
+//            frame.repaint();
 
 
         }

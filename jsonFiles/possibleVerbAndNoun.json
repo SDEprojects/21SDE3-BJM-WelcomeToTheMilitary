@@ -8,7 +8,7 @@
     },
 
     "Interact with soldier": {
-      "verb": ["talk", "approach", "interact", "communicate", "motivate"],
+      "verb": ["talk", "approach", "interact", "communicate", "motivate", "battle"],
       "noun": ["brad", "jeremy", "rogers", "shad", "arturo", "john", "brandon",
         "laginus", "soko", "david", "stephens", "brody", "mason"],
       "example": "Example: talk brad | approach brad"
@@ -49,7 +49,7 @@
     },
 
     "Interact with soldier": {
-      "verb": ["talk", "approach", "interact", "communicate"],
+      "verb": ["talk", "approach", "interact", "communicate", "battle"],
       "noun": ["jose", "roger", "chip", "dylan", "mason",
         "ryan", "danny", "cody", "justin", "lambert", "andy", "stephens", "brody"],
       "example": "Example: talk cody | approach roger"

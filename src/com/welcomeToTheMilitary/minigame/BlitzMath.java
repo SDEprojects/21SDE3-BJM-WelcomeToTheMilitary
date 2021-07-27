@@ -1,21 +1,16 @@
 package com.welcomeToTheMilitary.minigame;
 
 import com.welcomeToTheMilitary.character.ServiceMember;
+import com.welcomeToTheMilitary.gui.MainDisplay;
 
 import java.util.Scanner;
 
 public class BlitzMath implements iMinigame{
 
-    //test main
-    public static void main(String[] args) {
-
-        BlitzMath test = new BlitzMath();
-        test.addThis();
-    }
-
     private int MIN = 6;
     private int MAX = 19;
     private int playerScore = 0;
+    private int seconds = 8000;
 
     public boolean addThis(){
         double random1 = Math.random();
@@ -25,22 +20,27 @@ public class BlitzMath implements iMinigame{
         int rand2 = (int)(random2 * ((MAX - MIN) + 1)) + MIN;
 
         System.out.println("What is " + rand1 + " + " + rand2);
+        MainDisplay.setMainTextArea("What is " + rand1 + " + " + rand2);
 
         int playerAnswer = playerAnswerOnTime();
 
         if(playerAnswer == rand1 + rand2){
             System.out.println("You got it");
+            MainDisplay.setMainTextArea("You got it");
             return true;
         }
         else{
             System.out.println("Wrong!");
+            MainDisplay.setMainTextArea("Wrong");
             return false;
         }
     }
 
     public int playerAnswerOnTime() {
         System.out.println("Add These");
-        System.out.println("You have 6 seconds to answer");
+        MainDisplay.setMainTextArea("Add These");
+        System.out.println("You have " + seconds/1000 + " seconds to answer");
+        MainDisplay.setMainTextArea("You have\n, you have 6 seconds to answer");
 
         //sets the start time
         long startTime = System.currentTimeMillis();
@@ -54,15 +54,17 @@ public class BlitzMath implements iMinigame{
 
             long difference = (endTime - startTime);
 
-            //if its less than 6 seconds
-            if(difference < 6000){
+            //if its less than how many seconds
+            if(difference < seconds){
                 return playerAnswer;
             }
-            else System.out.println("Timer is up");
+            else System.out.println("Too slow soldier!");
+            MainDisplay.setMainTextArea("Too slow soldier");
             return -1;
         }
         catch(NumberFormatException e){
             System.out.println("Not a valid input");
+            MainDisplay.setMainTextArea("Not a valid input");
         }
         return -1;
     }

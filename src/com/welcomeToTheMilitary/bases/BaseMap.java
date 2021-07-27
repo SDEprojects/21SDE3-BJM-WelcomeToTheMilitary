@@ -2,13 +2,12 @@ package com.welcomeToTheMilitary.bases;
 
 import com.welcomeToTheMilitary.attributes.Item;
 import com.welcomeToTheMilitary.character.Enlisted;
-import com.welcomeToTheMilitary.gui.mainDisplay;
+import com.welcomeToTheMilitary.gui.MainDisplay;
 import com.welcomeToTheMilitary.json_pack.JsonReader;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class BaseMap {
 
@@ -90,7 +89,7 @@ public class BaseMap {
         this.soldiers = JsonReader.getSoldiers().get(name);
     }
 
-    public void displaySoldiers(String currentLocation, mainDisplay gui) throws IOException, ParseException {
+    public void displaySoldiers(String currentLocation) throws IOException, ParseException {
         StringBuilder soldierList = new StringBuilder();
         soldierList.append("Entering ").append(currentLocation).append(" building!").append("\n");
         soldierList.append("_".repeat(45)).append("\n");
@@ -100,7 +99,7 @@ public class BaseMap {
                 soldierList.append(enlisted).append("\n").append("_".repeat(45));
             }
         }
-        gui.setMainTextArea(soldierList.toString());
+        MainDisplay.setMainTextArea(soldierList.toString());
     }
 
     public void displayItems(String currentLocation) {

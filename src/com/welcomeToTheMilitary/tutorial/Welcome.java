@@ -3,6 +3,7 @@ package com.welcomeToTheMilitary.tutorial;
 
 import com.welcomeToTheMilitary.character.ServiceMember;
 
+import com.welcomeToTheMilitary.gui.MainDisplay;
 import com.welcomeToTheMilitary.json_pack.JsonReader;
 import org.json.simple.parser.ParseException;
 
@@ -63,15 +64,24 @@ public class Welcome {
         System.out.println("Would you like to use the tutorial?");
         Welcome.separatorTitle();
         Scanner tutorial = new Scanner(System.in);
+
+        //Start GUI!
+        MainDisplay.setMainTextArea("Would you like to use the tutorial? \n Please enter Yes/y or No/no");
+        //
         String tutorialAnswer = tutorial.nextLine().toLowerCase();
+//        String tutorialAnswer = mainDisplay.getUserAction();
+
+        // While loop below Only necessary on console, not gui
         while (!tutorialAnswer.equals("yes") && !tutorialAnswer.equals("no") && !tutorialAnswer.equals("y")
                 && !tutorialAnswer.equals("n")) {
             System.out.println("Please enter yes/y or no/n.");
             tutorialAnswer = tutorial.nextLine();
         }
+
         if (tutorialAnswer.equals("yes") || tutorialAnswer.equals("y")){
             clearConsole();
             questions();
+
         }
         separatorTitle();
         System.out.println("Would you like see a description of available spells?");

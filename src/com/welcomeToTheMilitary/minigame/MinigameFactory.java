@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class MinigameFactory {
 
-    public iMinigame playGame() throws IOException, ParseException {
+    public iMinigame playGame() throws IOException, ParseException, InterruptedException {
 
         //Adds all our minigames to ArrayList and grabs one at random
         ArrayList<String> gameList = new ArrayList<>();
@@ -17,14 +17,14 @@ public class MinigameFactory {
         gameList.add("crack the code");
         final int min = 0;
         final int max = gameList.size();
-        int randomIndex = (int) (Math.random() * (max - min));
+        int randomIndex = (int) (Math.random() * (max - min) + 1);
         String game = gameList.get(randomIndex);
 
         return playGame(game);
 
     }
 
-    public iMinigame playGame(String game) throws IOException, ParseException {
+    public iMinigame playGame(String game) throws IOException, ParseException, InterruptedException {
 
         //returns the random game
         if (game.equals("rock paper scissors")) {

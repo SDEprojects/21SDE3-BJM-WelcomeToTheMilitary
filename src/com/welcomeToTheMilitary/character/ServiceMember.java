@@ -228,36 +228,29 @@ public class ServiceMember implements java.io.Serializable{
 
     // use spell
     public int useSpecial() throws InterruptedException {
-        if (NUMBER_OF_USE_SPECIAL_ON_EACH_FINAL_BOSS <= 0) {
-            System.out.println("You cannot use spell anymore");
-            System.out.println("Attacking the boss with the normal strength");
-            MainDisplay.setMainTextArea("You cannot use spell anymore.  Attacking the boss with the normal strength");
-            Thread.sleep(2000);
-            return this.getStrength();
-        }
+
         // if the player can use the special
-        boolean isSpecialUseAbleFlag = false;
-        HashMap<String, String> specialHash = RetrieveSpecialHelper.getSpecialName();
-        // System.out.println(this.getSpecial());
-        // make the key set into String array
-        String[] possibleSpecial = specialHash.keySet().toArray(new String[0]);
-        for (int i = 0; i < possibleSpecial.length; i++) {
-            if (possibleSpecial[i].equals(this.getSpecial())) {
-                System.out.println("Using my speciality! " + getSpecial() + specialHash.get(getSpecial()));
-                MainDisplay.setMainTextArea("Using my speciality! " + getSpecial() + specialHash.get(getSpecial()));
-                Thread.sleep(2000); // Makes sure to show text for a few seconds
-                isSpecialUseAbleFlag = true;
-            }
+        String specialMove = MainDisplay.getSpecial();
+
+        int increasedDamage = 0;
+        switch(specialMove){
+
+            case "Dog Tags":
+                increasedDamage = 3;
+                break;
+            case "Military SkullTatoo":
+                increasedDamage = 2;
+                break;
+            case "High-n-Tight":
+                increasedDamage = 4;
+                break;
+            case "Punisher Hat":
+                increasedDamage = 1;
+                break;
         }
-        if (isSpecialUseAbleFlag) {
-            this.decreaseNumberOfUseSpecialOnEachFinalBoss();
-            return this.getStrength() + RetrieveSpecialHelper.getSpecialDamage(getSpecial());
-        }
-        System.out.println("The special you typed does not exist");
-        System.out.println("Attacking the boss with the normal strength");
-        MainDisplay.setMainTextArea("The special you typed does not exist! Attacking the boss with the normal strength");
+
         Thread.sleep(2000);
-        return this.getStrength();
+        return this.getStrength() + increasedDamage;
     }
 
     @Override

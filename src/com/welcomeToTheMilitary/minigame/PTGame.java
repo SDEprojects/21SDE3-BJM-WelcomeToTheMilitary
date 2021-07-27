@@ -66,7 +66,7 @@ public class PTGame {
                         }
 
                         //if user gets 5 correct, player will get increased strength
-                        if (successCount >= 5) {
+                        if (successCount >= 3) {
                             member.setStrength(member.getStrength()+1);
                             System.out.println("You're feeling buff! Strength increased by 1");
                             MainDisplay.setMainTextArea("You're feeling buff! Strength increased by 1");

@@ -535,7 +535,8 @@ public class MainDisplay {
                 titleScreen();
                 runTitle = false;
             }
-
+            //do not touch
+            System.out.println("");
 //
 //            while (runTutorial) {
 //                tutorialScreen();

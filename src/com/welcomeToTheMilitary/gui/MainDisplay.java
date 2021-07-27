@@ -530,7 +530,7 @@ public class MainDisplay {
         System.out.println("game controller made");
 
         while (true) {
-            System.out.println("entering 1st Loop");
+
             if (runTitle) {
                 titleScreen();
                 runTitle = false;
@@ -545,7 +545,7 @@ public class MainDisplay {
             if (isStartButtonClicked()) {
 
                 game.mainGame(name, special);
-                System.out.println("mainGame Ran");
+                
 //                frame.revalidate();
 //                frame.repaint();
             }

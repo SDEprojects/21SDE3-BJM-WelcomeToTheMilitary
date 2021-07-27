@@ -47,7 +47,7 @@ public class FinalBossFight implements iMinigame {
 
     // it was finalBoss as param
     @Override
-    public boolean play(ServiceMember usr) {
+    public boolean play(ServiceMember usr) throws InterruptedException {
         // testing
         if (usr.getPostName().equals("Fort Sill")) {
             tempBoss = new Boss("SFC", "Daniels", 25,90, 10, 2);
@@ -93,7 +93,7 @@ public class FinalBossFight implements iMinigame {
         }
     }
 
-    private void userFightBossAction(String _userCommand, ServiceMember usr, Boss boss) {
+    private void userFightBossAction(String _userCommand, ServiceMember usr, Boss boss) throws InterruptedException {
         switch (_userCommand) {
             case "attack":
                 int userHitDamage = usr.attack();

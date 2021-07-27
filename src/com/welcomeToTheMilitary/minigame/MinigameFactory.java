@@ -4,6 +4,7 @@ import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class MinigameFactory {
 
@@ -15,10 +16,12 @@ public class MinigameFactory {
         gameList.add("memorization game");
         gameList.add("blitz math");
         gameList.add("crack the code");
-        final int min = 0;
+
         final int max = gameList.size();
-        int randomIndex = (int) (Math.random() * (max - min) + 1);
-        String game = gameList.get(randomIndex);
+        Random randInt = new Random();
+        int randIndex = randInt.nextInt(max);
+
+        String game = gameList.get(randIndex);
 
         return playGame(game);
 

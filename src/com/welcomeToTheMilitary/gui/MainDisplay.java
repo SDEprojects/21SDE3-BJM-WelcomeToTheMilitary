@@ -354,13 +354,13 @@ public class MainDisplay {
 
         //Main Text Panel
         mainTextPanel = new JPanel();
-        mainTextPanel.setBounds(30, 35, 500, 430);
+        mainTextPanel.setBounds(30, 35, 500, 440);
         mainTextPanel.setBackground(mainTextAreaColor);
         mainTextPanel.setForeground(Color.WHITE);
 
         //Main Text Area
         mainTextArea = new JTextArea(" ");
-        mainTextArea.setBounds(30, 35, 500, 430);//Same as mainTextPanel
+        mainTextArea.setBounds(30, 35, 500, 440);//Same as mainTextPanel
         mainTextArea.setBackground(sidePanelColor);
         mainTextArea.setForeground(Color.WHITE);
         mainTextArea.setFont(mainTextFont);
